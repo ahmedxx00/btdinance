@@ -1,0 +1,12 @@
+<% if (locals.network && locals.cur_type) { %>
+  <div class="network">
+    <span class="hidden_network_id" style="display:none"><%= network._id %></span>
+    <h4 class="name"><%= network.name %></h4>
+    <h4 class="fee"><span class="pre_span">Fee </span><%= network.fee %> <span class="post_span"> <%= cur_type %></span></h4>
+    <h4 class="minimum_withdrawal"><span class="pre_span">Minimum withdrawal </span><%= network.minimum_withdrawal %><span class="post_span"> <%= cur_type %></span></h4>
+    <% if (network.arrival_time != null) { %>
+    <h4 class="arrival_time"><span class="pre_span">Arrival time &#8776; </span><%= network.arrival_time %> <span class="post_span">mins</span></h4>
+    <% } %>
+    <button class="remove_network">remove</button>
+  </div>
+<% } %>

@@ -1,0 +1,151 @@
+<%- include("./parts/navbar.ejs" , {title : 'Upgrade',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/upgrade.css']}) %>
+
+
+<% if (locals.vip > -1) { %>
+
+<h3 class="head_note">your membership is
+  <% switch (vip) { case 0 : %>
+  <span>Basic</span>
+  <% break; case 1 : %>
+  <span>VIP1</span>
+  <% break; case 2: %>
+  <span>VIP2</span>
+  <% break; case 3 : %>
+  <span>VIP3</span>
+  <% break; case 4: %>
+  <span>VIP4</span>
+  <% break; default: %>
+  <span>Basic</span>
+  <% break; } %>
+</h3>
+
+<div class="mem_wrap">
+  <div class="mem_data">
+    <img class="logo" src="/basic.png" />
+    <div class="limits">
+      <span> ~ Limits ~ </span>
+      <div>
+        <p>* WITHDRAW : USDT 2,000,000/daily . </p>
+        <p>* DEPOSIT : USDT 1,500,000/daily . </p>
+        <p>* TRANSFER : at least VIP1 . </p>
+        <p>* RECEIVE : at least VIP1 . </p>
+      </div>
+    </div>
+    <div class="granted">
+      <img src="/tick.png" />
+      <span>GRANTED</span>
+    </div>
+  </div>
+</div>
+
+<div class="mem_wrap">
+  <div class="mem_data">
+    <img class="logo" src="/vip1.png" />
+    <div class="limits">
+      <span> ~ Limits ~ </span>
+      <div>
+        <p>* WITHDRAW : USDT 3,000,000/daily . </p>
+        <p>* DEPOSIT : USDT 2,500,000/daily . </p>
+        <p>* TRANSFER : unlimited . </p>
+        <p>* RECEIVE : unlimited . </p>
+      </div>
+    </div>
+
+    <% if (vip > 0 ) { %>
+    <div class="granted">
+      <img src="/tick.png" />
+      <span>GRANTED</span>
+    </div>
+    <% } else { %>
+    <div>
+      <button class="upgrade_btn vip1">UPGRADE</button>
+    </div>
+    <% } %>
+
+  </div>
+</div>
+<div class="mem_wrap">
+  <div class="mem_data">
+    <img class="logo" src="/vip2.png" />
+    <div class="limits">
+      <span> ~ Limits ~ </span>
+      <div>
+        <p>* WITHDRAW : USDT 5,000,000/daily . </p>
+        <p>* DEPOSIT : USDT 3,000,000/daily . </p>
+        <p>* TRANSFER : unlimited . </p>
+        <p>* RECEIVE : unlimited . </p>
+      </div>
+    </div>
+
+    <% if (vip > 1 ) { %>
+    <div class="granted">
+      <img src="/tick.png" />
+      <span>GRANTED</span>
+    </div>
+    <% } else { %>
+    <div>
+      <button class="upgrade_btn vip2">UPGRADE</button>
+    </div>
+    <% } %>
+
+  </div>
+</div>
+<div class="mem_wrap">
+  <div class="mem_data">
+    <img class="logo" src="/vip3.png" />
+    <div class="limits">
+      <span> ~ Limits ~ </span>
+      <div>
+        <p>* WITHDRAW : USDT 7,500,000/daily . </p>
+        <p>* DEPOSIT : USDT 5,000,000/daily . </p>
+        <p>* TRANSFER : unlimited . </p>
+        <p>* RECEIVE : unlimited . </p>
+      </div>
+    </div>
+
+    <% if (vip > 2 ) { %>
+    <div class="granted">
+      <img src="/tick.png" />
+      <span>GRANTED</span>
+    </div>
+    <% } else { %>
+    <div>
+      <button class="upgrade_btn vip3">UPGRADE</button>
+    </div>
+    <% } %>
+
+  </div>
+</div>
+<div class="mem_wrap">
+  <div class="mem_data">
+    <img class="logo" src="/vip4.png" />
+    <div class="limits">
+      <span> ~ Limits ~ </span>
+      <div>
+        <p>* WITHDRAW : USDT 10,000,000/daily . </p>
+        <p>* DEPOSIT : USDT 6,000,000/daily . </p>
+        <p>* TRANSFER : unlimited . </p>
+        <p>* RECEIVE : unlimited . </p>
+      </div>
+    </div>
+
+    <% if (vip > 3 ) { %>
+    <div class="granted">
+      <img src="/tick.png" />
+      <span>GRANTED</span>
+    </div>
+    <% } else { %>
+    <div>
+      <button class="upgrade_btn vip4">UPGRADE</button>
+    </div>
+    <% } %>
+
+  </div>
+</div>
+
+<% } %>
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false,scripts: ['/js/simplebar.min.js'], moduleScripts: ['/js/upgrade.js'] })%>

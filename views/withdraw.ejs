@@ -1,0 +1,77 @@
+<%- include("./parts/navbar.ejs" , {title : 'Withdraw',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false
+,stylesheets:['https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/spinner.css','/css/withdraw.css']})
+%> 
+
+<% if (locals.wallets && locals.wallets.length > 0) { %> 
+<% locals.wallets.forEach(wallet => { %>
+
+<div class="wallet_container">
+  <span>currency type : </span>
+  <div class="cur_data">
+    <% switch (wallet.currency) { case 'USDT': %>
+
+    <img src="/usdt.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'USDC': %>
+    <img src="/usdc.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'XRP': %>
+    <img src="/xrp.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'LTC': %>
+    <img src="/ltc.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'SOL': %>
+    <img src="/sol.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'BTC': %>
+    <img src="/btc.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'TRX': %>
+    <img src="/trx.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'DOGE': %>
+    <img src="/doge.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'ETH': %>
+    <img src="/eth.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; case 'BNB': %>
+    <img src="/bnb.svg" />
+    <span class="cur_type"><%= wallet.currency %></span>
+
+    <% break; default: %>
+    <img src="/usdt.svg" />
+    <span class="cur_type">USDT</span>
+    <% break; } %>
+  </div>
+  <div class="amount_div">
+    <span>Available : </span><span class="cur_amount"> <%= wallet.available %> </span>
+  </div>
+  <a href="/withdraw/cur_type/<%= wallet.currency %>" class="withdraw_btn">withdraw</a>
+</div>
+
+<% }) %> 
+<% } else {%>
+
+<div class="no_wallets">
+  <h4>you have no wallets</h4>
+  <p>you can deposit NOW</p>
+  <a href="/deposit">Deposit</a>
+</div>
+
+<% } %>
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, moduleScripts: ['/js/withdraw.js'] })%>

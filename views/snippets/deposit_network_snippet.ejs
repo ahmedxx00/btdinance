@@ -1,0 +1,16 @@
+    <% if (locals.network && locals.cur_type) { %>
+    <div class="network">
+      <span class="hidden_network_id" style="display:none"><%= network._id %></span>
+      <h4 class="name"><%= network.name %></h4>
+      <h4 class="block_confirmations"><%= network.block_confirmations %> <span class="post_span">block confirmation/s </span> </h4>
+      <h4 class="minimum_deposit"><span class="pre_span">Min. deposit </span><%= network.minimum_deposit %><span class="post_span"> <%= cur_type %></span></h4>
+      <% if (network.est_arrival != null) { %>
+      <h4 class="est_arrival"><span class="pre_span">Est. arrival </span><%= network.est_arrival %> <span class="post_span">mins</span></h4>
+      <% } %>
+      <% if (network.our_deposit_address != null) { %>
+      <h4 class="our_deposit_address"><span class="pre_span">Our Dep. address :: </span><%= network.our_deposit_address %></h4>
+      <% } %>
+
+      <button class="remove_network">remove</button>
+    </div>
+    <% } %>

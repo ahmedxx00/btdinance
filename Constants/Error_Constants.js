@@ -1,0 +1,20 @@
+
+export const USER_EXISTS = "you already have account";
+export const WRONG_EMAIL = "wrong credentials";
+export const WRONG_PASSWORD = "wrong credentials";
+export const AVAILABLE = "Available";
+export const NOT_AVAILABLE = "Name is used before";
+export const TOKEN_ERROR = "Can't sign or verify token";
+export const PASSWORD_ERROR = "Password Error";
+export const USER_NOT_FOUND_ERROR = "user not found";
+export const ADMIN_NOT_FOUND_ERROR = "admin not found";
+export const Empty_Credentials_ERROR = "empty credentials";
+export const Email_ERROR = "Email not found";
+export const EXPIRED_OTP = "Expired OTP <br> Request a new one please";
+export const WRONG_OTP = "Wrong OTP";
+export const NO_OTP_FOR_THIS_EMAIL = "No OTP Sent for this email <br> Request a new one please";
+export const NOT_SUCH_WALLET = "Not such wallet";
+export const NOT_SUFFICIENT_AMOUNT = "Not sufficient amount";
+export const WITHDRAW_SUCCESSFUL = "Withdraw Successful";
+export const WRONG_KEY = "Wrong Key";
+export const WRONG_AMOUNT = "Wrong amount";

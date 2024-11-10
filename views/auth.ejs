@@ -1,0 +1,74 @@
+<%- include("./parts/navbar.ejs" , {title : 'Auth',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/spinner.css','/css/auth.css']})%>
+
+<div class="forms-section">
+  <div class="forms-wrapper">
+    <div class="form login">
+      <form id="login-form">
+        <h2>Login</h2>
+        <div class="input-group">
+          <input type="text" name="name_email" />
+          <label>Name or Email</label>
+        </div>
+        <div class="input-group">
+          <input type="password" name="password" class="password" />
+          <i class="password-toggle-icon fas fa-eye"></i>
+          <label>Password</label>
+          <span class="l-n">max length 8 ~ 50</span>
+        </div>
+        <p class="check">
+          <input type="checkbox" name="remember" /> Remember me
+        </p>
+        <button type="submit" class="btn" id="login-btn">Login</button>
+        <a class="login-forgot-password-a" href="/auth/forgot-password"
+          >forgot password?</a
+        >
+        <p class="login-btm-link">
+          Don't have account ? <a class="login-btm-link-a">Sign Up</a>
+        </p>
+      </form>
+    </div>
+
+    <div class="form sign-up">
+      <form id="signup-form">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+          <input type="text" name="name" />
+          <label>Enter Your Name</label>
+          <span class="l-n"></span>
+        </div>
+        <div class="input-group">
+          <input type="password" name="password" class="password" />
+          <i class="password-toggle-icon fas fa-eye"></i>
+          <label>Enter Your Password</label>
+          <span class="l-n">max length 8 ~ 50</span>
+        </div>
+        <div class="input-group">
+          <input type="password" name="key" class="password" />
+          <i class="password-toggle-icon fas fa-eye"></i>
+          <label>Security Key</label>
+          <span class="l-n"
+            >important: this key can't be changed in the future<br />
+            <span>max length 50</span>
+          </span>
+        </div>
+        <p class="check">
+          <input type="checkbox" name="accept_terms" />Accept
+          <a href="/auth/terms-conditions">terms and conditions.</a>
+        </p>
+        <button type="submit" class="btn" id="signup-btn">Sign Up</button>
+        <p class="signup-btm-link">
+          I have account ? <a class="signup-btm-link-a">Login</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <div class="img-wrap">
+    <img src="/gold-star.png" style="pointer-events: none" />
+  </div>
+</div>
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, moduleScripts:['/js/auth.js'] })%>

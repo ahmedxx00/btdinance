@@ -1,0 +1,136 @@
+.head_note {
+  width: max-content;
+  color: white;
+  background-color: transparent;
+  text-align: center;
+  margin: 20px auto;
+  padding: 7px 30px;
+  border: 3px dotted var(--MAIN-MASTARD);
+  font-weight: normal;
+
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.head_note span {
+  color: var(--MAIN-MASTARD);
+}
+
+/* -------------------------- membership wrap -------------------------- */
+.mem_wrap {
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 5px white;
+  background-color: transparent;
+
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.mem_data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  margin: 10px 0;
+  row-gap: 20px;
+  column-gap: 40px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.mem_data img.logo {
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.granted {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  
+  flex-grow: 1;
+}
+
+.granted img {
+  width: 30px;
+  height: auto;
+  margin: 0 20px;
+}
+.granted span {
+  width: max-content;
+  color: black;
+  background-color: green;
+  padding: 2px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  pointer-events: none;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.mem_data .limits {
+  flex-grow: 0;
+  text-wrap: nowrap;
+  font-size: 16px;
+  margin: 0 auto;
+}
+.mem_data .limits div {
+  width: max-content;
+  margin: 0 auto;
+}
+.mem_data .limits p {
+  margin: 2px 0;
+  color: white;
+  text-align: start;
+}
+.mem_data .limits span {
+  display: block;
+  color: gray;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.mem_data div:has(.upgrade_btn){
+  flex-grow: 1;
+}
+
+.upgrade_btn {
+  display: block;
+  width: max-content;
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+  font-size: 16px;
+  padding: 4px 50px;
+  margin: 0 auto;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.upgrade_btn:hover {
+  background-color: black;
+  color: white;
+}

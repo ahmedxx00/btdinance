@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+
+  <link rel="stylesheet" href="/css/navbar.css" />
+
+  <% if (locals.showScroller) { %>
+  <link rel="stylesheet" href="/css/tiker.css" />
+  <% } %>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/jquery.modal.min.css" />
+
+  <% if (locals.stylesheets) { %> <% stylesheets.forEach((stylesheet)=>{ %>
+  <link rel="stylesheet" href="<%= stylesheet %>" />
+  <% }) %> <% } %>
+
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="/js/jquery.modal.min.js"></script>
+
+
+  <% if (locals.scripts) { %> <% scripts.forEach((script)=>{ %>
+  <script src="<%= script %>"></script>
+  <% }) %> <% } %>
+
+
+
+  <noscript>
+    <style>
+      /**
+    * Reinstate scrolling for non-JS clients
+    */
+      .simplebar-content-wrapper {
+        scrollbar-width: auto;
+        -ms-overflow-style: auto;
+      }
+
+      .simplebar-content-wrapper::-webkit-scrollbar,
+      .simplebar-hide-scrollbar::-webkit-scrollbar {
+        display: initial;
+        width: initial;
+        height: initial;
+      }
+    </style>
+  </noscript>
+
+
+
+</head>
+
+<body>
+  <div class="header">
+    <a href="">
+      <img src="/btc-logo.png" style="pointer-events: none" />
+    </a>
+    <ul class="nav-items">
+      <li><a id="nav-item-about" href="/about">About</a></li>
+      <li><a id="nav-item-invest" href="/invest">Invest</a></li>
+      <li><a id="nav-item-transfer" href="/transfer">Transfer</a></li>
+      <li><a id="nav-item-withdraw" href="/withdraw">Withdraw</a></li>
+      <li><a id="nav-item-deposit" href="/deposit">Deposit</a></li>
+      <li><a id="nav-item-home" href="/">Home</a></li>
+    </ul>
+  </div>
+
+
+  <% if ( locals.isLoggedIn&& locals.isAdmin) { %>
+  <ul class="nav-items admin">
+    <li><a id="nav-item-edit_withdraw_networks" href="/admin/edit_withdraw_networks">Edit Withdraw Networks</a></li>
+    <li><a id="nav-item-edit_deposit_networks" href="/admin/edit_deposit_networks">Edit Deposit Networks</a></li>
+  </ul>
+  <% }%>
+  <%# =========================================================== %>
+
+  <hr class="b-header-hr" />
+
+  <% if ( locals.showScroller) { %>
+  <div class="scroller">
+    <ul class="scroller__inner">
+      <li>
+        <img src="/btc.svg" />
+        <h5>Bitcoin</h5>
+        <span class="val btc">0000.00</span><span class="perc btc_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/eth.svg" />
+        <h5>Ethereum</h5>
+        <span class="val eth">0000.00</span><span class="perc eth_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/ltc.svg" />
+        <h5>Litecoin</h5>
+        <span class="val ltc">0000.00</span><span class="perc ltc_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/doge.svg" />
+        <h5>Dogecoin</h5>
+        <span class="val doge">0000.00</span><span class="perc doge_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/bnb.svg" />
+        <h5>BNB</h5>
+        <span class="val bnb">0000.00</span><span class="perc bnb_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/xrp.svg" />
+        <h5>XRP</h5>
+        <span class="val xrp">0000.00</span><span class="perc xrp_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/sol.svg" />
+        <h5>Solana</h5>
+        <span class="val sol">0000.00</span><span class="perc sol_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/trx.svg" />
+        <h5>TRX</h5>
+        <span class="val trx">0000.00</span><span class="perc trx_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/usdc.svg" />
+        <h5>USDC</h5>
+        <span class="val usdc">0000.00</span><span class="perc usdc_perc">+0.00</span>
+      </li>
+    </ul>
+    <ul class="scroller__inner">
+      <li>
+        <img src="/btc.svg" />
+        <h5>Bitcoin</h5>
+        <span class="val btc">0000.00</span><span class="perc btc_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/eth.svg" />
+        <h5>Ethereum</h5>
+        <span class="val eth">0000.00</span><span class="perc eth_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/ltc.svg" />
+        <h5>Litecoin</h5>
+        <span class="val ltc">0000.00</span><span class="perc ltc_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/doge.svg" />
+        <h5>Dogecoin</h5>
+        <span class="val doge">0000.00</span><span class="perc doge_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/bnb.svg" />
+        <h5>BNB</h5>
+        <span class="val bnb">0000.00</span><span class="perc bnb_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/xrp.svg" />
+        <h5>XRP</h5>
+        <span class="val xrp">0000.00</span><span class="perc xrp_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/sol.svg" />
+        <h5>Solana</h5>
+        <span class="val sol">0000.00</span><span class="perc sol_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/trx.svg" />
+        <h5>TRX</h5>
+        <span class="val trx">0000.00</span><span class="perc trx_perc">+0.00</span>
+      </li>
+      <li>
+        <img src="/usdc.svg" />
+        <h5>USDC</h5>
+        <span class="val usdc">0000.00</span><span class="perc usdc_perc">+0.00</span>
+      </li>
+    </ul>
+  </div>
+  <% }%>
+
+<% if (locals.isLoggedIn) { %>
+  <a href="/logout" class="logout" title="logout">
+    <img src="/logout.png" alt="logout">
+  </a>
+<% } %>
+ 

@@ -1,0 +1,144 @@
+/* ===================== tabs ======================== */
+
+.tabs_box{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.tabs_box .tab_btn{
+    flex: 1 0 8%;
+    padding: 2px 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 12px;
+
+}
+
+.tabs_box .tab_btn.active{
+    border-bottom: 3px solid maroon;
+    border-spacing: 10px;
+}
+
+/* ===================== content ======================== */
+
+.content_box .content{
+    display: none;
+    margin: 10px;
+}
+
+.content_box .content.active{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    padding: 5px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ===================== add network btn ======================== */
+
+
+.add_network_btn{
+    font-size: 12px;
+    background-color: var(--MAIN-MASTARD);
+    color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    
+}
+/* ===================== network form======================== */
+.network_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+
+
+.network_form input,.network_form button{
+    display: block;
+    width: 100%;
+    font-size: 13px;
+    padding: 5px;
+    outline: 1px solid maroon;
+    border: none;
+    margin: 5px auto;
+}
+
+.network_form button{
+    outline: none;
+    background-color: maroon;
+    color: white;
+    cursor: pointer;
+}
+
+.network_form button:hover{
+    background-color: black;
+}
+
+
+/*---------------------------------*/
+.network{
+    flex: 1 0 10%;
+    align-self: flex-start;
+    background-color: black;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight:lighter;
+    box-shadow: 0 0 1px #800000;
+    text-align: start;
+    text-wrap: nowrap;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.network span,
+.network h4{
+    pointer-events: none;
+    padding: 2px;
+}
+
+.network h4.name{
+    color: var(--MAIN-MASTARD);
+}
+
+
+
+.network .remove_network{
+    display: block;
+    margin: 5px auto;
+    background-color: maroon;
+    border: none;
+    outline: none;
+    padding: 2px 5px;
+    color: white;
+    cursor: pointer;
+    z-index: 999;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}

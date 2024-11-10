@@ -1,0 +1,10 @@
+<%- include("./parts/navbar.ejs" , {title : 'About',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/spinner.css','/css/about.css']}) %>
+
+<div class="main-buttons" style="color: white; text-align: center">
+  This is About PAge
+</div>
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, moduleScripts: ['/js/about.js'] })%>

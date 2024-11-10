@@ -1,0 +1,24 @@
+<%- include('./parts/navbar.ejs',{title : "Admin Login" ,showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false , stylesheets : ['/css/spinner.css','/css/admin-login.css']}) %>
+
+<div class="form login">
+  <form id="login-form">
+    <h2>Login</h2>
+    <div class="input-group">
+      <input type="text" name="name" />
+      <label>Name</label>
+    </div>
+
+    <div class="input-group">
+      <input type="password" name="password" class="password" />
+      <i class="password-toggle-icon fas fa-eye"></i>
+      <label>Password</label>
+      <span class="l-n">max length 8 ~ 50</span>
+    </div>
+    <button type="submit" class="btn" id="login-btn">Login</button>
+  </form>
+</div>
+
+<%- include('./parts/footer.ejs' ,
+{showScroller:false,moduleScripts : ['/js/admin-login.js']} ) %>

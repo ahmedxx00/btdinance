@@ -1,0 +1,85 @@
+<%- include("./parts/navbar.ejs" , {title : 'Edit Deposit Networks',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/spinner.css','/css/edit_deposit_networks.css']}) %>
+
+
+
+<% let KEYS , VALUES %>
+<% KEYS = Object.keys(networks_object) , VALUES = Object.values(networks_object) %>
+
+<% if (KEYS.length > 0) { %>
+
+<div class="tabs_box">
+  <% KEYS.forEach(key => { %> <% if (KEYS.indexOf(key) == 0) { %>
+  <button class="tab_btn active"><%= key %></button>
+  <% } else {%>
+  <button class="tab_btn"><%= key %></button>
+  <% } %> <% }) %>
+</div>
+
+<div class="content_box">
+
+  <% VALUES.forEach(singleNetworksArray => { %>
+
+  <% let cur_type = KEYS.at(VALUES.indexOf(singleNetworksArray))%>
+  <% let active_class = VALUES.indexOf(singleNetworksArray) == 0 ? 'active':'' %>
+
+  <div class="content <%= cur_type %> <%-active_class%>">
+    <span class="hidden_cur_type" style="display: none;"><%= cur_type %></span>
+    <button class="add_network_btn">Add <%= cur_type %> Network</button>
+
+    <% singleNetworksArray.forEach(network => { %>
+    <div class="network">
+      <span class="hidden_network_id" style="display:none"><%= network._id %></span>
+      <h4 class="name"><%= network.name %></h4>
+      <h4 class="block_confirmations"><%= network.block_confirmations %> <span class="post_span">block confirmation/s </span> </h4>
+      <h4 class="minimum_deposit"><span class="pre_span">Min. deposit </span><%= network.minimum_deposit %><span class="post_span"> <%= cur_type %></span></h4>
+      <% if (network.est_arrival != null) { %>
+      <h4 class="est_arrival"><span class="pre_span">Est. arrival </span><%= network.est_arrival %> <span class="post_span">mins</span></h4>
+      <% } %>
+      <% if (network.our_deposit_address != null) { %>
+        <h4 class="our_deposit_address"><span class="pre_span">Our Dep. address :: </span><%= network.our_deposit_address %></h4>
+        <% } %>
+      <button class="remove_network">remove</button>
+    </div>
+    <% }) %>
+
+
+  </div>
+
+  <% }) %>
+</div>
+
+<% } %>
+
+<%#----- to be loaded in the jquery-model ---- %>
+<form id="add_network_form" class="network_form" style="display: none;">
+  <h4>Add Deposit Network</h4>
+  <input type="hidden" name="cur_type">
+  <input type="text" name="name" placeholder="name" required>
+  <input type="text" name="block_confirmations" placeholder="block confirmation/s" required>
+  <input type="text" name="minimum_deposit" placeholder="Min. deposit" required>
+  <input type="text" name="est_arrival" placeholder="Est. arrival (optional)">
+  <input type="text" name="our_deposit_address" placeholder="Our Dep. address (optional)">
+  <button class="add_network">Add Network</button>
+</form>
+<%# ------------------------------------------ %>
+<%#----- to be loaded in the jquery-model ---- %>
+<form id="edit_network_form" class="network_form" style="display: none;">
+  <h4>Edit Deposit Network</h4>
+  <input type="hidden" name="id">
+  <input type="hidden" name="cur_type">
+  <input type="text" name="name" placeholder="name" required>
+  <input type="text" name="block_confirmations" placeholder="block confirmation/s" required>
+  <input type="text" name="minimum_deposit" placeholder="Min. deposit" required>
+  <input type="text" name="est_arrival" placeholder="Est. arrival (optional)">
+  <input type="text" name="our_deposit_address" placeholder="Our Dep. address (optional)">
+
+  <button class="edit_network">Edit Network</button>
+</form>
+<%# ------------------------------------------ %>
+
+
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, moduleScripts: ['/js/edit_deposit_networks.js'] })%>

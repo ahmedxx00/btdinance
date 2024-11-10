@@ -1,0 +1,245 @@
+.wrapper {
+  padding: 20px;
+}
+
+/* ======================= personal_info ============================ */
+
+.personal_info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  column-gap: 20px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+}
+
+.img_wrap .profile {
+  width: 100px;
+  height: auto;
+}
+
+.img_wrap .vip {
+  width: 40px;
+  height: auto;
+}
+
+.img_wrap {
+  background-color: transparent;
+  margin: 0 auto;
+}
+
+.personal_data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 10px;
+  flex-grow: 1;
+  padding: 5px 15px;
+  border-left: 3px dotted white;
+  margin: 0 auto;
+  font-size: 20px;
+  color: var(--MAIN-MASTARD);
+  font-weight: bold;
+}
+
+/* ----- name ----- */
+
+.personal_data span.name {
+  background-color: transparent;
+  text-align: start;
+  width: max-content;
+  text-wrap: nowrap;
+  padding: 5px 20px 5px 3px;
+  box-shadow: 0 0 4px white;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* ----- email div ----- */
+
+.em {
+  display: flex;
+}
+
+.em span.email {
+  background-color: transparent;
+  text-align: start;
+  text-wrap: nowrap;
+  padding: 5px 20px 5px 3px;
+  box-shadow: 0 0 4px white;
+  min-width: 180px;
+
+  /* ------ to center span text & textnode  */
+  display: flex;
+  align-items: center;
+  /* ----------------------------- */
+
+  border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  -moz-border-radius: 5px 0 0 5px;
+  -ms-border-radius: 5px 0 0 5px;
+  -o-border-radius: 5px 0 0 5px;
+}
+
+.edit_email_btn {
+  padding: 4px 8px;
+  background-color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 0 4px white;
+  border-left: 2px dotted white;
+
+  border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+}
+
+.edit_email_btn:hover {
+  background-color: var(--MAIN-MASTARD);
+}
+
+.edit_email_btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* --------- pre_span ----------*/
+.personal_data .pre_span {
+  margin-right: 10px;
+  color: gray;
+  pointer-events: none;
+}
+/* --------------------------- */
+
+/* ======================= my wallets ============================ */
+.wallets_head {
+  background-color: transparent;
+  color: white;
+  padding: 5px 20px;
+  font-size: 20px;
+  width: calc(100% - 40px);
+  margin: 20px auto 0;
+  text-wrap: nowrap;
+  text-align: center;
+  border: 2px dotted var(--MAIN-MASTARD);
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.wallets_wrapper {
+  width: calc(100% - 40px);
+  margin: 0 auto 20px;
+  border: 2px dotted var(--MAIN-MASTARD);
+  border-top: none;
+  text-wrap: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+
+  gap: 10px;
+
+  border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+}
+/* -------------- wallet -------------- */
+
+
+/* =========== my wallet container========== */
+
+.wallet_container {
+  width: max-content;
+  min-height: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  row-gap: 8px;
+  padding: 5px;
+  box-shadow: 0 0 5px white;
+
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.cur_data {
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+.cur_data img {
+  width: auto;
+  height: 50px;
+  background-color: transparent;
+}
+
+.amount_div {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4px;
+  font-size: 16px;
+
+}
+.amount_div span:first-child {
+  color: gray;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.btns a{
+  padding: 2px 8px;
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  border-radius:5px ;
+  -webkit-border-radius:5px ;
+  -moz-border-radius:5px ;
+  -ms-border-radius:5px ;
+  -o-border-radius:5px ;
+
+}
+.btns a:any-link{
+  text-decoration: none;
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+}
+.btns a:hover{
+  background-color: black;
+  color: white;
+}
+/* -------------- wallet -------------- */
+

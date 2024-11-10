@@ -1,0 +1,28 @@
+<%- include("./parts/navbar.ejs" , {title : 'Home Page',showScroller:true, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/spinner.css','/css/home.css']}) %>
+
+<div class="main-buttons">
+  <div>
+  <a href="/myaccount"><img src="/account.png" />My Account</a>
+  </div>
+  <div>
+  <a href="/invest"><img src="/invest-money.png" />Invest</a>
+  </div>
+  <div>
+  <a href="/transfer"><img src="/transfer-money.png" />Transfer</a>
+  </div>
+  <div>
+  <a href="/withdraw"><img src="/withdraw-money.png" />Withdraw</a>
+  </div>
+  <div>
+  <a href="/deposit"><img src="/deposit-money.png" />Deposit</a>
+  </div>
+  <div>
+  <a href="/upgrade"><img src="/upgrade.png" />Upgrade</a>
+  </div>
+</div>
+
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:true, moduleScripts: ['/js/home.js'] })%>

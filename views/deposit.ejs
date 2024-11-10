@@ -1,0 +1,49 @@
+<%- include("./parts/navbar.ejs" , {title : 'Deposit',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/spinner.css','/css/deposit.css']}) %>
+
+
+<div class="deposit-buttons">
+
+  <% if (locals.keysArray && locals.valuesArray  ) { %>
+
+  <% valuesArray.forEach(value => { %>
+
+  <a href="/deposit/cur_type/<%= value %>" class="deposit_btn">
+
+    <% switch (value) { case 'USDT': %>
+    <img src="/usdt.svg" />
+    <% break; case 'USDC': %>
+    <img src="/usdc.svg" />
+    <% break; case 'XRP': %>
+    <img src="/xrp.svg" />
+    <% break; case 'LTC': %>
+    <img src="/ltc.svg" />
+    <% break; case 'SOL': %>
+    <img src="/sol.svg" />
+    <% break; case 'BTC': %>
+    <img src="/btc.svg" />
+    <% break; case 'TRX': %>
+    <img src="/trx.svg" />
+    <% break; case 'DOGE': %>
+    <img src="/doge.svg" />
+    <% break; case 'ETH': %>
+    <img src="/eth.svg" />
+    <% break; case 'BNB': %>
+    <img src="/bnb.svg" />
+    <% break; default: %>
+    <img src="/usdt.svg" />
+    <% break; } %>
+
+    <%= keysArray.at(valuesArray.indexOf(value)) %>
+  </a>
+
+  <% }) %>
+
+  <% } %>
+
+</div>
+
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, moduleScripts: ['/js/deposit.js'] })%>

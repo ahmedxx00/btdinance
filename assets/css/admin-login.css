@@ -1,0 +1,128 @@
+
+
+/* ############################[ Admin Login  ]########################  */
+
+  /* ============ forms section ================== */
+  
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: 0.9s cubic-bezier(0.6, 0.22, 0.46, 0.97);
+    -webkit-transition: 0.9s cubic-bezier(0.6, 0.22, 0.46, 0.97);
+    -moz-transition: 0.9s cubic-bezier(0.6, 0.22, 0.46, 0.97);
+    -ms-transition: 0.9s cubic-bezier(0.6, 0.22, 0.46, 0.97);
+    -o-transition: 0.9s cubic-bezier(0.6, 0.22, 0.46, 0.97);
+    margin-top: 50px;
+  }
+  
+  .form h2 {
+    font-size: 30px;
+    color: var(--GOLD);
+    text-align: center;
+    margin-bottom: 40px;
+
+  }
+  
+  .btn {
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    margin: 40px 0 0 0;
+    background: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: var(--MAIN-WHITE);
+    box-shadow: 0 0 5px var(--GRAY);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+
+  }
+  
+  
+  .btn:hover {
+    box-shadow: 0 0 10px var(--GRAY);
+  }
+  
+  .input-group {
+    width: 320px;
+    position: relative;
+    border-bottom: 2px solid var(--MAIN-BLACK);
+    margin: 40px 0;
+  }
+  
+  
+  .l-n {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin: 8px 0 0 0;
+    font-family: cursive, "Noto Naskh Arabic";
+    font-weight: bold;
+    word-spacing: -1px;
+    font-size: 12px;
+    color: var(--GOLD);
+    text-align: end;
+  }
+  
+  .password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    font-size: 18px;
+    line-height: 1;
+    color: var(--GRAY);
+  }
+  
+  
+  .input-group label {
+    position: absolute;
+    font-size: 14px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    pointer-events: none;
+    color: var(--GRAY);
+  }
+  
+  .input-group input {
+    width: calc(100% - 28px); /* just for toggle eye icon to not go under it */
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 0;
+    color: var(--MAIN-WHITE);
+  }
+  
+  .login .input-group input {
+    font-size: 20px;
+  }
+  
+  .input-group label.focusIn {
+    top: -5px;
+    font-size: 12px;
+  }
+  
+  
+  

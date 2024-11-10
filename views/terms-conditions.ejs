@@ -1,0 +1,10 @@
+<%- include("./parts/navbar.ejs" , {title : 'Terms-Conditions',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/spinner.css','/css/terms-conditions.css']}) %>
+
+<div class="main-buttons" style="color: white; text-align: center">
+  This is Terms-Conditions PAge
+</div>
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, moduleScripts: ['/js/terms-conditions.js'] })%>
