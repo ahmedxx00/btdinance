@@ -66,6 +66,8 @@ export const withdrawCurrency = (req, res, next) => {
     received
   ) {
     if (Object.values(WALLETS_CURRENCY_NAMES).includes(cur_type)) {
+
+      
       getUserById(id)
         .then(async (user) => {
           let plain_key = await decrypt(user.key);
@@ -104,6 +106,8 @@ export const withdrawCurrency = (req, res, next) => {
             msg: errMsg2 ? errMsg2 : "error",
           });
         });
+
+
     } else {
       res.redirect("/withdraw"); // back to withdraw page
     }

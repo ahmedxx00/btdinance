@@ -14,8 +14,25 @@
 /* ----------- arabic ------------- */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
-/* -------------- :root --------------- */
+/* ------------- fonts ---------------- */
 
+@font-face {
+  font-display: swap; 
+  font-family: q_light;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/quattrocento-v23-latin-regular.woff2') format('woff2'); 
+}
+
+@font-face {
+  font-display: swap; 
+  font-family: q_bold;
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/quattrocento-v23-latin-700.woff2') format('woff2'); 
+}
+
+/* -------------- :root --------------- */
 :root {
   --BLACK: #000000;
   --WHITE: #ffffff;
@@ -82,7 +99,7 @@ body {
   /*  */
 
   /* background-position: top center; */
-  font-family: "Quattrocento", "IBM Plex Sans", Arial, Helvetica, sans-serif;
+  font-family: q_bold;
 }
 
 /* =================header==================== */

@@ -3,7 +3,7 @@
 .scroller {
     width: 100%;
     background-color: #dddbdb;
-    font-family: "Poppins", sansserif;
+    font-family: "Poppins", sans-serif;
     overflow:hidden;
     margin: 0 auto;
     height: 40px;

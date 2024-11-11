@@ -4,21 +4,25 @@ import {
   DB_URI,
   WALLETS_CURRENCY_NAMES,
 } from "../../Constants/API_DB_Constants.js";
+import {
+  NO_DEPOSIT_ADDRESS_AVAILABLE,
+  NO_NETWORK_WITH_THAT_NAME,
+} from "../../Constants/Error_Constants.js";
 const Schema = mongoose.Schema;
 
 const withdrawNetworkSchema = new Schema({
   name: { type: String, required: true },
-  fee: { type: String, default: '0.0' },
-  minimum_withdrawal: { type: String, default: '0.0' },
+  fee: { type: String, default: "0.0" },
+  minimum_withdrawal: { type: String, default: "0.0" },
   arrival_time: { type: String, required: false },
 });
 
 const depositNetworkSchema = new Schema({
   name: { type: String, required: true },
-  block_confirmations: { type: String, default: '1' },
-  minimum_deposit: { type: String, default: '0.0' },
+  block_confirmations: { type: String, default: "1" },
+  minimum_deposit: { type: String, default: "0.0" },
   est_arrival: { type: String, required: false },
-  our_deposit_address : { type: String, required: false }
+  our_deposit_address: { type: String, required: false },
 });
 
 //====================== withdraw networks =======================
@@ -157,6 +161,48 @@ export const getDepositNetworksOfSpecificCurrency = async (cur_type) => {
             .then((networks) => {
               mongoose.disconnect();
               resolve(networks);
+            })
+            .catch((err1) => {
+              console.log("err1 : " + err1);
+              mongoose.disconnect();
+              reject();
+            });
+        } else {
+          console.log("network_to_use is null");
+          mongoose.disconnect();
+          reject();
+        }
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+export const getSingleDepositNetworkAddress = async (cur_type, name) => {
+  let network_to_use = await whichDepositNetworkModel(cur_type);
+
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        if (network_to_use != null) {
+          network_to_use
+            .findOne({ name: name })
+            .then((network) => {
+              mongoose.disconnect();
+              if (network) {
+                if (network.our_deposit_address != null) {
+                  resolve(network.our_deposit_address);
+                } else {
+                  console.log(NO_DEPOSIT_ADDRESS_AVAILABLE);
+                  reject(NO_DEPOSIT_ADDRESS_AVAILABLE);
+                }
+              } else {
+                console.log(NO_NETWORK_WITH_THAT_NAME);
+                reject(NO_NETWORK_WITH_THAT_NAME);
+              }
             })
             .catch((err1) => {
               console.log("err1 : " + err1);
@@ -472,7 +518,9 @@ export const addDepositNetwork = (
           block_confirmations: block_confirmations.toString(),
           minimum_deposit: minimum_deposit.toString(),
           est_arrival: est_arrival ? est_arrival.toString() : null,
-          our_deposit_address: our_deposit_address ? our_deposit_address.toString() : null,
+          our_deposit_address: our_deposit_address
+            ? our_deposit_address.toString()
+            : null,
         });
 
         newNetwork
@@ -506,7 +554,9 @@ export const editDepositNetwork = (
   id,
   cur_type,
   name,
-  block_confirmations, minimum_deposit, est_arrival,
+  block_confirmations,
+  minimum_deposit,
+  est_arrival,
   our_deposit_address
 ) => {
   return new Promise((resolve, reject) => {
@@ -522,8 +572,10 @@ export const editDepositNetwork = (
               name: name,
               block_confirmations: block_confirmations.toString(),
               minimum_deposit: minimum_deposit.toString(),
-              est_arrival: est_arrival ? est_arrival.toString() : null,  
-              our_deposit_address: our_deposit_address ? our_deposit_address.toString() : null,
+              est_arrival: est_arrival ? est_arrival.toString() : null,
+              our_deposit_address: our_deposit_address
+                ? our_deposit_address.toString()
+                : null,
             },
             { new: true }
           )

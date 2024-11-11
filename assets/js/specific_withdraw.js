@@ -100,6 +100,8 @@ $(document).ready(function () {
         if (amount.startsWith(".") || amount.split(".").length - 1 > 1) {
           showSweetAlert("Wrong Amount");
         } else {
+
+
           if (parseFloat(amount) <= parseFloat(cur_amount)) {
             if ($network_dropdown_btn.hasClass("one_selected")) {
               if (key.length) {
@@ -112,11 +114,11 @@ $(document).ready(function () {
                     <span class="cur_type" style="display:none">${cur_type}</span>
                     <span class="recipient_address" style="display:none">${recipient_address}</span>
                     <span class="key" style="display:none">${key}</span>
-                    <span class="total"><span class="pre_span">Total Amount : </span>${amount}<span class="post_span"> ${cur_type}</span></span>
+                    <span class="total"><span class="pre_span">Total Amount : </span>${(parseFloat(amount).toFixed(10) *1).toString()}<span class="post_span"> ${cur_type}</span></span>
                     <span class="network_name"><span class="pre_span">Network Name : </span>${network_name}</span>
                     <span class="network_fee"><span class="pre_span">Fee : </span>${fee}<span class="post_span"> ${cur_type}</span></span>
                     <span class="received"><span class="pre_span">Amount Received : </span>${
-                      (amount - fee).toFixed(10) * 1
+                      (parseFloat(amount - fee).toFixed(10) * 1).toString()
                     }<span class="post_span"> ${cur_type}</span></span>
                     <button id="confirm_withdraw_btn">Confirm</button>
                   </div>
@@ -130,6 +132,7 @@ $(document).ready(function () {
                     "This Network Fees exceeds <br> <span style='color:black; font-weight:bold;'>Try another network</span>"
                   );
                 }
+
               } else {
                 showSweetAlert("Enter secret key");
               }
@@ -139,6 +142,8 @@ $(document).ready(function () {
           } else {
             showSweetAlert("Amount is not available");
           }
+
+
         }
       } else {
         showSweetAlert("Please enter amount");
@@ -240,7 +245,6 @@ $(document).ready(function () {
       });
     };
 
-    console.log('clicked')
     common.manipulateAjax(withdraw_currency);
   });
 

@@ -1,292 +1,358 @@
 /* --- body 100vw to prevent jump when drop down open --- */
-body{
+body {
   width: 100vw;
 }
 /* -------------------------------------------------------- */
 
 .main-container {
-    padding: 20px;
-  }
-  
-  /* =========== head-div ==========  */
-  
-  .head-div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .back-btn,
-  .history-btn {
-    padding: 5px;
-    border: none;
-    outline: none;
-    background-color: white;
-    box-shadow: 0 0 5px var(--MAIN-MASTARD);
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .fa-arrow-left,
-  .fa-history {
-    font-size: 25px;
-    color: var(--MAIN-BLACK);
-  }
-  
-  .back-btn:hover,
-  .back-btn:active,
-  .history-btn:hover,
-  .history-btn:active {
-    box-shadow: 0 0 10px var(--MAIN-MASTARD);
-  }
-  
-  .page-title {
-    padding: 5px 30px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: "Quattrocento", sans-serif;
-    text-align: center;
-    background-color: var(--MAIN-MASTARD);
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-  }
-  
-  /* =========== my currency container========== */
-  
-  .currency_container {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 7px;
-    margin: 20px auto;
-    padding: 8px;
-    box-shadow: 0 0 5px white;
-    background-color: transparent;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    font-size: 18px;
-    color: var(--MAIN-MASTARD);
-  }
-  
-  .currency_container img {
-    width: 50px;
-    height: 50px;
-  }
-  
-  
-  
-  /* ===================== withdraw_form ===================== */
-  
-  .deposit_form label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    color: green;
-    font-family: "Quattrocento", sans-serif;
-    padding: 5px 0;
-  }
+  padding: 20px;
+}
 
-  /* ===================== network type dropdown ===================== */
-  
-  .network_type_wrap {
-    margin: 20px 0;
-  }
-  
-  .network_dropdown_btn {
-    padding: 8px;
-    background-color: black;
-    color: gray;
-    font-size: 14px;
-    border: 2px solid var(--MAIN-MASTARD);
-    cursor: pointer;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-  }
-  
-  .network_dropdown_btn i {
-    text-align: end;
-  }
-  
-  .network_dropdown_btn .upper {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-  }
-  
-  .upper .network_name {
-    flex-grow: 1;
-    font-weight: normal;
-    padding-inline: 5px;
-  }
-  
-  .network_data {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-  
-  .network_dropdown_btn .network_data {
-    display: none;
-  }
-  
-  .network_dropdown_btn .network_data > span {
-    background-color: #1a1a1a;
-    padding: 1px 5px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-  }
-  
-  /* ----------------------[ if network one_selected ]-------------------------- */
-  .network_dropdown_btn.one_selected {
-    color: var(--MAIN-MASTARD);
-  }
+/* =========== head-div ==========  */
 
-  .network_dropdown_btn.one_selected .network_data > span > span:nth-child(1) {
-    color: white;
-  }
+.head-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .network_dropdown_btn.one_selected .network_name{
-    color: var(--MAIN-MASTARD);
-    font-weight: bold;
-  }
+.back-btn,
+.history-btn {
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: white;
+  box-shadow: 0 0 5px var(--MAIN-MASTARD);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  cursor: pointer;
+}
 
-  .network_dropdown_btn.one_selected .network_data {
-    display: flex;
-  }
-  /* ------------------------------------------------------------------- */
-  
-  /* ----- to avoid stealing click from him it self ------ */
-  .network_dropdown_btn > * {
-    pointer-events: none;
-  }
-  
-  .options .option > * {
-    pointer-events: none;
-  }
-  /* ----------------------------------------------------- */
-  
-  .network_dropdown .options {
-    width: 100%;
-    height: 0;
-    margin-top: 5px;
-    list-style-type: none;
-    background-color: #1a1a1a;
-    border: none;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    cursor: pointer;
-    /*position: absolute;
+.fa-arrow-left,
+.fa-history {
+  font-size: 25px;
+  color: var(--MAIN-BLACK);
+}
+
+.back-btn:hover,
+.back-btn:active,
+.history-btn:hover,
+.history-btn:active {
+  box-shadow: 0 0 10px var(--MAIN-MASTARD);
+}
+
+.page-title {
+  padding: 5px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Quattrocento", sans-serif;
+  text-align: center;
+  background-color: var(--MAIN-MASTARD);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/* =========== my currency container========== */
+
+.currency_container {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin: 20px auto;
+  padding: 8px;
+  box-shadow: 0 0 5px white;
+  background-color: transparent;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  font-size: 18px;
+  color: var(--MAIN-MASTARD);
+}
+
+.currency_container img {
+  width: 50px;
+  height: 50px;
+}
+
+/* ===================== deposit_form ===================== */
+
+.deposit_form label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+  font-family: "Quattrocento", sans-serif;
+  padding: 5px 0;
+}
+
+/* ===================== network type dropdown ===================== */
+
+.network_type_wrap {
+  margin: 20px 0;
+}
+
+.network_dropdown_btn {
+  padding: 8px;
+  background-color: black;
+  color: gray;
+  font-size: 14px;
+  border: 2px solid var(--MAIN-MASTARD);
+  cursor: pointer;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.network_dropdown_btn i {
+  text-align: end;
+}
+
+.network_dropdown_btn .upper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.upper .network_name {
+  flex-grow: 1;
+  font-weight: normal;
+  padding-inline: 5px;
+}
+
+.network_data {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.network_dropdown_btn .network_data {
+  display: none;
+}
+
+.network_dropdown_btn .network_data > span {
+  background-color: #1a1a1a;
+  padding: 1px 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* ----------------------[ if network one_selected ]-------------------------- */
+.network_dropdown_btn.one_selected {
+  color: var(--MAIN-MASTARD);
+}
+
+.network_dropdown_btn.one_selected .network_data > span > span:nth-child(1) {
+  color: white;
+}
+
+.network_dropdown_btn.one_selected .network_name {
+  color: var(--MAIN-MASTARD);
+  font-weight: bold;
+}
+
+.network_dropdown_btn.one_selected .network_data {
+  display: flex;
+}
+/* ------------------------------------------------------------------- */
+
+/* ----- to avoid stealing click from him it self ------ */
+.network_dropdown_btn > * {
+  pointer-events: none;
+}
+
+.options .option > * {
+  pointer-events: none;
+}
+/* ----------------------------------------------------- */
+
+.network_dropdown .options {
+  width: 100%;
+  height: 0;
+  margin-top: 5px;
+  list-style-type: none;
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  cursor: pointer;
+  /*position: absolute;
     */
-    
-    top: 100%;
 
-    transition: height 0.5s;
-    -webkit-transition: height 0.5s;
-    -moz-transition: height 0.5s;
-    -ms-transition: height 0.5s;
-    -o-transition: height 0.5s;
+  top: 100%;
 
-    overflow: hidden;
-    z-index: 999;
+  transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+  -moz-transition: height 0.5s;
+  -ms-transition: height 0.5s;
+  -o-transition: height 0.5s;
+
+  overflow: hidden;
+  z-index: 999;
 }
-  
 
-  .network_dropdown .options.open-menu {
-    height: 250px;
-    overflow-y: auto;
+.network_dropdown .options.open-menu {
+  height: 250px;
+  overflow-y: auto;
 }
-  
-  .network_dropdown .option {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    border-bottom: 2px solid black;
-    padding: 15px 8px;
-    font-size: 14px;
-    color: var(--MAIN-MASTARD);
-  }
-  
-  .network_dropdown .option:last-child {
-    border-bottom: none;
-  }
-  
-  .network_dropdown .option:hover {
-    background-color: black;
-  }
-  
-  .network_dropdown .option:first-child:hover {
-    border-radius: 10px 10px 0 0;
-    -webkit-border-radius: 10px 10px 0 0;
-    -moz-border-radius: 10px 10px 0 0;
-    -ms-border-radius: 10px 10px 0 0;
-    -o-border-radius: 10px 10px 0 0;
-  }
-  
-  .network_dropdown .option:last-child:hover {
-    border-radius: 0 0 10px 10px;
-    -webkit-border-radius: 0 0 10px 10px;
-    -moz-border-radius: 0 0 10px 10px;
-    -ms-border-radius: 0 0 10px 10px;
-    -o-border-radius: 0 0 10px 10px;
-  }
-  
-  .network_dropdown .option .network_name {
-    margin-bottom: 5px;
-    color: white;
-  }
 
-  /* ========== deposit_btn ========== */
+.network_dropdown .option {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 2px solid black;
+  padding: 15px 8px;
+  font-size: 14px;
+  color: var(--MAIN-MASTARD);
+}
 
-  #deposit_btn{
-    display: block;
-    width: calc(100% - 80px);
-    margin: 20px auto;
-    background-color: var(--MAIN-MASTARD);
-    font-size: 20px;
-    padding: 7px 20px;
-    color: black;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+.network_dropdown .option:last-child {
+  border-bottom: none;
+}
+
+.network_dropdown .option:hover {
+  background-color: black;
+}
+
+.network_dropdown .option:first-child:hover {
+  border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+  -ms-border-radius: 10px 10px 0 0;
+  -o-border-radius: 10px 10px 0 0;
+}
+
+.network_dropdown .option:last-child:hover {
+  border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
+}
+
+.network_dropdown .option .network_name {
+  margin-bottom: 5px;
+  color: white;
+}
+
+/* ========== deposit_btn ========== */
+
+#deposit_btn {
+  display: block;
+  width: calc(100% - 80px);
+  margin: 20px auto;
+  background-color: var(--MAIN-MASTARD);
+  font-size: 20px;
+  padding: 7px 20px;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+#deposit_btn:hover {
+  box-shadow: 0 0 8px var(--MAIN-MASTARD);
+}
+/* //--------------------------------------- */
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}
+
+/* ==================================================== */
+
+#snackbar {
+  visibility: hidden;
+  width: max-content;
+  padding: 5px 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 2px;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s,fadeout 0.5s 2.5s;
+  animation: fadein 0.5s,fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
   }
-  #deposit_btn:hover{
-    box-shadow: 0 0 8px var(--MAIN-MASTARD);
+  to {
+    top: 30px;
+    opacity: 1;
   }
-  /* //--------------------------------------- */
-  .simplebar-scrollbar::before {
-    background-color: red;
-  }  
-  
-  .swal2-popup {
-    font-size: 10px !important;
-    font-weight: normal;
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
   }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}

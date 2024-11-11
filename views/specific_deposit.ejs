@@ -88,8 +88,6 @@ isAdmin : false
 
         </div>
 
-
-
         <ul class="options">
           <% networks.forEach(network => { %>
           <li class="option">
@@ -117,6 +115,7 @@ isAdmin : false
 <div class="no_wallets"><%= locals.cur_type %></div>
 <% } %>
 
+<div id="snackbar">copied</div>
 
 <%- include("./parts/footer.ejs" ,
 {showScroller:false, scripts: ['/js/simplebar.min.js'] , moduleScripts: ['/js/specific_deposit.js'] })%>

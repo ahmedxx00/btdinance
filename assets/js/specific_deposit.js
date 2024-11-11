@@ -1,3 +1,5 @@
+import * as common from "../js/common.js";
+
 $(document).ready(function () {
   // ==== Get the styles (properties and values) for the root ====
 
@@ -38,10 +40,9 @@ $(document).ready(function () {
   };
   // ===============================================================================
 
-  /*===================== #withdraw_btn ======================*/
+  /*===================== #deposit_btn ======================*/
 
   $("#deposit_btn").click(function (e) {
-
     let $network_dropdown_btn = $(".network_dropdown_btn");
 
     let cur_type = $(".currency_container")
@@ -57,21 +58,84 @@ $(document).ready(function () {
       .toString()
       .trim();
 
-
     if ($network_dropdown_btn.hasClass("one_selected")) {
       // go ajax [ cur_type , network_name]
 
-      showSweetAlert(`GOOOOOOD ${cur_type} ${network_name}`);
-      
+      if (cur_type && network_name) {
+        let deposit_currency = () => {
+          $.ajax({
+            type: "POST",
+            url: "/deposit/currency",
+            data: {
+              cur_type: cur_type,
+              network_name: network_name,
+            },
+            dataType: "json",
+            timeout: 5000,
+            success: function (response) {
+              if (response.success) {
+                common.showSpinnerDataDepositAddress(
+                  "Your Deposit Address",
+                  response.msg,
+                  "black",
+                  "green",
+                  true,
+                  false,
+                  false,
+                  null,
+                  null
+                );
+              } else {
+                if (response.msg == "error") {
+                  common.showSpinnerData(
+                    "Something Went Wrong",
+                    "oops sorry!",
+                    "black",
+                    "red",
+                    true,
+                    false,
+                    false,
+                    null,
+                    null
+                  );
+                } else {
+                  common.showSpinnerData(
+                    "Warning",
+                    response.msg,
+                    "black",
+                    "red",
+                    true,
+                    false,
+                    false,
+                    null,
+                    null
+                  );
+                }
+              }
+            },
+            error: function (xhr, status, error) {
+              console.log(xhr.responseText);
+              common.showSpinnerData(
+                "Something Went Wrong",
+                "oops sorry!",
+                "black",
+                "red",
+                true,
+                false,
+                false,
+                null,
+                null
+              );
+            },
+          });
+        };
+
+        common.manipulateAjax(deposit_currency);
+      }
     } else {
       showSweetAlert("No network selected");
     }
-
-
   });
-
-
-
 });
 
 async function fillNetworkWithClickedOption(optionClicked) {
