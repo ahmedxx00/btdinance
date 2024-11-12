@@ -52,14 +52,16 @@ $(document).ready(function () {
     $(this).val($(this).val().replace(/\s+/g, ""));
   });
   $amountInput.on("keyup paste input", function (e) {
-    $(this).val($(this).val().replace(/\s+/g, ""));
+    //-------- remove white space && only numbers in amount field && replace any leading zeros -------
+    $(this).val(
+      $(this)
+        .val()
+        .replace(/\s+/g, "")
+        .replace(/[^0-9.]/g, "")
+        .replace(/(\..*?)\..*/g, "$1")
+        .replace(/^0[^.]/, "0")
+    );
   });
-
-  //-------- only numbers in amount field -------
-  $amountInput.keypress(function (e) {
-    return "0123456789.".indexOf(String.fromCharCode(e.which)) >= 0;
-  });
-  //---------------------------------------------
 
   /*===========================================*/
   /*===================== #transfer_btn ======================*/

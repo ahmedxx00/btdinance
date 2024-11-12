@@ -1,8 +1,13 @@
 import {
   decrypt,
+  validAmount,
   WALLETS_CURRENCY_NAMES,
 } from "../../Constants/API_DB_Constants.js";
-import { Empty_Credentials_ERROR, WRONG_AMOUNT, WRONG_KEY } from "../../Constants/Error_Constants.js";
+import {
+  Empty_Credentials_ERROR,
+  WRONG_AMOUNT,
+  WRONG_KEY,
+} from "../../Constants/Error_Constants.js";
 import { getWithdrawNetworksOfSpecificCurrency } from "../crypto-networks/crypto-networks.model.js";
 import { getUserById } from "../user/user.model.js";
 import {
@@ -66,13 +71,11 @@ export const withdrawCurrency = (req, res, next) => {
     received
   ) {
     if (Object.values(WALLETS_CURRENCY_NAMES).includes(cur_type)) {
-
-      
-      getUserById(id)
-        .then(async (user) => {
-          let plain_key = await decrypt(user.key);
-          if (plain_key === key) {
-            if (!isNaN(parseFloat(total))) {
+      if (validAmount(total)) {
+        getUserById(id)
+          .then(async (user) => {
+            let plain_key = await decrypt(user.key);
+            if (plain_key === key) {
               withdrawFromWallet(id, cur_type, total)
                 .then((msg) => {
                   res.json({
@@ -87,27 +90,25 @@ export const withdrawCurrency = (req, res, next) => {
                     msg: errMsg1 ? errMsg1 : "error",
                   });
                 });
-            }else{
+            } else {
               res.json({
                 success: false,
-                msg: WRONG_AMOUNT,
+                msg: WRONG_KEY,
               });
             }
-          } else {
+          })
+          .catch((errMsg2) => {
             res.json({
               success: false,
-              msg: WRONG_KEY,
+              msg: errMsg2 ? errMsg2 : "error",
             });
-          }
-        })
-        .catch((errMsg2) => {
-          res.json({
-            success: false,
-            msg: errMsg2 ? errMsg2 : "error",
           });
+      } else {
+        res.json({
+          success: false,
+          msg: WRONG_AMOUNT,
         });
-
-
+      }
     } else {
       res.redirect("/withdraw"); // back to withdraw page
     }

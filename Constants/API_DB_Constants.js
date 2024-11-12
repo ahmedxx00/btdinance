@@ -24,16 +24,16 @@ export const CRYPTO_CUR = [
 
 // ---- can't be changed -----
 export const WALLETS_CURRENCY_NAMES = {
-  Bitcoin : "BTC",
-  Ethereum : "ETH",
+  Bitcoin: "BTC",
+  Ethereum: "ETH",
   Litecoin: "LTC",
-  USDT : "USDT",
-  BNB : "BNB",
+  USDT: "USDT",
+  BNB: "BNB",
   Dogecoin: "DOGE",
   Solana: "SOL",
-  XRP : "XRP",
-  TRON : "TRX",
-  USDC : "USDC",
+  XRP: "XRP",
+  TRON: "TRX",
+  USDC: "USDC",
 };
 //----------------------------
 export async function format_prc(num, symbol) {
@@ -77,7 +77,7 @@ export const GMAIL_COMPANY_FROM_ADDRESS_pwd =
 
 export const SUBJECT_pwd = "BTC Dinance Password Reset";
 export const HTML_MSG = async (name, otp, duration) => {
-  return /*html*/`<p>Dear <b>${name}</b> we appreciate your worry about your forgotten password. <br>
+  return /*html*/ `<p>Dear <b>${name}</b> we appreciate your worry about your forgotten password. <br>
           you can use this <b>code</b> to reset your password.</p>
           <br>
           <br>
@@ -133,3 +133,8 @@ export const decrypt = async function decrypt(encryptedText) {
 };
 
 export const RESET_PASS_OTP_LENGTH = 4;
+
+export function validAmount(value) {
+  // Allow digits && '.' only && only one leading zero before dot using a RegExp.
+  return /^(?!0\d)\d+(?:\.\d+)?$/.test(value);
+}

@@ -22,6 +22,7 @@ export const NO_NETWORK_WITH_THAT_NAME = "network name not found";
 export const NO_DEPOSIT_ADDRESS_AVAILABLE = "no deposit address";
 export const NO_USER_WITH_THAT_NAME = "no user with that name available";
 export const NO_USER_WITH_THAT_Email = "no user with that email available";
+export const YOU_CANT_TRANSFER_TO_YOURSELF = "you can't transfer to yourself";
 export const YOU_MUST_BE_VIP1 = "you must be at least <span style='color:blue'>VIP1</span> to transfer funds";
 export const HE_MUST_BE_VIP1 = "the receiver must be at least <span style='color:blue'>VIP1</span> to receive funds";
 export const TRANSFER_SUCCESSFUL = "Transfer Successful";

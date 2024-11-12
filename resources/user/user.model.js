@@ -203,7 +203,7 @@ export const getUserByIdAndTheOneToTransferToByName = (id, hisName) => {
                 .then((userToTransferTo) => {
                   mongoose.disconnect();
                   if (userToTransferTo) {
-                    resolve(user, userToTransferTo);
+                    resolve({user, userToTransferTo});
                   } else {
                     reject(NO_USER_WITH_THAT_NAME);
                   }
@@ -247,7 +247,7 @@ export const getUserByIdAndTheOneToTransferToByEmail = (id, hisEmail) => {
                 .then((userToTransferTo) => {
                   mongoose.disconnect();
                   if (userToTransferTo) {
-                    resolve(user, userToTransferTo);
+                    resolve({user, userToTransferTo});
                   } else {
                     reject(NO_USER_WITH_THAT_Email);
                   }

@@ -56,18 +56,25 @@ $(document).ready(function () {
     $(this).val($(this).val().replace(/\s+/g, ""));
   });
   $amountInput.on("keyup paste input", function (e) {
-    $(this).val($(this).val().replace(/\s+/g, ""));
+    //-------- remove white space && only numbers in amount field && replace any leading zeros -------
+    $(this).val(
+      $(this)
+        .val()
+        .replace(/\s+/g, "")
+        .replace(/[^0-9.]/g, "")
+        .replace(/(\..*?)\..*/g, "$1")
+        .replace(/^0[^.]/, "0")
+    );
   });
   $keyInput.on("keyup paste input", function (e) {
     $(this).val($(this).val().replace(/\s+/g, ""));
   });
 
-  //-------- only numbers in amount field -------
-  $amountInput.keypress(function (e) {
-    return "0123456789.".indexOf(String.fromCharCode(e.which)) >= 0;
-  });
   //---------------------------------------------
 
+  // setInputFilter(document.getElementById("myTextBox"), function(value) {
+  //   return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp.
+  // }, "Only digits and '.' are allowed");
   /*===========================================*/
   /*===================== #withdraw_btn ======================*/
 
@@ -100,8 +107,6 @@ $(document).ready(function () {
         if (amount.startsWith(".") || amount.split(".").length - 1 > 1) {
           showSweetAlert("Wrong Amount");
         } else {
-
-
           if (parseFloat(amount) <= parseFloat(cur_amount)) {
             if ($network_dropdown_btn.hasClass("one_selected")) {
               if (key.length) {
@@ -114,12 +119,14 @@ $(document).ready(function () {
                     <span class="cur_type" style="display:none">${cur_type}</span>
                     <span class="recipient_address" style="display:none">${recipient_address}</span>
                     <span class="key" style="display:none">${key}</span>
-                    <span class="total"><span class="pre_span">Total Amount : </span>${(parseFloat(amount).toFixed(10) *1).toString()}<span class="post_span"> ${cur_type}</span></span>
+                    <span class="total"><span class="pre_span">Total Amount : </span>${(
+                      parseFloat(amount).toFixed(10) * 1
+                    ).toString()}<span class="post_span"> ${cur_type}</span></span>
                     <span class="network_name"><span class="pre_span">Network Name : </span>${network_name}</span>
                     <span class="network_fee"><span class="pre_span">Fee : </span>${fee}<span class="post_span"> ${cur_type}</span></span>
-                    <span class="received"><span class="pre_span">Amount Received : </span>${
-                      (parseFloat(amount - fee).toFixed(10) * 1).toString()
-                    }<span class="post_span"> ${cur_type}</span></span>
+                    <span class="received"><span class="pre_span">Amount Received : </span>${(
+                      parseFloat(amount - fee).toFixed(10) * 1
+                    ).toString()}<span class="post_span"> ${cur_type}</span></span>
                     <button id="confirm_withdraw_btn">Confirm</button>
                   </div>
                   `);
@@ -132,7 +139,6 @@ $(document).ready(function () {
                     "This Network Fees exceeds <br> <span style='color:black; font-weight:bold;'>Try another network</span>"
                   );
                 }
-
               } else {
                 showSweetAlert("Enter secret key");
               }
@@ -142,8 +148,6 @@ $(document).ready(function () {
           } else {
             showSweetAlert("Amount is not available");
           }
-
-
         }
       } else {
         showSweetAlert("Please enter amount");
@@ -154,7 +158,7 @@ $(document).ready(function () {
   });
 
   // #confirm_withdraw modal is shown in jquery modal
-  $(document).on('click','#confirm_withdraw_btn',function (e) {
+  $(document).on("click", "#confirm_withdraw_btn", function (e) {
     let _this = $(e.target);
 
     let cur_type = _this.siblings(".cur_type").html(),
@@ -247,8 +251,6 @@ $(document).ready(function () {
 
     common.manipulateAjax(withdraw_currency);
   });
-
-
 });
 
 async function fillNetworkWithClickedOption(optionClicked) {
