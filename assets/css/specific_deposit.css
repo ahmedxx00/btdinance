@@ -96,6 +96,26 @@ body {
   padding: 5px 0;
 }
 
+.deposit_form input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  color: white;
+  border: 2px solid var(--MAIN-MASTARD);
+  outline: none;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  background-color: black;
+}
+
+.deposit_form input::placeholder {
+  color: gray;
+  font-size: 14px;
+}
 /* ===================== network type dropdown ===================== */
 
 .network_type_wrap {
@@ -278,15 +298,6 @@ body {
 #deposit_btn:hover {
   box-shadow: 0 0 8px var(--MAIN-MASTARD);
 }
-/* //--------------------------------------- */
-.simplebar-scrollbar::before {
-  background-color: red;
-}
-
-.swal2-popup {
-  font-size: 10px !important;
-  font-weight: normal;
-}
 
 /* ==================================================== */
 
@@ -355,4 +366,16 @@ body {
     top: 0;
     opacity: 0;
   }
+}
+
+
+/* //------------------ last --------------------- */
+
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
 }

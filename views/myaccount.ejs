@@ -2,33 +2,20 @@
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false ,stylesheets:['/css/spinner.css','/css/myaccount.css']}) %>
 
-<% if (locals.user) { %>
+<% if (locals.user && locals.memImg) { %>
 
 <div class="wrapper">
 
   <div class="personal_info">
     <div class="img_wrap">
       <img class="profile" src="/account-mst.png" alt="">
-
-      <% switch (user.vip) { case 0 : %>
-      <img class="vip" src="/basic.png" alt="Basic">
-      <% break; case 1 : %>
-      <img class="vip" src="/vip1.png" alt="vip1">
-      <% break; case 2: %>
-      <img class="vip" src="/vip2.png" alt="vip2">
-      <% break; case 3 : %>
-      <img class="vip" src="/vip3.png" alt="vip3">
-      <% break; case 4: %>
-      <img class="vip" src="/vip4.png" alt="vip4">
-      <% break; default: %>
-      <img class="vip" src="/basic.png" alt="Basic">
-      <% break; } %>
+      <img class="vip" src="<%= memImg %>">
     </div>
     <div class="personal_data">
       <span class="name"><span class="pre_span">Name : </span><%= user.name %></span>
       <div class="em">
         <span class="email"><span class="pre_span">Email : </span><%= user.email %></span>
-        <button class="edit_email_btn"><img src="/edit.svg" alt=""></button>
+        <button id="edit_email_btn"><img src="/edit.svg" alt="Edit Email"></button>
       </div>
     </div>
   </div>
@@ -40,53 +27,8 @@ false ,stylesheets:['/css/spinner.css','/css/myaccount.css']}) %>
 
     <div class="wallet_container">
       <div class="cur_data">
-
-        <% switch (wallet.currency) { case 'USDT': %>
-
-        <img src="/usdt.svg" />
+        <img src="<%= wallet.img %>" />
         <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'USDC': %>
-        <img src="/usdc.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'XRP': %>
-        <img src="/xrp.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'LTC': %>
-        <img src="/ltc.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'SOL': %>
-        <img src="/sol.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'BTC': %>
-        <img src="/btc.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'TRX': %>
-        <img src="/trx.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'DOGE': %>
-        <img src="/doge.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'ETH': %>
-        <img src="/eth.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; case 'BNB': %>
-        <img src="/bnb.svg" />
-        <span class="cur_type"><%= wallet.currency %></span>
-
-        <% break; default: %>
-        <img src="/usdt.svg" />
-        <span class="cur_type">USDT</span>
-        <% break; } %>
-
       </div>
       <div class="amount_div">
         <span>Available : </span><span class="cur_amount"> <%= wallet.available %> </span>

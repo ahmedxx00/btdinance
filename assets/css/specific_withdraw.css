@@ -391,16 +391,8 @@ body{
 #withdraw_btn:hover{
   box-shadow: 0 0 8px var(--MAIN-MASTARD);
 }
-/* //--------------------------------------- */
-.simplebar-scrollbar::before {
-  background-color: red;
-}
 
-.swal2-popup {
-  font-size: 10px !important;
-  font-weight: normal;
-}
-/* ===================== network form======================== */
+/* ===================== confirm withdraw modal ======================== */
 
 #confirm_withdraw{
   display: flex;
@@ -473,3 +465,14 @@ body{
   background-color: black;
 }
 
+
+
+/* //------------------ last --------------------- */
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}

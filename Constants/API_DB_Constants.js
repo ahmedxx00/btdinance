@@ -23,19 +23,81 @@ export const CRYPTO_CUR = [
 ];
 
 // ---- can't be changed -----
-export const WALLETS_CURRENCY_NAMES = {
-  Bitcoin: "BTC",
-  Ethereum: "ETH",
-  Litecoin: "LTC",
-  USDT: "USDT",
-  BNB: "BNB",
-  Dogecoin: "DOGE",
-  Solana: "SOL",
-  XRP: "XRP",
-  TRON: "TRX",
-  USDC: "USDC",
+export const WALLETS_CURRENCIES = {
+  Bitcoin: {
+    name : "BTC",
+    img : "/btc.svg"
+  },
+  Ethereum:{
+    name : "ETH",
+    img : "/eth.svg"
+  },
+  Litecoin:{
+    name : "LTC",
+    img : "/ltc.svg"
+  },
+  USDT:{
+    name : "USDT",
+    img : "/usdt.svg"
+  },
+  BNB:{
+    name : "BNB",
+    img : "/bnb.svg"
+  },
+  Dogecoin:{
+    name : "DOGE",
+    img : "/doge.svg"
+  },
+  Solana:{
+    name : "SOL",
+    img : "/sol.svg"
+  },
+  XRP:{
+    name : "XRP",
+    img : "/xrp.svg"
+  },
+  TRON:{
+    name : "TRX",
+    img : "/trx.svg"
+  },
+  USDC:{
+    name : "USDC",
+    img : "/usdc.svg"
+  },
 };
-//----------------------------
+
+// ---- can't be changed -----
+
+export const MEMBERSHIPS = {
+  Basic: {
+    name : "basic",
+    number : 0,
+    img : "/basic.png"
+  },
+  VIP1: {
+    name : "vip1",
+    number : 1,
+    img : "/vip1.png"
+  },
+  VIP2: {
+    name : "vip2",
+    number : 2,
+    img : "/vip2.png"
+  },
+  VIP3: {
+    name : "vip3",
+    number : 3,
+    img : "/vip3.png"
+  },
+  VIP4: {
+    name : "vip4",
+    number : 4,
+    img : "/vip4.png"
+  }
+};
+//--------------[ USD => Euro]--------------
+export const USD_EURO_CONVERSION_RATE = 0.95;
+//-----------------------------------------
 export async function format_prc(num, symbol) {
   switch (symbol) {
     case "BTCUSDT":

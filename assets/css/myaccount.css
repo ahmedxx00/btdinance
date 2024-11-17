@@ -87,7 +87,7 @@
   -o-border-radius: 5px 0 0 5px;
 }
 
-.edit_email_btn {
+#edit_email_btn {
   padding: 4px 8px;
   background-color: black;
   border: none;
@@ -103,11 +103,11 @@
   -o-border-radius: 0 5px 5px 0;
 }
 
-.edit_email_btn:hover {
+#edit_email_btn:hover {
   background-color: var(--MAIN-MASTARD);
 }
 
-.edit_email_btn img {
+#edit_email_btn img {
   width: 20px;
   height: 20px;
 }
@@ -161,7 +161,6 @@
 }
 /* -------------- wallet -------------- */
 
-
 /* =========== my wallet container========== */
 
 .wallet_container {
@@ -188,7 +187,6 @@
 }
 
 .cur_data {
-
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -202,13 +200,11 @@
 }
 
 .amount_div {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 4px;
   font-size: 16px;
-
 }
 .amount_div span:first-child {
   color: gray;
@@ -216,7 +212,7 @@
   font-style: italic;
 }
 
-.btns a{
+.btns a {
   padding: 2px 8px;
   background-color: var(--MAIN-MASTARD);
   color: black;
@@ -225,21 +221,91 @@
   outline: none;
   cursor: pointer;
 
-  border-radius:5px ;
-  -webkit-border-radius:5px ;
-  -moz-border-radius:5px ;
-  -ms-border-radius:5px ;
-  -o-border-radius:5px ;
-
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
-.btns a:any-link{
+.btns a:any-link {
   text-decoration: none;
   background-color: var(--MAIN-MASTARD);
   color: black;
 }
-.btns a:hover{
+.btns a:hover {
   background-color: black;
   color: white;
 }
-/* -------------- wallet -------------- */
+/* -------------- edit email modal -------------- */
 
+#edit_email_modal {
+  padding: 10px 20px;
+}
+
+#edit_email_modal h4 {
+  color: black;
+  width: max-content;
+  padding: 5px 15px;
+  margin: 0 auto;
+  border: 2px dotted black;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+#edit_email_modal input[name="email"] {
+  display: block;
+  margin: 20px auto;
+  width: 100%;
+  outline: none;
+  border: 2px solid maroon;
+  padding: 5px 10px;
+
+  font-size: 16px;
+  color: black;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+#cnf_edit_email_btn {
+  display: block;
+  margin: 0 auto;
+
+  width: max-content;
+  font-size: 14px;
+  padding: 5px 20px;
+  outline: none;
+  border: none;
+  background-color: maroon;
+  color: white;
+  cursor: pointer;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+#cnf_edit_email_btn:hover {
+  background-color: black;
+}
+
+
+/* //------------------ last --------------------- */
+
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}

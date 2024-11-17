@@ -123,6 +123,7 @@
   cursor: pointer;
   border: none;
   outline: none;
+  text-decoration: none;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -130,7 +131,13 @@
   -o-border-radius: 5px;
 }
 
+.upgrade_btn:any-link{
+  text-decoration: none;
+  color: black;
+}
+
 .upgrade_btn:hover {
   background-color: black;
   color: white;
 }
+/* -------------------------------------------- */

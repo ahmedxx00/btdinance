@@ -12,6 +12,7 @@ $(document).ready(function () {
   });
   //-------------------------------
 
+  $(".clients").counterUp({time : 3000});
 
 });
 

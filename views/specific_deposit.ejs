@@ -4,7 +4,7 @@ isAdmin : false
 ,stylesheets:['/css/simplebar.css','https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/spinner.css','/css/specific_deposit.css']})
 %>
 
-<% if (locals.networks && locals.cur_type) { %>
+<% if (locals.networks && locals.cur_type && locals.curImg) { %>
 
 <div class="main-container">
 
@@ -19,51 +19,8 @@ isAdmin : false
   </div>
 
   <div class="currency_container">
-    <% switch (cur_type) { case 'USDT': %>
-
-    <img src="/usdt.svg" />
+    <img src="<%= curImg %>" />
     <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'USDC': %>
-    <img src="/usdc.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'XRP': %>
-    <img src="/xrp.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'LTC': %>
-    <img src="/ltc.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'SOL': %>
-    <img src="/sol.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'BTC': %>
-    <img src="/btc.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'TRX': %>
-    <img src="/trx.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'DOGE': %>
-    <img src="/doge.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'ETH': %>
-    <img src="/eth.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; case 'BNB': %>
-    <img src="/bnb.svg" />
-    <span class="cur_type"><%= cur_type %></span>
-
-    <% break; default: %>
-    <img src="/usdt.svg" />
-    <span class="cur_type">USDT</span>
-    <% break; } %>
   </div>
 
   <div class="deposit_form">
@@ -106,6 +63,13 @@ isAdmin : false
     </div>
     <!--  END network_type -->
 
+    <!--  BEGIN key -->
+    <div class="key_wrap">
+      <label>secret key</label>
+      <input type="text" name="key" placeholder="Enter your secret key" required spellcheck="false" maxlength="100" />
+    </div>
+    <!--  END key -->
+      
     <button id="deposit_btn">DEPOSIT</button>
 
   </div>

@@ -215,17 +215,31 @@ $(document).ready(function () {
                 null
               );
             } else {
-              common.showSpinnerData(
-                "Warning",
-                response.msg,
-                "black",
-                "red",
-                true,
-                false,
-                false,
-                null,
-                null
-              );
+              if (response.hint && response.hint == "vip") {
+                common.showSpinnerDataUpgradeVip(
+                  "Warning",
+                  response.msg,
+                  "black",
+                  "red",
+                  true,
+                  false,
+                  false,
+                  null,
+                  null
+                );
+              } else {
+                common.showSpinnerData(
+                  "Warning",
+                  response.msg,
+                  "black",
+                  "red",
+                  true,
+                  false,
+                  false,
+                  null,
+                  null
+                );
+              }
             }
           }
         },

@@ -4,25 +4,29 @@ false ,stylesheets:['/css/spinner.css','/css/home.css']}) %>
 
 <div class="main-buttons">
   <div>
-  <a href="/myaccount"><img src="/account.png" />My Account</a>
+    <a href="/myaccount"><img src="/account.png" />My Account</a>
   </div>
   <div>
-  <a href="/invest"><img src="/invest-money.png" />Invest</a>
+    <a href="/invest"><img src="/invest-money.png" />Invest</a>
   </div>
   <div>
-  <a href="/transfer"><img src="/transfer-money.png" />Transfer</a>
+    <a href="/transfer"><img src="/transfer-money.png" />Transfer</a>
   </div>
   <div>
-  <a href="/withdraw"><img src="/withdraw-money.png" />Withdraw</a>
+    <a href="/withdraw"><img src="/withdraw-money.png" />Withdraw</a>
   </div>
   <div>
-  <a href="/deposit"><img src="/deposit-money.png" />Deposit</a>
+    <a href="/deposit"><img src="/deposit-money.png" />Deposit</a>
   </div>
   <div>
-  <a href="/upgrade"><img src="/upgrade.png" />Upgrade</a>
+    <a href="/upgrade"><img src="/upgrade.png" />Upgrade</a>
   </div>
 </div>
 
+<div class="btm_clients">
+  <span class="clients">3,725,544</span>
+  <span>BTC Dinance Clients</span>
+</div>
 
 <%- include("./parts/footer.ejs" ,
-{showScroller:true, moduleScripts: ['/js/home.js'] })%>
+{showScroller:true, scripts: ['/js/jquery.waypoints.js' , '/js/jquery.counterup.js'] , moduleScripts: ['/js/home.js'] })%>

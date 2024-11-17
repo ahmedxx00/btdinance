@@ -144,3 +144,19 @@ app.server.listen(PORT, (err) => {
 //   console.log(typeof(eee))
 // })
 
+
+// let xx = {
+//   ahmed : {
+//     name : 'aa',
+//     number : 0
+//   },
+//   baher : {
+//     name : 'bb',
+//     number : 1
+//   },
+//   camal : {
+//     name : 'cc',
+//     number : 2
+//   },
+// }
+// console.log(Object.keys(xx).find(key => xx[key].number == 1))

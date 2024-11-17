@@ -1,12 +1,13 @@
 import {
   decrypt,
   validAmount,
-  WALLETS_CURRENCY_NAMES,
+  WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
 import {
   Empty_Credentials_ERROR,
   WRONG_AMOUNT,
   WRONG_KEY,
+  YOU_MUST_BE_VIP1_TO_WITHDRAW,
 } from "../../Constants/Error_Constants.js";
 import { getWithdrawNetworksOfSpecificCurrency } from "../crypto-networks/crypto-networks.model.js";
 import { getUserById } from "../user/user.model.js";
@@ -20,16 +21,18 @@ export const getSpecificWithdrawPage = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
 
-  if (Object.values(WALLETS_CURRENCY_NAMES).includes(cur_type)) {
+  if (Object.values(WALLETS_CURRENCIES).map(v => v.name).includes(cur_type)) {
     // get that specific wallet of this use
 
     getWalletForUserIdAndCurType(id, cur_type)
       .then((wallet) => {
         getWithdrawNetworksOfSpecificCurrency(cur_type)
           .then((networks) => {
+            let curImg = Object.values(WALLETS_CURRENCIES).find(v => v.name === cur_type).img;
             res.render("specific_withdraw.ejs", {
               isLoggedIn: true,
               isAdmin: isAdmin,
+              curImg: curImg ? curImg : "/usdt.svg",
               cur_type: cur_type,
               wallet: wallet,
               networks: networks,
@@ -70,12 +73,14 @@ export const withdrawCurrency = (req, res, next) => {
     total &&
     received
   ) {
-    if (Object.values(WALLETS_CURRENCY_NAMES).includes(cur_type)) {
+    if (Object.values(WALLETS_CURRENCIES).map(v => v.name).includes(cur_type)) {
       if (validAmount(total)) {
         getUserById(id)
           .then(async (user) => {
             let plain_key = await decrypt(user.key);
             if (plain_key === key) {
+              if (user.vip >0) {
+                
               withdrawFromWallet(id, cur_type, total)
                 .then((msg) => {
                   res.json({
@@ -90,6 +95,13 @@ export const withdrawCurrency = (req, res, next) => {
                     msg: errMsg1 ? errMsg1 : "error",
                   });
                 });
+              }else{
+                res.json({
+                  success: false,
+                  msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
+                  hint : "vip"
+                });
+              }
             } else {
               res.json({
                 success: false,

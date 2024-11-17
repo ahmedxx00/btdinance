@@ -40,10 +40,19 @@ $(document).ready(function () {
   };
   // ===============================================================================
 
+  /*============ key remove white space ===========*/
+
+  let $keyInput = $("input[name = key]");
+  $keyInput.on("keyup paste input", function (e) {
+    $(this).val($(this).val().replace(/\s+/g, ""));
+  });
+
+  //---------------------------------------------
   /*===================== #deposit_btn ======================*/
 
   $("#deposit_btn").click(function (e) {
     let $network_dropdown_btn = $(".network_dropdown_btn");
+    let key = $("input[name = key]").val().toString().trim();
 
     let cur_type = $(".currency_container")
       .children(".cur_type")
@@ -61,6 +70,7 @@ $(document).ready(function () {
     if ($network_dropdown_btn.hasClass("one_selected")) {
       // go ajax [ cur_type , network_name]
 
+      if (key.length) {
       if (cur_type && network_name) {
         let deposit_currency = () => {
           $.ajax({
@@ -69,6 +79,7 @@ $(document).ready(function () {
             data: {
               cur_type: cur_type,
               network_name: network_name,
+              key : key
             },
             dataType: "json",
             timeout: 5000,
@@ -99,6 +110,20 @@ $(document).ready(function () {
                     null
                   );
                 } else {
+                  if (response.hint && response.hint == "vip") {
+                    common.showSpinnerDataUpgradeVip(
+                      "Warning",
+                      response.msg,
+                      "black",
+                      "red",
+                      true,
+                      false,
+                      false,
+                      null,
+                      null
+                    );
+                  }else{
+                    
                   common.showSpinnerData(
                     "Warning",
                     response.msg,
@@ -110,6 +135,7 @@ $(document).ready(function () {
                     null,
                     null
                   );
+                }
                 }
               }
             },
@@ -132,10 +158,15 @@ $(document).ready(function () {
 
         common.manipulateAjax(deposit_currency);
       }
+    }else{
+      showSweetAlert("Enter secret key");
+    }
     } else {
       showSweetAlert("No network selected");
     }
   });
+
+
 });
 
 async function fillNetworkWithClickedOption(optionClicked) {

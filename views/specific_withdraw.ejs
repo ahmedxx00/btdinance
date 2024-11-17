@@ -4,7 +4,7 @@ isAdmin : false
 ,stylesheets:['/css/simplebar.css','https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/spinner.css','/css/specific_withdraw.css']})
 %>
 
-<% if (locals.cur_type && locals.networks && locals.wallet) { %>
+<% if (locals.cur_type && locals.curImg && locals.networks && locals.wallet) { %>
 
 <div class="main-container">
 
@@ -21,53 +21,8 @@ isAdmin : false
     
   <div class="wallet_container">
     <div class="cur_data">
-
-      <% switch (wallet.currency) { case 'USDT': %>
-
-      <img src="/usdt.svg" />
+      <img src="<%= curImg %>" />
       <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'USDC': %>
-      <img src="/usdc.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'XRP': %>
-      <img src="/xrp.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'LTC': %>
-      <img src="/ltc.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'SOL': %>
-      <img src="/sol.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'BTC': %>
-      <img src="/btc.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'TRX': %>
-      <img src="/trx.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'DOGE': %>
-      <img src="/doge.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'ETH': %>
-      <img src="/eth.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; case 'BNB': %>
-      <img src="/bnb.svg" />
-      <span class="cur_type"><%= wallet.currency %></span>
-
-      <% break; default: %>
-      <img src="/usdt.svg" />
-      <span class="cur_type">USDT</span>
-      <% break; } %>
-
     </div>
     <div class="amount_div">
       <span>Available</span><span class="cur_amount"> <%= wallet.available %> </span>

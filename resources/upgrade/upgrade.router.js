@@ -4,7 +4,10 @@ import * as upgradeController from './upgrade.controller.js';
 
 const router = Router();
 
-// router.put('/membership/:vip',protect,upgradeController.u)
+router.get('/membership/:vip',protect,upgradeController.getSpecificUpgradePage)
+router.post('/membership/buywithusdt',protect,upgradeController.buyWithUSDT)
+
+
 
 
 

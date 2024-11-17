@@ -84,21 +84,10 @@ img {
 body {
   min-height: 100vh;
   width: 100%;
-  /* background-color: var(--MAIN-WHITE); */
-  /* background-image: url(/00.png); */
-  /* background-image: url(/22.jpg); */
-  /*background-image: url(/body-texture.jpg);*/
-  /* background: url(/44.png); */
-
+  
   background-image: url(/44.png);
   background-size: cover;
   
-
-  /* for fixed bg  */
-  /* background: url(/44.png) center fixed; */
-  /*  */
-
-  /* background-position: top center; */
   font-family: q_bold;
 }
 
@@ -115,7 +104,7 @@ body {
   display: block;
   height: 2px;
   width: 100%;
-  background-color: var(--GRAY);
+  background-color: #3d3d3d;
   margin: 0 auto;
   border: none;
   outline: none;
@@ -222,6 +211,7 @@ body {
   bottom: 30px;
   right: 30px;
   display: flex;
+  z-index: 999;
   justify-content: center;
   align-items: center;
   padding: 5px;

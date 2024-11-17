@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import ejs from "ejs";
 import {
   DB_URI,
-  WALLETS_CURRENCY_NAMES,
+  WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
 import {
   NO_DEPOSIT_ADDRESS_AVAILABLE,
@@ -225,25 +225,25 @@ export const getSingleDepositNetworkAddress = async (cur_type, name) => {
 //=================================================================
 async function whichWithdrawNetworkModel(cur_type) {
   switch (cur_type) {
-    case WALLETS_CURRENCY_NAMES.Bitcoin:
+    case WALLETS_CURRENCIES.Bitcoin.name:
       return Bitcoin_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.Ethereum:
+    case WALLETS_CURRENCIES.Ethereum.name:
       return Ethereum_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.Litecoin:
+    case WALLETS_CURRENCIES.Litecoin.name:
       return Litecoin_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.BNB:
+    case WALLETS_CURRENCIES.BNB.name:
       return BNB_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.USDT:
+    case WALLETS_CURRENCIES.USDT.name:
       return USDT_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.USDC:
+    case WALLETS_CURRENCIES.USDC.name:
       return USDC_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.XRP:
+    case WALLETS_CURRENCIES.XRP.name:
       return XRP_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.Dogecoin:
+    case WALLETS_CURRENCIES.Dogecoin.name:
       return Dogecoin_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.Solana:
+    case WALLETS_CURRENCIES.Solana.name:
       return Solana_Withdraw_Network;
-    case WALLETS_CURRENCY_NAMES.TRON:
+    case WALLETS_CURRENCIES.TRON.name:
       return TRX_Withdraw_Network;
     default:
       return null;
@@ -252,25 +252,25 @@ async function whichWithdrawNetworkModel(cur_type) {
 
 async function whichDepositNetworkModel(cur_type) {
   switch (cur_type) {
-    case WALLETS_CURRENCY_NAMES.Bitcoin:
+    case WALLETS_CURRENCIES.Bitcoin.name:
       return Bitcoin_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.Ethereum:
+    case WALLETS_CURRENCIES.Ethereum.name:
       return Ethereum_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.Litecoin:
+    case WALLETS_CURRENCIES.Litecoin.name:
       return Litecoin_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.BNB:
+    case WALLETS_CURRENCIES.BNB.name:
       return BNB_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.USDT:
+    case WALLETS_CURRENCIES.USDT.name:
       return USDT_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.USDC:
+    case WALLETS_CURRENCIES.USDC.name:
       return USDC_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.XRP:
+    case WALLETS_CURRENCIES.XRP.name:
       return XRP_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.Dogecoin:
+    case WALLETS_CURRENCIES.Dogecoin.name:
       return Dogecoin_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.Solana:
+    case WALLETS_CURRENCIES.Solana.name:
       return Solana_Deposit_Network;
-    case WALLETS_CURRENCY_NAMES.TRON:
+    case WALLETS_CURRENCIES.TRON.name:
       return TRX_Deposit_Network;
     default:
       return null;
@@ -284,7 +284,7 @@ export const getAllWithdrawNetworks = () => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        let x = Object.values(WALLETS_CURRENCY_NAMES); // array of values String[]
+        let x = Object.values(WALLETS_CURRENCIES).map(v => v.name); // array of names String[]
 
         let promises = x.map(async (value) => {
           let network_to_use = await whichWithdrawNetworkModel(value);
@@ -333,7 +333,7 @@ export const getAllDepositNetworks = () => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        let x = Object.values(WALLETS_CURRENCY_NAMES); // array of values String[]
+        let x = Object.values(WALLETS_CURRENCIES).map(v => v.name); // array of names String[]
 
         let promises = x.map(async (value) => {
           let network_to_use = await whichDepositNetworkModel(value);

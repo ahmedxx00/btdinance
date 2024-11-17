@@ -1,0 +1,46 @@
+<%- include("./parts/navbar.ejs" , {title : `Upgrade ${locals.membership.type}`,showScroller:false,
+isLoggedIn : locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin?
+isAdmin : false
+,stylesheets:['/css/simplebar.css','https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/spinner.css','/css/specific_upgrade.css']})
+%>
+
+<div class="main_wrapper">
+
+  <% if (locals.membership && locals.euro_conv_rate) { %>
+
+  <div class="head_wrap">
+    <img class="head_img" src="<%= membership.img %>" alt="<%= membership.type %>">
+    <span class="head_fee"><%= membership.fee %><span class="post_fee"> USDT | </span><%= membership.fee %><span class="post_fee"> USD | </span><%= membership.fee * euro_conv_rate %><span class="post_fee"> EURO</span></span>
+  </div>
+
+
+  <div class="payment_wrap">
+    <div class="usdt_pay">
+      <span class="hd_title">Pay With USDT</span>
+      <div class="wallet_container">
+        <div>
+          <img src="<%= wallet.img %>" />
+          <span class="cur_amount"> <%= wallet.available %> </span>
+        </div>
+        <button id="pay_with_usdt">Pay</button>
+      </div>
+    </div>
+    
+    <div class="bank_pay">
+      <span>Pay With Bank Account</span>
+
+    </div>
+
+  </div>
+
+
+  <% } %>
+
+
+</div>
+
+
+
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, scripts: ['/js/simplebar.min.js'] ,moduleScripts: ['/js/specific_upgrade.js'] })%>
