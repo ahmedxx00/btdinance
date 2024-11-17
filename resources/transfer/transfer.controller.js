@@ -25,12 +25,18 @@ export const getSpecificTransferPage = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
 
-  if (Object.values(WALLETS_CURRENCIES).map(v => v.name).includes(cur_type)) {
+  if (
+    Object.values(WALLETS_CURRENCIES)
+      .map((v) => v.name)
+      .includes(cur_type)
+  ) {
     // get that specific wallet of this use
 
     getWalletForUserIdAndCurType(id, cur_type)
       .then((wallet) => {
-        let curImg = Object.values(WALLETS_CURRENCIES).find(v => v.name === cur_type).img;
+        let curImg = Object.values(WALLETS_CURRENCIES).find(
+          (v) => v.name === cur_type
+        ).img;
         res.render("specific_transfer.ejs", {
           isLoggedIn: true,
           isAdmin: isAdmin,
@@ -47,8 +53,6 @@ export const getSpecificTransferPage = (req, res, next) => {
   }
 };
 
-
-
 export const transferToName = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
@@ -56,51 +60,59 @@ export const transferToName = (req, res, next) => {
   const { cur_type, nameOrEmail, amount } = req.body;
 
   if (cur_type && nameOrEmail && amount) {
-    if (Object.values(WALLETS_CURRENCIES).map(v => v.name).includes(cur_type)) {
+    if (
+      Object.values(WALLETS_CURRENCIES)
+        .map((v) => v.name)
+        .includes(cur_type)
+    ) {
       if (validAmount(amount)) {
         getUserByIdAndTheOneToTransferToByName(id, nameOrEmail)
           .then(({ user, userToTransferTo }) => {
-                if (user.name !== userToTransferTo.name) {
+            if (user.name !== userToTransferTo.name) {
+              let userWallet = user.wallets.find(
+                (wallet) => wallet.currency == cur_type
+              );
+              let userToTransferToWallet = userToTransferTo.wallets.find(
+                (wallet) => wallet.currency == cur_type
+              );
 
-                  let userWallet = user.wallets.find(
-                    (wallet) => wallet.currency == cur_type
-                  );
-
-                  if (parseFloat(userWallet.available) > parseFloat(amount)) {
-                    transferBetweenTwoWallets(
-                      id,
-                      userToTransferTo._id,
-                      user.vip,
-                      userToTransferTo.vip,
-                      cur_type,
-                      amount
-                    )
-                      .then(() => {
-                        res.json({
-                          success: true,
-                          msg: TRANSFER_SUCCESSFUL,
-                          redirectUrl: "/transfer",
-                        });
-                      })
-                      .catch((errMsg1) => {
-                        res.json({
-                          success: false,
-                          msg: errMsg1 ? errMsg1 : "error",
-                        });
-                      });
-
-                  } else {
+              if (parseFloat(userWallet.available) >= parseFloat(amount)) {
+                transferBetweenTwoWallets(
+                  id,
+                  userToTransferTo._id,
+                  user.vip,
+                  userToTransferTo.vip,
+                  userWallet,
+                  userToTransferToWallet,// may be null
+                  userToTransferTo.name,// his name
+                  cur_type,
+                  amount
+                )
+                  .then(() => {
+                    res.json({
+                      success: true,
+                      msg: TRANSFER_SUCCESSFUL,
+                      redirectUrl: "/transfer",
+                    });
+                  })
+                  .catch((errMsg1) => {
                     res.json({
                       success: false,
-                      msg: NOT_SUFFICIENT_AMOUNT,
+                      msg: errMsg1 ? errMsg1 : "error",
                     });
-                  }
-                } else {
-                  res.json({
-                    success: false,
-                    msg: YOU_CANT_TRANSFER_TO_YOURSELF,
                   });
-                }
+              } else {
+                res.json({
+                  success: false,
+                  msg: NOT_SUFFICIENT_AMOUNT,
+                });
+              }
+            } else {
+              res.json({
+                success: false,
+                msg: YOU_CANT_TRANSFER_TO_YOURSELF,
+              });
+            }
           })
           .catch((errMsg2) => {
             res.json({
@@ -125,7 +137,6 @@ export const transferToName = (req, res, next) => {
   }
 };
 
-
 export const transferToEmail = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
@@ -133,59 +144,57 @@ export const transferToEmail = (req, res, next) => {
   const { cur_type, nameOrEmail, amount } = req.body;
 
   if (cur_type && nameOrEmail && amount) {
-    if (Object.values(WALLETS_CURRENCIES).map(v => v.name).includes(cur_type)) {
+    if (
+      Object.values(WALLETS_CURRENCIES)
+        .map((v) => v.name)
+        .includes(cur_type)
+    ) {
       if (validAmount(amount)) {
         getUserByIdAndTheOneToTransferToByEmail(id, nameOrEmail)
           .then(({ user, userToTransferTo }) => {
-            if (user.vip > 0) {
-              if (userToTransferTo.vip > 0) {
-                if (user.email !== userToTransferTo.email) {
-                  let userWallet = user.wallets.find(
-                    (wallet) => wallet.currency == cur_type
-                  );
+            if (user.email !== userToTransferTo.email) {
+              let userWallet = user.wallets.find(
+                (wallet) => wallet.currency == cur_type
+              );
+              let userToTransferToWallet = userToTransferTo.wallets.find(
+                (wallet) => wallet.currency == cur_type
+              );
 
-                  if (parseFloat(userWallet.available) > parseFloat(amount)) {
-                    transferBetweenTwoWallets(
-                      id,
-                      userToTransferTo._id,
-                      cur_type,
-                      amount
-                    )
-                      .then(() => {
-                        res.json({
-                          success: true,
-                          msg: TRANSFER_SUCCESSFUL,
-                          redirectUrl: "/transfer",
-                        });
-                      })
-                      .catch((errMsg1) => {
-                        res.json({
-                          success: false,
-                          msg: errMsg1 ? errMsg1 : "error",
-                        });
-                      });
-                  } else {
+              if (parseFloat(userWallet.available) >= parseFloat(amount)) {
+                transferBetweenTwoWallets(
+                  id,
+                  userToTransferTo._id,
+                  user.vip,
+                  userToTransferTo.vip,
+                  userWallet,
+                  userToTransferToWallet,// may be null
+                  userToTransferTo.email, // his email
+                  cur_type,
+                  amount
+                )
+                  .then(() => {
+                    res.json({
+                      success: true,
+                      msg: TRANSFER_SUCCESSFUL,
+                      redirectUrl: "/transfer",
+                    });
+                  })
+                  .catch((errMsg1) => {
                     res.json({
                       success: false,
-                      msg: NOT_SUFFICIENT_AMOUNT,
+                      msg: errMsg1 ? errMsg1 : "error",
                     });
-                  }
-                } else {
-                  res.json({
-                    success: false,
-                    msg: YOU_CANT_TRANSFER_TO_YOURSELF,
                   });
-                }
               } else {
                 res.json({
                   success: false,
-                  msg: HE_MUST_BE_VIP1,
+                  msg: NOT_SUFFICIENT_AMOUNT,
                 });
               }
             } else {
               res.json({
                 success: false,
-                msg: YOU_MUST_BE_VIP1,
+                msg: YOU_CANT_TRANSFER_TO_YOURSELF,
               });
             }
           })
@@ -384,8 +393,3 @@ export const transferToEmail = (req, res, next) => {
   }
 };
 */
-
-
-
-
-

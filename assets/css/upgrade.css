@@ -89,7 +89,7 @@
   font-size: 16px;
   margin: 0 auto;
 }
-.mem_data .limits div {
+.mem_data .limits > div {
   width: max-content;
   margin: 0 auto;
 }
@@ -98,7 +98,7 @@
   color: white;
   text-align: start;
 }
-.mem_data .limits span {
+.mem_data .limits > span {
   display: block;
   color: gray;
   width: 100%;
@@ -106,7 +106,6 @@
   font-weight: bold;
   margin-bottom: 5px;
 }
-
 
 .mem_data div:has(.upgrade_btn){
   flex-grow: 1;
@@ -139,5 +138,15 @@
 .upgrade_btn:hover {
   background-color: black;
   color: white;
+}
+
+.mem_data .btm_note{
+  display: block;
+  width: 100%;
+  text-wrap: wrap;
+  text-align: center;
+  color: gray;
+  font-size: 12px;
+  font-style: italic;
 }
 /* -------------------------------------------- */

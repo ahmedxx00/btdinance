@@ -160,3 +160,16 @@ app.server.listen(PORT, (err) => {
 //   },
 // }
 // console.log(Object.keys(xx).find(key => xx[key].number == 1))
+
+// let xx = 0.00001104
+// let yy = '250000'
+// console.log(typeof(xx))
+// let zz = '1.25'
+
+// console.log((parseFloat(yy) * xx).toFixed(10)*1)
+// console.log(((parseFloat(yy) * xx)-parseFloat(zz)).toFixed(10) *1 )
+
+// let xx = 0.0025;
+// let yy = '250,000'
+
+// console.log(parseFloat(yy.replaceAll(',','')) * parseFloat(xx))

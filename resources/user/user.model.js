@@ -48,6 +48,7 @@ const userSchema = new Schema({
   },
   wallets: [{ type: mongoose.Schema.Types.ObjectId, ref: "wallet" }],
   vip: { type: Number, default: 0 },
+  our: { type: Boolean, default: false },
   created_at: {
     type: Date,
     default: new Date(),

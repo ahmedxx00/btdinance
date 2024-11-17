@@ -9,6 +9,8 @@ import {
   WITHDRAW_SUCCESSFUL,
 } from "../../Constants/Error_Constants.js";
 import { User } from "../user/user.model.js";
+import { getSingleMembershipByNumber } from "../membership/membership.model.js";
+import { getSpecificCurrencyConversionRate } from "../../other-models/conversion_rates.model.js";
 
 const Schema = mongoose.Schema;
 
@@ -60,8 +62,8 @@ export const withdrawFromWallet = (user_id, cur_type, total) => {
             if (wallet) {
               let av = parseFloat(wallet.available),
                 tot = parseFloat(total);
-              if (av > tot) {
-                wallet.available = (av - tot).toString();
+              if (av >= tot) {
+                wallet.available = ((av - tot).toFixed(10) * 1 ).toString();
                 wallet
                   .save()
                   .then(() => {
@@ -145,6 +147,9 @@ export const transferBetweenTwoWallets = (
   receiver_user_id,
   sender_vip,
   receiver_vip,
+  userWallet,
+  userToTransferToWallet,
+  receiverNameOrEmail,
   cur_type,
   amount
 ) => {
@@ -152,130 +157,245 @@ export const transferBetweenTwoWallets = (
     mongoose
       .connect(DB_URI)
       .then(() => {
-        Wallet.findOne({ user_id: sender_user_id, currency: cur_type })
-          .then((sender_wallet) => {
-            Wallet.findOne({ user_id: receiver_user_id, currency: cur_type })
-              .then((receiver_wallet) => {
-                if (receiver_wallet) {
+        if (receiver_vip == 0) {
+          // receive has limit for basic
+          getSingleMembershipByNumber(0)
+            .then(async (basicMembership) => {
+              let basicMaxUSDT = parseFloat(
+                basicMembership.max_receive.replaceAll(",", "")
+              );
+              let maxToBeInWallet;
+              if (cur_type == WALLETS_CURRENCIES.USDT.name) {
+                maxToBeInWallet = basicMaxUSDT;
+              } else {
+                let ourCurTypeRate = await getSpecificCurrencyConversionRate(
+                  cur_type
+                );
+                maxToBeInWallet =
+                  (basicMaxUSDT * ourCurTypeRate).toFixed(10) * 1;
+              }
 
-
-
-                  
-
-
-                  sender_wallet.available = (
-                    parseFloat(sender_wallet.available) - parseFloat(amount)
-                  ).toString();
-                  receiver_wallet.available = (
-                    parseFloat(receiver_wallet.available) + parseFloat(amount)
-                  ).toString();
-
-                  sender_wallet
-                    .save()
-                    .then(() => {
-                      receiver_wallet
-                        .save()
-                        .then(() => {
-                          mongoose.disconnect();
-                          resolve();
-                        })
-                        .catch((err1) => {
-                          console.log("err1 : " + err1);
-                          mongoose.disconnect();
-                          reject();
-                        });
-                    })
-                    .catch((err2) => {
-                      console.log("err2 : " + err2);
-                      mongoose.disconnect();
-                      reject();
-                    });
-
-
-
-
-
+              if (userToTransferToWallet) {
+                //  [========= receiver has wallet ========]
+                if (
+                  parseFloat(userToTransferToWallet.available) +
+                    parseFloat(amount) >
+                  maxToBeInWallet
+                ) {
+                  // limit will exceed
+                  mongoose.disconnect();
+                  reject(
+                    `${receiverNameOrEmail} is Basic so he/she can't receive this amount as his wallet will exceed the limit of ${maxToBeInWallet.toString()} ${cur_type}`
+                  );
                 } else {
-
-
-
-
-
-
-                  sender_wallet.available = (
-                    parseFloat(sender_wallet.available) - parseFloat(amount)
-                  ).toString();
-
-                  let new_receiver_wallet = new Wallet({
-                    currency: cur_type,
-                    available: amount,
-                    created_at: new Date(),
-                    user_id: receiver_user_id,
+                  // limit is ok
+                  transferToReceiverWhoHasWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
+                    mongoose.disconnect()
+                    resolve()
+                  }).catch((err) => {
+                    mongoose.disconnect()
+                    reject()
                   });
-
-                  let newWalletId = new_receiver_wallet._id;
-
-                  sender_wallet
-                    .save()
-                    .then(() => {
-                      new_receiver_wallet
-                        .save()
-                        .then(() => {
-                          //-- update receiver user document push the newly created wallet id
-
-                          User.findByIdAndUpdate(receiver_user_id, {
-                            $push: { wallets: newWalletId },
-                          })
-                            .then(() => {
-                              mongoose.disconnect();
-                              resolve();
-                            })
-                            .catch((err3) => {
-                              console.log("err3 : " + err3);
-                              mongoose.disconnect();
-                              reject();
-                            });
-                        })
-                        .catch((err4) => {
-                          console.log("err4 : " + err4);
-                          mongoose.disconnect();
-                          reject();
-                        });
-                    })
-                    .catch((err5) => {
-                      console.log("err5 : " + err5);
-                      mongoose.disconnect();
-                      reject();
-                    });
-
-
-
-
-
-
-
                 }
-              })
-              .catch((err6) => {
-                console.log("err6 : " + err6);
-                mongoose.disconnect();
-                reject();
-              });
-          })
-          .catch((err7) => {
-            console.log("err7 : " + err7);
-            mongoose.disconnect();
-            reject();
-          });
+              } else {
+                //  [========= receiver has no wallet ========]
+
+                if (parseFloat(amount) > maxToBeInWallet) {
+                  // limit will exceed
+                  mongoose.disconnect();
+                  reject(
+                    `${receiverNameOrEmail} is Basic so he/she can't receive this amount as his wallet will exceed the limit of ${maxToBeInWallet.toString()} ${cur_type}`
+                  );
+                } else {
+                  // limit is ok
+                  transferToReceiverWhoDontHaveWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
+                    mongoose.disconnect()
+                    resolve()
+                  }).catch((err) => {
+                    mongoose.disconnect()
+                    reject()
+                  });
+                }
+              }
+            })
+            .catch((err1) => {
+              console.log("err1 : " + err1);
+              mongoose.disconnect();
+              reject();
+            });
+        } else {
+          // receive is unlimited if his vip > 0
+          if (userToTransferToWallet) {
+            //  [========= receiver has wallet ========]
+            transferToReceiverWhoHasWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
+              mongoose.disconnect()
+              resolve()
+            }).catch((err) => {
+              mongoose.disconnect()
+              reject()
+            });
+          } else {
+            //  [========= receiver has no wallet ========]
+            transferToReceiverWhoDontHaveWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
+              mongoose.disconnect()
+              resolve()
+            }).catch((err) => {
+              mongoose.disconnect()
+              reject()
+            });
+          }
+        }
       })
-      .catch((err8) => {
-        console.log("err8 : " + err8);
+      .catch((err2) => {
+        console.log("err2 : " + err2);
         mongoose.disconnect();
         reject();
       });
   });
 };
 
+const transferToReceiverWhoHasWallet = (
+  sender_id,
+  receiver_id,
+  cur_type,
+  amount
+) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Wallet.findOne({ user_id: sender_id, currency: cur_type })
+          .then((sender_wallet) => {
+            Wallet.findOne({ user_id: receiver_id, currency: cur_type })
+              .then((receiver_wallet) => {
+                sender_wallet.available = (
+                  (
+                    parseFloat(sender_wallet.available) - parseFloat(amount)
+                  ).toFixed(10) * 1
+                ).toString();
+                receiver_wallet.available = (
+                  (
+                    parseFloat(receiver_wallet.available) + parseFloat(amount)
+                  ).toFixed(10) * 1
+                ).toString();
+
+                sender_wallet
+                  .save()
+                  .then(() => {
+                    receiver_wallet
+                      .save()
+                      .then(() => {
+                        mongoose.disconnect();
+                        resolve();
+                      })
+                      .catch((err1) => {
+                        console.log("err1 : " + err1);
+                        mongoose.disconnect();
+                        reject();
+                      });
+                  })
+                  .catch((err2) => {
+                    console.log("err2 : " + err2);
+                    mongoose.disconnect();
+                    reject();
+                  });
+              })
+              .catch((err3) => {
+                console.log("err3 : " + err3);
+                mongoose.disconnect();
+                reject();
+              });
+          })
+          .catch((err4) => {
+            console.log("err4 : " + err4);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err5) => {
+        console.log("err5 : " + err5);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+const transferToReceiverWhoDontHaveWallet = (
+  sender_id,
+  receiver_id,
+  cur_type,
+  amount
+) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Wallet.findOne({ user_id: sender_id, currency: cur_type })
+          .then((sender_wallet) => {
+            sender_wallet.available = (
+              (
+                parseFloat(sender_wallet.available) - parseFloat(amount)
+              ).toFixed(10) * 1
+            ).toString();
+
+            let curImg = Object.values(WALLETS_CURRENCIES).find(v => v.name == cur_type).img;
+            let new_receiver_wallet = new Wallet({
+              user_id: receiver_id,
+              currency: cur_type,
+              available: amount,
+              img : curImg,
+              created_at: new Date(),
+            });
+
+            let newWalletId = new_receiver_wallet._id;
+
+            sender_wallet
+              .save()
+              .then(() => {
+                new_receiver_wallet
+                  .save()
+                  .then(() => {
+                    //-- update receiver user document push the newly created wallet id
+
+                    User.findByIdAndUpdate(receiver_id, {
+                      $push: { wallets: newWalletId },
+                    })
+                      .then(() => {
+                        mongoose.disconnect();
+                        resolve();
+                      })
+                      .catch((err1) => {
+                        console.log("err1 : " + err1);
+                        mongoose.disconnect();
+                        reject();
+                      });
+                    //-------------------------------------------------------------------
+                  })
+                  .catch((err2) => {
+                    console.log("err2 : " + err2);
+                    mongoose.disconnect();
+                    reject();
+                  });
+              })
+              .catch((err3) => {
+                console.log("err3 : " + err3);
+                mongoose.disconnect();
+                reject();
+              });
+          })
+          .catch((err4) => {
+            console.log("err4 : " + err4);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err5) => {
+        console.log("err5 : " + err5);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
 
 /* ---- restrict transfer to vip1 or more only -----------
 export const transferBetweenTwoWallets = (

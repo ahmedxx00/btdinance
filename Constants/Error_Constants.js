@@ -31,5 +31,6 @@ export const TRANSFER_SUCCESSFUL = "Transfer Successful";
 export const EMAIL_EDIT_SUCCESSFUL = "Email Successfully Edited";
 export const MEMBERSHIP_EXISTS = "membership already exists";
 export const NO_MEMBERSHIP_WITH_THAT_TYPE = "no membership with that type";
+export const NO_MEMBERSHIP_WITH_THAT_NUMBER = "no membership with that number";
 export const NOT_ENOUGH_USDT_BALANCE = "NOT Enough <span style='color:blue'>USDT</span> Balance";
 export const NO_USDT_WALLET = "You have no <span style='color:blue'>USDT</span> wallet";

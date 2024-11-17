@@ -5,6 +5,7 @@ import {
 } from "../../Constants/API_DB_Constants.js";
 import {
   MEMBERSHIP_EXISTS,
+  NO_MEMBERSHIP_WITH_THAT_NUMBER,
   NO_MEMBERSHIP_WITH_THAT_TYPE,
   NO_USDT_WALLET,
   NOT_ENOUGH_USDT_BALANCE,
@@ -123,6 +124,33 @@ export const getSingleMembership = (type) => {
               resolve(membership);
             } else {
               reject(NO_MEMBERSHIP_WITH_THAT_TYPE);
+            }
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+export const getSingleMembershipByNumber = (number) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Membership.findOne({ number: number })
+          .then((membership) => {
+            mongoose.disconnect();
+            if (membership) {
+              resolve(membership);
+            } else {
+              reject(NO_MEMBERSHIP_WITH_THAT_NUMBER);
             }
           })
           .catch((err1) => {
