@@ -6,40 +6,78 @@ isAdmin : false
 
 <div class="main_wrapper">
 
-  <% if (locals.membership && locals.euro_conv_rate) { %>
+  <% if (locals.membership) { %>
 
   <div class="head_wrap">
     <img class="head_img" src="<%= membership.img %>" alt="<%= membership.type %>">
-    <span class="head_fee"><%= membership.fee %><span class="post_fee"> USDT | </span><%= membership.fee %><span class="post_fee"> USD | </span><%= membership.fee * euro_conv_rate %><span class="post_fee"> EURO</span></span>
+    <span class="head_fee"><%= usdt_price %><span class="post_fee"> USDT | </span><%= btc_price %><span class="post_fee"> BTC | </span><%= eth_price %><span class="post_fee"> ETH</span></span>
+    <span class="vip_type" style="display: none;"><%= membership.type %></span>
   </div>
 
 
   <div class="payment_wrap">
+
     <div class="usdt_pay">
       <span class="hd_title">Pay With USDT</span>
       <div class="wallet_container">
         <div>
-          <img src="<%= wallet.img %>" />
-          <span class="cur_amount"> <%= wallet.available %> </span>
+          <img src="<%= usdt_img %>" />
         </div>
-        <button id="pay_with_usdt">Pay</button>
+        <div class="networks">
+          <% usdt_networks_names.forEach(nameObj => { %>
+            <span class="network"><%= nameObj.name %></span>
+          <% }) %>
+        </div>
       </div>
+      <button class="pay">Pay ( <%= usdt_price %> USDT )</button>
+      <span class="cur_type" style="display: none;"><%= usdt_cur_type %></span>
+      <span class="price" style="display: none;"><%= usdt_price %></span>
     </div>
-    
-    <div class="bank_pay">
-      <span>Pay With Bank Account</span>
 
+
+    <div class="eth_pay">
+      <span class="hd_title">Pay With ETH</span>
+      <div class="wallet_container">
+        <div>
+          <img src="<%= eth_img %>" />
+        </div>
+        <div class="networks">
+          <% eth_networks_names.forEach(nameObj => { %>
+            <span class="network"><%= nameObj.name %></span>
+          <% }) %>
+        </div>
+      </div>
+      <button class="pay">Pay ( <%= eth_price %> ETH )</button>
+      <span class="cur_type" style="display: none;"><%= eth_cur_type %></span>
+      <span class="price" style="display: none;"><%= eth_price %></span>
+    </div>
+
+
+    <div class="btc_pay">
+      <span class="hd_title">Pay With BTC</span>
+      <div class="wallet_container">
+        <div>
+          <img src="<%= btc_img %>" />
+        </div>
+        <div class="networks">
+          <% btc_networks_names.forEach(nameObj => { %>
+            <span class="network"><%= nameObj.name %></span>
+          <% }) %>
+        </div>
+      </div>
+      <button class="pay">Pay ( <%= btc_price %> BTC )</button>
+      <span class="cur_type" style="display: none;"><%= btc_cur_type %></span>
+      <span class="price" style="display: none;"><%= btc_price %></span>
     </div>
 
   </div>
 
-
   <% } %>
-
 
 </div>
 
 
+<div id="snackbar">copied</div>
 
 
 <%- include("./parts/footer.ejs" ,

@@ -151,6 +151,22 @@
   -o-border-radius: 5px;
 }
 /* -------------------------------- */
+/* -------- vip pay ------- */
+
+
+.spin_wrap .pre_span , .spin_wrap .amount_div .post_span{
+  font-size: 14px;
+  color: gray;
+  pointer-events: none;
+}
+.spin_wrap .amount ,.spin_wrap .network_name{
+  font-size: 16px;
+  margin: 0 10px;
+  color: #ff4000;
+}
+
+
+/* -------------------------------- */
 /* -------- upgrade anchor ------- */
 .spinner_a{
   width: max-content;

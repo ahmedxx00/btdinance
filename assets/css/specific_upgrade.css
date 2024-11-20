@@ -26,8 +26,7 @@
   margin-top: 70px;
 }
 
-.usdt_pay,
-.bank_pay {
+.payment_wrap > div {
   box-shadow: 0 0 5px white;
   padding: 10px;
   color: var(--MAIN-MASTARD);
@@ -42,12 +41,12 @@
 
 /* -------------------------- usdt wallet container -------------------------- */
 .wallet_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 10px;
+
 }
 .wallet_container > div {
   text-align: center;
+  margin: 0 auto;
 }
 .wallet_container img {
   display: block;
@@ -56,10 +55,53 @@
   height: 50px;
 }
 
-.cur_amount {
-  color: white;
+.wallet_container .networks{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+  flex-wrap: wrap;
+  background-color: transparent;
+  padding: 10px;
+
+  box-shadow: 0 0 5px black;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
-#pay_with_usdt {
+
+.networks .network{
+  font-size: 14px;
+  text-wrap: nowrap;
+  padding: 4px;
+  color: gray;
+  cursor: pointer;
+  border: 2px solid gray;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.networks .network:hover{
+  color: white;
+  border-color: var(--MAIN-MASTARD);
+  background-color: #004b00;
+}
+
+.networks .network.active{
+  color: white;
+  border-color: var(--MAIN-MASTARD);
+  background-color: #004b00;
+
+}
+
+/* ------- button ------- */
+.pay {
   width: max-content;
   padding: 5px 20px;
   color: black;
@@ -70,6 +112,9 @@
   font-family: q_bold;
   font-size: 16px;
 
+  display: block;
+  margin: 0 auto;
+
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -77,8 +122,86 @@
   -o-border-radius: 5px;
 }
 
-#pay_with_usdt:hover {
+.pay:hover {
   background-color: black;
   color: white;
 }
-/* -------------------------- bank container -------------------------- */
+/* ==================================================== */
+
+#snackbar {
+  visibility: hidden;
+  width: max-content;
+  padding: 5px 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 2px;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s,fadeout 0.5s 2.5s;
+  animation: fadein 0.5s,fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+
+/* //------------------ last --------------------- */
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}

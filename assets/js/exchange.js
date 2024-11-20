@@ -4,7 +4,7 @@ $(document).ready(function () {
     const RS = getComputedStyle(document.querySelector(":root"));
   
     //---------- nav-item-home bg -------
-    $("#nav-item-invest").css({
+    $("#nav-item-exchange").css({
       "background-color": RS.getPropertyValue("--MAIN-BLACK"),
       color: RS.getPropertyValue("--WHITE"),
     });

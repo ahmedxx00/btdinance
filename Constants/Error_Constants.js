@@ -34,3 +34,4 @@ export const NO_MEMBERSHIP_WITH_THAT_TYPE = "no membership with that type";
 export const NO_MEMBERSHIP_WITH_THAT_NUMBER = "no membership with that number";
 export const NOT_ENOUGH_USDT_BALANCE = "NOT Enough <span style='color:blue'>USDT</span> Balance";
 export const NO_USDT_WALLET = "You have no <span style='color:blue'>USDT</span> wallet";
+export const TRANSACTION_ID_ERROR = "transaction id ERROR";

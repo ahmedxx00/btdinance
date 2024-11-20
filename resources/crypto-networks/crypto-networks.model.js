@@ -180,6 +180,50 @@ export const getDepositNetworksOfSpecificCurrency = async (cur_type) => {
       });
   });
 };
+
+export const getDepositNetworksNamesOf_USDT_BTC_ETH = async () => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        USDT_Deposit_Network.find({}, { name: 1, _id: 0 })
+          .then((usdt_networks_names) => {
+            Bitcoin_Deposit_Network.find({}, { name: 1, _id: 0 })
+              .then((btc_networks_names) => {
+                Ethereum_Deposit_Network.find({}, { name: 1, _id: 0 })
+                  .then((eth_networks_names) => {
+                    mongoose.disconnect();
+                    resolve({
+                      usdt_networks_names: usdt_networks_names,
+                      btc_networks_names: btc_networks_names,
+                      eth_networks_names: eth_networks_names,
+                    });
+                  })
+                  .catch((err1) => {
+                    console.log("err1 : " + err1);
+                    mongoose.disconnect();
+                    reject();
+                  });
+              })
+              .catch((err2) => {
+                console.log("err2 : " + err2);
+                mongoose.disconnect();
+                reject();
+              });
+          })
+          .catch((err3) => {
+            console.log("err3 : " + err3);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err4) => {
+        console.log("err4 : " + err4);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
 export const getSingleDepositNetworkAddress = async (cur_type, name) => {
   let network_to_use = await whichDepositNetworkModel(cur_type);
 
@@ -284,7 +328,7 @@ export const getAllWithdrawNetworks = () => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        let x = Object.values(WALLETS_CURRENCIES).map(v => v.name); // array of names String[]
+        let x = Object.values(WALLETS_CURRENCIES).map((v) => v.name); // array of names String[]
 
         let promises = x.map(async (value) => {
           let network_to_use = await whichWithdrawNetworkModel(value);
@@ -333,7 +377,7 @@ export const getAllDepositNetworks = () => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        let x = Object.values(WALLETS_CURRENCIES).map(v => v.name); // array of names String[]
+        let x = Object.values(WALLETS_CURRENCIES).map((v) => v.name); // array of names String[]
 
         let promises = x.map(async (value) => {
           let network_to_use = await whichDepositNetworkModel(value);

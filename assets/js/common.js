@@ -257,6 +257,7 @@ export function showSpinnerDataDepositAddress(
       });
   });
 }
+
 export function showSpinnerDataUpgradeVip(
   h2_text,
   p_text,
@@ -314,7 +315,66 @@ export function showSpinnerDataUpgradeVip(
       }, 500);
     }, 4000);
   }
-
 }
 
+export function showSpinnerDataVipPay(
+  h2_text,
+  p_text,
+  h2_color,
+  p_color,
+  amount,
+  cur_type,
+  network_name
+) {
+  $(".spinner").children().css("animation-play-state", "paused"); // pause spinner animation
+  $(".spinner").animate({ height: 0 }, 500, function () {
+    $(this).remove(); // remove the spinner only
+    let $icon = $(`<img src="/coin.png" alt="BTC Dinance"/>`);
+    let $spinner_h2 = $(`<h2 class = 'spinner_h2'>${h2_text}</h2>`);
+    let $spinner_p = $(
+      `<p class = 'spinner_p deposit_address'>${p_text}<button id="copy_deposit_address_btn"><img src="/copy.png"/></button></p>`
+    );
+
+    let $amount_div = $(
+      `<div class='amount_div'><span class='pre_span'>Amount : </span><span class='amount'>${amount}</span><span class='post_span'>${cur_type}</span></div>`
+    );
+    let $net_name = $(`<span class='network_name'><span class='pre_span'>Network : </span>${network_name}</span>`);
+
+    $spinner_h2.css({
+      color: h2_color,
+    });
+
+    $spinner_p.css({
+      color: p_color,
+    });
+
+    // all css to be in style css
+
+    $icon.hide().appendTo(".spin_wrap").show(500);
+    $spinner_h2.hide().appendTo(".spin_wrap").show(500);
+    $spinner_p.hide().appendTo(".spin_wrap").show(500);
+    $amount_div.hide().appendTo(".spin_wrap").show(500);
+    $net_name.hide().appendTo(".spin_wrap").show(500);
+  });
+
+  $(".loader").on("click", function (e) {
+    if (e.target !== e.currentTarget) return;
+    $(".loader").fadeOut(500, function () {
+      $(this).remove();
+    });
+  });
+
+  $(document).on("click", "#copy_deposit_address_btn", function (e) {
+    e.preventDefault();
+    navigator.clipboard
+      .writeText($(".deposit_address").text().toString())
+      .then(() => {
+        $("#snackbar").addClass("show");
+
+        setTimeout(() => {
+          $("#snackbar").removeClass("show");
+        }, 2000);
+      });
+  });
+}
 /*===========================================*/

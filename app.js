@@ -86,6 +86,7 @@ import withdrawRouter from "./resources/withdraw/withdraw.router.js";
 import depositRouter from "./resources/deposit/deposit.router.js";
 import transferRouter from "./resources/transfer/transfer.router.js";
 import upgradeRouter from "./resources/upgrade/upgrade.router.js";
+import exchangeRouter from "./resources/exchange/exchange.router.js";
 import myaccountRouter from "./resources/myaccount/myaccount.router.js";
 import adminRouter from "./resources/admin/admin.router.js";
 import networksRouter from "./resources/crypto-networks/crypto-networks.router.js";
@@ -97,6 +98,7 @@ app.use("/withdraw", withdrawRouter);
 app.use("/deposit", depositRouter);
 app.use("/transfer", transferRouter);
 app.use("/upgrade", upgradeRouter);
+app.use("/exchange", exchangeRouter);
 app.use("/myaccount", myaccountRouter);
 app.use("/admin", adminRouter);
 

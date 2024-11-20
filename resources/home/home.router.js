@@ -30,10 +30,7 @@ router.get("/about", homeProtect, (req, res, next) => {
 });
 
 
-router.get("/invest",protect, (req, res, next) => {
-  res.render("invest.ejs");
-});
-
+router.get("/exchange",protect, homeController.getExchangePage);
 router.get("/withdraw",protect, homeController.getWithdrawPage);
 router.get("/deposit",protect, homeController.getDepositPage);
 router.get("/transfer",protect, homeController.getTransferPage);
