@@ -10,6 +10,7 @@ import {
   USER_NOT_FOUND_ERROR,
   NO_USER_WITH_THAT_NAME,
   NO_USER_WITH_THAT_Email,
+  THIS_EMAIL_IS_USED,
 } from "../../Constants/Error_Constants.js";
 
 import { DB_URI, encrypt } from "../../Constants/API_DB_Constants.js";
@@ -48,7 +49,7 @@ const userSchema = new Schema({
   },
   wallets: [{ type: mongoose.Schema.Types.ObjectId, ref: "wallet" }],
   vip: { type: Number, default: 0 },
-  our: { type: Boolean, default: false },
+  isOur: { type: Boolean, default: false },
   created_at: {
     type: Date,
     default: new Date(),
@@ -188,6 +189,34 @@ export const getUserById = (id) => {
   });
 };
 
+export const getUserNameById = (id) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        User.findById(id, { name: 1, _id: 0 })
+          .then((user) => {
+            mongoose.disconnect();
+            if (user) {
+              resolve(user.name);
+            } else {
+              reject(USER_NOT_FOUND_ERROR);
+            }
+          })
+          .catch((err2) => {
+            console.log("err2 : " + err2);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err3) => {
+        console.log("err3 : " + err3);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
 export const getUserByIdAndTheOneToTransferToByName = (id, hisName) => {
   return new Promise((resolve, reject) => {
     mongoose
@@ -281,7 +310,44 @@ export const updateUserEmail = (id, email) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        User.findByIdAndUpdate(id, { email: email })
+        User.findOne({ email: email })
+          .then((user) => {
+            if (user) {
+              mongoose.disconnect();
+              reject(THIS_EMAIL_IS_USED);
+            } else {
+              User.findByIdAndUpdate(id, { email: email })
+                .then(() => {
+                  mongoose.disconnect();
+                  resolve();
+                })
+                .catch((err1) => {
+                  console.log("err1 : " + err1);
+                  mongoose.disconnect();
+                  reject();
+                });
+            }
+          })
+          .catch((err2) => {
+            console.log("err2 : " + err2);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err3) => {
+        console.log("err3 : " + err3);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const upgradeUserMembership = (name, vip) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        User.findOneAndUpdate({ name: name }, { vip: vip })
           .then(() => {
             mongoose.disconnect();
             resolve();
@@ -299,6 +365,8 @@ export const updateUserEmail = (id, email) => {
       });
   });
 };
+
+
 // ============================ CheckUserNameAvailable ====================================
 
 export const CheckUserNameAvailable = (name) => {

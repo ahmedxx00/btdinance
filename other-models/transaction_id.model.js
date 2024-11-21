@@ -1,9 +1,12 @@
 // [transaction ID/Hash | TXID | ]
 //------------------------------------------
 import mongoose from "mongoose";
-import { DB_URI } from "../Constants/API_DB_Constants.js";
+import { DB_URI, MEMBERSHIPS } from "../Constants/API_DB_Constants.js";
 import { TRANSACTION_ID_ERROR } from "../Constants/Error_Constants.js";
+import { upgradeUserMembership } from "../resources/user/user.model.js";
+
 const Schema = mongoose.Schema;
+
 const transactionIDSchema = new Schema({
   user_name: {
     type: String,
@@ -11,8 +14,22 @@ const transactionIDSchema = new Schema({
   cur_type: {
     type: String,
   },
+  amount: {
+    type: String,
+  },
+  network_name: {
+    type: String,
+  },
+  vip_needed: {
+    type: String,
+  },
   transaction_id: {
     type: String,
+    unique: true,
+  },
+  done: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -23,13 +40,21 @@ export const Transaction_ID = mongoose.model(
 );
 //------------------------------------------
 
-export const saveTransactionID = (user_name, cur_type, transaction_id) => {
+export const saveTransactionID = (
+  user_name,
+  cur_type,
+  amount,
+  network_name,
+  vip_needed,
+  transaction_id
+) => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        Transaction_ID.find({
-          cur_type: cur_type,
+        Transaction_ID.findOne({
+          cur_type : cur_type,
+          network_name : network_name,
           transaction_id: transaction_id,
         })
           .then((TransactionIDDocument) => {
@@ -41,6 +66,9 @@ export const saveTransactionID = (user_name, cur_type, transaction_id) => {
               let newTransactionID = new Transaction_ID({
                 user_name: user_name,
                 cur_type: cur_type,
+                amount: amount,
+                network_name: network_name,
+                vip_needed: vip_needed,
                 transaction_id: transaction_id,
               });
 
@@ -71,3 +99,68 @@ export const saveTransactionID = (user_name, cur_type, transaction_id) => {
   });
 };
 
+export const getNOtDoneTransactionIDs = () => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Transaction_ID.find({
+          done: false,
+        })
+          .then((transactionIDsList) => {
+            mongoose.disconnect();
+            resolve(transactionIDsList);
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const updateTransactionIDAndUpgradeUser = (
+  user_name,
+  vip_needed,
+  doc_id
+) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Transaction_ID.findByIdAndUpdate(doc_id, { done: true })
+          .then(() => {
+            let vip_num = Object.values(MEMBERSHIPS).find(
+              (v) => v.name == vip_needed
+            ).number;
+
+            upgradeUserMembership(user_name, vip_num)
+              .then(() => {
+                mongoose.disconnect();
+                resolve();
+              })
+              .catch((err1) => {
+                console.log("err1 : " + err1);
+                mongoose.disconnect();
+                reject();
+              });
+          })
+          .catch((err2) => {
+            console.log("err2 : " + err2);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err3) => {
+        console.log("err3 : " + err3);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};

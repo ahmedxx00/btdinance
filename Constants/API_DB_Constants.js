@@ -25,75 +25,94 @@ export const CRYPTO_CUR = [
 // ---- can't be changed -----
 export const WALLETS_CURRENCIES = {
   Bitcoin: {
-    name : "BTC",
-    img : "/btc.svg"
+    name: "BTC",
+    img: "/btc.svg",
+    our_users_min_balance: 16,
+    our_users_max_balance: 28,
   },
-  Ethereum:{
-    name : "ETH",
-    img : "/eth.svg"
+  Ethereum: {
+    name: "ETH",
+    img: "/eth.svg",
+    our_users_min_balance: 286,
+    our_users_max_balance: 540,
   },
-  Litecoin:{
-    name : "LTC",
-    img : "/ltc.svg"
+  Litecoin: {
+    name: "LTC",
+    img: "/ltc.svg",
+    our_users_min_balance: 9200,
+    our_users_max_balance: 16700,
   },
-  USDT:{
-    name : "USDT",
-    img : "/usdt.svg"
+  USDT: {
+    name: "USDT",
+    img: "/usdt.svg",
+    our_users_min_balance: 1476544,
+    our_users_max_balance: 2654881,
   },
-  BNB:{
-    name : "BNB",
-    img : "/bnb.svg"
+  BNB: {
+    name: "BNB",
+    img: "/bnb.svg",
+    our_users_min_balance: 1125,
+    our_users_max_balance: 2458,
   },
-  Dogecoin:{
-    name : "DOGE",
-    img : "/doge.svg"
+  Dogecoin: {
+    name: "DOGE",
+    img: "/doge.svg",
+    our_users_min_balance: 1242655,
+    our_users_max_balance: 3562544,
   },
-  Solana:{
-    name : "SOL",
-    img : "/sol.svg"
+  Solana: {
+    name: "SOL",
+    img: "/sol.svg",
+    our_users_min_balance: 3874,
+    our_users_max_balance: 8459,
   },
-  XRP:{
-    name : "XRP",
-    img : "/xrp.svg"
+  XRP: {
+    name: "XRP",
+    img: "/xrp.svg",
+    our_users_min_balance: 954277,
+    our_users_max_balance: 2659888,
   },
-  TRON:{
-    name : "TRX",
-    img : "/trx.svg"
+  TRON: {
+    name: "TRX",
+    img: "/trx.svg",
+    our_users_min_balance: 2285763,
+    our_users_max_balance: 6897542,
   },
-  USDC:{
-    name : "USDC",
-    img : "/usdc.svg"
+  USDC: {
+    name: "USDC",
+    img: "/usdc.svg",
+    our_users_min_balance: 507269,
+    our_users_max_balance: 1452688,
   },
 };
-
 // ---- can't be changed -----
 
 export const MEMBERSHIPS = {
   Basic: {
-    name : "basic",
-    number : 0,
-    img : "/basic.png"
+    name: "basic",
+    number: 0,
+    img: "/basic.png",
   },
   VIP1: {
-    name : "vip1",
-    number : 1,
-    img : "/vip1.png"
+    name: "vip1",
+    number: 1,
+    img: "/vip1.png",
   },
   VIP2: {
-    name : "vip2",
-    number : 2,
-    img : "/vip2.png"
+    name: "vip2",
+    number: 2,
+    img: "/vip2.png",
   },
   VIP3: {
-    name : "vip3",
-    number : 3,
-    img : "/vip3.png"
+    name: "vip3",
+    number: 3,
+    img: "/vip3.png",
   },
   VIP4: {
-    name : "vip4",
-    number : 4,
-    img : "/vip4.png"
-  }
+    name: "vip4",
+    number: 4,
+    img: "/vip4.png",
+  },
 };
 //--------------[ USD => Euro]--------------
 export const USD_EURO_CONVERSION_RATE = 0.95;
@@ -121,6 +140,11 @@ export async function format_prc(num, symbol) {
     default:
       return num.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
   }
+}
+
+//----------------------- generate random between -------------------------
+export async function randomFromTo(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 //-----------------------using gmail -------------------------
 export const GMAIL_SMTP_SERVER_ADDRESS = "smtp.gmail.com";

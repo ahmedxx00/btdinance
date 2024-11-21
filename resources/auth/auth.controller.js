@@ -1,8 +1,15 @@
-import * as userModel from "../user/user.model.js";
-import * as adminModel from "../admin/admin.model.js"
+import {
+  CreateUser,
+  LoginUser,
+  CheckUserNameAvailable,
+} from "../user/user.model.js";
+import { LoginAdmin } from "../admin/admin.model.js";
 
 import { Empty_Credentials_ERROR } from "../../Constants/Error_Constants.js";
-import { COOKIE_NAME, CookieOptions } from "../../Constants/API_DB_Constants.js";
+import {
+  COOKIE_NAME,
+  CookieOptions,
+} from "../../Constants/API_DB_Constants.js";
 
 //-----------------------------------------------------------------
 export const getAuthPage = (req, res, next) => {
@@ -24,8 +31,7 @@ export const getAdminLoginPage = (req, res, next) => {
 export const SignUp = (req, res, next) => {
   const { name, password, key } = req.body;
   if (name && password && key) {
-    userModel
-      .CreateUser(name, password, key)
+    CreateUser(name, password, key)
       .then(() => {
         res.json({
           success: true,
@@ -54,10 +60,9 @@ export const Login = (req, res, next) => {
   }
 
   if (name_email && password) {
-    userModel
-      .LoginUser(name_email, password, remember)
+    LoginUser(name_email, password, remember)
       .then((enc_tk) => {
-        res.cookie(COOKIE_NAME,enc_tk,CookieOptions);
+        res.cookie(COOKIE_NAME, enc_tk, CookieOptions);
         res.json({
           success: true,
           msg: "done",
@@ -82,10 +87,9 @@ export const AdminLogin = (req, res, next) => {
   const { name, password } = req.body;
 
   if (name && password) {
-    adminModel
-      .LoginAdmin(name, password)
+    LoginAdmin(name, password)
       .then((enc_tk) => {
-        res.cookie(COOKIE_NAME,enc_tk,CookieOptions);
+        res.cookie(COOKIE_NAME, enc_tk, CookieOptions);
         res.json({
           success: true,
           msg: "done",
@@ -109,8 +113,7 @@ export const AdminLogin = (req, res, next) => {
 export const check_signup_name_availability = (req, res, next) => {
   const { name } = req.body;
   if (name) {
-    userModel
-      .CheckUserNameAvailable(name)
+    CheckUserNameAvailable(name)
       .then((msg) => {
         res.json({
           success: true,

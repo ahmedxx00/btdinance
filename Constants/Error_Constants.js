@@ -22,6 +22,7 @@ export const NO_NETWORK_WITH_THAT_NAME = "network name not found";
 export const NO_DEPOSIT_ADDRESS_AVAILABLE = "no deposit address";
 export const NO_USER_WITH_THAT_NAME = "no user with that name available";
 export const NO_USER_WITH_THAT_Email = "no user with that email available";
+export const THIS_EMAIL_IS_USED = "this email is used by another user .";
 export const YOU_CANT_TRANSFER_TO_YOURSELF = "you can't transfer to yourself";
 export const YOU_MUST_BE_VIP1 = "you must be at least <span style='color:blue'>VIP1</span> to transfer funds";
 export const YOU_MUST_BE_VIP1_TO_WITHDRAW = "you must be at least <span style='color:blue'>VIP1</span> to withdraw funds";
@@ -35,3 +36,5 @@ export const NO_MEMBERSHIP_WITH_THAT_NUMBER = "no membership with that number";
 export const NOT_ENOUGH_USDT_BALANCE = "NOT Enough <span style='color:blue'>USDT</span> Balance";
 export const NO_USDT_WALLET = "You have no <span style='color:blue'>USDT</span> wallet";
 export const TRANSACTION_ID_ERROR = "transaction id ERROR";
+export const TRANSACTION_ID_SAVED = (vip_type) => `<span style='color:green'>${vip_type.toUpperCase()}</span> Membership <br> It takes <span style='color:blue'>12 hrs</span> Max to review .`;
+

@@ -48,15 +48,17 @@ $(document).ready(function () {
           timeout: 5000,
           success: function (response) {
             if (response.success) {
-              common.showSpinnerDataVipPay(
-                "Pay To Address",
-                response.msg,
-                "black",
-                "green",
-                price,
-                cur_type,
-                network_name,
-              );
+              window.location.href = response.redirectUrl
+              // common.showSpinnerDataVipPay(
+              //   "Pay To Address",
+              //   response.msg,
+              //   "black",
+              //   "green",
+              //   price,
+              //   cur_type,
+              //   network_name,
+              // );
+
             } else {
               if (response.msg == "error") {
                 common.showSpinnerData(

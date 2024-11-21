@@ -83,10 +83,11 @@ export const transferToName = (req, res, next) => {
                   user.vip,
                   userToTransferTo.vip,
                   userWallet,
-                  userToTransferToWallet,// may be null
-                  userToTransferTo.name,// his name
+                  userToTransferToWallet, // may be null
+                  userToTransferTo.name, // his name
                   cur_type,
-                  amount
+                  amount,
+                  user.isOur
                 )
                   .then(() => {
                     res.json({
@@ -127,7 +128,10 @@ export const transferToName = (req, res, next) => {
         });
       }
     } else {
-      res.redirect("/transfer"); // back to transfer page
+      res.json({
+        success: false,
+        msg: "error",
+      });
     }
   } else {
     res.json({
@@ -167,10 +171,11 @@ export const transferToEmail = (req, res, next) => {
                   user.vip,
                   userToTransferTo.vip,
                   userWallet,
-                  userToTransferToWallet,// may be null
+                  userToTransferToWallet, // may be null
                   userToTransferTo.email, // his email
                   cur_type,
-                  amount
+                  amount,
+                  user.isOur
                 )
                   .then(() => {
                     res.json({
@@ -211,7 +216,10 @@ export const transferToEmail = (req, res, next) => {
         });
       }
     } else {
-      res.redirect("/transfer"); // back to transfer page
+      res.json({
+        success: false,
+        msg: "error",
+      });
     }
   } else {
     res.json({
@@ -298,7 +306,10 @@ export const transferToName = (req, res, next) => {
         });
       }
     } else {
-      res.redirect("/transfer"); // back to transfer page
+     res.json({
+        success: false,
+        msg: 'error',
+      });
     }
   } else {
     res.json({
@@ -383,7 +394,10 @@ export const transferToEmail = (req, res, next) => {
         });
       }
     } else {
-      res.redirect("/transfer"); // back to transfer page
+        res.json({
+        success: false,
+        msg: 'error',
+      });
     }
   } else {
     res.json({

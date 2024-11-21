@@ -30,11 +30,11 @@ const membershipSchema = new Schema({
     type: Number,
     required: [true, "fee is required"],
   },
-  img: { type: String , required : true},
-  max_withdraw: {type: String , required : true },
-  max_deposit: { type: String , required : true},
-  max_transfer: { type: String , required : true},
-  max_receive: { type: String , required : true},
+  img: { type: String, required: true },
+  max_withdraw: { type: String, required: true },
+  max_deposit: { type: String, required: true },
+  max_transfer: { type: String, required: true },
+  max_receive: { type: String, required: true },
 });
 
 //------------------------------------------
@@ -92,7 +92,7 @@ export const getAllMemberships = () => {
       .connect(DB_URI)
       .then(() => {
         Membership.find({})
-          .sort({ fee : 1 })
+          .sort({ fee: 1 })
           .exec()
           .then((membershipsArray) => {
             mongoose.disconnect();
@@ -139,6 +139,7 @@ export const getSingleMembership = (type) => {
       });
   });
 };
+
 export const getSingleMembershipByNumber = (number) => {
   return new Promise((resolve, reject) => {
     mongoose
@@ -166,4 +167,3 @@ export const getSingleMembershipByNumber = (number) => {
       });
   });
 };
-

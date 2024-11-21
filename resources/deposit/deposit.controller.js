@@ -58,36 +58,42 @@ export const depositCurrency = (req, res, next) => {
     ) {
       getUserById(id)
         .then(async (user) => {
-          let plain_key = await decrypt(user.key);
-
-          if (plain_key == key) {
-            if (user.vip >0) {
-           
-            getSingleDepositNetworkAddress(cur_type, network_name)
-              .then((deposit_address) => {
-                res.json({
-                  success: true,
-                  msg: deposit_address,
-                });
-              })
-              .catch((errMsg1) => {
-                res.json({
-                  success: false,
-                  msg: errMsg1 ? errMsg1 : "error",
-                });
-              });
-            }else{
-              res.json({
-                success: false,
-                msg: YOU_MUST_BE_VIP1_TO_DEPOSIT,
-                hint : "vip"
-              });
-            }
-          } else {
+          if (user.isOur) {
             res.json({
               success: false,
               msg: WRONG_KEY,
             });
+          } else {
+            let plain_key = await decrypt(user.key);
+
+            if (plain_key == key) {
+              if (user.vip > 0) {
+                getSingleDepositNetworkAddress(cur_type, network_name)
+                  .then((deposit_address) => {
+                    res.json({
+                      success: true,
+                      msg: deposit_address,
+                    });
+                  })
+                  .catch((errMsg1) => {
+                    res.json({
+                      success: false,
+                      msg: errMsg1 ? errMsg1 : "error",
+                    });
+                  });
+              } else {
+                res.json({
+                  success: false,
+                  msg: YOU_MUST_BE_VIP1_TO_DEPOSIT,
+                  hint: "vip",
+                });
+              }
+            } else {
+              res.json({
+                success: false,
+                msg: WRONG_KEY,
+              });
+            }
           }
         })
         .catch((errMsg2) => {
@@ -97,7 +103,10 @@ export const depositCurrency = (req, res, next) => {
           });
         });
     } else {
-      res.redirect("/deposit"); // back to deposit page
+      res.json({
+        success: false,
+        msg: "error",
+      });
     }
   } else {
     res.json({

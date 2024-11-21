@@ -110,7 +110,8 @@ app.use("/networks", networksRouter);
 
 //====================== 404 not found =======================
 app.use((req, res) => {
-  res.send("404 not found"); // if req for not found router
+  // res.send("404 not found"); // if req for not found router
+  res.render('404_not_found.ejs'); // if req for not found router
 });
 //============================ start server ===================
 
@@ -175,3 +176,4 @@ app.server.listen(PORT, (err) => {
 // let yy = '250,000'
 
 // console.log(parseFloat(yy.replaceAll(',','')) * parseFloat(xx))
+

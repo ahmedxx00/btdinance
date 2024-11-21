@@ -187,6 +187,7 @@ export function showSpinnerData(
   }
 }
 
+
 export function showSpinnerDataDepositAddress(
   h2_text,
   p_text,
@@ -376,5 +377,61 @@ export function showSpinnerDataVipPay(
         }, 2000);
       });
   });
+}
+
+export function showSpinnerDataLongTime(
+  h2_text,
+  p_text,
+  h2_color,
+  p_color,
+  isClosable,
+  willReload,
+  willRedirect,
+  redirectUrl,
+  redirectType
+) {
+  $(".spinner").children().css("animation-play-state", "paused"); // pause spinner animation
+  $(".spinner").animate({ height: 0 }, 500, function () {
+    $(this).remove(); // remove the spinner only
+    let icon = $(`<img src="/coin.png" alt="BTC Dinance"/>`);
+    let h2 = $(`<h2 class = 'spinner_h2'>${h2_text}</h2>`);
+    let p = $(`<p class = 'spinner_p'>${p_text}</p>`);
+    h2.css({ color: h2_color });
+    p.css({ color: p_color });
+    icon.hide().appendTo(".spin_wrap").show(500);
+    h2.hide().appendTo(".spin_wrap").show(500);
+    p.hide().appendTo(".spin_wrap").show(500);
+  });
+
+  if (isClosable) {
+    $(".loader").on("click", function (e) {
+      if (e.target !== e.currentTarget) return;
+      $(".loader").fadeOut(500, function () {
+        $(this).remove();
+      });
+    });
+  } else {
+    setTimeout(function () {
+      $(".loader").fadeOut(500, function () {
+        $(this).remove();
+      });
+      setTimeout(function () {
+        if (willReload) {
+          window.location.reload();
+        } else if (willRedirect) {
+          switch (redirectType) {
+            case REDIRECT_TYPE.href:
+              window.location.href = redirectUrl;
+              break;
+            case REDIRECT_TYPE.replace:
+              window.location.replace(redirectUrl);
+              break;
+          }
+        } else {
+          return; // do nothing
+        }
+      }, 500);
+    }, 9000);
+  }
 }
 /*===========================================*/

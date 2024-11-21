@@ -16,3 +16,4 @@ export const getEditDepositNetworksPage = (req,res,next)=>{
         res.redirect('/')
     });
 }
+

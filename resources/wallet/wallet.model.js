@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import {
   DB_URI,
   WALLETS_CURRENCIES,
+  randomFromTo,
 } from "../../Constants/API_DB_Constants.js";
 import {
   NOT_SUCH_WALLET,
@@ -63,7 +64,7 @@ export const withdrawFromWallet = (user_id, cur_type, total) => {
               let av = parseFloat(wallet.available),
                 tot = parseFloat(total);
               if (av >= tot) {
-                wallet.available = ((av - tot).toFixed(10) * 1 ).toString();
+                wallet.available = ((av - tot).toFixed(10) * 1).toString();
                 wallet
                   .save()
                   .then(() => {
@@ -151,7 +152,8 @@ export const transferBetweenTwoWallets = (
   userToTransferToWallet,
   receiverNameOrEmail,
   cur_type,
-  amount
+  amount,
+  sender_isOur
 ) => {
   return new Promise((resolve, reject) => {
     mongoose
@@ -189,13 +191,21 @@ export const transferBetweenTwoWallets = (
                   );
                 } else {
                   // limit is ok
-                  transferToReceiverWhoHasWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
-                    mongoose.disconnect()
-                    resolve()
-                  }).catch((err) => {
-                    mongoose.disconnect()
-                    reject()
-                  });
+                  transferToReceiverWhoHasWallet(
+                    sender_user_id,
+                    receiver_user_id,
+                    cur_type,
+                    amount,
+                    sender_isOur
+                  )
+                    .then(() => {
+                      mongoose.disconnect();
+                      resolve();
+                    })
+                    .catch((err) => {
+                      mongoose.disconnect();
+                      reject();
+                    });
                 }
               } else {
                 //  [========= receiver has no wallet ========]
@@ -208,13 +218,21 @@ export const transferBetweenTwoWallets = (
                   );
                 } else {
                   // limit is ok
-                  transferToReceiverWhoDontHaveWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
-                    mongoose.disconnect()
-                    resolve()
-                  }).catch((err) => {
-                    mongoose.disconnect()
-                    reject()
-                  });
+                  transferToReceiverWhoDontHaveWallet(
+                    sender_user_id,
+                    receiver_user_id,
+                    cur_type,
+                    amount,
+                    sender_isOur
+                  )
+                    .then(() => {
+                      mongoose.disconnect();
+                      resolve();
+                    })
+                    .catch((err) => {
+                      mongoose.disconnect();
+                      reject();
+                    });
                 }
               }
             })
@@ -227,22 +245,38 @@ export const transferBetweenTwoWallets = (
           // receive is unlimited if his vip > 0
           if (userToTransferToWallet) {
             //  [========= receiver has wallet ========]
-            transferToReceiverWhoHasWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
-              mongoose.disconnect()
-              resolve()
-            }).catch((err) => {
-              mongoose.disconnect()
-              reject()
-            });
+            transferToReceiverWhoHasWallet(
+              sender_user_id,
+              receiver_user_id,
+              cur_type,
+              amount,
+              sender_isOur
+            )
+              .then(() => {
+                mongoose.disconnect();
+                resolve();
+              })
+              .catch((err) => {
+                mongoose.disconnect();
+                reject();
+              });
           } else {
             //  [========= receiver has no wallet ========]
-            transferToReceiverWhoDontHaveWallet(sender_user_id,receiver_user_id,cur_type,amount).then(() => {
-              mongoose.disconnect()
-              resolve()
-            }).catch((err) => {
-              mongoose.disconnect()
-              reject()
-            });
+            transferToReceiverWhoDontHaveWallet(
+              sender_user_id,
+              receiver_user_id,
+              cur_type,
+              amount,
+              sender_isOur
+            )
+              .then(() => {
+                mongoose.disconnect();
+                resolve();
+              })
+              .catch((err) => {
+                mongoose.disconnect();
+                reject();
+              });
           }
         }
       })
@@ -258,7 +292,8 @@ const transferToReceiverWhoHasWallet = (
   sender_id,
   receiver_id,
   cur_type,
-  amount
+  amount,
+  sender_isOur
 ) => {
   return new Promise((resolve, reject) => {
     mongoose
@@ -267,18 +302,35 @@ const transferToReceiverWhoHasWallet = (
         Wallet.findOne({ user_id: sender_id, currency: cur_type })
           .then((sender_wallet) => {
             Wallet.findOne({ user_id: receiver_id, currency: cur_type })
-              .then((receiver_wallet) => {
-                sender_wallet.available = (
-                  (
-                    parseFloat(sender_wallet.available) - parseFloat(amount)
-                  ).toFixed(10) * 1
-                ).toString();
+              .then(async (receiver_wallet) => {
+                //-------- dec sender wallet -------
+
+                let x = Object.values(WALLETS_CURRENCIES).find(
+                  (v) => v.name == cur_type
+                );
+                let min = x.our_users_min_balance,
+                  max = x.our_users_max_balance;
+
+                if (
+                  sender_isOur &&
+                  parseFloat(sender_wallet.available) - parseFloat(amount) < min
+                ) {
+                  let new_sender_balance = await randomFromTo(min, max);
+                  sender_wallet.available = new_sender_balance.toString();
+                } else {
+                  sender_wallet.available = (
+                    (
+                      parseFloat(sender_wallet.available) - parseFloat(amount)
+                    ).toFixed(10) * 1
+                  ).toString();
+                }
+                //-------- inc receiver wallet -------
                 receiver_wallet.available = (
                   (
                     parseFloat(receiver_wallet.available) + parseFloat(amount)
                   ).toFixed(10) * 1
                 ).toString();
-
+                //-------------------------------------
                 sender_wallet
                   .save()
                   .then(() => {
@@ -324,30 +376,48 @@ const transferToReceiverWhoDontHaveWallet = (
   sender_id,
   receiver_id,
   cur_type,
-  amount
+  amount,
+  sender_isOur
 ) => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
         Wallet.findOne({ user_id: sender_id, currency: cur_type })
-          .then((sender_wallet) => {
-            sender_wallet.available = (
-              (
-                parseFloat(sender_wallet.available) - parseFloat(amount)
-              ).toFixed(10) * 1
-            ).toString();
+          .then(async (sender_wallet) => {
+            //-------- dec sender wallet -------
 
-            let curImg = Object.values(WALLETS_CURRENCIES).find(v => v.name == cur_type).img;
+            let x = Object.values(WALLETS_CURRENCIES).find(
+              (v) => v.name == cur_type
+            );
+            let min = x.our_users_min_balance,
+              max = x.our_users_max_balance;
+
+            if (
+              sender_isOur &&
+              parseFloat(sender_wallet.available) - parseFloat(amount) < min
+            ) {
+              let new_sender_balance = await randomFromTo(min, max);
+              sender_wallet.available = new_sender_balance.toString();
+            } else {
+              sender_wallet.available = (
+                (
+                  parseFloat(sender_wallet.available) - parseFloat(amount)
+                ).toFixed(10) * 1
+              ).toString();
+            }
+            //-------- create new receiver wallet -------
+
             let new_receiver_wallet = new Wallet({
               user_id: receiver_id,
               currency: cur_type,
               available: amount,
-              img : curImg,
+              img: x.img,
               created_at: new Date(),
             });
 
             let newWalletId = new_receiver_wallet._id;
+            //--------------------------------------------
 
             sender_wallet
               .save()

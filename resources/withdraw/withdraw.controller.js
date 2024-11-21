@@ -21,14 +21,20 @@ export const getSpecificWithdrawPage = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
 
-  if (Object.values(WALLETS_CURRENCIES).map(v => v.name).includes(cur_type)) {
+  if (
+    Object.values(WALLETS_CURRENCIES)
+      .map((v) => v.name)
+      .includes(cur_type)
+  ) {
     // get that specific wallet of this use
 
     getWalletForUserIdAndCurType(id, cur_type)
       .then((wallet) => {
         getWithdrawNetworksOfSpecificCurrency(cur_type)
           .then((networks) => {
-            let curImg = Object.values(WALLETS_CURRENCIES).find(v => v.name === cur_type).img;
+            let curImg = Object.values(WALLETS_CURRENCIES).find(
+              (v) => v.name === cur_type
+            ).img;
             res.render("specific_withdraw.ejs", {
               isLoggedIn: true,
               isAdmin: isAdmin,
@@ -73,40 +79,50 @@ export const withdrawCurrency = (req, res, next) => {
     total &&
     received
   ) {
-    if (Object.values(WALLETS_CURRENCIES).map(v => v.name).includes(cur_type)) {
+    if (
+      Object.values(WALLETS_CURRENCIES)
+        .map((v) => v.name)
+        .includes(cur_type)
+    ) {
       if (validAmount(total)) {
         getUserById(id)
           .then(async (user) => {
-            let plain_key = await decrypt(user.key);
-            if (plain_key === key) {
-              if (user.vip >0) {
-                
-              withdrawFromWallet(id, cur_type, total)
-                .then((msg) => {
-                  res.json({
-                    success: true,
-                    msg: msg,
-                    redirectUrl: "/withdraw",
-                  });
-                })
-                .catch((errMsg1) => {
-                  res.json({
-                    success: false,
-                    msg: errMsg1 ? errMsg1 : "error",
-                  });
-                });
-              }else{
-                res.json({
-                  success: false,
-                  msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
-                  hint : "vip"
-                });
-              }
-            } else {
+            if (user.isOur) {
               res.json({
                 success: false,
                 msg: WRONG_KEY,
               });
+            } else {
+              let plain_key = await decrypt(user.key);
+              if (plain_key === key) {
+                if (user.vip > 0) {
+                  withdrawFromWallet(id, cur_type, total)
+                    .then((msg) => {
+                      res.json({
+                        success: true,
+                        msg: msg,
+                        redirectUrl: "/withdraw",
+                      });
+                    })
+                    .catch((errMsg1) => {
+                      res.json({
+                        success: false,
+                        msg: errMsg1 ? errMsg1 : "error",
+                      });
+                    });
+                } else {
+                  res.json({
+                    success: false,
+                    msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
+                    hint: "vip",
+                  });
+                }
+              } else {
+                res.json({
+                  success: false,
+                  msg: WRONG_KEY,
+                });
+              }
             }
           })
           .catch((errMsg2) => {
@@ -122,7 +138,10 @@ export const withdrawCurrency = (req, res, next) => {
         });
       }
     } else {
-      res.redirect("/withdraw"); // back to withdraw page
+      res.json({
+        success: false,
+        msg: "error",
+      });
     }
   } else {
     res.json({

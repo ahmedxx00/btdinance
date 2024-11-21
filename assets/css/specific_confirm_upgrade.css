@@ -1,0 +1,209 @@
+.main_wrapper {
+    padding: 15px;
+  }
+  
+  /* ------------------ payment_wrap ----------------------- */
+  .payment_wrap {
+    margin-top: 30px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+  .payment_wrap > span{
+    display: block;
+    text-align: center;
+  }
+  
+  .payment_wrap .hd_title{
+    background-color: var(--MAIN-MASTARD);
+    font-size: 16px;
+    color: black;
+    padding: 7px 20px;
+    width: max-content;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.deposit_address{
+  font-size: 16px;
+  color: var(--MAIN-MASTARD);
+  padding: 7px;
+
+  border: 2px dotted white;
+
+  margin-top: 10px;
+
+  padding: 5px 20px;
+  text-wrap: wrap;
+  word-break: break-all;
+}
+.payment_wrap .pre_span{
+  color: gray;
+}
+.payment_wrap .post_span{
+  color: var(--MAIN-MASTARD);
+}
+  /* ------------------ confirm_wrap ----------------------- */
+
+.confirm_wrap{
+  padding: 20px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  margin-top: 80px;
+
+  background-color: transparent;
+box-shadow: 0 0 5px white;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.conf_note{
+  color: gray;
+  text-indent: -10px;
+}
+.conf_note .t_id{
+  color: yellowgreen;
+}
+
+.confirm_wrap input{
+  width: 100%;
+  padding: 8px;
+  outline: none;
+  border: 2px solid greenyellow;
+  font-size: 16px;
+  background-color: transparent;
+  color: greenyellow;
+
+
+  
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.confirm_wrap input::placeholder{
+  font-size: 14px;
+  color: gray;
+}
+
+.confirm_wrap #transaction_id_btn{
+  width: max-content;
+  padding: 5px 10px;
+  background-color: greenyellow;
+  border: none;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: q_bold;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.confirm_wrap #transaction_id_btn:hover{
+  background-color: black;
+  color: white;
+}
+
+  /* ==================================================== */
+  
+  #snackbar {
+    visibility: hidden;
+    width: max-content;
+    padding: 5px 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+  }
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s,fadeout 0.5s 2.5s;
+    animation: fadein 0.5s,fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {
+      top: 0;
+      opacity: 0;
+    }
+    to {
+      top: 30px;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadein {
+    from {
+      top: 0;
+      opacity: 0;
+    }
+    to {
+      top: 30px;
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {
+      top: 30px;
+      opacity: 1;
+    }
+    to {
+      top: 0;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeout {
+    from {
+      top: 30px;
+      opacity: 1;
+    }
+    to {
+      top: 0;
+      opacity: 0;
+    }
+  }
+  
+  
+  /* //------------------ last --------------------- */
+  .simplebar-scrollbar::before {
+    background-color: red;
+  }
+  
+  .swal2-popup {
+    font-size: 10px !important;
+    font-weight: normal;
+  }
