@@ -5,6 +5,7 @@ import {
   randomFromTo,
 } from "../../Constants/API_DB_Constants.js";
 import {
+  BASIC_TRANSFER_LIMIT_ERROR,
   NOT_SUCH_WALLET,
   NOT_SUFFICIENT_AMOUNT,
   WITHDRAW_SUCCESSFUL,
@@ -17,11 +18,25 @@ const Schema = mongoose.Schema;
 
 const wallet_Schema = new Schema({
   user_id: { type: mongoose.Schema.Types.ObjectId },
+  user_name: { type: String },
   currency: { type: String, default: WALLETS_CURRENCIES.USDT.name },
   img: { type: String, default: WALLETS_CURRENCIES.USDT.img },
   available: { type: String, default: "0.00" },
+  isCrypto: { type: Boolean },
+  isFiat: { type: Boolean },
   created_at: { type: Date, default: new Date() },
 });
+
+//----- isCrypto && isFiat hook ------
+wallet_Schema.pre("save", function (next) {
+  let xx = Object.values(WALLETS_CURRENCIES).find(
+    (v) => v.name == this.currency
+  );
+  this.isCrypto = xx.isCrypto;
+  this.isFiat = xx.isFiat;
+  next();
+});
+//-------------------------------------
 
 export const Wallet = mongoose.model("wallet", wallet_Schema);
 
@@ -146,6 +161,7 @@ export const depositToWallet = (user_id, cur_type, total) => {
 export const transferBetweenTwoWallets = (
   sender_user_id,
   receiver_user_id,
+  receiver_user_name,
   sender_vip,
   receiver_vip,
   userWallet,
@@ -187,7 +203,11 @@ export const transferBetweenTwoWallets = (
                   // limit will exceed
                   mongoose.disconnect();
                   reject(
-                    `${receiverNameOrEmail} is Basic so he/she can't receive this amount as his wallet will exceed the limit of ${maxToBeInWallet.toString()} ${cur_type}`
+                    BASIC_TRANSFER_LIMIT_ERROR(
+                      receiverNameOrEmail,
+                      maxToBeInWallet,
+                      cur_type
+                    )
                   );
                 } else {
                   // limit is ok
@@ -214,13 +234,18 @@ export const transferBetweenTwoWallets = (
                   // limit will exceed
                   mongoose.disconnect();
                   reject(
-                    `${receiverNameOrEmail} is Basic so he/she can't receive this amount as his wallet will exceed the limit of ${maxToBeInWallet.toString()} ${cur_type}`
+                    BASIC_TRANSFER_LIMIT_ERROR(
+                      receiverNameOrEmail,
+                      maxToBeInWallet,
+                      cur_type
+                    )
                   );
                 } else {
                   // limit is ok
                   transferToReceiverWhoDontHaveWallet(
                     sender_user_id,
                     receiver_user_id,
+                    receiver_user_name,
                     cur_type,
                     amount,
                     sender_isOur
@@ -265,6 +290,7 @@ export const transferBetweenTwoWallets = (
             transferToReceiverWhoDontHaveWallet(
               sender_user_id,
               receiver_user_id,
+              receiver_user_name,
               cur_type,
               amount,
               sender_isOur
@@ -375,6 +401,7 @@ const transferToReceiverWhoHasWallet = (
 const transferToReceiverWhoDontHaveWallet = (
   sender_id,
   receiver_id,
+  receiver_name,
   cur_type,
   amount,
   sender_isOur
@@ -410,6 +437,7 @@ const transferToReceiverWhoDontHaveWallet = (
 
             let new_receiver_wallet = new Wallet({
               user_id: receiver_id,
+              user_name: receiver_name,
               currency: cur_type,
               available: amount,
               img: x.img,

@@ -112,6 +112,7 @@ app.use("/networks", networksRouter);
 app.use((req, res) => {
   // res.send("404 not found"); // if req for not found router
   res.render('404_not_found.ejs'); // if req for not found router
+
 });
 //============================ start server ===================
 
@@ -177,3 +178,25 @@ app.server.listen(PORT, (err) => {
 
 // console.log(parseFloat(yy.replaceAll(',','')) * parseFloat(xx))
 
+// let xx = {
+//   AA : {
+//     i : 'aaaaa',
+//     u : true
+//   },
+//   BB : {
+//     i : 'bbbbb',
+//     u : false
+//   },
+//   CC : {
+//     i : 'ccccc',
+//     u : true
+//   },
+
+// }
+
+// Object.keys(xx).forEach((key)=>{if (xx[key].u) {
+//   delete xx[key]
+// }})
+
+// console.log(Object.values(xx).filter(v => v.u).map(v=> v.i));
+// console.log(xx);

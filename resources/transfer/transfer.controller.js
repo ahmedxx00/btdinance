@@ -80,6 +80,7 @@ export const transferToName = (req, res, next) => {
                 transferBetweenTwoWallets(
                   id,
                   userToTransferTo._id,
+                  userToTransferTo.name,
                   user.vip,
                   userToTransferTo.vip,
                   userWallet,
@@ -168,6 +169,7 @@ export const transferToEmail = (req, res, next) => {
                 transferBetweenTwoWallets(
                   id,
                   userToTransferTo._id,
+                  userToTransferTo.name,
                   user.vip,
                   userToTransferTo.vip,
                   userWallet,

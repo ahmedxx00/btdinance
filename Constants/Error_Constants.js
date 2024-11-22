@@ -37,4 +37,4 @@ export const NOT_ENOUGH_USDT_BALANCE = "NOT Enough <span style='color:blue'>USDT
 export const NO_USDT_WALLET = "You have no <span style='color:blue'>USDT</span> wallet";
 export const TRANSACTION_ID_ERROR = "transaction id ERROR";
 export const TRANSACTION_ID_SAVED = (vip_type) => `<span style='color:green'>${vip_type.toUpperCase()}</span> Membership <br> It takes <span style='color:blue'>12 hrs</span> Max to review .`;
-
+export const BASIC_TRANSFER_LIMIT_ERROR = (receiverNameOrEmail,maxToBeInWallet,cur_type) => `<span style='color:black'>${receiverNameOrEmail}</span> is <span style='color:blue'>Basic</span> so he/she can't receive this amount as his wallet will exceed the limit of <span style='color:black;font-style:italic'>${maxToBeInWallet.toString()}</span> <span style='color:blue'>${cur_type}</span>`;

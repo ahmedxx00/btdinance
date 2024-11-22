@@ -1,0 +1,318 @@
+
+  .main-container {
+    padding: 20px;
+  }
+  
+  /* =========== head-div ==========  */
+  
+  .head-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .back-btn,
+  .history-btn {
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    box-shadow: 0 0 5px var(--MAIN-MASTARD);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .fa-arrow-left,
+  .fa-history {
+    font-size: 25px;
+    color: var(--MAIN-BLACK);
+  }
+  
+  .back-btn:hover,
+  .back-btn:active,
+  .history-btn:hover,
+  .history-btn:active {
+    box-shadow: 0 0 10px var(--MAIN-MASTARD);
+  }
+  
+  .page-title {
+    padding: 5px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Quattrocento", sans-serif;
+    text-align: center;
+    background-color: var(--MAIN-MASTARD);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  
+  /* =========== my wallet container========== */
+  
+  .wallet_container {
+    width: 250px;
+    min-height: 100px;
+    margin: 20px auto 0;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    row-gap: 8px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px white;
+    pointer-events: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  
+  .cur_data {
+  
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+  }
+  .cur_data img {
+    width: auto;
+    height: 50px;
+    background-color: transparent;
+  }
+  
+  .amount_div {
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 4px;
+    font-size: 16px;
+  
+  }
+  .amount_div span:first-child {
+    color: gray;
+    font-size: 14px;
+    font-style: italic;
+  }
+  
+  
+  
+  /* ===================== withdraw_form ===================== */
+  
+  .withdraw_form >div{
+    margin-top: 5px;
+  }
+  .withdraw_form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: green;
+    font-family: "Quattrocento", sans-serif;
+    padding: 5px 0;
+  }
+  
+  .withdraw_form input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+    border: 2px solid var(--MAIN-MASTARD);
+    outline: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-color: black;
+  }
+  
+  .withdraw_form input::placeholder {
+    color: gray;
+    font-size: 14px;
+  }
+  
+  /* ===================== amount ===================== */
+  
+  .amount_wrap {
+    position: relative;
+  }
+  .amount_wrap > span {
+    position: absolute;
+    top: 100%;
+    right: 2px;
+    margin-top: 5px;
+    color: gray;
+    pointer-events: none;
+  }
+  .am_wr {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: black;
+    color: gray;
+    font-size: 16px;
+    border: 2px solid var(--MAIN-MASTARD);
+  
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  .am_wr .symbol {
+    color: green;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-left: 2px solid white;
+    pointer-events: none;
+  }
+  .am_wr span.max {
+    background-color: transparent;
+    color: var(--MAIN-MASTARD);
+    margin: 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .am_wr span.max:hover {
+    text-shadow: 0 0 3px var(--MAIN-MASTARD);
+  }
+  
+  .am_wr input {
+    display: block;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding-block: 10px;
+  }
+  .am_wr input::placeholder {
+    font-size: 16px;
+  }
+  
+  /* ========== withdraw_btn ========== */
+  #withdraw_btn{
+    display: block;
+    width: calc(100% - 80px);
+    margin: 20px auto;
+    background-color: var(--MAIN-MASTARD);
+    font-size: 20px;
+    padding: 7px 20px;
+    color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  #withdraw_btn:hover{
+    box-shadow: 0 0 8px var(--MAIN-MASTARD);
+  }
+  
+  /* ===================== confirm withdraw modal ======================== */
+  
+  #confirm_withdraw{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    width: max-content;
+    padding: 10px 20px;
+  }
+  
+  #confirm_withdraw h4{
+    color: black;
+    width: max-content;
+    padding: 5px 30px;
+    background-color: transparent;
+  
+    margin: 0 auto;
+    border:  2px dotted black;
+  
+    border-radius:5px ;
+    -webkit-border-radius:5px ;
+    -moz-border-radius:5px ;
+    -ms-border-radius:5px ;
+    -o-border-radius:5px ;
+  }
+  
+  
+  #confirm_withdraw >span,#confirm_withdraw_btn{
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    margin: 5px auto;
+    color: maroon;
+  }
+  
+  #confirm_withdraw >span{
+    border-bottom: 2px solid maroon;
+  }
+  
+  #confirm_withdraw >span .pre_span{
+    color: black;
+    font-weight: normal;
+  }
+  
+  #confirm_withdraw >span{
+    text-align: start;
+  }
+  #confirm_withdraw_btn{
+    outline: none;
+    background-color: maroon;
+    color: white;
+    cursor: pointer;
+    font-weight: normal;
+  
+    margin-top: 20px;
+  
+    border-radius: 5px ;
+    -webkit-border-radius: 5px ;
+    -moz-border-radius: 5px ;
+    -ms-border-radius: 5px ;
+    -o-border-radius: 5px ;
+  }
+  
+  #confirm_withdraw_btn:hover{
+    background-color: black;
+  }
+  
+  
+  
+  /* //------------------ last --------------------- */
+  .simplebar-scrollbar::before {
+    background-color: red;
+  }
+  
+  .swal2-popup {
+    font-size: 10px !important;
+    font-weight: normal;
+  }

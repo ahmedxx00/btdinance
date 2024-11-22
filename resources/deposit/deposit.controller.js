@@ -20,12 +20,13 @@ export const getSpecificDepositPage = (req, res, next) => {
 
   if (
     Object.values(WALLETS_CURRENCIES)
+    .filter(v=> v.isCrypto)
       .map((v) => v.name)
       .includes(cur_type)
   ) {
     getDepositNetworksOfSpecificCurrency(cur_type)
       .then((networks) => {
-        let curImg = Object.values(WALLETS_CURRENCIES).find(
+        let curImg = Object.values(WALLETS_CURRENCIES).filter(v=> v.isCrypto).find(
           (v) => v.name === cur_type
         ).img;
         res.render("specific_deposit.ejs", {
@@ -53,6 +54,7 @@ export const depositCurrency = (req, res, next) => {
   if (cur_type && network_name && key) {
     if (
       Object.values(WALLETS_CURRENCIES)
+      .filter(v=> v.isCrypto)
         .map((v) => v.name)
         .includes(cur_type)
     ) {

@@ -81,7 +81,7 @@ export const CreateUser = (name, password, key) => {
                 password: enc,
                 key: encKey,
               });
-              let initial_wallet = new Wallet({ user_id: newUser._id }); // default USDT & 0.00 // set user_id in wallet document
+              let initial_wallet = new Wallet({ user_id: newUser._id , user_name : name }); // default USDT & 0.00 // set user_id in wallet document
               newUser.wallets.push(initial_wallet._id); // then push the wallet to wallets in user document
 
               newUser

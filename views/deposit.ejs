@@ -9,10 +9,15 @@ false ,stylesheets:['https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/spi
 
   <% Object.keys(wallets_currencies).forEach(key => { %>
 
+
+  <% if (wallets_currencies[key]['isCrypto'] == true) { %>
+
   <a href="/deposit/cur_type/<%= wallets_currencies[key]['name'] %>" class="deposit_btn">
     <img src="<%= wallets_currencies[key]['img'] %>" />
     <%= key %>
   </a>
+
+  <% } %>
 
   <% }) %>
 
