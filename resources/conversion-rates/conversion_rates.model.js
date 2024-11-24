@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DB_URI } from "../Constants/API_DB_Constants.js";
+import { DB_URI } from "../../Constants/API_DB_Constants.js";
 
 //------------------------------------------
 const Schema = mongoose.Schema;
@@ -38,6 +38,7 @@ export const getConversionRates = () => {
       });
   });
 };
+
 export const getSpecificCurrencyConversionRate = (cur_type) => {
   return new Promise((resolve, reject) => {
     mongoose

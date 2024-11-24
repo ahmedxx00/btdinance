@@ -3,7 +3,7 @@ import {
   MEMBERSHIPS,
   WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
-import { getConversionRates } from "../../other-models/conversion_rates.model.js";
+import { getConversionRates } from "../../resources/conversion-rates/conversion_rates.model.js";
 import {
   getDepositNetworksNamesOf_USDT_BTC_ETH,
   getSingleDepositNetworkAddress,
@@ -16,7 +16,7 @@ import {
 
 import url from "url";
 import { getUserNameById, User } from "../user/user.model.js";
-import { saveTransactionID } from "../../other-models/transaction_id.model.js";
+import { saveTransactionID } from "../../resources/transaction-ids/transaction_id.model.js";
 
 export const getSpecificUpgradePage = (req, res, next) => {
   let id = req.payload.id;
@@ -24,6 +24,9 @@ export const getSpecificUpgradePage = (req, res, next) => {
 
   let vip_type = req.params.vip; //[vip1 || vip2 || vip3 || vip4 ]
 
+  if (id) {
+    
+  
   if (
     Object.values(MEMBERSHIPS)
       .map((v) => v.name)
@@ -86,6 +89,9 @@ export const getSpecificUpgradePage = (req, res, next) => {
   } else {
     res.redirect("/upgrade"); // back to upgrade page
   }
+}else{
+  res.redirect("/upgrade"); // back to upgrade page
+}
 };
 
 export const getSpecificConfirmUpgradePage = (req, res, next) => {

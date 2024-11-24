@@ -81,7 +81,10 @@ export const CreateUser = (name, password, key) => {
                 password: enc,
                 key: encKey,
               });
-              let initial_wallet = new Wallet({ user_id: newUser._id , user_name : name }); // default USDT & 0.00 // set user_id in wallet document
+              let initial_wallet = new Wallet({
+                user_id: newUser._id,
+                user_name: name,
+              }); // default USDT & 0.00 // set user_id in wallet document
               newUser.wallets.push(initial_wallet._id); // then push the wallet to wallets in user document
 
               newUser
@@ -211,6 +214,29 @@ export const getUserNameById = (id) => {
       })
       .catch((err3) => {
         console.log("err3 : " + err3);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+export const getOurUsers = () => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        User.find({ isOur: true })
+          .then((ourUsersArray) => {
+            mongoose.disconnect();
+            resolve(ourUsersArray);
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
         mongoose.disconnect();
         reject();
       });
@@ -365,7 +391,6 @@ export const upgradeUserMembership = (name, vip) => {
       });
   });
 };
-
 
 // ============================ CheckUserNameAvailable ====================================
 

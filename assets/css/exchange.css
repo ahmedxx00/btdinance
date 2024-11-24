@@ -1,0 +1,273 @@
+/* -------------------------------------------------------- */
+
+.main_wrapper {
+  padding: 20px;
+}
+
+/* =========== head-div ==========  */
+
+.head-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-btn,
+.history-btn {
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: white;
+  box-shadow: 0 0 5px var(--MAIN-MASTARD);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  cursor: pointer;
+}
+
+.fa-arrow-left,
+.fa-history {
+  font-size: 25px;
+  color: var(--MAIN-BLACK);
+}
+
+.back-btn:hover,
+.back-btn:active,
+.history-btn:hover,
+.history-btn:active {
+  box-shadow: 0 0 10px var(--MAIN-MASTARD);
+}
+
+.page-title {
+  padding: 5px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: q_bold, sans-serif;
+  text-align: center;
+  background-color: var(--MAIN-MASTARD);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/* ===================== exchange_row ======================== */
+.exchange_row {
+  padding: 7px;
+  background-color: transparent;
+  box-shadow: 0 0 5px white;
+  margin-top: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* =========== my wallet container========== */
+
+.wallet_container {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 160px;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  row-gap: 8px;
+  padding: 5px;
+  pointer-events: none;
+  margin: 0 auto 15px;
+}
+
+.cur_data {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+.cur_data img {
+  width: auto;
+  height: 50px;
+  background-color: transparent;
+}
+
+.amount_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4px;
+  font-size: 16px;
+}
+.amount_div span:first-child {
+  color: gray;
+  font-size: 14px;
+  font-style: italic;
+}
+/* =========== fiats_wrap ========== */
+.fiats_wrap {
+  padding: 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 10px;
+  border-left: 2px dotted var(--MAIN-MASTARD);
+}
+/* =========== fiat_row ========== */
+.fiat_row {
+  padding: 5px;
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.fiat_row input {
+  outline: none;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+  padding: 3px;
+}
+
+/* ===================== amount ===================== */
+
+.fiat_row .am_wr {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  border: 2px solid var(--MAIN-MASTARD);
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.am_wr input[name="amount"] {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+
+  border-right: 2px solid var(--MAIN-MASTARD);
+}
+.am_wr span.max {
+  color: var(--MAIN-MASTARD);
+  margin: 0 8px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.am_wr span.max:hover {
+  text-shadow: 0 0 3px var(--MAIN-MASTARD);
+}
+/* ================ .bb =============== */
+
+.fiat_row .bb {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* ================ .aa =============== */
+
+.bb .aa {
+  width: max-content;
+  background-color: white;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.aa img {
+  width: auto;
+  height: 20px;
+  background-color: transparent;
+}
+
+/* ================ .bb output  =============== */
+
+.bb input[name="output"] {
+  width: 120px;
+  pointer-events: none;
+  border: 2px solid var(--MAIN-MASTARD);
+
+  color: greenyellow;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+/* ================ .bb key =============== */
+
+.bb input[name="key"] {
+  flex-grow: 1;
+  border: 2px solid var(--MAIN-MASTARD);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+/* ================ .bb exchange_btn =============== */
+.bb .exchange_btn {
+  outline: none;
+  border: none;
+  width: max-content;
+  padding: 2px 6px;
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+  cursor: pointer;
+  margin: 0 auto;
+  font-family: q_bold;
+  font-size: 15px;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.bb .exchange_btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* //------------------ last --------------------- */
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}

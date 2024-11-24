@@ -90,6 +90,10 @@ import exchangeRouter from "./resources/exchange/exchange.router.js";
 import myaccountRouter from "./resources/myaccount/myaccount.router.js";
 import adminRouter from "./resources/admin/admin.router.js";
 import networksRouter from "./resources/crypto-networks/crypto-networks.router.js";
+import membershipsRouter from "./resources/membership/membership.router.js";
+import transactionIdsRouter from "./resources/transaction-ids/transaction_id.router.js";
+import conversionRatesRouter from "./resources/conversion-rates/conversion_rates.router.js";
+import ourUsersRouter from "./resources/our-users/our_users.router.js";
 
 app.use("/", homeRouter);
 app.use("/auth", authRouter);
@@ -103,6 +107,10 @@ app.use("/myaccount", myaccountRouter);
 app.use("/admin", adminRouter);
 
 app.use("/networks", networksRouter);
+app.use("/memberships", membershipsRouter);
+app.use("/transaction_ids", transactionIdsRouter);
+app.use("/conversion_rates", conversionRatesRouter);
+app.use("/our_users", ourUsersRouter);
 
 
 
@@ -194,6 +202,10 @@ app.server.listen(PORT, (err) => {
 
 // }
 
+
+// let pp = Object.values(xx).filter(v=> v.u).map(v=> v.i)
+
+// console.log(pp)
 // Object.keys(xx).forEach((key)=>{if (xx[key].u) {
 //   delete xx[key]
 // }})

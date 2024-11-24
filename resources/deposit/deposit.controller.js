@@ -15,9 +15,11 @@ import {
 import { getUserById } from "../user/user.model.js";
 
 export const getSpecificDepositPage = (req, res, next) => {
-  let cur_type = req.params.cur_type;
+  let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
-
+  let cur_type = req.params.cur_type;
+if (id) {
+  
   if (
     Object.values(WALLETS_CURRENCIES)
     .filter(v=> v.isCrypto)
@@ -43,6 +45,9 @@ export const getSpecificDepositPage = (req, res, next) => {
   } else {
     res.redirect("/deposit"); // back to deposit page
   }
+}else{
+  res.redirect("/"); // back to home page
+}
 };
 
 export const depositCurrency = (req, res, next) => {

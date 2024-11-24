@@ -150,6 +150,10 @@ export const MEMBERSHIPS = {
     img: "/vip4.png",
   },
 };
+
+
+//-------------- Exchange rates to fixed--------------
+export const EXCHANGE_TO_FIXED = 3;// 3 digits after the point [critical for compare]
 //--------------[ USD => Euro]--------------
 export const USD_EURO_CONVERSION_RATE = 0.95;
 //-----------------------------------------

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import {
   DB_URI,
+  EXCHANGE_TO_FIXED,
   WALLETS_CURRENCIES,
   randomFromTo,
 } from "../../Constants/API_DB_Constants.js";
@@ -9,10 +10,14 @@ import {
   NOT_SUCH_WALLET,
   NOT_SUFFICIENT_AMOUNT,
   WITHDRAW_SUCCESSFUL,
+  WRONG_AMOUNT,
 } from "../../Constants/Error_Constants.js";
-import { User } from "../user/user.model.js";
+import { getUserNameById, User } from "../user/user.model.js";
 import { getSingleMembershipByNumber } from "../membership/membership.model.js";
-import { getSpecificCurrencyConversionRate } from "../../other-models/conversion_rates.model.js";
+import {
+  getConversionRates,
+  getSpecificCurrencyConversionRate,
+} from "../../resources/conversion-rates/conversion_rates.model.js";
 
 const Schema = mongoose.Schema;
 
@@ -20,7 +25,7 @@ const wallet_Schema = new Schema({
   user_id: { type: mongoose.Schema.Types.ObjectId },
   user_name: { type: String },
   currency: { type: String, default: WALLETS_CURRENCIES.USDT.name },
-  img: { type: String, default: WALLETS_CURRENCIES.USDT.img },
+  img: { type: String },
   available: { type: String, default: "0.00" },
   isCrypto: { type: Boolean },
   isFiat: { type: Boolean },
@@ -34,6 +39,7 @@ wallet_Schema.pre("save", function (next) {
   );
   this.isCrypto = xx.isCrypto;
   this.isFiat = xx.isFiat;
+  this.img = xx.img;
   next();
 });
 //-------------------------------------
@@ -115,7 +121,101 @@ export const withdrawFromWallet = (user_id, cur_type, total) => {
   });
 };
 
-// ---- tricky ------
+export const exchangeToFiat = (
+  user_id,
+  user_name,
+  cur_type,
+  fiat_cur_type,
+  amount,
+  fiat_amount
+) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI, { maxPoolSize: 20, minPoolSize: 10 })
+      .then(() => {
+        Wallet.findOne({ user_id: user_id, currency: cur_type })
+          .then(async (wallet) => {
+            if (wallet) {
+              if (parseFloat(wallet.available) >= parseFloat(amount)) {
+
+                // &&&&&&&& connection already Killed Here &&&&&&&
+                getConversionRates()
+                  .then((ratesDocument) => {
+
+                    let our_cur_type_rate = ratesDocument.rates[cur_type];
+                    let fiat_rate = ratesDocument.rates[fiat_cur_type];
+
+                    //----------------------------------
+                    let fiat_due_amount =
+                      (
+                        parseFloat((1 / our_cur_type_rate) * fiat_rate).toFixed(
+                          EXCHANGE_TO_FIXED
+                        ) *
+                        1 *
+                        parseFloat(amount)
+                      ).toFixed(EXCHANGE_TO_FIXED) * 1;
+                    //----------------------------------
+
+                    // 1.05 just as a tolerance but not mandatory
+                    if (parseFloat(fiat_amount) <= 1.05 * fiat_due_amount) {
+                      let new_crypto_amount = (
+                        (
+                          parseFloat(wallet.available) - parseFloat(amount)
+                        ).toFixed(10) * 1
+                      ).toString();
+
+                      exchangeToFiatInMyWallet(
+                        user_id,
+                        user_name,
+                        cur_type,
+                        fiat_cur_type,
+                        new_crypto_amount,
+                        fiat_amount
+                      )
+                        .then(() => {
+                          mongoose.disconnect();
+                          resolve();
+                        })
+                        .catch((err1) => {
+                          console.log("err1 : " + err1);
+                          mongoose.disconnect();
+                          reject();
+                        });
+                    } else {
+                      mongoose.disconnect();
+                      reject(WRONG_AMOUNT);
+                    }
+                  })
+                  .catch((err2) => {
+                    console.log("err2 : " + err2);
+                    mongoose.disconnect();
+                    reject();
+                  });
+              } else {
+                // not sufficient wallet available
+                mongoose.disconnect();
+                reject(NOT_SUFFICIENT_AMOUNT);
+              }
+            } else {
+              mongoose.disconnect();
+              reject(NOT_SUCH_WALLET);
+            }
+          })
+          .catch((err3) => {
+            console.log("err3 : " + err3);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err4) => {
+        console.log("err4 : " + err4);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+// ---- tricky --- never used till now---
 export const depositToWallet = (user_id, cur_type, total) => {
   return new Promise((resolve, reject) => {
     mongoose
@@ -177,6 +277,7 @@ export const transferBetweenTwoWallets = (
       .then(() => {
         if (receiver_vip == 0) {
           // receive has limit for basic
+          // &&&&&&&& connection already Killed Here &&&&&&&
           getSingleMembershipByNumber(0)
             .then(async (basicMembership) => {
               let basicMaxUSDT = parseFloat(
@@ -186,6 +287,7 @@ export const transferBetweenTwoWallets = (
               if (cur_type == WALLETS_CURRENCIES.USDT.name) {
                 maxToBeInWallet = basicMaxUSDT;
               } else {
+
                 let ourCurTypeRate = await getSpecificCurrencyConversionRate(
                   cur_type
                 );
@@ -314,6 +416,7 @@ export const transferBetweenTwoWallets = (
   });
 };
 
+// [$$$$$$$$$$$$$$$$$$$ helpers $$$$$$$$$$$$$$$$$$]
 const transferToReceiverWhoHasWallet = (
   sender_id,
   receiver_id,
@@ -494,6 +597,109 @@ const transferToReceiverWhoDontHaveWallet = (
       });
   });
 };
+
+const exchangeToFiatInMyWallet = (
+  user_id,
+  user_name,
+  cur_type,
+  fiat_cur_type,
+  new_crypto_amount,
+  fiat_amount
+) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Wallet.findOneAndUpdate(
+          { user_id: user_id, currency: cur_type },
+          { available: new_crypto_amount }
+        )
+          .then(() => {
+            Wallet.findOne({
+              user_id: user_id,
+              currency: fiat_cur_type,
+            })
+              .then((fiat_wallet) => {
+                if (fiat_wallet) {
+                  // already has that fiat wallet
+                  fiat_wallet.available = (
+                    (
+                      parseFloat(fiat_wallet.available) +
+                      parseFloat(fiat_amount)
+                    ).toFixed(10) * 1
+                  ).toString();
+
+                  fiat_wallet
+                    .save()
+                    .then(() => {
+                      mongoose.disconnect();
+                      resolve();
+                    })
+                    .catch((err1) => {
+                      console.log("err1 : " + err1);
+                      mongoose.disconnect();
+                      reject();
+                    });
+                } else {
+                  // don't have that fiat wallet
+
+                  // ---- create new fiat wallet -----
+                  let new_fiat_wallet = new Wallet({
+                    user_id: user_id,
+                    user_name: user_name,
+                    currency: fiat_cur_type,
+                    available: fiat_amount,
+                  });
+
+                  let newWalletId = new_fiat_wallet._id;
+                  //----------------------------------
+
+                  new_fiat_wallet
+                    .save()
+                    .then(() => {
+                      //-- update user document push the newly created wallet id
+                      User.findByIdAndUpdate(user_id, {
+                        $push: { wallets: newWalletId },
+                      })
+                        .then(() => {
+                          mongoose.disconnect();
+                          resolve();
+                        })
+                        .catch((err2) => {
+                          console.log("err2 : " + err2);
+                          mongoose.disconnect();
+                          reject();
+                        });
+                      //-------------------------------------------------------------------
+                    })
+                    .catch((err3) => {
+                      console.log("err3 : " + err3);
+                      mongoose.disconnect();
+                      reject();
+                    });
+                }
+              })
+              .catch((err4) => {
+                console.log("err4 : " + err4);
+                mongoose.disconnect();
+                reject();
+              });
+          })
+          .catch((err5) => {
+            console.log("err5 : " + err5);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err6) => {
+        console.log("err6 : " + err6);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+// [$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$]
+
 
 /* ---- restrict transfer to vip1 or more only -----------
 export const transferBetweenTwoWallets = (

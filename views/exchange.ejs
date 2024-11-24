@@ -2,8 +2,71 @@
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false ,stylesheets:['/css/spinner.css','/css/exchange.css']}) %>
 
-<div class="main-buttons" style="color: white; text-align: center">
-  This is Exchange PAge
+
+<div class="main_wrapper">
+
+  <div class="head-div">
+    <button class="back-btn">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </button>
+    <h2 id="page-title" class="page-title">Exchange</h2>
+    <button class="history-btn" title="exchange history">
+      <i class="fas fa-history"></i>
+    </button>
+  </div>
+
+  <% if (locals.wallets_array) { %>
+
+
+  <% wallets_array.forEach(wlt => { %>
+
+  <div class="exchange_row">
+
+    <div class="wallet_container">
+      <div class="cur_data">
+        <img src="<%= wlt.img %>" />
+        <span class="cur_type"><%= wlt.currency %></span>
+      </div>
+      <div class="amount_div">
+        <span>Available</span><span class="cur_amount"> <%= wlt.available %> </span>
+      </div>
+    </div>
+
+    <div class="fiats_wrap">
+
+      <% wlt['conv_rates'].forEach(obj => { %>
+
+      <div class="fiat_row">
+
+        <div class="am_wr">
+          <input type="text" name="amount" placeholder="<%= wlt.currency %> Amount" spellcheck="false" maxlength="20">
+          <span class="max">MAX</span>
+          <span class="cur_amount" style="display: none;"><%= wlt.available %></span>
+        </div>
+
+        <div class="bb">
+          <div class="aa">
+            <img src="<%= obj.img %>" />
+            <span><%= obj.name %></span>
+          </div>
+          <input type="text" name="output" placeholder="0" spellcheck="false" readonly>
+          <input type="text" name="key" placeholder="your key" spellcheck="false" maxlength="200">
+          <button class="exchange_btn">EX</button>
+        </div>
+        <span class="rate" style="display: none;"><%= obj.rate %></span>
+        <span class="cur_type" style="display: none;"><%= wlt.currency %></span>
+        <span class="fiat_cur_type" style="display: none;"><%= obj.name %></span>
+        <span class="max_amount" style="display: none;"><%= wlt.available %></span>
+
+      </div>
+      <% }) %>
+    </div>
+
+  </div>
+
+  <% }) %>
+
+  <% } %>
 </div>
 
 <%- include("./parts/footer.ejs" ,

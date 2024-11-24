@@ -13,7 +13,7 @@ export const Email_ERROR = "Email not found";
 export const EXPIRED_OTP = "Expired OTP <br> Request a new one please";
 export const WRONG_OTP = "Wrong OTP";
 export const NO_OTP_FOR_THIS_EMAIL = "No OTP Sent for this email <br> Request a new one please";
-export const NOT_SUCH_WALLET = "Not such wallet";
+export const NOT_SUCH_WALLET = "No such wallet";
 export const NOT_SUFFICIENT_AMOUNT = "Not sufficient amount";
 export const WITHDRAW_SUCCESSFUL = "Withdraw Successful";
 export const WRONG_KEY = "Wrong Key";
@@ -29,6 +29,7 @@ export const YOU_MUST_BE_VIP1_TO_WITHDRAW = "you must be at least <span style='c
 export const YOU_MUST_BE_VIP1_TO_DEPOSIT = "you must be at least <span style='color:blue'>VIP1</span> to deposit funds";
 export const HE_MUST_BE_VIP1 = "the receiver must be at least <span style='color:blue'>VIP1</span> to receive funds";
 export const TRANSFER_SUCCESSFUL = "Transfer Successful";
+export const EXCHANGE_SUCCESSFUL = "Exchange Successful";
 export const EMAIL_EDIT_SUCCESSFUL = "Email Successfully Edited";
 export const MEMBERSHIP_EXISTS = "membership already exists";
 export const NO_MEMBERSHIP_WITH_THAT_TYPE = "no membership with that type";

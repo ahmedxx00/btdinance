@@ -434,4 +434,5 @@ export function showSpinnerDataLongTime(
     }, 9000);
   }
 }
+export const EXCHANGE_TO_FIXED = 3;
 /*===========================================*/

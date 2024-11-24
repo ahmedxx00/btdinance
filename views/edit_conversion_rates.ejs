@@ -1,0 +1,73 @@
+<%- include("./parts/navbar.ejs" , {title : 'Edit Conversion Rates',showScroller:false, isLoggedIn : locals.isLoggedIn ? isLoggedIn :
+false , isAdmin: locals.isAdmin? isAdmin : false
+,stylesheets:['/css/spinner.css','/css/edit_conversion_rates.css']}) %>
+
+
+<% if (KEYS.length > 0) { %>
+
+<div class="tabs_box">
+  <% KEYS.forEach(key => { %> <% if (KEYS.indexOf(key) == 0) { %>
+  <button class="tab_btn active"><%= key %></button>
+  <% } else {%>
+  <button class="tab_btn"><%= key %></button>
+  <% } %> <% }) %>
+</div>
+
+<div class="content_box">
+
+  <% VALUES.forEach(singleNetworksArray => { %>
+
+  <% let cur_type = KEYS.at(VALUES.indexOf(singleNetworksArray))%>
+  <% let active_class = VALUES.indexOf(singleNetworksArray) == 0 ? 'active':'' %>
+
+  <div class="content <%= cur_type %> <%-active_class%>">
+    <span class="hidden_cur_type" style="display: none;"><%= cur_type %></span>
+    <button class="add_network_btn">Add <%= cur_type %> Network</button>
+
+    <% singleNetworksArray.forEach(network => { %>
+    <div class="network">
+      <span class="hidden_network_id" style="display:none"><%= network._id %></span>
+      <h4 class="name"><%= network.name %></h4>
+      <h4 class="fee"><span class="pre_span">Fee </span><%= network.fee %> <span class="post_span"> <%= cur_type %></span></h4>
+      <h4 class="minimum_withdrawal"><span class="pre_span">Minimum withdrawal </span><%= network.minimum_withdrawal %><span class="post_span"> <%= cur_type %></span></h4>
+      <% if (network.arrival_time != null) { %>
+      <h4 class="arrival_time"><span class="pre_span">Arrival time &#8776; </span><%= network.arrival_time %> <span class="post_span">mins</span></h4>
+      <% } %>
+      <button class="remove_network">remove</button>
+    </div>
+    <% }) %>
+
+
+  </div>
+
+  <% }) %>
+</div>
+
+<% } %>
+
+<%#----- to be loaded in the jquery-model ---- %>
+<form id="add_network_form" class="network_form" style="display: none;">
+  <h4>Add Withdraw Network</h4>
+  <input type="hidden" name="cur_type">
+  <input type="text" name="name" placeholder="name" required>
+  <input type="text" name="fee" placeholder="fee" required>
+  <input type="text" name="minimum_withdrawal" placeholder="minimum withdrawal" required>
+  <input type="text" name="arrival_time" placeholder="arrival time (optional)">
+  <button class="add_network">Add Network</button>
+</form>
+<%# ------------------------------------------ %>
+<%#----- to be loaded in the jquery-model ---- %>
+<form id="edit_network_form" class="network_form" style="display: none;">
+  <h4>Edit Withdraw Network</h4>
+  <input type="hidden" name="id">
+  <input type="hidden" name="cur_type">
+  <input type="text" name="name" placeholder="name" required>
+  <input type="text" name="fee" placeholder="fee" required>
+  <input type="text" name="minimum_withdrawal" placeholder="minimum withdrawal" required>
+  <input type="text" name="arrival_time" placeholder="arrival time (optional)">
+  <button class="edit_network">Edit Network</button>
+</form>
+<%# ------------------------------------------ %>
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false, moduleScripts: ['/js/edit_conversion_rates.js'] })%>

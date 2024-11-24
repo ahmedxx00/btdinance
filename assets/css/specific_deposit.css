@@ -48,7 +48,7 @@ body {
   padding: 5px 30px;
   font-size: 20px;
   font-weight: bold;
-  font-family: "Quattrocento", sans-serif;
+  font-family: q_bold, sans-serif;
   text-align: center;
   background-color: var(--MAIN-MASTARD);
   border-radius: 10px;

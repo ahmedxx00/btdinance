@@ -1,9 +1,9 @@
 // [transaction ID/Hash | TXID | ]
 //------------------------------------------
 import mongoose from "mongoose";
-import { DB_URI, MEMBERSHIPS } from "../Constants/API_DB_Constants.js";
-import { TRANSACTION_ID_ERROR } from "../Constants/Error_Constants.js";
-import { upgradeUserMembership } from "../resources/user/user.model.js";
+import { DB_URI, MEMBERSHIPS } from "../../Constants/API_DB_Constants.js";
+import { TRANSACTION_ID_ERROR } from "../../Constants/Error_Constants.js";
+import { upgradeUserMembership } from "../../resources/user/user.model.js";
 
 const Schema = mongoose.Schema;
 

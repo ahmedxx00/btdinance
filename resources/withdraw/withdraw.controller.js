@@ -21,60 +21,64 @@ export const getSpecificWithdrawPage = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
 
-  if (
-    Object.values(WALLETS_CURRENCIES)
-      .map((v) => v.name)
-      .includes(cur_type)
-  ) {
-    // get that specific wallet of this use
+  if (id) {
+    if (
+      Object.values(WALLETS_CURRENCIES)
+        .map((v) => v.name)
+        .includes(cur_type)
+    ) {
+      // get that specific wallet of this use
 
-    getWalletForUserIdAndCurType(id, cur_type)
-      .then((wallet) => {
-        let curImg = Object.values(WALLETS_CURRENCIES).find(
-          (v) => v.name === cur_type
-        ).img;
+      getWalletForUserIdAndCurType(id, cur_type)
+        .then((wallet) => {
+          let curImg = Object.values(WALLETS_CURRENCIES).find(
+            (v) => v.name === cur_type
+          ).img;
 
-        if (
-          Object.values(WALLETS_CURRENCIES)
-            .filter((v) => v.isCrypto)
-            .map((v) => v.name)
-            .includes(cur_type)
-        ) {
-          // is crypto
+          if (
+            Object.values(WALLETS_CURRENCIES)
+              .filter((v) => v.isCrypto)
+              .map((v) => v.name)
+              .includes(cur_type)
+          ) {
+            // is crypto
 
-          getWithdrawNetworksOfSpecificCurrency(cur_type)
-            .then((networks) => {
-              res.render("specific_withdraw.ejs", {
-                isLoggedIn: true,
-                isAdmin: isAdmin,
-                curImg: curImg ? curImg : "/usdt.svg",
-                cur_type: cur_type,
-                wallet: wallet,
-                networks: networks,
+            getWithdrawNetworksOfSpecificCurrency(cur_type)
+              .then((networks) => {
+                res.render("specific_withdraw.ejs", {
+                  isLoggedIn: true,
+                  isAdmin: isAdmin,
+                  curImg: curImg ? curImg : "/usdt.svg",
+                  cur_type: cur_type,
+                  wallet: wallet,
+                  networks: networks,
+                });
+              })
+              .catch(() => {
+                res.redirect("/withdraw"); // back to withdraw page
               });
-            })
-            .catch(() => {
-              res.redirect("/withdraw"); // back to withdraw page
+          } else if (
+            Object.values(WALLETS_CURRENCIES)
+              .filter((v) => v.isFiat)
+              .map((v) => v.name)
+              .includes(cur_type)
+          ) {
+            // is Fiat
+            res.render("specific_withdraw_fiat.ejs", {
+              isLoggedIn: true,
+              isAdmin: isAdmin,
+              curImg: curImg ? curImg : "/usd.svg",
+              cur_type: cur_type,
+              wallet: wallet,
             });
-        } else if (
-          Object.values(WALLETS_CURRENCIES)
-            .filter((v) => v.isFiat)
-            .map((v) => v.name)
-            .includes(cur_type)
-        ) {
-          // is Fiat
-          res.render("specific_withdraw_fiat.ejs", {
-            isLoggedIn: true,
-            isAdmin: isAdmin,
-            curImg: curImg ? curImg : "/usd.svg",
-            cur_type: cur_type,
-            wallet: wallet,
-          });
-        }
-      })
-      .catch((err) => {
-        res.redirect("/withdraw"); // back to withdraw page
-      });
+          }
+        })
+        .catch((err) => {
+          res.redirect("/withdraw"); // back to withdraw page
+        });
+    } else {
+      res.redirect("/withdraw"); // back to withdraw page
+    }
   } else {
     res.redirect("/withdraw"); // back to withdraw page
   }
