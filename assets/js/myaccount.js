@@ -14,7 +14,8 @@ $(document).ready(function () {
     let $to_show = $(`
         <div id="edit_email_modal" style="display: none;">
           <h4>Edit Email</h4>
-            <input type="text" name="email">
+            <input type="text" name="email" placeholder="email">
+            <input type="text" name="key" placeholder="your key">
           <button id="cnf_edit_email_btn">Confirm</button>
         </div>
         `);
@@ -28,6 +29,11 @@ $(document).ready(function () {
     // ================== remove white space ==============================
     $to_show
       .children("input[name='email']")
+      .on("keyup paste input", function () {
+        $(this).val($(this).val().replace(/\s+/g, ""));
+      });
+    $to_show
+      .children("input[name='key']")
       .on("keyup paste input", function () {
         $(this).val($(this).val().replace(/\s+/g, ""));
       });
@@ -50,6 +56,8 @@ $(document).ready(function () {
       .toString()
       .trim();
 
+    let key = _this.siblings("input[name='key']").val().toString().trim();
+
     if (old_email === new_email) {
       //-------------- close jquery-modal -------------------
       $.modal.close();
@@ -59,81 +67,86 @@ $(document).ready(function () {
         new_email.length == 0 ||
         (new_email.length > 0 && validateEmail(new_email))
       ) {
-        let editemail = () => {
-          $.ajax({
-            type: "PUT",
-            url: "/myaccount/editemail",
-            data: {
-              email: new_email,
-            },
-            dataType: "json",
-            timeout: 5000,
-            success: function (response) {
-              //-------------- close jquery-modal -------------------
-              $.modal.close();
-              //------------------------------------------------------
+        if (key.length > 0) {
+          let editemail = () => {
+            $.ajax({
+              type: "PUT",
+              url: "/myaccount/editemail",
+              data: {
+                email: new_email,
+                key: key,
+              },
+              dataType: "json",
+              timeout: 5000,
+              success: function (response) {
+                //-------------- close jquery-modal -------------------
+                $.modal.close();
+                //------------------------------------------------------
 
-              if (response.success) {
-                common.showSpinnerData(
-                  "Done",
-                  response.msg,
-                  "black",
-                  "green",
-                  false,
-                  true,
-                  false,
-                  null,
-                  null
-                );
-              } else {
-                if (response.msg == "error") {
+                if (response.success) {
                   common.showSpinnerData(
-                    "Something Went Wrong",
-                    "oops sorry!",
+                    "Done",
+                    response.msg,
                     "black",
-                    "red",
-                    true,
+                    "green",
                     false,
+                    true,
                     false,
                     null,
                     null
                   );
                 } else {
-                  common.showSpinnerData(
-                    "Warning",
-                    response.msg,
-                    "black",
-                    "red",
-                    true,
-                    false,
-                    false,
-                    null,
-                    null
-                  );
+                  if (response.msg == "error") {
+                    common.showSpinnerData(
+                      "Something Went Wrong",
+                      "oops sorry!",
+                      "black",
+                      "red",
+                      true,
+                      false,
+                      false,
+                      null,
+                      null
+                    );
+                  } else {
+                    common.showSpinnerData(
+                      "Warning",
+                      response.msg,
+                      "black",
+                      "red",
+                      true,
+                      false,
+                      false,
+                      null,
+                      null
+                    );
+                  }
                 }
-              }
-            },
-            error: function (xhr, status, error) {
-              //-------------- close jquery-modal -------------------
-              $.modal.close();
-              //------------------------------------------------------
-              console.log(xhr.responseText);
-              common.showSpinnerData(
-                "Something Went Wrong",
-                "oops sorry!",
-                "black",
-                "red",
-                true,
-                false,
-                false,
-                null,
-                null
-              );
-            },
-          });
-        };
+              },
+              error: function (xhr, status, error) {
+                //-------------- close jquery-modal -------------------
+                $.modal.close();
+                //------------------------------------------------------
+                console.log(xhr.responseText);
+                common.showSpinnerData(
+                  "Something Went Wrong",
+                  "oops sorry!",
+                  "black",
+                  "red",
+                  true,
+                  false,
+                  false,
+                  null,
+                  null
+                );
+              },
+            });
+          };
 
-        common.manipulateAjax(editemail);
+          common.manipulateAjax(editemail);
+        } else {
+          showSweetAlert("Enter Key");
+        }
       } else {
         showSweetAlert("Invalid Email");
       }

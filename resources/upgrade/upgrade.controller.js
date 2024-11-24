@@ -1,9 +1,9 @@
-import { getSingleMembership } from "../../resources/membership/membership.model.js";
+import { getSingleMembership } from "../membership/membership.model.js";
 import {
   MEMBERSHIPS,
   WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
-import { getConversionRates } from "../../resources/conversion-rates/conversion_rates.model.js";
+import { getConversionRates } from "../conversion-rates/conversion_rates.model.js";
 import {
   getDepositNetworksNamesOf_USDT_BTC_ETH,
   getSingleDepositNetworkAddress,
@@ -16,7 +16,7 @@ import {
 
 import url from "url";
 import { getUserNameById, User } from "../user/user.model.js";
-import { saveTransactionID } from "../../resources/transaction-ids/transaction_id.model.js";
+import { saveTransactionID } from "../transaction-ids/transaction_id.model.js";
 
 export const getSpecificUpgradePage = (req, res, next) => {
   let id = req.payload.id;
@@ -25,73 +25,74 @@ export const getSpecificUpgradePage = (req, res, next) => {
   let vip_type = req.params.vip; //[vip1 || vip2 || vip3 || vip4 ]
 
   if (id) {
-    
-  
-  if (
-    Object.values(MEMBERSHIPS)
-      .map((v) => v.name)
-      .includes(vip_type)
-  ) {
-    getSingleMembership(vip_type)
-      .then((membership) => {
-        getConversionRates()
-          .then((ratesDocument) => {
-            let usdt_rate = ratesDocument.rates[WALLETS_CURRENCIES.USDT.name],
-              btc_rate = ratesDocument.rates[WALLETS_CURRENCIES.Bitcoin.name],
-              eth_rate = ratesDocument.rates[WALLETS_CURRENCIES.Ethereum.name];
+    if (
+      Object.values(MEMBERSHIPS)
+        .map((v) => v.name)
+        .includes(vip_type)
+    ) {
+      getSingleMembership(vip_type)
+        .then((membership) => {
+          getConversionRates()
+            .then((ratesDocument) => {
+              let usdt_rate = ratesDocument.rates[WALLETS_CURRENCIES.USDT.name],
+                btc_rate = ratesDocument.rates[WALLETS_CURRENCIES.Bitcoin.name],
+                eth_rate =
+                  ratesDocument.rates[WALLETS_CURRENCIES.Ethereum.name];
 
-            let usdt_price =
-                parseFloat(membership.fee * usdt_rate).toFixed(10) * 1,
-              btc_price = parseFloat(membership.fee * btc_rate).toFixed(10) * 1,
-              eth_price = parseFloat(membership.fee * eth_rate).toFixed(10) * 1;
+              let usdt_price =
+                  parseFloat(membership.fee * usdt_rate).toFixed(10) * 1,
+                btc_price =
+                  parseFloat(membership.fee * btc_rate).toFixed(10) * 1,
+                eth_price =
+                  parseFloat(membership.fee * eth_rate).toFixed(10) * 1;
 
-            let usdt_img = WALLETS_CURRENCIES.USDT.img,
-              btc_img = WALLETS_CURRENCIES.Bitcoin.img,
-              eth_img = WALLETS_CURRENCIES.Ethereum.img;
+              let usdt_img = WALLETS_CURRENCIES.USDT.img,
+                btc_img = WALLETS_CURRENCIES.Bitcoin.img,
+                eth_img = WALLETS_CURRENCIES.Ethereum.img;
 
-            getDepositNetworksNamesOf_USDT_BTC_ETH()
-              .then(
-                ({
-                  usdt_networks_names,
-                  btc_networks_names,
-                  eth_networks_names,
-                }) => {
-                  res.render("specific_upgrade.ejs", {
-                    isLoggedIn: true,
-                    isAdmin: isAdmin,
-                    usdt_cur_type: WALLETS_CURRENCIES.USDT.name,
-                    usdt_price: usdt_price,
-                    usdt_img: usdt_img,
-                    usdt_networks_names: usdt_networks_names,
-                    btc_cur_type: WALLETS_CURRENCIES.Bitcoin.name,
-                    btc_price: btc_price,
-                    btc_img: btc_img,
-                    btc_networks_names: btc_networks_names,
-                    eth_cur_type: WALLETS_CURRENCIES.Ethereum.name,
-                    eth_price: eth_price,
-                    eth_img: eth_img,
-                    eth_networks_names: eth_networks_names,
-                    membership: membership,
-                  });
-                }
-              )
-              .catch((err) => {
-                res.redirect("/upgrade"); // back to upgrade page
-              });
-          })
-          .catch((err) => {
-            res.redirect("/upgrade"); // back to upgrade page
-          });
-      })
-      .catch((err) => {
-        res.redirect("/upgrade"); // back to upgrade page
-      });
+              getDepositNetworksNamesOf_USDT_BTC_ETH()
+                .then(
+                  ({
+                    usdt_networks_names,
+                    btc_networks_names,
+                    eth_networks_names,
+                  }) => {
+                    res.render("specific_upgrade.ejs", {
+                      isLoggedIn: true,
+                      isAdmin: isAdmin,
+                      usdt_cur_type: WALLETS_CURRENCIES.USDT.name,
+                      usdt_price: usdt_price,
+                      usdt_img: usdt_img,
+                      usdt_networks_names: usdt_networks_names,
+                      btc_cur_type: WALLETS_CURRENCIES.Bitcoin.name,
+                      btc_price: btc_price,
+                      btc_img: btc_img,
+                      btc_networks_names: btc_networks_names,
+                      eth_cur_type: WALLETS_CURRENCIES.Ethereum.name,
+                      eth_price: eth_price,
+                      eth_img: eth_img,
+                      eth_networks_names: eth_networks_names,
+                      membership: membership,
+                    });
+                  }
+                )
+                .catch((err) => {
+                  res.redirect("/upgrade"); // back to upgrade page
+                });
+            })
+            .catch((err) => {
+              res.redirect("/upgrade"); // back to upgrade page
+            });
+        })
+        .catch((err) => {
+          res.redirect("/upgrade"); // back to upgrade page
+        });
+    } else {
+      res.redirect("/upgrade"); // back to upgrade page
+    }
   } else {
     res.redirect("/upgrade"); // back to upgrade page
   }
-}else{
-  res.redirect("/upgrade"); // back to upgrade page
-}
 };
 
 export const getSpecificConfirmUpgradePage = (req, res, next) => {
@@ -217,7 +218,8 @@ export const confirmTransaction = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
 
-  const { cur_type, amount, network_name, vip_needed, transaction_id } = req.body;
+  const { cur_type, amount, network_name, vip_needed, transaction_id } =
+    req.body;
 
   if (id) {
     if (cur_type && amount && network_name && vip_needed && transaction_id) {

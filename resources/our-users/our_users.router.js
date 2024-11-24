@@ -1,12 +1,12 @@
 import { Router } from "express";
-import protect from "../../middlewares/protect.js";
+import adminProtect from "../../middlewares/admin-protect.js";
 import * as ourUsersController from "./our_users.controller.js";
 
 const router = Router();
 
 
 
-// router.put("/editemail", protect, myAccountController.editEmail);
+// router.put("/editemail", adminProtect, ourUsersController.editEmail);
 
 
 

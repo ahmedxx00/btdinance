@@ -1,0 +1,77 @@
+.main_wrapper {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 15px;
+  font-family: q_bold;
+}
+
+.trans_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+  background-color: transparent;
+  box-shadow: 0 0 5px white;
+  row-gap: 5px;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.vip_needed {
+  color: var(--MAIN-MASTARD);
+}
+.network_name {
+  color: greenyellow;
+}
+.post_span,
+.pre_span {
+  color: gray;
+}
+.transaction_id {
+  text-wrap: wrap;
+  word-break: break-all;
+}
+
+.trans_wrap * {
+  pointer-events: none;
+  user-select: none;
+}
+.transaction_id,
+.upgrade_him_btn {
+  pointer-events: initial;
+}
+.transaction_id{
+  user-select: text;
+
+}
+.upgrade_him_btn {
+  font-size: 14px;
+  cursor: pointer;
+  padding: 3px 8px;
+  color: white;
+  background-color: maroon;
+  margin-top: 8px;
+  border: none;
+  outline: none;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.upgrade_him_btn:hover {
+  background-color: black;
+  color: var(--MAIN-MASTARD);
+}

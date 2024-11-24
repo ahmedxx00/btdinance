@@ -1,0 +1,38 @@
+<%- include("./parts/navbar.ejs" , {title : 'Vip Requests',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/vip_requests.css']}) %>
+
+
+<div class="main_wrapper">
+    
+<% if (locals.transactionIDsList && locals.transactionIDsList.length > 0){ %>
+
+
+    <% transactionIDsList.forEach(transaction_id => { %>
+
+        <div class="trans_wrap">
+            <span class="id" style="display: none;"><%= transaction_id._id %></span>
+            <span class="user_name" style="display: none;"><%= transaction_id.user_name %></span>
+            <span class="cur_type" style="display: none;"><%= transaction_id.cur_type %></span>
+            <span class="vip_needed"><%= transaction_id.vip_needed %></span>
+            <span class="amount"><%= transaction_id.amount %> <span class="post_span"><%= transaction_id.cur_type %></span></span>
+            <span class="network_name"><%= transaction_id.network_name %></span>
+            <span class="transaction_id"><span class="pre_span">TXID : </span><%= transaction_id.transaction_id %></span>
+            <button class="upgrade_him_btn">Upgrade HIM</button>
+        </div>
+
+        <% }) %>
+
+
+
+
+<% } %>
+
+</div>
+
+
+
+
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false,scripts: ['/js/simplebar.min.js'], moduleScripts: ['/js/vip_requests.js'] })%>

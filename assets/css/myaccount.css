@@ -256,7 +256,7 @@
   -o-border-radius: 5px;
 }
 
-#edit_email_modal input[name="email"] {
+#edit_email_modal input[name="email"] , #edit_email_modal input[name="key"] {
   display: block;
   margin: 20px auto;
   width: 100%;

@@ -17,7 +17,7 @@ import { getSingleMembershipByNumber } from "../membership/membership.model.js";
 import {
   getConversionRates,
   getSpecificCurrencyConversionRate,
-} from "../../resources/conversion-rates/conversion_rates.model.js";
+} from "../conversion-rates/conversion_rates.model.js";
 
 const Schema = mongoose.Schema;
 

@@ -3,7 +3,7 @@
 import mongoose from "mongoose";
 import { DB_URI, MEMBERSHIPS } from "../../Constants/API_DB_Constants.js";
 import { TRANSACTION_ID_ERROR } from "../../Constants/Error_Constants.js";
-import { upgradeUserMembership } from "../../resources/user/user.model.js";
+import { upgradeUserMembership } from "../user/user.model.js";
 
 const Schema = mongoose.Schema;
 
@@ -30,6 +30,10 @@ const transactionIDSchema = new Schema({
   done: {
     type: Boolean,
     default: false,
+  },
+  created_at: {
+    type: Date,
+    default: new Date(),
   },
 });
 
@@ -107,6 +111,8 @@ export const getNOtDoneTransactionIDs = () => {
         Transaction_ID.find({
           done: false,
         })
+        .sort({ created_at : 1 })
+          .exec()
           .then((transactionIDsList) => {
             mongoose.disconnect();
             resolve(transactionIDsList);
@@ -128,13 +134,13 @@ export const getNOtDoneTransactionIDs = () => {
 export const updateTransactionIDAndUpgradeUser = (
   user_name,
   vip_needed,
-  doc_id
+  transaction_doc_id
 ) => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        Transaction_ID.findByIdAndUpdate(doc_id, { done: true })
+        Transaction_ID.findByIdAndUpdate(transaction_doc_id, { done: true })
           .then(() => {
             let vip_num = Object.values(MEMBERSHIPS).find(
               (v) => v.name == vip_needed

@@ -11,7 +11,7 @@ import {
   NOT_ENOUGH_USDT_BALANCE,
 } from "../../Constants/Error_Constants.js";
 
-import { Wallet } from "../../resources/wallet/wallet.model.js";
+import { Wallet } from "../wallet/wallet.model.js";
 import { User } from "../user/user.model.js";
 //------------------------------------------
 const Schema = mongoose.Schema;

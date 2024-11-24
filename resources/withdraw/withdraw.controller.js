@@ -98,84 +98,91 @@ export const withdrawCurrency = (req, res, next) => {
     received,
   } = req.body;
 
-  if (
-    cur_type &&
-    recipient_address &&
-    key &&
-    network_name &&
-    network_fee &&
-    total &&
-    received
-  ) {
+  if (id) {
     if (
-      Object.values(WALLETS_CURRENCIES)
-        .filter((v) => v.isCrypto)
-        .map((v) => v.name)
-        .includes(cur_type)
+      cur_type &&
+      recipient_address &&
+      key &&
+      network_name &&
+      network_fee &&
+      total &&
+      received
     ) {
-      if (validAmount(total)) {
-        getUserById(id)
-          .then(async (user) => {
-            if (user.isOur) {
-              res.json({
-                success: false,
-                msg: WRONG_KEY,
-              });
-            } else {
-              let plain_key = await decrypt(user.key);
-              if (plain_key === key) {
-                if (user.vip > 0) {
-                  withdrawFromWallet(id, cur_type, total)
-                    .then((msg) => {
-                      res.json({
-                        success: true,
-                        msg: msg,
-                        redirectUrl: "/withdraw",
-                      });
-                    })
-                    .catch((errMsg1) => {
-                      res.json({
-                        success: false,
-                        msg: errMsg1 ? errMsg1 : "error",
-                      });
-                    });
-                } else {
-                  res.json({
-                    success: false,
-                    msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
-                    hint: "vip",
-                  });
-                }
-              } else {
+      if (
+        Object.values(WALLETS_CURRENCIES)
+          .filter((v) => v.isCrypto)
+          .map((v) => v.name)
+          .includes(cur_type)
+      ) {
+        if (validAmount(total)) {
+          getUserById(id)
+            .then(async (user) => {
+              if (user.isOur) {
                 res.json({
                   success: false,
                   msg: WRONG_KEY,
                 });
+              } else {
+                let plain_key = await decrypt(user.key);
+                if (plain_key === key) {
+                  if (user.vip > 0) {
+                    withdrawFromWallet(id, cur_type, total)
+                      .then((msg) => {
+                        res.json({
+                          success: true,
+                          msg: msg,
+                          redirectUrl: "/withdraw",
+                        });
+                      })
+                      .catch((errMsg1) => {
+                        res.json({
+                          success: false,
+                          msg: errMsg1 ? errMsg1 : "error",
+                        });
+                      });
+                  } else {
+                    res.json({
+                      success: false,
+                      msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
+                      hint: "vip",
+                    });
+                  }
+                } else {
+                  res.json({
+                    success: false,
+                    msg: WRONG_KEY,
+                  });
+                }
               }
-            }
-          })
-          .catch((errMsg2) => {
-            res.json({
-              success: false,
-              msg: errMsg2 ? errMsg2 : "error",
+            })
+            .catch((errMsg2) => {
+              res.json({
+                success: false,
+                msg: errMsg2 ? errMsg2 : "error",
+              });
             });
+        } else {
+          res.json({
+            success: false,
+            msg: WRONG_AMOUNT,
           });
+        }
       } else {
         res.json({
           success: false,
-          msg: WRONG_AMOUNT,
+          msg: "error",
         });
       }
     } else {
       res.json({
         success: false,
-        msg: "error",
+        msg: Empty_Credentials_ERROR,
       });
     }
   } else {
     res.json({
       success: false,
-      msg: Empty_Credentials_ERROR,
+      msg: "error",
     });
   }
 };
@@ -186,76 +193,83 @@ export const withdrawFiatCurrency = (req, res, next) => {
 
   const { cur_type, key, iban, swift, total } = req.body;
 
-  if (cur_type && key && iban && swift && total) {
-    if (
-      Object.values(WALLETS_CURRENCIES)
-        .filter((v) => v.isFiat)
-        .map((v) => v.name)
-        .includes(cur_type)
-    ) {
-      if (validAmount(total)) {
-        getUserById(id)
-          .then(async (user) => {
-            if (user.isOur) {
-              res.json({
-                success: false,
-                msg: WRONG_KEY,
-              });
-            } else {
-              let plain_key = await decrypt(user.key);
-              if (plain_key === key) {
-                if (user.vip > 0) {
-                  withdrawFromWallet(id, cur_type, total)
-                    .then((msg) => {
-                      res.json({
-                        success: true,
-                        msg: msg,
-                        redirectUrl: "/withdraw",
-                      });
-                    })
-                    .catch((errMsg1) => {
-                      res.json({
-                        success: false,
-                        msg: errMsg1 ? errMsg1 : "error",
-                      });
-                    });
-                } else {
-                  res.json({
-                    success: false,
-                    msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
-                    hint: "vip",
-                  });
-                }
-              } else {
+  if (id) {
+    if (cur_type && key && iban && swift && total) {
+      if (
+        Object.values(WALLETS_CURRENCIES)
+          .filter((v) => v.isFiat)
+          .map((v) => v.name)
+          .includes(cur_type)
+      ) {
+        if (validAmount(total)) {
+          getUserById(id)
+            .then(async (user) => {
+              if (user.isOur) {
                 res.json({
                   success: false,
                   msg: WRONG_KEY,
                 });
+              } else {
+                let plain_key = await decrypt(user.key);
+                if (plain_key === key) {
+                  if (user.vip > 0) {
+                    withdrawFromWallet(id, cur_type, total)
+                      .then((msg) => {
+                        res.json({
+                          success: true,
+                          msg: msg,
+                          redirectUrl: "/withdraw",
+                        });
+                      })
+                      .catch((errMsg1) => {
+                        res.json({
+                          success: false,
+                          msg: errMsg1 ? errMsg1 : "error",
+                        });
+                      });
+                  } else {
+                    res.json({
+                      success: false,
+                      msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
+                      hint: "vip",
+                    });
+                  }
+                } else {
+                  res.json({
+                    success: false,
+                    msg: WRONG_KEY,
+                  });
+                }
               }
-            }
-          })
-          .catch((errMsg2) => {
-            res.json({
-              success: false,
-              msg: errMsg2 ? errMsg2 : "error",
+            })
+            .catch((errMsg2) => {
+              res.json({
+                success: false,
+                msg: errMsg2 ? errMsg2 : "error",
+              });
             });
+        } else {
+          res.json({
+            success: false,
+            msg: WRONG_AMOUNT,
           });
+        }
       } else {
         res.json({
           success: false,
-          msg: WRONG_AMOUNT,
+          msg: "error",
         });
       }
     } else {
       res.json({
         success: false,
-        msg: "error",
+        msg: Empty_Credentials_ERROR,
       });
     }
   } else {
     res.json({
       success: false,
-      msg: Empty_Credentials_ERROR,
+      msg: "error",
     });
   }
 };

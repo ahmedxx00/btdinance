@@ -6,7 +6,7 @@ import {
 } from "../../Constants/API_DB_Constants.js";
 import { getAllMemberships } from "../membership/membership.model.js";
 import { getUserById } from "../user/user.model.js";
-import { getConversionRates } from "../../resources/conversion-rates/conversion_rates.model.js";
+import { getConversionRates } from "../conversion-rates/conversion_rates.model.js";
 
 export const getWithdrawPage = (req, res, next) => {
   let id = req.payload.id;

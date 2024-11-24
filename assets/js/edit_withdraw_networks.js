@@ -1,6 +1,7 @@
 import * as common from "./common.js";
 
 $(document).ready(function () {
+  
   $("#nav-item-edit_withdraw_networks").css({
     "background-color": "black",
   });

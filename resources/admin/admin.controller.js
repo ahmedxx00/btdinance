@@ -1,13 +1,12 @@
-import { getConversionRates } from "../../resources/conversion-rates/conversion_rates.model.js";
+import { getConversionRates } from "../conversion-rates/conversion_rates.model.js";
 import {
   getAllWithdrawNetworks,
   getAllDepositNetworks,
 } from "../crypto-networks/crypto-networks.model.js";
 import { getAllMemberships } from "../membership/membership.model.js";
 
-import { getAllMemberships } from "../../resources/membership/membership.model.js";
-import { getOurUsers } from "../../resources/user/user.model.js";
-import { getNOtDoneTransactionIDs } from "../../resources/transaction-ids/transaction_id.model.js";
+import { getOurUsers } from "../user/user.model.js";
+import { getNOtDoneTransactionIDs } from "../transaction-ids/transaction_id.model.js";
 
 //-----------------------------------------------------------------
 export const getEditWithdrawNetworksPage = (req, res, next) => {
