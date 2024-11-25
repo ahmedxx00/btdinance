@@ -1,0 +1,295 @@
+.main_wrapper {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 40px;
+  font-family: q_bold;
+  margin-bottom: 100px;
+}
+
+.our_user_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+  background-color: transparent;
+  box-shadow: 0 0 5px white;
+  row-gap: 5px;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.our_user_wrap > span {
+  color: var(--MAIN-MASTARD);
+  display: flex;
+  column-gap: 7px;
+  row-gap: 4px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.our_user_wrap > span input {
+  width: 100%;
+  font-size: 14px;
+  padding: 4px;
+  color: white;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid var(--MAIN-MASTARD);
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.our_user_wrap > span button {
+  background-color: black;
+  box-shadow: 0 0 1px white;
+  color: var(--MAIN-MASTARD);
+  padding: 3px 7px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.our_user_wrap > span button:hover {
+  box-shadow: 0 0 4px white;
+}
+
+/* --------------- wallets -------------- */
+.tt {
+  width: 100%;
+  text-align: center;
+  color: blue !important;
+  padding: 2px;
+  border: 1px dotted blue;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.wallets {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.wallet {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+  padding: 4px 7px;
+  justify-content: flex-start;
+  box-shadow: 0 0 2px white;
+}
+
+.wallet > span {
+  color: var(--MAIN-MASTARD);
+}
+
+.wallet img {
+  height: 20px;
+  width: 20px;
+}
+
+span.available {
+  text-wrap: nowrap;
+}
+
+input[name="edit_av"] {
+  max-width: 100px;
+  font-size: 13px;
+  color: black;
+  outline: none;
+  border: none;
+  padding: 2px;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.wallet button {
+  padding: 3px 6px;
+  background-color: blue;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.wallet .remove_btn {
+  background-color: maroon;
+  color: black;
+  align-self: flex-end;
+}
+
+.edit_av_btn:hover {
+  background-color: black;
+}
+.remove_btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.wallet .pre_span,
+.wallet .post_span {
+  color: gray;
+}
+/* ------------ below_btns ----------- */
+
+.below_btns {
+  width: max-content;
+  margin-top: 15px;
+  align-self: center;
+}
+
+.below_btns button {
+  font-size: 14px;
+  cursor: pointer;
+  padding: 3px 8px;
+  color: white;
+  background-color: purple;
+  border: none;
+  outline: none;
+
+  margin: 0 4px;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.below_btns button:hover {
+  background-color: black;
+}
+
+/* ------ add_new_our_user----------- */
+.add_new_our_user_btn {
+  padding: 5px 8px;
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+  font-family: q_bold;
+  border: none;
+  outline: none;
+  position: fixed;
+  bottom: 80px;
+  right: 15px;
+  cursor: pointer;
+
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.add_new_our_user_btn:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+/* ------ bottom navigation----------- */
+
+.navigation {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 20px;
+  background-color: black;
+  padding: 15px;
+  list-style-type: none;
+
+  gap: 10px;
+
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.page-link {
+  text-decoration: none;
+  padding: 3px 6px;
+  font-size: 16px;
+  color: black;
+  background-color: var(--MAIN-MASTARD);
+
+  border: 1px solid var(--MAIN-MASTARD);
+
+  user-select: none;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.page-link:hover {
+  background-color: black;
+  color: white;
+}
+.page-item.disabled .page-link {
+  background-color: maroon;
+  border-color: maroon;
+
+  color: #b1b1b1;
+  pointer-events: none;
+}
+.page-item.active .page-link {
+  background-color: black;
+  color: white;
+}
+
+.page-link:any-link {
+  text-decoration: none;
+}
+
+/* ---------------------------------- */

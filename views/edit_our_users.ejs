@@ -1,0 +1,92 @@
+<%- include("./parts/navbar.ejs" , {title : 'Edit Our Users',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/edit_our_users.css']}) %>
+
+<div class="main_wrapper">
+
+  <% if (locals.ourUsersArray && locals.ourUsersArray.length > 0){ %>
+
+  <% ourUsersArray.forEach(ourUser => { %>
+
+  <div class="our_user_wrap">
+
+    <span class="id" style="display: none;"><%= ourUser._id %></span>
+
+    <span class="name">
+      <span class="pre_span">Name : </span>
+      <%= ourUser.name %>
+    </span>
+
+    <span class="email">
+      <span class="pre_span">Email : </span>
+      <%= ourUser.email %>
+      <input type="text" name="email" placeholder="email">
+      <button class="edit">Edit Email</button>
+    </span>
+
+    <span class="vip">
+      <span class="pre_span">Vip : </span>
+      <%= ourUser.vip %>
+      <input type="text" name="vip" placeholder="vip">
+      <button class="edit">Edit Vip</button>
+    </span>
+
+    <h4 class="tt">wallets</h4>
+    <div class="wallets">
+
+      <% ourUser.wallets.forEach(wallet => { %>
+
+      <div class="wallet">
+        <span class="wallet_id" style="display: none;"><%= wallet._id %></span>
+        <span class="cur_type" style="display: none;"><%= wallet.currency %></span>
+        <img src="<%= wallet.img %>" alt="<%= wallet.currency %>">
+        <span class="available"><span class="pre_span">Av : </span><%= wallet.available %> <span class="post_span"><%= wallet.currency %></span></span>
+        <input type="text" name="edit_av" placeholder="Edit Av">
+        <button class="edit_av_btn">Edit Av</button>
+        <button class="remove_btn">rem</button>
+      </div>
+
+      <% }) %>
+
+    </div>
+
+    <div class="below_btns">
+      <button class="show_password">show password</button>
+      <button class="show_key">show key</button>
+      <button class="add_wallet">add wallet</button>
+    </div>
+
+  </div>
+
+  <% }) %>
+
+  <% } %>
+
+</div>
+
+<button class="add_new_our_user_btn">Add New</button>
+
+
+<!-- BEGIN navigation -->
+
+<ul class="navigation">
+  <% let prev = "disabled"; if(hasPrev){ prev = "" }; %>
+  <li class="page-item <%= prev %>">
+    <a class="page-link" href="/admin/edit_our_users?page=<%= page - 1 %>">Prev</a>
+  </li>
+
+  <% for(let i = 1; i <= pageCount; i++){ %> <% let active = ""; %>
+  <%if(page === i) { active = "active"} %>
+  <li class="page-item <%= active %>">
+    <a class="page-link" name="1" href="/admin/edit_our_users?page=<%= i %>"><%= i %></a>
+  </li>
+  <% }; %> <% let next = "disabled"; if(hasNext){ next = "" }; %>
+  <li class="page-item <%= next %>">
+    <a class="page-link" href="/admin/edit_our_users?page=<%= page + 1 %>">Next</a>
+  </li>
+</ul>
+
+<!-- END navigation -->
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false,scripts: ['/js/simplebar.min.js'], moduleScripts: ['/js/edit_our_users.js'] })%>

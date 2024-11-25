@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import mongoosePaginate from "mongoose-paginate-v2";
 import { Wallet } from "../wallet/wallet.model.js";
 
 import {
@@ -56,6 +56,8 @@ const userSchema = new Schema({
   },
 });
 
+//------------------- mongoose paginate v2-----------------------
+userSchema.plugin(mongoosePaginate);
 //------------------------------------------
 export const User = mongoose.model("user", userSchema);
 //------------------------------------------
@@ -219,12 +221,15 @@ export const getUserNameById = (id) => {
       });
   });
 };
+
 export const getOurUsers = () => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
         User.find({ isOur: true })
+          .populate("wallets")
+          .exec()
           .then((ourUsersArray) => {
             mongoose.disconnect();
             resolve(ourUsersArray);
@@ -234,6 +239,36 @@ export const getOurUsers = () => {
             mongoose.disconnect();
             reject();
           });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const getOurUsersPaginated = (page) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        const options = {
+          populate: "wallets",
+          page: !page ? 1 : page,
+          limit: 50,
+        };
+
+        User.paginate({ isOur: true }, options, function (err1, results) {
+          if (err1) {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          } else {
+            mongoose.disconnect();
+            resolve(results);
+          }
+        });
       })
       .catch((err2) => {
         console.log("err2 : " + err2);

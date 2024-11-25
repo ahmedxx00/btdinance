@@ -5,7 +5,7 @@ import {
 } from "../crypto-networks/crypto-networks.model.js";
 import { getAllMemberships } from "../membership/membership.model.js";
 
-import { getOurUsers } from "../user/user.model.js";
+import { getOurUsers, getOurUsersPaginated } from "../user/user.model.js";
 import {
   getNOtDoneTransactionIDs,
   getNOtDoneTransactionIDsPaginated,
@@ -133,39 +133,21 @@ export const getEditMembershipsPage = (req, res, next) => {
 export const getEditOurUsersPage = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
+
+  const { page } = req.query;
+
   if (id) {
-    getOurUsers()
-      .then((ourUsersArray) => {
-        /*
-   [
-        {
-        "_id": "string",
-        "name": "string",
-        "email": "string",
-        "password": "string",
-        "key": "string",
-        "wallets": [
-          {
-            "$oid": "string"
-          },
-          {
-            "$oid": "string"
-          },
-        ],
-        "vip": Number ,
-        "isOur": true,
-        "created_at": "Date"
-      },
-      {.......},
-      {.......},
-
-    ]
- */
-
+    getOurUsersPaginated(page)
+      .then((results) => {
         res.render("edit_our_users.ejs", {
           isLoggedIn: true,
           isAdmin: isAdmin,
-          ourUsersArray: ourUsersArray,
+          ourUsersArray: results.docs,
+          total: results.totalDocs,
+          hasPrev: results.hasPrevPage,
+          hasNext: results.hasNextPage,
+          pageCount: results.totalPages,
+          page: results.page,
         });
       })
       .catch((errMsg) => {
@@ -175,7 +157,7 @@ export const getEditOurUsersPage = (req, res, next) => {
     res.redirect("/"); // back to home page
   }
 };
-//-----------------------------------------------------------------
+//----------------------------------------------------------------
 
 //-----------------------------------------------------------------
 export const getVipRequestsPage = (req, res, next) => {

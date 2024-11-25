@@ -1,7 +1,7 @@
 // [transaction ID/Hash | TXID | ]
 //------------------------------------------
 import mongoose from "mongoose";
-import mongoosePaginate, { paginate } from "mongoose-paginate-v2";
+import mongoosePaginate from "mongoose-paginate-v2";
 import { DB_URI, MEMBERSHIPS } from "../../Constants/API_DB_Constants.js";
 import { TRANSACTION_ID_ERROR } from "../../Constants/Error_Constants.js";
 import { upgradeUserMembership } from "../user/user.model.js";
@@ -142,7 +142,7 @@ export const getNOtDoneTransactionIDsPaginated = (page) => {
         const options = {
           sort: { created_at: 1 },
           page: !page ? 1 : page,
-          limit: 3,
+          limit: 50,
         };
 
         Transaction_ID.paginate(
@@ -156,17 +156,6 @@ export const getNOtDoneTransactionIDsPaginated = (page) => {
             } else {
               mongoose.disconnect();
               resolve(results);
-
-              /*
-            res.render("instock", {
-              foundAircons: results.docs,
-              total: results.totalDocs,
-              hasPrev: results.hasPrevPage,
-              hasNext: results.hasNextPage,
-              pageCount: results.totalPages,
-              page: results.page,
-            });
-            */
             }
           }
         );
