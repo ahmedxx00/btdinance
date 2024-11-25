@@ -29,9 +29,10 @@
   background-color: maroon;
   color: white;
   border: none;
+  text-wrap: wrap;
+  margin: 0 auto;
 }
 .nav-items.admin li a:any-link {
-  color: white;
   text-decoration: none;
 }
 

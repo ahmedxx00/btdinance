@@ -6,7 +6,10 @@ import {
 import { getAllMemberships } from "../membership/membership.model.js";
 
 import { getOurUsers } from "../user/user.model.js";
-import { getNOtDoneTransactionIDs } from "../transaction-ids/transaction_id.model.js";
+import {
+  getNOtDoneTransactionIDs,
+  getNOtDoneTransactionIDsPaginated,
+} from "../transaction-ids/transaction_id.model.js";
 
 //-----------------------------------------------------------------
 export const getEditWithdrawNetworksPage = (req, res, next) => {
@@ -178,30 +181,20 @@ export const getEditOurUsersPage = (req, res, next) => {
 export const getVipRequestsPage = (req, res, next) => {
   let id = req.payload.id;
   let isAdmin = req.payload.isAdmin;
-  if (id) {
-    getNOtDoneTransactionIDs()
-      .then((transactionIDsList) => {
-        /*
-   [
-        {
-        "_id": "string",
-        "user_name": "string",
-        "cur_type": "string",
-        "amount": "string",
-        "network_name": "string",
-        "vip_needed": "string" ,
-        "transaction_id": "string",
-        "done": false
-      },
-      {.......},
-      {.......},
+  const { page } = req.query;
 
-    ]
- */
+  if (id) {
+    getNOtDoneTransactionIDsPaginated(page)
+      .then((results) => {
         res.render("vip_requests.ejs", {
           isLoggedIn: true,
           isAdmin: isAdmin,
-          transactionIDsList: transactionIDsList,
+          transactionIDsList: results.docs,
+          total: results.totalDocs,
+          hasPrev: results.hasPrevPage,
+          hasNext: results.hasNextPage,
+          pageCount: results.totalPages,
+          page: results.page,
         });
       })
       .catch((errMsg) => {

@@ -2,34 +2,53 @@
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/vip_requests.css']}) %>
 
-
 <div class="main_wrapper">
-    
-<% if (locals.transactionIDsList && locals.transactionIDsList.length > 0){ %>
 
+  <% if (locals.transactionIDsList && locals.transactionIDsList.length > 0){ %>
 
-    <% transactionIDsList.forEach(transaction_id => { %>
+  <% transactionIDsList.forEach(transaction_id => { %>
 
-        <div class="trans_wrap">
-            <span class="id" style="display: none;"><%= transaction_id._id %></span>
-            <span class="user_name" style="display: none;"><%= transaction_id.user_name %></span>
-            <span class="cur_type" style="display: none;"><%= transaction_id.cur_type %></span>
-            <span class="vip_needed"><%= transaction_id.vip_needed %></span>
-            <span class="amount"><%= transaction_id.amount %> <span class="post_span"><%= transaction_id.cur_type %></span></span>
-            <span class="network_name"><%= transaction_id.network_name %></span>
-            <span class="transaction_id"><span class="pre_span">TXID : </span><%= transaction_id.transaction_id %></span>
-            <button class="upgrade_him_btn">Upgrade HIM</button>
-        </div>
+  <div class="trans_wrap">
+    <span class="id" style="display: none;"><%= transaction_id._id %></span>
+    <span class="user_name" style="display: none;"><%= transaction_id.user_name %></span>
+    <span class="cur_type" style="display: none;"><%= transaction_id.cur_type %></span>
+    <span class="vip_needed"><%= transaction_id.vip_needed %></span>
+    <span class="amount"><%= transaction_id.amount %> <span class="post_span"><%= transaction_id.cur_type %></span></span>
+    <span class="network_name"><%= transaction_id.network_name %></span>
+    <span class="transaction_id"><span class="pre_span">TXID : </span><%= transaction_id.transaction_id %></span>
+    <div class="btns">
+      <button class="neglect_him_btn">Neglect HIM</button>
+      <button class="upgrade_him_btn">Upgrade HIM</button>
+    </div>
+  </div>
 
-        <% }) %>
+  <% }) %>
 
-
-
-
-<% } %>
+  <% } %>
 
 </div>
 
+
+<!-- BEGIN navigation -->
+
+<ul class="navigation">
+  <% let prev = "disabled"; if(hasPrev){ prev = "" }; %>
+  <li class="page-item <%= prev %>">
+    <a class="page-link" href="/admin/vip_requests?page=<%= page - 1 %>">Prev</a>
+  </li>
+
+  <% for(let i = 1; i <= pageCount; i++){ %> <% let active = ""; %>
+  <%if(page === i) { active = "active"} %>
+  <li class="page-item <%= active %>">
+    <a class="page-link" name="1" href="/admin/vip_requests?page=<%= i %>"><%= i %></a>
+  </li>
+  <% }; %> <% let next = "disabled"; if(hasNext){ next = "" }; %>
+  <li class="page-item <%= next %>">
+    <a class="page-link" href="/admin/vip_requests?page=<%= page + 1 %>">Next</a>
+  </li>
+</ul>
+
+<!-- END navigation -->
 
 
 

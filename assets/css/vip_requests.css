@@ -2,11 +2,12 @@
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
   gap: 15px;
   font-family: q_bold;
+  margin-bottom: 40px;
 }
 
 .trans_wrap {
@@ -48,20 +49,24 @@
   user-select: none;
 }
 .transaction_id,
-.upgrade_him_btn {
+.upgrade_him_btn,
+.neglect_him_btn {
   pointer-events: initial;
 }
-.transaction_id{
+.transaction_id {
   user-select: text;
-
 }
-.upgrade_him_btn {
+
+.btns {
+  width: max-content;
+  margin-top: 8px;
+}
+
+.btns button {
   font-size: 14px;
   cursor: pointer;
   padding: 3px 8px;
   color: white;
-  background-color: maroon;
-  margin-top: 8px;
   border: none;
   outline: none;
 
@@ -71,7 +76,77 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-.upgrade_him_btn:hover {
-  background-color: black;
-  color: var(--MAIN-MASTARD);
+.neglect_him_btn {
+  background-color: maroon;
+  margin-right: 3px;
 }
+.upgrade_him_btn {
+  background-color: green;
+}
+.btns button:hover {
+  background-color: black;
+}
+
+/* ------ bottom navigation----------- */
+
+.navigation {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 20px;
+  background-color: black;
+  padding: 15px;
+  list-style-type: none;
+
+  gap: 10px;
+
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.page-link {
+  text-decoration: none;
+  padding: 3px 6px;
+  font-size: 16px;
+  color: black;
+  background-color: var(--MAIN-MASTARD);
+
+  border: 1px solid var(--MAIN-MASTARD);
+
+  user-select: none;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.page-link:hover {
+  background-color: black;
+  color: white;
+}
+.page-item.disabled .page-link {
+  background-color: maroon;
+  border-color: maroon;
+
+  color: #b1b1b1;
+  pointer-events: none;
+}
+.page-item.active .page-link {
+  background-color: black;
+  color: white;
+}
+
+.page-link:any-link {
+  text-decoration: none;
+}
+
+/* ---------------------------------- */

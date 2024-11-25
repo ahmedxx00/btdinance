@@ -1,6 +1,7 @@
 // [transaction ID/Hash | TXID | ]
 //------------------------------------------
 import mongoose from "mongoose";
+import mongoosePaginate, { paginate } from "mongoose-paginate-v2";
 import { DB_URI, MEMBERSHIPS } from "../../Constants/API_DB_Constants.js";
 import { TRANSACTION_ID_ERROR } from "../../Constants/Error_Constants.js";
 import { upgradeUserMembership } from "../user/user.model.js";
@@ -37,7 +38,9 @@ const transactionIDSchema = new Schema({
   },
 });
 
-//------------------------------------------
+//------------------- mongoose paginate v2-----------------------
+transactionIDSchema.plugin(mongoosePaginate);
+//----------------------------------------------------------------
 export const Transaction_ID = mongoose.model(
   "transaction_id",
   transactionIDSchema
@@ -57,8 +60,8 @@ export const saveTransactionID = (
       .connect(DB_URI)
       .then(() => {
         Transaction_ID.findOne({
-          cur_type : cur_type,
-          network_name : network_name,
+          cur_type: cur_type,
+          network_name: network_name,
           transaction_id: transaction_id,
         })
           .then((TransactionIDDocument) => {
@@ -111,6 +114,67 @@ export const getNOtDoneTransactionIDs = () => {
         Transaction_ID.find({
           done: false,
         })
+          .sort({ created_at: 1 })
+          .exec()
+          .then((transactionIDsList) => {
+            mongoose.disconnect();
+            resolve(transactionIDsList);
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const getNOtDoneTransactionIDsPaginated = (page) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        const options = {
+          sort: { created_at: 1 },
+          page: !page ? 1 : page,
+          limit: 3,
+        };
+
+        Transaction_ID.paginate(
+          { done: false },
+          options,
+          function (err1, results) {
+            if (err1) {
+              console.log("err1 : " + err1);
+              mongoose.disconnect();
+              reject();
+            } else {
+              mongoose.disconnect();
+              resolve(results);
+
+              /*
+            res.render("instock", {
+              foundAircons: results.docs,
+              total: results.totalDocs,
+              hasPrev: results.hasPrevPage,
+              hasNext: results.hasNextPage,
+              pageCount: results.totalPages,
+              page: results.page,
+            });
+            */
+            }
+          }
+        );
+
+        /*
+        Transaction_ID.find({
+          done: false,
+        })
         .sort({ created_at : 1 })
           .exec()
           .then((transactionIDsList) => {
@@ -122,6 +186,7 @@ export const getNOtDoneTransactionIDs = () => {
             mongoose.disconnect();
             reject();
           });
+*/
       })
       .catch((err2) => {
         console.log("err2 : " + err2);
@@ -165,6 +230,30 @@ export const updateTransactionIDAndUpgradeUser = (
       })
       .catch((err3) => {
         console.log("err3 : " + err3);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const deleteTransactionId = (transaction_doc_id) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Transaction_ID.findByIdAndDelete(transaction_doc_id)
+          .then(() => {
+            mongoose.disconnect();
+            resolve();
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
         mongoose.disconnect();
         reject();
       });
