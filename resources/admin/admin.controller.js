@@ -10,6 +10,7 @@ import {
   getNOtDoneTransactionIDs,
   getNOtDoneTransactionIDsPaginated,
 } from "../transaction-ids/transaction_id.model.js";
+import { WALLETS_CURRENCIES } from "../../Constants/API_DB_Constants.js";
 
 //-----------------------------------------------------------------
 export const getEditWithdrawNetworksPage = (req, res, next) => {
@@ -136,12 +137,15 @@ export const getEditOurUsersPage = (req, res, next) => {
 
   const { page } = req.query;
 
+  let cur_types_array = Object.values(WALLETS_CURRENCIES).map(v=> v.name);
+
   if (id) {
     getOurUsersPaginated(page)
       .then((results) => {
         res.render("edit_our_users.ejs", {
           isLoggedIn: true,
           isAdmin: isAdmin,
+          cur_types_array: cur_types_array,
           ourUsersArray: results.docs,
           total: results.totalDocs,
           hasPrev: results.hasPrevPage,

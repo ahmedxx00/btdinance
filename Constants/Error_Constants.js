@@ -1,5 +1,9 @@
 
 export const USER_EXISTS = "you already have account";
+export const THIS_USER_EXISTS = "this user exists";
+export const THIS_EMAIL_EXISTS = "email assigned to another user";
+export const OUR_USER_ADDED = "our user added";
+export const ALREADY_HAS_WALLET = (cur_type)=> `already has a <span style='color : blue'>${cur_type}</span> wallet`;
 export const WRONG_EMAIL = "wrong credentials";
 export const WRONG_PASSWORD = "wrong credentials";
 export const AVAILABLE = "Available";
@@ -31,6 +35,10 @@ export const HE_MUST_BE_VIP1 = "the receiver must be at least <span style='color
 export const TRANSFER_SUCCESSFUL = "Transfer Successful";
 export const EXCHANGE_SUCCESSFUL = "Exchange Successful";
 export const EMAIL_EDIT_SUCCESSFUL = "Email Successfully Edited";
+export const VIP_EDITED = "Vip Edited";
+export const WALLET_UPDATED = "Wallet Updated";
+export const WALLET_ADDED = "Wallet Added";
+export const WALLET_REMOVED = "Wallet Removed";
 export const MEMBERSHIP_EXISTS = "membership already exists";
 export const NO_MEMBERSHIP_WITH_THAT_TYPE = "no membership with that type";
 export const NO_MEMBERSHIP_WITH_THAT_NUMBER = "no membership with that number";

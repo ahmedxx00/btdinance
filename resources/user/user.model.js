@@ -11,6 +11,8 @@ import {
   NO_USER_WITH_THAT_NAME,
   NO_USER_WITH_THAT_Email,
   THIS_EMAIL_IS_USED,
+  THIS_USER_EXISTS,
+  THIS_EMAIL_EXISTS,
 } from "../../Constants/Error_Constants.js";
 
 import { DB_URI, encrypt } from "../../Constants/API_DB_Constants.js";
@@ -35,8 +37,6 @@ const userSchema = new Schema({
   email: {
     type: String,
     match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, "Invalid email format"],
-    unique: [true, "this email is attached to another account"],
-    sparse: true,
     required: false,
   },
   password: {
@@ -256,7 +256,7 @@ export const getOurUsersPaginated = (page) => {
         const options = {
           populate: "wallets",
           page: !page ? 1 : page,
-          limit: 50,
+          limit: 20,
         };
 
         User.paginate({ isOur: true }, options, function (err1, results) {
@@ -371,32 +371,47 @@ export const updateUserEmail = (id, email) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        User.findOne({ email: email })
-          .then((user) => {
-            if (user) {
+        if (email.toString().trim().length > 0) {
+          //not empty
+
+          User.findOne({ email: email })
+            .then((user) => {
+              if (user) {
+                mongoose.disconnect();
+                reject(THIS_EMAIL_IS_USED);
+              } else {
+                User.findByIdAndUpdate(id, { email: email })
+                  .then(() => {
+                    mongoose.disconnect();
+                    resolve();
+                  })
+                  .catch((err1) => {
+                    console.log("err1 : " + err1);
+                    mongoose.disconnect();
+                    reject();
+                  });
+              }
+            })
+            .catch((err2) => {
+              console.log("err2 : " + err2);
               mongoose.disconnect();
-              reject(THIS_EMAIL_IS_USED);
-            } else {
-              User.findByIdAndUpdate(id, { email: email })
-                .then(() => {
-                  mongoose.disconnect();
-                  resolve();
-                })
-                .catch((err1) => {
-                  console.log("err1 : " + err1);
-                  mongoose.disconnect();
-                  reject();
-                });
-            }
-          })
-          .catch((err2) => {
-            console.log("err2 : " + err2);
-            mongoose.disconnect();
-            reject();
-          });
+              reject();
+            });
+        } else {
+          User.findByIdAndUpdate(id, { email: "" })
+            .then(() => {
+              mongoose.disconnect();
+              resolve();
+            })
+            .catch((err3) => {
+              console.log("err3 : " + err3);
+              mongoose.disconnect();
+              reject();
+            });
+        }
       })
-      .catch((err3) => {
-        console.log("err3 : " + err3);
+      .catch((err4) => {
+        console.log("err4 : " + err4);
         mongoose.disconnect();
         reject();
       });
@@ -409,6 +424,30 @@ export const upgradeUserMembership = (name, vip) => {
       .connect(DB_URI)
       .then(() => {
         User.findOneAndUpdate({ name: name }, { vip: vip })
+          .then(() => {
+            mongoose.disconnect();
+            resolve();
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const upgradeUserMembershipById = (id, vip) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        User.findByIdAndUpdate(id, { vip: vip })
           .then(() => {
             mongoose.disconnect();
             resolve();
@@ -451,6 +490,95 @@ export const CheckUserNameAvailable = (name) => {
       })
       .catch((err2) => {
         console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const CreateOurUser = (name, email, vip, password, key) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        User.findOne({ name: name })
+          .then(async (user1) => {
+            let enc = await encrypt(password);
+            let encKey = await encrypt(key);
+            let vipNum = parseInt(vip);
+
+            if (user1) {
+              mongoose.disconnect();
+              reject(THIS_USER_EXISTS);
+            } else {
+              if (email.toString().trim().length > 0) {
+                User.findOne({ email: email })
+                  .then((user2) => {
+                    if (user2) {
+                      mongoose.disconnect();
+                      reject(THIS_EMAIL_EXISTS);
+                    } else {
+                      let new_our_user = new User({
+                        name: name,
+                        email: email,
+                        password: enc,
+                        key: encKey,
+                        vip: vipNum,
+                        isOur: true,
+                      });
+
+                      new_our_user
+                        .save()
+                        .then(() => {
+                          mongoose.disconnect();
+                          resolve();
+                        })
+                        .catch((err1) => {
+                          console.log("err1 : " + err1);
+                          mongoose.disconnect();
+                          reject();
+                        });
+                    }
+                  })
+                  .catch((err2) => {
+                    console.log("err2 : " + err2);
+                    mongoose.disconnect();
+                    reject();
+                  });
+              } else {
+                // empty email no check for duplicate
+
+                let new_our_user = new User({
+                  name: name,
+                  email: "",
+                  password: enc,
+                  key: encKey,
+                  vip: vipNum,
+                  isOur: true,
+                });
+
+                new_our_user
+                  .save()
+                  .then(() => {
+                    mongoose.disconnect();
+                    resolve();
+                  })
+                  .catch((err3) => {
+                    console.log("err3 : " + err3);
+                    mongoose.disconnect();
+                    reject();
+                  });
+              }
+            }
+          })
+          .catch((err4) => {
+            console.log("err4 : " + err4);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err5) => {
+        console.log("err5 : " + err5);
         mongoose.disconnect();
         reject();
       });

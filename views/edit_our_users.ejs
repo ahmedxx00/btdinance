@@ -20,15 +20,15 @@ false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/edit_our_users
     <span class="email">
       <span class="pre_span">Email : </span>
       <%= ourUser.email %>
-      <input type="text" name="email" placeholder="email">
-      <button class="edit">Edit Email</button>
+      <input type="text" name="email" placeholder="Edit email">
+      <button class="edit_email">Edit Email</button>
     </span>
 
     <span class="vip">
       <span class="pre_span">Vip : </span>
       <%= ourUser.vip %>
-      <input type="text" name="vip" placeholder="vip">
-      <button class="edit">Edit Vip</button>
+      <input type="text" name="vip" placeholder="Edit vip">
+      <button class="edit_vip">Edit Vip</button>
     </span>
 
     <h4 class="tt">wallets</h4>
@@ -40,7 +40,11 @@ false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/edit_our_users
         <span class="wallet_id" style="display: none;"><%= wallet._id %></span>
         <span class="cur_type" style="display: none;"><%= wallet.currency %></span>
         <img src="<%= wallet.img %>" alt="<%= wallet.currency %>">
-        <span class="available"><span class="pre_span">Av : </span><%= wallet.available %> <span class="post_span"><%= wallet.currency %></span></span>
+        <span class="available">
+          <span class="pre_span">Av : </span>
+          <%= wallet.available %>
+          <span class="post_span"><%= wallet.currency %></span>
+        </span>
         <input type="text" name="edit_av" placeholder="Edit Av">
         <button class="edit_av_btn">Edit Av</button>
         <button class="remove_btn">rem</button>
@@ -64,8 +68,32 @@ false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/edit_our_users
 
 </div>
 
+
 <button class="add_new_our_user_btn">Add New</button>
 
+<!-- BEGIN cur_types modal -->
+<% if (locals.cur_types_array) { %>
+<div id="cur_types" style="display: none;">
+  <span class="user_id" style="display: none;"></span>
+  <span class="user_name" style="display: none;"></span>
+  <% cur_types_array.forEach(cur_type => { %>
+  <input type="radio" id="cur_type_<%= cur_types_array.indexOf(cur_type) %>" name="cur_type" value="<%= cur_type %>" />
+  <label for="cur_type_<%= cur_types_array.indexOf(cur_type) %>"><%= cur_type %></label>
+  <% }) %>
+  <button id="cnf_add_wallet">confirm add wallet</button>
+</div>
+<% } %>
+<!-- END cur_types modal -->
+<!-- BEGIN add_our_user modal -->
+<div class="new_our_user_modal" style="display: none;">
+  <input type="text" name="name" placeholder="name" />
+  <input type="text" name="email" placeholder="email (optional)" />
+  <input type="text" name="vip" placeholder="vip" />
+  <input type="text" name="password" placeholder="password" />
+  <input type="text" name="key" placeholder="key" />
+  <button id="cnf_new_user_btn">add new user</button>
+</div>
+<!-- END add_our_user modal -->
 
 <!-- BEGIN navigation -->
 

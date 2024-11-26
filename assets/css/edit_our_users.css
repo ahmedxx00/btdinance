@@ -293,3 +293,74 @@ input[name="edit_av"] {
 }
 
 /* ---------------------------------- */
+#cnf_add_wallet {
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin: 0 8px;
+  border: none;
+  outline: none;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+#cnf_add_wallet:hover {
+  background-color: black;
+  color: white;
+}
+
+/* ------------------ #new_our_user_modal --------------------- */
+
+.new_our_user_modal input {
+  display: block;
+  width: 100%;
+  padding: 4px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: var(--MAIN-MASTARD);
+  font-size: 16px;
+  margin-bottom: 10px;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.new_our_user_modal input::placeholder {
+  color: gray;
+}
+
+.new_our_user_modal button {
+  display: block;
+  width: 100%;
+  padding: 4px;
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+  cursor: pointer;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.new_our_user_modal button:hover {
+  background-color: black;
+  color: white;
+}
+/* ------------------ last --------------------- */
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}

@@ -6,6 +6,7 @@ import {
   randomFromTo,
 } from "../../Constants/API_DB_Constants.js";
 import {
+  ALREADY_HAS_WALLET,
   BASIC_TRANSFER_LIMIT_ERROR,
   NOT_SUCH_WALLET,
   NOT_SUFFICIENT_AMOUNT,
@@ -698,6 +699,135 @@ const transferToReceiverWhoDontHaveWallet = (
 };
 // [$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$]
 
+// ========================== our users manipulate wallets ==================
+export const editWalletAvailable = (user_id, cur_type, amount) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Wallet.findOneAndUpdate(
+          { user_id: user_id, currency: cur_type },
+          { available: amount }
+        )
+          .then(() => {
+            mongoose.disconnect();
+            resolve();
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const walletRemove = (user_id, wallet_id) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Wallet.findByIdAndDelete(wallet_id)
+          .then(() => {
+            User.findByIdAndUpdate(user_id, {
+              $pull: { wallets: wallet_id },
+            })
+              .then(() => {
+                mongoose.disconnect();
+                resolve();
+              })
+              .catch((err1) => {
+                console.log("err1 : " + err1);
+                mongoose.disconnect();
+                reject();
+              });
+          })
+          .catch((err2) => {
+            console.log("err2 : " + err2);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err3) => {
+        console.log("err3 : " + err3);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const addWalletToUser = (user_id, user_name, cur_type) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(async () => {
+        //-------------------------------
+        Wallet.findOne({ user_id: user_id, currency: cur_type })
+          .then(async (wallet) => {
+            if (wallet) {
+              mongoose.disconnect();
+              reject(ALREADY_HAS_WALLET(cur_type));
+            } else {
+              let xx = Object.values(WALLETS_CURRENCIES).find(
+                (v) => v.name == cur_type
+              );
+              let min = xx.our_users_min_balance;
+              let max = xx.our_users_max_balance;
+              let av_num = await randomFromTo(min, max);
+              let av_string = av_num.toString();
+              //-------------------------------
+              let new_wallet = new Wallet({
+                user_id: user_id,
+                user_name: user_name,
+                currency: cur_type,
+                available: av_string,
+              });
+
+              let new_wallet_id = new_wallet._id;
+              //-------------------------------
+
+              new_wallet
+                .save()
+                .then(() => {
+                  User.findByIdAndUpdate(user_id, {
+                    $push: { wallets: new_wallet_id },
+                  })
+                    .then(() => {
+                      mongoose.disconnect();
+                      resolve();
+                    })
+                    .catch((err1) => {
+                      console.log("err1 : " + err1);
+                      mongoose.disconnect();
+                      reject();
+                    });
+                })
+                .catch((err2) => {
+                  console.log("err2 : " + err2);
+                  mongoose.disconnect();
+                  reject();
+                });
+            }
+          })
+          .catch((err3) => {
+            console.log("err3 : " + err3);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err4) => {
+        console.log("err4 : " + err4);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+//=============================================================================
 /* ---- restrict transfer to vip1 or more only -----------
 export const transferBetweenTwoWallets = (
   sender_user_id,
