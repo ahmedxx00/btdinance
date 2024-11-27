@@ -23,6 +23,7 @@ export const getForgotPasswordPage = (req, res, next) => {
 export const getTermsConditionsPage = (req, res, next) => {
   res.render("terms-conditions.ejs");
 };
+
 export const getAdminLoginPage = (req, res, next) => {
   res.render("admin-login.ejs");
 };

@@ -75,10 +75,15 @@ export const getEditConversionRatesPage = (req, res, next) => {
               'EUR' : 0.95
                 }
              } */
+        let cur_types_array = Object.values(WALLETS_CURRENCIES).map(
+          (v) => v.name
+        );
+
         res.render("edit_conversion_rates.ejs", {
           isLoggedIn: true,
           isAdmin: isAdmin,
-          ratesDocument: ratesDocument,
+          ratesObject: ratesDocument? ratesDocument.rates : null,
+          cur_types_array: cur_types_array,
         });
       })
       .catch((errMsg) => {
@@ -137,7 +142,7 @@ export const getEditOurUsersPage = (req, res, next) => {
 
   const { page } = req.query;
 
-  let cur_types_array = Object.values(WALLETS_CURRENCIES).map(v=> v.name);
+  let cur_types_array = Object.values(WALLETS_CURRENCIES).map((v) => v.name);
 
   if (id) {
     getOurUsersPaginated(page)

@@ -63,12 +63,73 @@ export const getSpecificCurrencyConversionRate = (cur_type) => {
   });
 };
 
+// not used
 export const updateConversionRates = (ratesObject) => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
-        Conversion_Rates.findOneAndUpdate({ name: "rates" } , {rates : ratesObject},{upsert : true})
+        Conversion_Rates.findOneAndUpdate(
+          { name: "rates" },
+          { rates: ratesObject },
+          { upsert: true }
+        )
+          .then(() => {
+            mongoose.disconnect();
+            resolve();
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+//==========================================
+export const createOrupdateConversionRateByCurType = (cur_type, rate) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Conversion_Rates.findOneAndUpdate(
+          { name: "rates" },
+          { $set: { [`rates.${cur_type}`]: parseFloat(rate) } },
+          { upsert: true }
+        )
+          .then(() => {
+            mongoose.disconnect();
+            resolve();
+          })
+          .catch((err1) => {
+            console.log("err1 : " + err1);
+            mongoose.disconnect();
+            reject();
+          });
+      })
+      .catch((err2) => {
+        console.log("err2 : " + err2);
+        mongoose.disconnect();
+        reject();
+      });
+  });
+};
+
+export const removeConversionRateByCurType = (cur_type) => {
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URI)
+      .then(() => {
+        Conversion_Rates.findOneAndUpdate(
+          { name: "rates" },
+          { $unset: { [`rates.${cur_type}`]: "" } }
+        )
           .then(() => {
             mongoose.disconnect();
             resolve();

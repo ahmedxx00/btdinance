@@ -161,13 +161,15 @@ input[name="edit_av"] {
   align-self: flex-end;
 }
 
-.edit_av_btn:hover {
-  background-color: black;
-}
 .remove_btn:hover {
   background-color: black;
   color: white;
 }
+
+.edit_av_btn:hover {
+  background-color: black;
+}
+
 
 .wallet .pre_span,
 .wallet .post_span {

@@ -1,0 +1,87 @@
+<%- include("./parts/navbar.ejs" , {title : 'Edit Memberships',showScroller:false, isLoggedIn :
+locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
+false ,stylesheets:['/css/simplebar.css','/css/spinner.css','/css/edit_memberships.css']}) %>
+
+<div class="main_wrapper">
+
+  <% if (locals.membershipsArray && locals.membershipsArray.length > 0){ %>
+
+  <% membershipsArray.forEach(membership => { %>
+
+  <div class="membership_wrap">
+
+    <span class="id" style="display: none;"><%= membership._id %></span>
+
+    <img src="<%= membership.img %>" alt="<%= membership.type %>">
+
+    <span class="type_number">
+      <span class="pre_span">Type : </span>
+      <%= membership.type %>
+      <span class="pre_span">Number : </span>
+      <%= membership.number %>
+    </span>
+
+    <span class="fee">
+      <span class="pre_span">Fee : </span>
+      <%= membership.fee %>
+      <input type="text" name="fee" placeholder="Edit Fee">
+      <button class="edit_fee">Edit Fee</button>
+    </span>
+
+    <span class="max_withdraw">
+      <span class="pre_span">Max Withdraw : </span>
+      <%= membership.max_withdraw %>
+      <input type="text" name="max_withdraw" placeholder="Edit Max.With">
+      <button class="edit_max_withdraw">Edit Max.With</button>
+    </span>
+
+    <span class="max_deposit">
+      <span class="pre_span">Max Deposit : </span>
+      <%= membership.max_deposit %>
+      <input type="text" name="max_deposit" placeholder="Edit Max.Dep">
+      <button class="edit_max_deposit">Edit Max.Dep</button>
+    </span>
+
+    <span class="max_receive">
+      <span class="pre_span">Max Receive : </span>
+      <%= membership.max_receive %>
+      <input type="text" name="max_receive" placeholder="Edit Max.Rec">
+      <button class="edit_max_receive">Edit Max.Rec</button>
+    </span>
+
+    <span class="max_transfer">
+      <span class="pre_span">Max Transfer : </span>
+      <%= membership.max_transfer %>
+      <input type="text" name="max_transfer" placeholder="Edit Max.Trans">
+      <button class="edit_max_transfer">Edit Max.Trans</button>
+    </span>
+
+
+    <button class="remove_btn">rem</button>
+
+  </div>
+
+  <% }) %>
+
+  <% } %>
+
+
+</div>
+
+<!-- BEGIN new_membership_modal -->
+<div class="new_membership_modal" style="display: none;">
+  <input type="text" name="number" placeholder="number (1 ~ 4)" />
+  <input type="text" name="fee" placeholder="fee" />
+  <input type="text" name="max_withdraw" placeholder="max withdraw" />
+  <input type="text" name="max_deposit" placeholder="max deposit" />
+  <input type="text" name="max_receive" placeholder="max receive" />
+  <input type="text" name="max_transfer" placeholder="max transfer" />
+  <button id="cnf_new_membership_btn">add new membership</button>
+</div>
+<!-- END new_membership_modal -->
+
+<button class="add_new_membership_btn">Add New Membership</button>
+
+
+<%- include("./parts/footer.ejs" ,
+{showScroller:false,scripts: ['/js/simplebar.min.js'], moduleScripts: ['/js/edit_memberships.js'] })%>

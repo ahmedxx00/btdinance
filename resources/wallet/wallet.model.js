@@ -44,9 +44,8 @@ wallet_Schema.pre("save", function (next) {
   next();
 });
 //-------------------------------------
-
 export const Wallet = mongoose.model("wallet", wallet_Schema);
-
+//-------------------------------------
 export const getWalletForUserIdAndCurType = (user_id, cur_type) => {
   return new Promise((resolve, reject) => {
     mongoose

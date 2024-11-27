@@ -2,8 +2,22 @@
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false ,stylesheets:['/css/spinner.css','/css/about.css']}) %>
 
-<div class="main-buttons" style="color: white; text-align: center">
-  This is About PAge
+<div class="main_container">
+  <h3 class="our_vision">OUR VISION</h3>
+  <h1 class="our_vision_p">Cryptocurrency in <br> Every Wallet <sup>TM</sup></h1>
+  <div class="curs">
+    <img src="/btc.svg" style="pointer-events: none" />
+    <img src="/usdt.svg" style="pointer-events: none" />
+    <img src="/eth.svg" style="pointer-events: none" />
+    <img src="/trx.svg" style="pointer-events: none" />
+    <img src="/ltc.svg" style="pointer-events: none" />
+    <img src="/bnb.svg" style="pointer-events: none" />
+  </div>
+  
+  <h3 class="our_mission">OUR MISSION</h3>
+  <h1 class="our_mission_p">Accelerate the world’s <br> transition to cryptocurrency</h1>
+  
+  
 </div>
 
 <%- include("./parts/footer.ejs" ,

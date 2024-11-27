@@ -37,6 +37,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, "Invalid email format"],
+    lowercase : true,
     required: false,
   },
   password: {
