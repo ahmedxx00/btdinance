@@ -12,7 +12,7 @@ $(document).ready(function () {
   });
   //-------------------------------
 
-  $(".clients").counterUp({time : 3000});
+  $(".clients").children('.g').counterUp({time : 1000});
 
 });
 

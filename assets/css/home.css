@@ -130,6 +130,9 @@ text-decoration: none;
 
 }
 .btm_clients .clients{
-  font-size: 18px;
+  font-size: 22px;
   color: white;
+}
+.btm_clients .clients .post_span{
+  color: var(--MAIN-MASTARD);
 }

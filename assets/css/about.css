@@ -7,13 +7,13 @@
     color: gray;
     row-gap: 10px;
 }
-.our_vision,.our_mission{
+.our_vision,.our_mission , .our_partners , .our_team{
     margin-top: 150px;
     color: var(--MAIN-MASTARD);
     font-family:Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
-.our_vision_p , .our_mission_p{
+.our_vision_p , .our_mission_p , .our_partners_p , .our_team_p{
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
     font-weight: bold;

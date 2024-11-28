@@ -18,16 +18,7 @@ router.get("/", homeProtect, (req, res, next) => {
 });
 
 
-router.get("/about", homeProtect, (req, res, next) => {
-  if (req.payload && req.payload != null) {
-    // logged in
-    let isAdmin = req.payload.isAdmin;
-    res.render("about.ejs", { isLoggedIn: true, isAdmin: isAdmin });
-  } else {
-    // not logged in
-    res.render("about.ejs");
-  }
-});
+router.get("/about", homeProtect, homeController.getAboutPage);
 
 
 router.get("/exchange",protect, homeController.getExchangePage);

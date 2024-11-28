@@ -22,6 +22,10 @@ export const CRYPTO_CUR = [
   "USDCUSDT",
 ];
 
+//------ site name & email -----------
+export const SITE_NAME = 'BTC Dinance'
+export const SITE_EMAIL = 'customer-service@btcdinance.com'
+//--------------------------------
 // ---- can't be changed -----
 export const WALLETS_CURRENCIES = {
   Bitcoin: {

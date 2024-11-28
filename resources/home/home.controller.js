@@ -3,6 +3,8 @@ import {
   EXCHANGE_TO_FIXED,
   MEMBERSHIPS,
   WALLETS_CURRENCIES,
+  SITE_NAME,
+  SITE_EMAIL
 } from "../../Constants/API_DB_Constants.js";
 import { getAllMemberships } from "../membership/membership.model.js";
 import { getUserById } from "../user/user.model.js";
@@ -188,6 +190,17 @@ export const getMyAccountPage = (req, res, next) => {
   } else {
     res.redirect("/");
   }
+};
+export const getAboutPage = (req, res, next) => {
+    if (req.payload && req.payload != null) {
+      // logged in
+      let isAdmin = req.payload.isAdmin;
+
+      res.render("about.ejs", { isLoggedIn: true, isAdmin: isAdmin  , site_name : SITE_NAME , site_email : SITE_EMAIL});
+    } else {
+      // not logged in
+      res.render("about.ejs" , {site_name : SITE_NAME , site_email : SITE_EMAIL});
+    }
 };
 
 export const logOut = (req, res, next) => {
