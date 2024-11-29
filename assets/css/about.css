@@ -107,7 +107,8 @@
 .tabs > ul li {
   display: block;
 }
-.tabs > ul li a img {
+
+.tabs > ul li button img {
   width: 35px;
   height: auto;
   display: none;
@@ -117,8 +118,8 @@
   border-bottom: 1px solid #262626;
 }
 
-.tabs > ul li a,
-.tabs > ul li a:visited {
+.tabs > ul li button,
+.tabs > ul li button:visited {
   display: block;
   border-bottom: none;
   text-decoration: none;
@@ -127,25 +128,29 @@
   padding: 15px 4px;
   transition: all 0.2s ease-in-out;
   word-wrap: break-word;
+  border: none;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
 }
 
-.tabs > ul li a:hover,
-.tabs > ul li a:focus,
-.tabs > ul li a:active {
+.tabs > ul li button:hover,
+.tabs > ul li button:focus,
+.tabs > ul li button:active {
   border-bottom: none;
   outline: 0;
 }
 
-.tabs > ul li a.active {
+.tabs > ul li button.active {
   background-color: gold;
   color: black;
 }
 
-.tabs > ul li a:hover:not(.active) {
+.tabs > ul li button:hover:not(.active) {
   color: var(--MAIN-MASTARD);
 }
 
-.tabs > ul li a > span {
+.tabs > ul li button > span {
   width: 100%;
   display: block;
   text-align: center;
@@ -261,20 +266,36 @@
   transform: translateY(0);
 }
 
+
+/* --- contact - rights --- */
+.cus{
+  margin: 100px auto 50px;
+  font-size: 18px;
+  text-align: center;
+}
+span.contact_us{
+  color: var(--MAIN-MASTARD);
+}
+.rights{
+  align-self: flex-start;
+  font-size: 14px;
+  text-align: center;
+}
+/* --------------- */
 @media (max-width: 768px) {
   .tabs {
     width: 95%;
   }
-  .tabs > ul li a span {
+  .tabs > ul li button span {
     display: none;
   }
-  .tabs > ul li a {
+  .tabs > ul li button {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .tabs > ul li a img {
+  .tabs > ul li button img {
     display: block;
   }
 }

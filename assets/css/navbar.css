@@ -17,19 +17,19 @@
 /* ------------- fonts ---------------- */
 
 @font-face {
-  font-display: swap; 
+  font-display: swap;
   font-family: q_light;
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/quattrocento-v23-latin-regular.woff2') format('woff2'); 
+  src: url("../fonts/quattrocento-v23-latin-regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-display: swap; 
+  font-display: swap;
   font-family: q_bold;
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/quattrocento-v23-latin-700.woff2') format('woff2'); 
+  src: url("../fonts/quattrocento-v23-latin-700.woff2") format("woff2");
 }
 
 /* -------------- :root --------------- */
@@ -84,10 +84,10 @@ img {
 body {
   min-height: 100vh;
   width: 100%;
-  
+
   background-image: url(/44.png);
   background-size: cover;
-  
+
   font-family: q_bold;
 }
 
@@ -110,10 +110,10 @@ body {
   outline: none;
 }
 
-.header a {
+.header > a {
   display: contents;
 }
-.header a:first-child img {
+.header > a img {
   width: 180px;
 }
 
@@ -128,6 +128,35 @@ body {
   margin: 0 0 0 20px;
 }
 
+.sandwitch {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 0 20px;
+  padding: 5px 10px;
+  display: none;
+}
+
+.sandwitch .sn {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sp_sn {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
 .nav-items li {
   border-right: 2px dotted var(--BLACK);
   margin: 4px 0 0 0;
@@ -159,13 +188,13 @@ body {
 }
 
 .nav-items li a:hover {
-  background-color: var(--BLACK);
+  background-color: black;
   /* color: #f1d015; */
 }
 
 /* logout */
 
-.logout{
+.logout {
   background-color: transparent;
   border: none;
   outline: none;
@@ -186,16 +215,117 @@ body {
   -o-border-radius: 50%;
 }
 
-.logout img{
+.logout img {
   width: 22px;
   height: auto;
 }
 
-.logout:hover{
+.logout:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
 
-  transform:scale(1.2) ;
-  -webkit-transform:scale(1.2) ;
-  -moz-transform:scale(1.2) ;
-  -ms-transform:scale(1.2) ;
-  -o-transform:scale(1.2) ;
+/* media  */
+@media (max-width: 992px) {
+  .header {
+    position: relative;
+  }
+  .nav-items {
+    display: none;
+  }
+  .nav-items.show {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1001;
+    background-color: black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-top: 2px solid gray;
+    border-radius: 0 0 7px 7px;
+    -webkit-border-radius: 0 0 7px 7px;
+    -moz-border-radius: 0 0 7px 7px;
+    -ms-border-radius: 0 0 7px 7px;
+    -o-border-radius: 0 0 7px 7px;
+    opacity: 1;
+    animation: opacity 700ms ease-in-out normal;
+    -webkit-animation: opacity 700ms ease-in-out normal;
+    -moz-animation: opacity 700ms ease-in-out normal;
+    -ms-animation: opacity 700ms ease-in-out normal;
+    -o-animation: opacity 700ms ease-in-out normal;
+  }
+  
+  .nav-items.show li {
+    width: 100%;
+    border: none;
+  }
+
+  .nav-items.show li a {
+    display: block;
+    color: #daab47;
+    background-color: transparent;
+    text-align: center;
+  }
+  .nav-items.show li a:any-link {
+    color: #daab47;
+  }
+  .nav-items.show li a:hover {
+    background-color: var(--MAIN-BLACK);
+  }
+  .sandwitch {
+    display: flex;
+  }
+}
+
+@media (max-width: 576px) {
+  .header a img {
+    width: 150px;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

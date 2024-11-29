@@ -21,10 +21,10 @@ $(document).ready(function () {
     });
 
     $(this).addClass("active");
-    $($(this).attr("href")).addClass("active");
+    $('#'+$(this).data("tab")).addClass("active");
 
     setTimeout(() => {
-      $($(this).attr("href")).addClass("active-content");
+      $('#'+$(this).data("tab")).addClass("active-content");
     }, 50);
   });
 });

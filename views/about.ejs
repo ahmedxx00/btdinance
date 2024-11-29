@@ -43,16 +43,16 @@ false ,stylesheets:['/css/spinner.css','/css/about.css']}) %>
 
     <ul class="tab-head">
       <li>
-        <a href="#tab-1" class="tab-link active"><img src="/coin.png" alt="C"><span class="tab-label">Think Clearly</span></a>
+        <button data-tab="tab-1" class="tab-link active"><img src="/coin.png" alt="C"><span class="tab-label">Think Clearly</span></a>
       </li>
       <li>
-        <a href="#tab-2" class="tab-link"><img src="/coin.png" alt="C"><span class="tab-label">Stay Determined</span></a>
+        <button data-tab="tab-2" class="tab-link"><img src="/coin.png" alt="C"><span class="tab-label">Stay Determined</span></a>
       </li>
       <li>
-        <a href="#tab-3" class="tab-link"><img src="/coin.png" alt="C"><span class="tab-label">Dream Big</span></a>
+        <button data-tab="tab-3" class="tab-link"><img src="/coin.png" alt="C"><span class="tab-label">Dream Big</span></a>
       </li>
       <li>
-        <a href="#tab-4" class="tab-link"><img src="/coin.png" alt="C"><span class="tab-label">Be Decisive</span></a>
+        <button data-tab="tab-4" class="tab-link"><img src="/coin.png" alt="C"><span class="tab-label">Be Decisive</span></a>
       </li>
     </ul>
 
@@ -81,6 +81,23 @@ false ,stylesheets:['/css/spinner.css','/css/about.css']}) %>
     </section>
 
   </div>
+
+  <div class="cus">
+    <p class="x">contact us</p>
+
+    <% if (locals.site_email != null) { %>
+    <span class="contact_us"><%= site_email %></span>
+    <% } else { %>
+    <span class="contact_us">customer-service@btcdinance.com</span>
+    <% } %>
+  </div>
+
+
+  <% if (locals.site_name != null) { %>
+  <span class="rights">Copyright &#169; 2018 - 2024 <%= site_name %> All rights reserved.</span>
+  <% } else { %>
+  <span class="rights">Copyright &#169; 2018 - 2024 BTC Dinance All rights reserved.</span>
+  <% } %>
 
 </div>
 

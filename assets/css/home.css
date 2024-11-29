@@ -111,6 +111,7 @@ text-decoration: none;
   left: 50%;
   width: max-content;
   border-top: 2px solid white;
+  background-color: black;
   padding: 5px 30px;
   text-align: center;
   margin: 20px auto 0;
