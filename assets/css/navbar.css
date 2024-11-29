@@ -229,7 +229,36 @@ body {
   -o-transform: scale(1.2);
 }
 
-
+/* ---- logout dialog --------- */
+.cnf_logout_h {
+  text-wrap: wrap;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  font-family: q_bold;
+}
+.cnf_logout_btn,
+.cancel_logout_btn {
+  font-family: q_bold;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  margin: 0 15px;
+}
+.cnf_logout_btn {
+  background-color: maroon;
+}
+.cancel_logout_btn {
+  background-color: black;
+}
 
 /* ------------------------------ */
 /* ------------media------------  */
@@ -251,7 +280,6 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    border-top: 2px solid gray;
     border-radius: 0 0 7px 7px;
     -webkit-border-radius: 0 0 7px 7px;
     -moz-border-radius: 0 0 7px 7px;
@@ -264,7 +292,7 @@ body {
     -ms-animation: opacity 700ms ease-in-out normal;
     -o-animation: opacity 700ms ease-in-out normal;
   }
-  
+
   .nav-items.show li {
     width: 100%;
     border: none;
@@ -284,23 +312,6 @@ body {
   }
   .sandwitch {
     display: flex;
-  }
-}
-
-
-/* //------------------ last --------------------- */
-.simplebar-scrollbar::before {
-  background-color: red;
-}
-
-.swal2-popup {
-  font-size: 10px !important;
-  font-weight: normal;
-}
-/* ------------------------------------------------ */
-@media (max-width: 576px) {
-  .header a img {
-    width: 150px;
   }
 }
 
@@ -344,3 +355,19 @@ body {
     opacity: 1;
   }
 }
+
+@media (max-width: 576px) {
+  .header a img {
+    width: 150px;
+  }
+}
+/* //------------------ last --------------------- */
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}
+/* ------------------------------------------------ */

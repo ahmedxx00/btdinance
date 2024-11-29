@@ -73,6 +73,9 @@
   -o-border-radius: 5px;
 }
 
+.exchange_row:last-child{
+  margin-bottom: 60px;
+}
 /* =========== my wallet container========== */
 
 .wallet_container {
@@ -272,4 +275,12 @@
 .swal2-popup {
   font-size: 10px !important;
   font-weight: normal;
+}
+
+
+/* ----media -------- */
+@media(max-width : 768px){
+  .fiats_wrap{
+    border-left: none;
+  }
 }

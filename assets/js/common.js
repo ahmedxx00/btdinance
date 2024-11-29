@@ -131,6 +131,35 @@ export function manipulateAjax(ajaxFunction) {
     });
 }
 
+export function showCustomLogoutDialog($dialog_to_show) {
+  $("<div class='loader'><div class='spin_wrap'></div></div>")
+    .hide()
+    .appendTo("body")
+    .fadeIn(500, function () {
+      $dialog_to_show.hide().appendTo(".spin_wrap").show(500);
+      $(".loader").on("click", function (e) {
+        if (e.target !== e.currentTarget) return;
+        $(".loader").fadeOut(500, function () {
+          $(this).remove();
+        });
+      });
+
+      $(".cancel_logout_btn").click(function (e) {
+        $(".loader").fadeOut(500, function () {
+          $(this).remove();
+        });
+      });
+
+      $(".cnf_logout_btn").click(function (e) {
+        $(".loader").fadeOut(500, function () {
+          $(this).remove();
+
+          window.location.href = "/logout";
+        });
+      });
+    });
+}
+
 export function showSpinnerData(
   h2_text,
   p_text,
@@ -186,7 +215,6 @@ export function showSpinnerData(
     }, 4000);
   }
 }
-
 
 export function showSpinnerDataDepositAddress(
   h2_text,
@@ -339,7 +367,9 @@ export function showSpinnerDataVipPay(
     let $amount_div = $(
       `<div class='amount_div'><span class='pre_span'>Amount : </span><span class='amount'>${amount}</span><span class='post_span'>${cur_type}</span></div>`
     );
-    let $net_name = $(`<span class='network_name'><span class='pre_span'>Network : </span>${network_name}</span>`);
+    let $net_name = $(
+      `<span class='network_name'><span class='pre_span'>Network : </span>${network_name}</span>`
+    );
 
     $spinner_h2.css({
       color: h2_color,

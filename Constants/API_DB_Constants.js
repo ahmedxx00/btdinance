@@ -233,6 +233,7 @@ export const CookieOptions = {
   httpOnly: true,
   signed: true,
   maxAge: COOKIE_EXPIRE,
+  sameSite: 'strict'
 };
 //###########################################
 

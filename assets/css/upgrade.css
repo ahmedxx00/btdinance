@@ -150,3 +150,9 @@
   font-style: italic;
 }
 /* -------------------------------------------- */
+
+@media(max-width : 576px){
+  .mem_data .limits > div {
+    font-size: 15px;
+  }
+}
