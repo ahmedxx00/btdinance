@@ -8,7 +8,7 @@
   padding: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 20px;
   column-gap: 20px;
   row-gap: 40px;
@@ -172,7 +172,7 @@
   top: 100%;
   right: 0;
   margin: 8px 0 0 0;
-  font-family: cursive, "Noto Naskh Arabic";
+  font-family: q_bold, "Noto Naskh Arabic";
   font-weight: bold;
   word-spacing: -1px;
   font-size: 12px;
@@ -250,6 +250,7 @@
 .forms-section{
   flex-wrap: wrap;
 }
+
 .img-wrap img{
   height: 350px;
   width: auto;

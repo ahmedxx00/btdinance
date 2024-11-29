@@ -101,7 +101,17 @@ text-decoration: none;
   background-color: transparent;
 }
 
+@media (max-width: 576px) {
 
+  .main-buttons a{
+    font-size: 18px;
+    width: 130px;
+  }
+  .main-buttons a img{
+    width: auto;
+    height: 38px;
+  }
+}
 
 /* -------- clients ------- */
 

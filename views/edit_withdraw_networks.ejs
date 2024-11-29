@@ -1,6 +1,6 @@
 <%- include("./parts/navbar.ejs" , {title : 'Edit Withdraw Networks',showScroller:false, isLoggedIn : locals.isLoggedIn ? isLoggedIn :
 false , isAdmin: locals.isAdmin? isAdmin : false
-,stylesheets:['/css/spinner.css','/css/edit_withdraw_networks.css']}) %>
+,stylesheets:['/css/edit_withdraw_networks.css']}) %>
 
 <% let KEYS , VALUES %>
 <% KEYS = Object.keys(networks_object) , VALUES = Object.values(networks_object) %>

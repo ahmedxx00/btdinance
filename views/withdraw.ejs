@@ -1,7 +1,7 @@
 <%- include("./parts/navbar.ejs" , {title : 'Withdraw',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false
-,stylesheets:['https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/spinner.css','/css/withdraw.css']})
+,stylesheets:['https://cdn.cryptofonts.com/1.3.5/cryptofont.css','/css/withdraw.css']})
 %>
 
 <% if (locals.wallets && locals.wallets.length > 0) { %>

@@ -1,6 +1,6 @@
 <%- include("./parts/navbar.ejs" , {title : 'My Account',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/spinner.css','/css/myaccount.css']}) %>
+false ,stylesheets:['/css/myaccount.css']}) %>
 
 <% if (locals.user && locals.memImg) { %>
 

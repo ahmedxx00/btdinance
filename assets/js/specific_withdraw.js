@@ -17,6 +17,7 @@ $(document).ready(function () {
     new SimpleBar($(".options")[0], { autoHide: false });
   });
 
+  //--------- close ntework drop down on any click outside -------
   $(document).click(function (event) {
     if (!$(event.target).is(".network_dropdown_btn")) {
       if ($(".options").hasClass("open-menu")) {
@@ -24,7 +25,7 @@ $(document).ready(function () {
       }
     }
   });
-
+  //--------------------------------------------------------------
   $(".option").click(async function (e) {
     await fillNetworkWithClickedOption(e.target);
     if (!$(".network_dropdown_btn").hasClass("one_selected")) {

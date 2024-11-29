@@ -114,6 +114,7 @@ body {
   display: contents;
 }
 .header > a img {
+  padding: 5px 0;
   width: 180px;
 }
 
@@ -192,7 +193,7 @@ body {
   /* color: #f1d015; */
 }
 
-/* logout */
+/* ------- logout --------- */
 
 .logout {
   background-color: transparent;
@@ -228,7 +229,10 @@ body {
   -o-transform: scale(1.2);
 }
 
-/* media  */
+
+
+/* ------------------------------ */
+/* ------------media------------  */
 @media (max-width: 992px) {
   .header {
     position: relative;
@@ -283,6 +287,17 @@ body {
   }
 }
 
+
+/* //------------------ last --------------------- */
+.simplebar-scrollbar::before {
+  background-color: red;
+}
+
+.swal2-popup {
+  font-size: 10px !important;
+  font-weight: normal;
+}
+/* ------------------------------------------------ */
 @media (max-width: 576px) {
   .header a img {
     width: 150px;
