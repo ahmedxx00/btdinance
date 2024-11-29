@@ -82,6 +82,9 @@ $(document).ready(function () {
   //   return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp.
   // }, "Only digits and '.' are allowed");
   /*===========================================*/
+  $('.back-btn').click(function (e) { 
+    history.back()
+  });
   /*===================== #withdraw_btn ======================*/
 
   $(".exchange_btn").click(function (e) {

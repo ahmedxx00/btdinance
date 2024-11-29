@@ -67,7 +67,7 @@ $(document).ready(function () {
             success: function (response) {
               if (response.success) {
                 common.showSpinnerDataLongTime(
-                  "Confirmed",
+                  "Sent for Review",
                   response.msg,
                   "black",
                   "black",

@@ -1,8 +1,8 @@
 
 /* --- body 100vw to prevent jump when drop down open --- */
-body{
+/* body{
   width: 100vw;
-}
+} */
 /* -------------------------------------------------------- */
 
 .main-container {
@@ -31,7 +31,9 @@ body{
   -o-border-radius: 5px;
   cursor: pointer;
 }
-
+.history-btn{
+  visibility: hidden;
+}
 .fa-arrow-left,
 .fa-history {
   font-size: 25px;

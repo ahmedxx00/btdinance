@@ -264,3 +264,6 @@
   }
 }
 
+.check a{
+  pointer-events: none;
+}

@@ -64,6 +64,9 @@ $(document).ready(function () {
   });
 
   /*===========================================*/
+  $('.back-btn').click(function (e) { 
+    history.back()
+  });
   /*===================== #transfer_btn ======================*/
 
   $(".transfer_btn").click(function (e) {

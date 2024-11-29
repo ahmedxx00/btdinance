@@ -48,6 +48,9 @@ $(document).ready(function () {
   });
 
   //---------------------------------------------
+  $('.back-btn').click(function (e) { 
+    history.back()
+  });
   /*===================== #deposit_btn ======================*/
 
   $("#deposit_btn").click(function (e) {
