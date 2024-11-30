@@ -14,11 +14,18 @@ import {
   format_prc,
 } from "./Constants/API_DB_Constants.js";
 import { connectBinance, connectLocalWSS } from "./crypto-prices-client.js";
+
+import helmet from 'helmet';
 import nocache from 'nocache';
+
 //-------------------------------------
 
 const app = express();
 app.use(cors());
+
+// helmet is very important
+// we disable CSP but it is very helpful 
+app.use(helmet({ contentSecurityPolicy : false }));
 app.use(nocache());// prevent cache is very important
 // Use cookie-parser middleware
 app.use(cookieParser(COOKIE_SIGNING_SECRET));
@@ -131,9 +138,8 @@ app.server.listen(PORT, (err) => {
   }
   console.log(`Restful is listen on port : ${PORT}`);
   //--- run binance & local websocket Clients ---------
-  // connectBinance();
-  // connectLocalWSS();
-  
+  connectBinance();
+  connectLocalWSS();
   //--------------------------------------------
 });
 
