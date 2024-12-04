@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   // ==== Get the styles (properties and values) for the root ====
 

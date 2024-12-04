@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "btcdinance",
+  "name": "btdinance",
   "version": "1.0.0",
   "description": "crypto exchange site",
   "main": "app.js",
@@ -21,7 +21,7 @@
     "Coinbase",
     "RedotPay"
   ],
-  "author": "btcdinance",
+  "author": "btdinance",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.3",
@@ -30,6 +30,9 @@
     "ejs": "^3.1.10",
     "express": "^4.21.0",
     "helmet": "^8.0.0",
+    "i18next": "^24.0.2",
+    "i18next-fs-backend": "^2.6.0",
+    "i18next-http-middleware": "^3.7.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.9.0",
     "mongoose": "^8.6.3",

@@ -1,0 +1,91 @@
+{
+  "sn_wr": "Something Went Wrong",
+  "op_sr": "oops sorry!",
+  "wrn": "Warning",
+  "wrng_amnt": "Wrong Amount",
+  "ent_sec": "Enter secret key",
+  "am_ex": "Amount Exceeded",
+  "ent_amt": "Please enter amount",
+  "dn": "Done",
+  "ok": "OK",
+  "no": "no",
+  "adm_lg": {
+    "wlcm": "Welcome ADMIN",
+    "lg_succ": "Login Successful"
+  },
+  "auth": {
+    "wlcm_bt": "Welcome to BTDinance",
+    "wl_redi": "you will be redirected now ..",
+    "reg_succ": "Registration Successful",
+    "y_cn_lng": "You Can Login Now"
+  },
+  "frg_pass": {
+    "otp_snt": "OTP sent to email ",
+    "inv_em": "Invalid Email"
+  },
+  "my_acc": {
+    "edt_em": "Edit Email",
+    "em": "email",
+    "yr_k": "your key",
+    "cnf": "Confirm",
+    "ent_k": "Enter Key",
+    "inv_em": "Invalid Email"
+  },
+  "nv_br": {
+    "lgt_tit": "are you sure you want to leave ?",
+    "lgt_lv": "leave"
+  },
+  "rst_pass": {
+    "pas_chngd": "Password Changed",
+    "lng_n_pas": "Login with new password"
+  },
+  "spc_cnf_upg": {
+    "snt_fr_rvw": "Sent for Review",
+    "ent_trns_id": "Enter Transaction ID"
+  },
+  "spc_dep": {
+    "yr_dep_adrs": "Your Deposit Address",
+    "ent_sec_k": "Enter secret key",
+    "no_nt_sel": "No network selected",
+    "btn_upg": "UPGRADE"
+  },
+  "spc_trans": {
+    "inv_em": "Invalid Email",
+    "am_nt_av": "Amount is not available",
+    "pls_ent_am": "Please enter amount",
+    "ent_nm": "Enter Name",
+    "ent_em": "Enter Email"
+  },
+  "spc_upg": {
+    "sel_net_for": "Please Select network for"
+  },
+  "spc_with_fiat": {
+    "btn_upg": "UPGRADE",
+    "cnf_with": "Confirm Withdraw",
+    "ibn": "IBAN : ",
+    "swft_c": "Swift Code : ",
+    "tot_am": "Total Amount : ",
+    "bnk_f": "Bank Fee : ",
+    "cnf": "Confirm",
+    "ent_sec_k": "Enter secret key",
+    "am_nt_av": "Amount is not available",
+    "pls_ent_am": "Please enter amount",
+    "ent_swf_cod": "Enter Your Swift Code",
+    "ent_ibn_nm": "Enter Your IBAN Number"
+  },
+  "spc_with": {
+    "btn_upg": "UPGRADE",
+    "cnf_with": "Confirm Withdraw",
+    "tot_am": "Total Amount : ",
+    "net_nm": "Network Name : ",
+    "fee": "Fee : ",
+    "am_rec": "Amount Received : ",
+    "cnf": "Confirm",
+    "net_f_exc": "This Network Fees exceeds <br> <span style='color:black; font-weight:bold;'>Try another network</span>",
+    "ent_sec_k": "Enter secret key",
+    "am_nt_av": "Amount is not available",
+    "pls_ent_am": "Please enter amount",
+    "no_net_sel": "No network selected",
+    "ent_recep_adr": "Enter recipient address"
+  }
+}

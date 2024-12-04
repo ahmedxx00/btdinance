@@ -120,7 +120,7 @@ export const TikerStuff = () => {
 
 export function manipulateAjax(ajaxFunction) {
   $(
-    "<div class='loader'><div class='spin_wrap'><div class='spinner'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div></div></div>"
+    `<div class='loader'><div class='spin_wrap'><div class='spinner'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div></div></div>`
   )
     .hide()
     .appendTo("body")
@@ -174,7 +174,7 @@ export function showSpinnerData(
   $(".spinner").children().css("animation-play-state", "paused"); // pause spinner animation
   $(".spinner").animate({ height: 0 }, 500, function () {
     $(this).remove(); // remove the spinner only
-    let icon = $(`<img src="/coin.png" alt="BTC Dinance"/>`);
+    let icon = $(`<img src="/coin.png" alt="BTDinance"/>`);
     let h2 = $(`<h2 class = 'spinner_h2'>${h2_text}</h2>`);
     let p = $(`<p class = 'spinner_p'>${p_text}</p>`);
     h2.css({ color: h2_color });
@@ -230,7 +230,7 @@ export function showSpinnerDataDepositAddress(
   $(".spinner").children().css("animation-play-state", "paused"); // pause spinner animation
   $(".spinner").animate({ height: 0 }, 500, function () {
     $(this).remove(); // remove the spinner only
-    let icon = $(`<img src="/coin.png" alt="BTC Dinance"/>`);
+    let icon = $(`<img src="/coin.png" alt="BTDinance"/>`);
     let h2 = $(`<h2 class = 'spinner_h2'>${h2_text}</h2>`);
     let p = $(
       `<p class = 'spinner_p deposit_address'>${p_text}<button id="copy_deposit_address_btn"><img src="/copy.png"/></button></p>`
@@ -292,6 +292,7 @@ export function showSpinnerDataUpgradeVip(
   p_text,
   h2_color,
   p_color,
+  btn_upg,
   isClosable,
   willReload,
   willRedirect,
@@ -301,10 +302,10 @@ export function showSpinnerDataUpgradeVip(
   $(".spinner").children().css("animation-play-state", "paused"); // pause spinner animation
   $(".spinner").animate({ height: 0 }, 500, function () {
     $(this).remove(); // remove the spinner only
-    let icon = $(`<img src="/coin.png" alt="BTC Dinance"/>`);
+    let icon = $(`<img src="/coin.png" alt="BTDinance"/>`);
     let h2 = $(`<h2 class = 'spinner_h2'>${h2_text}</h2>`);
     let p = $(`<p class = 'spinner_p'>${p_text}</p>`);
-    let a = $(`<a href='/upgrade' class = 'spinner_a'>UPGRADE</a>`);
+    let a = $(`<a href='/upgrade' class = 'spinner_a'>${btn_upg}</a>`);
 
     h2.css({ color: h2_color });
     p.css({ color: p_color });
@@ -358,7 +359,7 @@ export function showSpinnerDataVipPay(
   $(".spinner").children().css("animation-play-state", "paused"); // pause spinner animation
   $(".spinner").animate({ height: 0 }, 500, function () {
     $(this).remove(); // remove the spinner only
-    let $icon = $(`<img src="/coin.png" alt="BTC Dinance"/>`);
+    let $icon = $(`<img src="/coin.png" alt="BTDinance"/>`);
     let $spinner_h2 = $(`<h2 class = 'spinner_h2'>${h2_text}</h2>`);
     let $spinner_p = $(
       `<p class = 'spinner_p deposit_address'>${p_text}<button id="copy_deposit_address_btn"><img src="/copy.png"/></button></p>`
@@ -423,7 +424,7 @@ export function showSpinnerDataLongTime(
   $(".spinner").children().css("animation-play-state", "paused"); // pause spinner animation
   $(".spinner").animate({ height: 0 }, 500, function () {
     $(this).remove(); // remove the spinner only
-    let icon = $(`<img src="/coin.png" alt="BTC Dinance"/>`);
+    let icon = $(`<img src="/coin.png" alt="BTDinance"/>`);
     let h2 = $(`<h2 class = 'spinner_h2'>${h2_text}</h2>`);
     let p = $(`<p class = 'spinner_p'>${p_text}</p>`);
     h2.css({ color: h2_color });

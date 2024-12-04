@@ -1,6 +1,15 @@
 import * as common from "./common.js";
+let TRANSLATIONS = {};
 
-$(document).ready(function () {
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
+
   let $network_items = $(".networks").children(".network"); // many networks
   let $pay_btn = $(".pay"); // many btns
 
@@ -48,7 +57,7 @@ $(document).ready(function () {
           timeout: 5000,
           success: function (response) {
             if (response.success) {
-              window.location.href = response.redirectUrl
+              window.location.href = response.redirectUrl;
               // common.showSpinnerDataVipPay(
               //   "Pay To Address",
               //   response.msg,
@@ -58,12 +67,11 @@ $(document).ready(function () {
               //   cur_type,
               //   network_name,
               // );
-
             } else {
               if (response.msg == "error") {
                 common.showSpinnerData(
-                  "Something Went Wrong",
-                  "oops sorry!",
+                  TRANSLATIONS.sn_wr,
+                  TRANSLATIONS.op_sr,
                   "black",
                   "red",
                   true,
@@ -74,7 +82,7 @@ $(document).ready(function () {
                 );
               } else {
                 common.showSpinnerData(
-                  "Warning",
+                  TRANSLATIONS.wrn,
                   response.msg,
                   "black",
                   "red",
@@ -90,8 +98,8 @@ $(document).ready(function () {
           error: function (xhr, status, error) {
             console.log(xhr.responseText);
             common.showSpinnerData(
-              "Something Went Wrong",
-              "oops sorry!",
+              TRANSLATIONS.sn_wr,
+              TRANSLATIONS.op_sr,
               "black",
               "red",
               true,
@@ -106,7 +114,7 @@ $(document).ready(function () {
 
       common.manipulateAjax(payVip);
     } else {
-      showSweetAlert(`Please Select ${cur_type} network`);
+      showSweetAlert(`${TRANSLATIONS.spc_upg.sel_net_for} ${cur_type}`);
     }
   });
 });
@@ -116,7 +124,7 @@ function showSweetAlert(title) {
     title: title,
     // text: '',
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: TRANSLATIONS.ok,
     width: "250px",
     background: "#800000",
     color: "#ffffff",
@@ -125,4 +133,15 @@ function showSweetAlert(title) {
     allowEscapeKey: true,
     confirmButtonColor: "#000000",
   });
+}
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
 }

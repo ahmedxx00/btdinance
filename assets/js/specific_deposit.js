@@ -1,6 +1,15 @@
 import * as common from "../js/common.js";
+let TRANSLATIONS = {};
 
-$(document).ready(function () {
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
+  
   // ==== Get the styles (properties and values) for the root ====
 
   const RS = getComputedStyle(document.querySelector(":root"));
@@ -48,8 +57,8 @@ $(document).ready(function () {
   });
 
   //---------------------------------------------
-  $('.back-btn').click(function (e) { 
-    history.back()
+  $(".back-btn").click(function (e) {
+    history.back();
   });
   /*===================== #deposit_btn ======================*/
 
@@ -74,38 +83,25 @@ $(document).ready(function () {
       // go ajax [ cur_type , network_name]
 
       if (key.length) {
-      if (cur_type && network_name) {
-        let deposit_currency = () => {
-          $.ajax({
-            type: "POST",
-            url: "/deposit/currency",
-            data: {
-              cur_type: cur_type,
-              network_name: network_name,
-              key : key
-            },
-            dataType: "json",
-            timeout: 5000,
-            success: function (response) {
-              if (response.success) {
-                common.showSpinnerDataDepositAddress(
-                  "Your Deposit Address",
-                  response.msg,
-                  "black",
-                  "green",
-                  true,
-                  false,
-                  false,
-                  null,
-                  null
-                );
-              } else {
-                if (response.msg == "error") {
-                  common.showSpinnerData(
-                    "Something Went Wrong",
-                    "oops sorry!",
+        if (cur_type && network_name) {
+          let deposit_currency = () => {
+            $.ajax({
+              type: "POST",
+              url: "/deposit/currency",
+              data: {
+                cur_type: cur_type,
+                network_name: network_name,
+                key: key,
+              },
+              dataType: "json",
+              timeout: 5000,
+              success: function (response) {
+                if (response.success) {
+                  common.showSpinnerDataDepositAddress(
+                    TRANSLATIONS.spc_dep.yr_dep_adrs,
+                    response.msg,
                     "black",
-                    "red",
+                    "green",
                     true,
                     false,
                     false,
@@ -113,10 +109,10 @@ $(document).ready(function () {
                     null
                   );
                 } else {
-                  if (response.hint && response.hint == "vip") {
-                    common.showSpinnerDataUpgradeVip(
-                      "Warning",
-                      response.msg,
+                  if (response.msg == "error") {
+                    common.showSpinnerData(
+                      TRANSLATIONS.sn_wr,
+                      TRANSLATIONS.op_sr,
                       "black",
                       "red",
                       true,
@@ -125,51 +121,62 @@ $(document).ready(function () {
                       null,
                       null
                     );
-                  }else{
-                    
-                  common.showSpinnerData(
-                    "Warning",
-                    response.msg,
-                    "black",
-                    "red",
-                    true,
-                    false,
-                    false,
-                    null,
-                    null
-                  );
+                  } else {
+                    if (response.hint && response.hint == "vip") {
+                      common.showSpinnerDataUpgradeVip(
+                        TRANSLATIONS.wrn,
+                        response.msg,
+                        "black",
+                        "red",
+                        TRANSLATIONS.spc_dep.btn_upg,
+                        true,
+                        false,
+                        false,
+                        null,
+                        null
+                      );
+                    } else {
+                      common.showSpinnerData(
+                        TRANSLATIONS.wrn,
+                        response.msg,
+                        "black",
+                        "red",
+                        true,
+                        false,
+                        false,
+                        null,
+                        null
+                      );
+                    }
+                  }
                 }
-                }
-              }
-            },
-            error: function (xhr, status, error) {
-              console.log(xhr.responseText);
-              common.showSpinnerData(
-                "Something Went Wrong",
-                "oops sorry!",
-                "black",
-                "red",
-                true,
-                false,
-                false,
-                null,
-                null
-              );
-            },
-          });
-        };
+              },
+              error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+                common.showSpinnerData(
+                  TRANSLATIONS.sn_wr,
+                  TRANSLATIONS.op_sr,
+                  "black",
+                  "red",
+                  true,
+                  false,
+                  false,
+                  null,
+                  null
+                );
+              },
+            });
+          };
 
-        common.manipulateAjax(deposit_currency);
+          common.manipulateAjax(deposit_currency);
+        }
+      } else {
+        showSweetAlert(TRANSLATIONS.spc_dep.ent_sec_k);
       }
-    }else{
-      showSweetAlert("Enter secret key");
-    }
     } else {
-      showSweetAlert("No network selected");
+      showSweetAlert(TRANSLATIONS.spc_dep.no_nt_sel);
     }
   });
-
-
 });
 
 async function fillNetworkWithClickedOption(optionClicked) {
@@ -241,7 +248,7 @@ function showSweetAlert(title) {
     title: title,
     // text: '',
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: TRANSLATIONS.ok,
     width: "250px",
     background: "#800000",
     color: "#ffffff",
@@ -250,4 +257,15 @@ function showSweetAlert(title) {
     allowEscapeKey: true,
     confirmButtonColor: "#000000",
   });
+}
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
 }

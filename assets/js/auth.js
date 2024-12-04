@@ -1,6 +1,13 @@
 import * as common from "./common.js";
+let TRANSLATIONS = {};
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
 
-$(document).ready(function () {
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
   /*######### Global Variables ############*/
 
   var isSignupNameAvailable = false;
@@ -152,8 +159,8 @@ $(document).ready(function () {
         success: function (response) {
           if (response.success) {
             common.showSpinnerData(
-              "Welcome to BTC Dinance",
-              "you will be redirected now ..",
+              TRANSLATIONS.auth.wlcm_bt,
+              TRANSLATIONS.auth.wl_redi,
               "black",
               "green",
               false,
@@ -165,8 +172,8 @@ $(document).ready(function () {
           } else {
             if (response.msg == "error") {
               common.showSpinnerData(
-                "Something Went Wrong",
-                "oops sorry!",
+                TRANSLATIONS.sn_wr,
+                TRANSLATIONS.op_sr,
                 "black",
                 "red",
                 true,
@@ -177,7 +184,7 @@ $(document).ready(function () {
               );
             } else {
               common.showSpinnerData(
-                "Warning",
+                TRANSLATIONS.wrn,
                 response.msg,
                 "black",
                 "red",
@@ -194,8 +201,8 @@ $(document).ready(function () {
           console.log(xhr.responseText);
 
           common.showSpinnerData(
-            "Something Went Wrong",
-            "oops sorry!",
+            TRANSLATIONS.sn_wr,
+            TRANSLATIONS.op_sr,
             "black",
             "red",
             true,
@@ -227,8 +234,8 @@ $(document).ready(function () {
           if (response.success) {
             $("input:not([type = 'checkbox'])").val("");
             common.showSpinnerData(
-              "Registration Successful",
-              "You Can Login Now",
+              TRANSLATIONS.auth.reg_succ,
+              TRANSLATIONS.auth.y_cn_lng,
               "black",
               "green",
               false,
@@ -240,8 +247,8 @@ $(document).ready(function () {
           } else {
             if (response.msg == "error") {
               common.showSpinnerData(
-                "Something Went Wrong",
-                "oops sorry!",
+                TRANSLATIONS.sn_wr,
+                TRANSLATIONS.op_sr,
                 "black",
                 "red",
                 true,
@@ -252,7 +259,7 @@ $(document).ready(function () {
               );
             } else {
               common.showSpinnerData(
-                "Warning",
+                TRANSLATIONS.wrn,
                 response.msg,
                 "black",
                 "red",
@@ -269,8 +276,8 @@ $(document).ready(function () {
           console.log(xhr.responseText);
 
           common.showSpinnerData(
-            "Something Went Wrong",
-            "oops sorry!",
+            TRANSLATIONS.sn_wr,
+            TRANSLATIONS.op_sr,
             "black",
             "red",
             true,
@@ -286,7 +293,6 @@ $(document).ready(function () {
     if (isSignupNameAvailable) {
       common.manipulateAjax(signup_func);
     }
-    
   });
 
   /*&%&%&%&%&%&%&%&%&%&&%&%&&%&%&%&%&%&%&%&%&%&%&%&%&%*/
@@ -303,3 +309,14 @@ $(document).ready(function () {
 
   // =================================================================
 });
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
+}

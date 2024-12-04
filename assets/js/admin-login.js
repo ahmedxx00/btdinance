@@ -1,6 +1,14 @@
 import * as common from "./common.js";
+let TRANSLATIONS = {};
 
-$(document).ready(function () {
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
   /*====================== password toggle show/hide ========================*/
 
   $(".password-toggle-icon").on("click", function () {
@@ -70,8 +78,8 @@ $(document).ready(function () {
         success: function (response) {
           if (response.success) {
             common.showSpinnerData(
-              "Welcome ADMIN",
-              "Login Successful",
+              TRANSLATIONS.adm_lg.wlcm,
+              TRANSLATIONS.adm_lg.lg_succ,
               "black",
               "green",
               false,
@@ -83,8 +91,8 @@ $(document).ready(function () {
           } else {
             if (response.msg == "error") {
               common.showSpinnerData(
-                "Something Went Wrong",
-                "oops sorry!",
+                TRANSLATIONS.sn_wr,
+                TRANSLATIONS.op_sr,
                 "black",
                 "red",
                 true,
@@ -95,7 +103,7 @@ $(document).ready(function () {
               );
             } else {
               common.showSpinnerData(
-                "Warning",
+                TRANSLATIONS.wrn,
                 response.msg,
                 "black",
                 "red",
@@ -112,8 +120,8 @@ $(document).ready(function () {
           console.log(xhr.responseText);
 
           common.showSpinnerData(
-            "Something Went Wrong",
-            "oops sorry!",
+            TRANSLATIONS.sn_wr,
+            TRANSLATIONS.op_sr,
             "black",
             "red",
             true,
@@ -131,3 +139,14 @@ $(document).ready(function () {
 
   /*&%&%&%&%&%&%&%&%&%&&%&%&&%&%&%&%&%&%&%&%&%&%&%&%&%*/
 });
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
+}

@@ -1,0 +1,241 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "About Us",
+      "nav_ex": "Exchange",
+      "nav_tr": "Transfer",
+      "nav_with": "Withdraw",
+      "nav_dep": "Deposit",
+      "nav_hm": "Home"
+    },
+    "logout_tit": "logout"
+  },
+
+  "auth": {
+    "login": {
+      "tit": "Login",
+      "name_email": "Name or Email",
+      "pass": "Password",
+      "pass_note": "max length 8 ~ 50",
+      "rem": " Remember me",
+      "btn": "Login",
+      "pass_frgt": "forgot password?",
+      "no_acc_nt": "Don't have account ? ",
+      "snp": "Sign Up"
+    },
+    "signup": {
+      "tit": "Sign Up",
+      "nm": "Enter Your Name",
+      "pass": "Enter Your Password",
+      "pass_note": "max length 8 ~ 50",
+      "sc": "Security Key",
+      "sc_nt1": "important: this key can't be changed in the future",
+      "sc_nt2": "max length 50",
+      "trm1": "Accept",
+      "trm2": "terms and conditions.",
+      "btn": "Sign Up",
+      "hv": "I have account ? ",
+      "lng": "Login"
+    }
+  },
+
+  "exchange": {
+    "tit": "Exchange"
+  },
+
+  "forgot_password": {
+    "tit": "forgot password",
+    "send_email_plc": "email",
+    "send_email": "send me email"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "My Account",
+      "ex": "Exchange",
+      "trns": "Transfer",
+      "with": "Withdraw",
+      "dep": "Deposit",
+      "up": "Upgrade"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "Name : ",
+      "em": "Email : "
+    },
+    "wlts": {
+      "tit": "My Wallets",
+      "av": "Available : ",
+      "with": "withdraw",
+      "dep": "deposit",
+      "trns": "transfer"
+    }
+  },
+
+  "reset_password": {
+    "cd": "Code : ",
+    "np": "Enter New Password",
+    "np_note": "max length 8 ~ 50",
+    "rp": "reset password"
+  },
+
+  "cnf_upgrade": {
+    "pta": "Pay To Address",
+    "am": "Amount : ",
+    "nt": "Network : ",
+    "cnf_nt1": "* After payment is completed and confirmed , copy the ",
+    "cnf_nt3": " or ",
+    "cnf_nt5": " into the below section to confirm your transaction .",
+    "cnf_btn": "Confirm Transaction"
+  },
+
+  "specific_deposit": {
+    "tit": "Deposit",
+    "nt_tp": "network type",
+    "nt_slct": "Select Network",
+    "scrt": "secret key",
+    "scrt_plc": "Enter your secret key",
+    "btn": "DEPOSIT",
+    "cpd": "copied"
+  },
+
+  "specific_transfer": {
+    "tit": "Transfer",
+    "av": "Available : ",
+    "nm": "Name",
+    "em": "Email",
+    "nm_nt": "Name of ~ BTC Dinance ~ user",
+    "nm_plc": "Enter Name",
+    "am_tit": "Amount",
+    "btn": "TRANSFER",
+    "em_nt": "Email of ~ BTC Dinance ~ user ( must has @ sign )",
+    "em_plc": "Enter Email"
+  },
+
+  "specific_upgrade": {
+    "only_pay_wrd": "Pay"
+  },
+
+  "specific_with_fiat": {
+    "tit": "Withdraw",
+    "av1": "Available",
+    "iban": "IBAN",
+    "iban_plc": "Bank Account IBAN",
+    "swft": "Swift Code",
+    "swft_plc": "Bank Swift Code",
+    "am": "Amount",
+    "av2": "Available : ",
+    "sec": "secret key",
+    "sec_plc": "Enter your secret key",
+    "btn": "WITHDRAW"
+  },
+
+  "specific_with": {
+    "tit": "Withdraw",
+    "av1": "Available",
+    "recp_add": "recipient address",
+    "recp_add_plc": "Enter recipient address",
+    "am": "Amount",
+    "av2": "Available : ",
+    "nt_tp": "network type",
+    "nt_slct": "Select Network",
+    "sec": "secret key",
+    "sec_plc": "Enter your secret key",
+    "btn": "WITHDRAW"
+  },
+
+  "transfer": {
+    "tit": "Available assets to transfer",
+    "av1": "Available",
+    "no_assts": "you have no assets",
+    "can_dep_now": "you can deposit NOW",
+    "dep": "Deposit"
+  },
+
+  "upgrade": {
+    "tit": "your membership is ",
+    "lmts": " ~ Limits ~ ",
+    "with": "* WITHDRAW : ",
+    "dep": "* DEPOSIT : ",
+    "trans": "* TRANSFER : ",
+    "rec": "* RECEIVE : ",
+    "per_wlt": "/wallet",
+    "daily": "/daily",
+    "grntd": "GRANTED",
+    "btn": "UPGRADE",
+    "btm_note": "Note : limits applies to all currencies with the corresponding conversion rate ."
+  },
+
+  "withdraw": {
+    "cur_tp": "currency type : ",
+    "av": "Available : ",
+    "btn": "withdraw",
+    "no_wlts": "you have no wallets",
+    "can_dep_now": "you can deposit NOW",
+    "dep": "Deposit"
+  },
+
+  "USER_EXISTS": "you already have account",
+  "THIS_USER_EXISTS": "this user exists",
+  "THIS_EMAIL_EXISTS": "email assigned to another user",
+  "OUR_USER_ADDED": "our user added",
+  "ALREADY_HAS_WALLET": "already has a <span style='color : blue'>{{cur_type}}</span> wallet",
+  "WRONG_EMAIL": "wrong credentials",
+  "WRONG_PASSWORD": "wrong credentials",
+  "AVAILABLE": "Available",
+  "NOT_AVAILABLE": "Name is used before",
+  "TOKEN_ERROR": "Can't sign or verify token",
+  "PASSWORD_ERROR": "Password Error",
+  "USER_NOT_FOUND_ERROR": "user not found",
+  "ADMIN_NOT_FOUND_ERROR": "admin not found",
+  "Empty_Credentials_ERROR": "empty credentials",
+  "WRONG_MEMBERSHIP_NUMBER": "wrong membership number",
+  "Email_ERROR": "Email not found",
+  "EXPIRED_OTP": "Expired OTP <br> Request a new one please",
+  "WRONG_OTP": "Wrong OTP",
+  "NO_OTP_FOR_THIS_EMAIL": "No OTP Sent for this email <br> Request a new one please",
+  "NOT_SUCH_WALLET": "No such wallet",
+  "NOT_SUFFICIENT_AMOUNT": "Not sufficient amount",
+  "WITHDRAW_SUCCESSFUL": "Withdraw Successful",
+  "WRONG_KEY": "Wrong Key",
+  "WRONG_AMOUNT": "Wrong amount",
+  "NO_NETWORK_WITH_THAT_NAME": "network name not found",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "no deposit address",
+  "NO_USER_WITH_THAT_NAME": "no user with that name available",
+  "NO_USER_WITH_THAT_Email": "no user with that email available",
+  "THIS_EMAIL_IS_USED": "this email is used by another user .",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "you can't transfer to yourself",
+  "YOU_MUST_BE_VIP1": "you must be at least <span style='color:blue'>VIP1</span> to transfer funds",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "you must be at least <span style='color:blue'>VIP1</span> to withdraw funds",
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "you must be at least <span style='color:blue'>VIP1</span> to deposit funds",
+  "HE_MUST_BE_VIP1": "the receiver must be at least <span style='color:blue'>VIP1</span> to receive funds",
+  "TRANSFER_SUCCESSFUL": "Transfer Successful",
+  "EXCHANGE_SUCCESSFUL": "Exchange Successful",
+  "EMAIL_EDIT_SUCCESSFUL": "Email Successfully Edited",
+  "FEE_EDITED": "Fee Edited",
+  "MAX_RECEIVE_EDITED": "max receive Edited",
+  "MAX_TRANSFER_EDITED": "max transfer Edited",
+  "MAX_WITHDRAW_EDITED": "max withdraw Edited",
+  "MAX_DEPOSIT_EDITED": "max deposit Edited",
+  "MEM_REMOVED": "membership removed",
+  "CONV_RATE_ADDED_UPDATED": "conv rate added/updated",
+  "CONV_RATE_REMOVED": "conv rate removed",
+  "MEM_ADDED": "membership added",
+  "VIP_EDITED": "Vip Edited",
+  "WALLET_UPDATED": "Wallet Updated",
+  "WALLET_ADDED": "Wallet Added",
+  "WALLET_REMOVED": "Wallet Removed",
+  "MEMBERSHIP_EXISTS": "membership already exists",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "no membership with that type",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "no membership with that number",
+  "NOT_ENOUGH_USDT_BALANCE": "NOT Enough <span style='color:blue'>USDT</span> Balance",
+  "NO_USDT_WALLET": "You have no <span style='color:blue'>USDT</span> wallet",
+  "TRANSACTION_ID_ERROR": "transaction id ERROR",
+  "TRANSACTION_DOC_DELETED": "transaction id deleted",
+  "UPGRADED_USER": "user upgraded successful",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> Membership <br> It takes <span style='color:blue'>12 hrs</span> Max to review .",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> is <span style='color:blue'>Basic</span> so he/she can't receive this amount as his wallet will exceed the limit of <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span>",
+  "Welcome_ADMIN": "Welcome ADMIN"
+}

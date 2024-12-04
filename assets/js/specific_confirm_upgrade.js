@@ -1,5 +1,15 @@
 import * as common from "./common.js";
-$(document).ready(function () {
+let TRANSLATIONS = {};
+
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
+
   // =========== Add a jQuery extension for only dealing with text nodes ===========
   jQuery.fn.textNodes = function () {
     return this.contents().filter(function () {
@@ -67,7 +77,7 @@ $(document).ready(function () {
             success: function (response) {
               if (response.success) {
                 common.showSpinnerDataLongTime(
-                  "Sent for Review",
+                  TRANSLATIONS.spc_cnf_upg.snt_fr_rvw,
                   response.msg,
                   "black",
                   "black",
@@ -80,8 +90,8 @@ $(document).ready(function () {
               } else {
                 if (response.msg == "error") {
                   common.showSpinnerData(
-                    "Something Went Wrong",
-                    "oops sorry!",
+                    TRANSLATIONS.sn_wr,
+                    TRANSLATIONS.op_sr,
                     "black",
                     "red",
                     true,
@@ -92,7 +102,7 @@ $(document).ready(function () {
                   );
                 } else {
                   common.showSpinnerData(
-                    "Warning",
+                    TRANSLATIONS.wrn,
                     response.msg,
                     "black",
                     "red",
@@ -108,8 +118,8 @@ $(document).ready(function () {
             error: function (xhr, status, error) {
               console.log(xhr.responseText);
               common.showSpinnerData(
-                "Something Went Wrong",
-                "oops sorry!",
+                TRANSLATIONS.sn_wr,
+                TRANSLATIONS.op_sr,
                 "black",
                 "red",
                 true,
@@ -124,7 +134,7 @@ $(document).ready(function () {
         common.manipulateAjax(confirm_transaction);
       }
     } else {
-      showSweetAlert("Enter Transaction ID");
+      showSweetAlert(TRANSLATIONS.spc_cnf_upg.ent_trns_id);
     }
   });
 });
@@ -134,7 +144,7 @@ function showSweetAlert(title) {
     title: title,
     // text: '',
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: TRANSLATIONS.ok,
     width: "250px",
     background: "#800000",
     color: "#ffffff",
@@ -143,4 +153,15 @@ function showSweetAlert(title) {
     allowEscapeKey: true,
     confirmButtonColor: "#000000",
   });
+}
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
 }

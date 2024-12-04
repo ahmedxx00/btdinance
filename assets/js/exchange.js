@@ -1,5 +1,13 @@
 import * as common from "./common.js";
-$(document).ready(function () {
+let TRANSLATIONS = {};
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
   // ==== Get the styles (properties and values) for the root ====
 
   const RS = getComputedStyle(document.querySelector(":root"));
@@ -82,8 +90,8 @@ $(document).ready(function () {
   //   return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp.
   // }, "Only digits and '.' are allowed");
   /*===========================================*/
-  $('.back-btn').click(function (e) { 
-    history.back()
+  $(".back-btn").click(function (e) {
+    history.back();
   });
   /*===================== #withdraw_btn ======================*/
 
@@ -122,7 +130,7 @@ $(document).ready(function () {
 
     if (amount.length) {
       if (amount.startsWith(".") || amount.split(".").length - 1 > 1) {
-        showSweetAlert("Wrong Amount");
+        showSweetAlert(TRANSLATIONS.wrng_amnt);
       } else {
         if (parseFloat(amount) <= parseFloat(cur_max_amount)) {
           if (key.length) {
@@ -150,7 +158,7 @@ $(document).ready(function () {
 
                   if (response.success) {
                     common.showSpinnerData(
-                      "Done",
+                      TRANSLATIONS.dn,
                       response.msg,
                       "black",
                       "green",
@@ -163,8 +171,8 @@ $(document).ready(function () {
                   } else {
                     if (response.msg == "error") {
                       common.showSpinnerData(
-                        "Something Went Wrong",
-                        "oops sorry!",
+                        TRANSLATIONS.sn_wr,
+                        TRANSLATIONS.op_sr,
                         "black",
                         "red",
                         true,
@@ -175,7 +183,7 @@ $(document).ready(function () {
                       );
                     } else {
                       common.showSpinnerData(
-                        "Warning",
+                        TRANSLATIONS.wrn,
                         response.msg,
                         "black",
                         "red",
@@ -194,8 +202,8 @@ $(document).ready(function () {
                   //------------------------------------------------------
                   console.log(xhr.responseText);
                   common.showSpinnerData(
-                    "Something Went Wrong",
-                    "oops sorry!",
+                    TRANSLATIONS.sn_wr,
+                    TRANSLATIONS.op_sr,
                     "black",
                     "red",
                     true,
@@ -211,14 +219,14 @@ $(document).ready(function () {
             common.manipulateAjax(exchange_currency);
             //===============================================
           } else {
-            showSweetAlert("Enter secret key");
+            showSweetAlert(TRANSLATIONS.ent_sec);
           }
         } else {
-          showSweetAlert("Amount Exceeded");
+          showSweetAlert(TRANSLATIONS.am_ex);
         }
       }
     } else {
-      showSweetAlert("Please enter amount");
+      showSweetAlert(TRANSLATIONS.ent_amt);
     }
   });
 });
@@ -228,7 +236,7 @@ function showSweetAlert(title) {
     title: title,
     // text: '',
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: TRANSLATIONS.ok,
     width: "250px",
     background: "#800000",
     color: "#ffffff",
@@ -242,4 +250,15 @@ function showSweetAlert(title) {
 function validAmount(value) {
   // Allow digits && '.' only && only one leading zero before dot using a RegExp.
   return /^(?!0\d)\d+(?:\.\d+)?$/.test(value);
+}
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
 }

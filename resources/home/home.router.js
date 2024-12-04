@@ -5,6 +5,7 @@ import homeProtect from "../../middlewares/home-protect.js";
 import protect from "../../middlewares/protect.js";
 
 import * as homeController from './home.controller.js';
+import { changeLanguage } from './language.controller.js';  // Import the new controller
 
 router.get("/", homeProtect, (req, res, next) => {
   if (req.payload && req.payload != null) {
@@ -17,6 +18,7 @@ router.get("/", homeProtect, (req, res, next) => {
   }
 });
 
+router.get('/change-language', changeLanguage);  // Use the extracted controller function
 
 router.get("/about", homeProtect, homeController.getAboutPage);
 

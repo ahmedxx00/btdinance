@@ -55,8 +55,8 @@ export const WALLETS_CURRENCIES = {
   USDT: {
     name: "USDT",
     img: "/usdt.svg",
-    our_users_min_balance: 1476544,
-    our_users_max_balance: 2654881,
+    our_users_min_balance: 2476544,
+    our_users_max_balance: 5654881,
     isCrypto: true,
     isFiat: false,
   },

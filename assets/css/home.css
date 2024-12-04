@@ -12,15 +12,12 @@
 
 /* -------------- :root --------------- */
 
-
-
-:root{
-  --BLACK : #000000;
-  --WHITE : #ffffff;
-  --MAIN-BLACK : #2c2c2c;
-  --MAIN-WHITE : #eaeaea;
-  --MAIN-MASTARD : #febe00;
-
+:root {
+  --BLACK: #000000;
+  --WHITE: #ffffff;
+  --MAIN-BLACK: #2c2c2c;
+  --MAIN-WHITE: #eaeaea;
+  --MAIN-MASTARD: #febe00;
 }
 /* ------------------------------------ */
 
@@ -35,28 +32,59 @@
   padding: 0 5px;
 } */
 
+/* =================lang==================== */
+.lang {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.lang img {
+  width: 20px;
+  height: auto;
+}
+.lang select {
+  background-color: var(--MAIN-MASTARD);
+  color: black;
+  border: none;
+  outline: none;
+  width: max-content;
+  padding: 2px 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
 /* =================main content==================== */
 
-.main-buttons{
-
+.main-buttons {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  padding: 30px 10px;
+  padding: 10px 10px 30px;
   flex-wrap: wrap;
   column-gap: 10px;
   row-gap: 20px;
-  margin: 10px 0 60px;
+  margin: 0 0 60px;
 }
 
 /* ------- wrapping a with div just to keep 3 only in a row ------- */
-.main-buttons > div{
+.main-buttons > div {
   flex: 0 0 30%;
 }
 /* ------------------------------------------------------------------- */
 
-.main-buttons a{
+.main-buttons a {
   width: 150px;
   height: max-content;
   cursor: pointer;
@@ -67,47 +95,43 @@
   justify-content: center;
   align-items: center;
   row-gap: 5px;
-  
+
   padding: 5px;
   margin: 0 auto;
   border: none;
   outline: none;
   box-shadow: 0 0 5px var(--MAIN-BLACK);
-  font-family:serif;
+  font-family: serif;
   font-weight: bold;
   color: var(--MAIN-BLACK);
   background-color: var(--WHITE);
-
 
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-
 }
 
-
-.main-buttons a:any-link{
-text-decoration: none;
+.main-buttons a:any-link {
+  text-decoration: none;
 }
-.main-buttons a:hover{
+.main-buttons a:hover {
   background-color: var(--MAIN-MASTARD);
 }
 
-.main-buttons a img{
+.main-buttons a img {
   width: auto;
   height: 50px;
   background-color: transparent;
 }
 
 @media (max-width: 576px) {
-
-  .main-buttons a{
+  .main-buttons a {
     font-size: 18px;
     width: 130px;
   }
-  .main-buttons a img{
+  .main-buttons a img {
     width: auto;
     height: 38px;
   }
@@ -115,7 +139,7 @@ text-decoration: none;
 
 /* -------- clients ------- */
 
-.btm_clients{
+.btm_clients {
   position: fixed;
   bottom: 0;
   left: 50%;
@@ -125,25 +149,24 @@ text-decoration: none;
   padding: 5px 30px;
   text-align: center;
   margin: 20px auto 0;
-  transform:translateX(-50%) ;
-  -webkit-transform:translateX(-50%) ;
-  -moz-transform:translateX(-50%) ;
-  -ms-transform:translateX(-50%) ;
-  -o-transform:translateX(-50%) ;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 
-.btm_clients > span{
+.btm_clients > span {
   display: block;
   margin: 5px auto;
   font-weight: bold;
   color: var(--MAIN-MASTARD);
   font-size: 14px;
-
 }
-.btm_clients .clients{
+.btm_clients .clients {
   font-size: 22px;
   color: white;
 }
-.btm_clients .clients .post_span{
+.btm_clients .clients .post_span {
   color: var(--MAIN-MASTARD);
 }

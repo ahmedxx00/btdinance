@@ -1,6 +1,15 @@
 import * as common from "../js/common.js";
+let TRANSLATIONS = {};
 
-$(document).ready(function () {
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
+  
   // ==== Get the styles (properties and values) for the root ====
 
   const RS = getComputedStyle(document.querySelector(":root"));
@@ -64,8 +73,8 @@ $(document).ready(function () {
   });
 
   /*===========================================*/
-  $('.back-btn').click(function (e) { 
-    history.back()
+  $(".back-btn").click(function (e) {
+    history.back();
   });
   /*===================== #transfer_btn ======================*/
 
@@ -92,10 +101,8 @@ $(document).ready(function () {
     let cur_amount = $(".cur_amount").html().toString().trim(); // max available
 
     if ($_this.parent().hasClass("Name")) {
-      console.log("name");
       doSomething(cur_type, name, "name", amount, cur_amount);
     } else if ($_this.parent().hasClass("Email")) {
-      console.log("email");
       doSomething(cur_type, email, "email", amount, cur_amount);
     }
   });
@@ -107,7 +114,7 @@ function doSomething(cur_type, nameOrEmail, hint, amount, cur_amount) {
   if (nameOrEmail.length) {
     if (amount.length) {
       if (amount.startsWith(".") || amount.split(".").length - 1 > 1) {
-        showSweetAlert("Wrong Amount");
+        showSweetAlert(TRANSLATIONS.wrng_amnt);
       } else {
         if (parseFloat(amount) <= parseFloat(cur_amount)) {
           // to eliminate any zeros on the left
@@ -119,21 +126,21 @@ function doSomething(cur_type, nameOrEmail, hint, amount, cur_amount) {
             if (validateEmail(nameOrEmail)) {
               transfer(cur_type, hint, nameOrEmail, am);
             } else {
-              showSweetAlert("Invalid Email");
+              showSweetAlert(TRANSLATIONS.spc_trans.inv_em);
             }
           }
         } else {
-          showSweetAlert("Amount is not available");
+          showSweetAlert(TRANSLATIONS.spc_trans.am_nt_av);
         }
       }
     } else {
-      showSweetAlert("Please enter amount");
+      showSweetAlert(TRANSLATIONS.spc_trans.pls_ent_am);
     }
   } else {
     if (hint === "name") {
-      showSweetAlert("Enter Name");
+      showSweetAlert(TRANSLATIONS.spc_trans.ent_nm);
     } else {
-      showSweetAlert("Enter Email");
+      showSweetAlert(TRANSLATIONS.spc_trans.ent_em);
     }
   }
 }
@@ -160,7 +167,7 @@ function transfer(cur_type, hint, nameOrEmail, amount) {
       success: function (response) {
         if (response.success) {
           common.showSpinnerData(
-            "Done",
+            TRANSLATIONS.dn,
             response.msg,
             "black",
             "green",
@@ -173,8 +180,8 @@ function transfer(cur_type, hint, nameOrEmail, amount) {
         } else {
           if (response.msg == "error") {
             common.showSpinnerData(
-              "Something Went Wrong",
-              "oops sorry!",
+              TRANSLATIONS.sn_wr,
+              TRANSLATIONS.op_sr,
               "black",
               "red",
               true,
@@ -185,7 +192,7 @@ function transfer(cur_type, hint, nameOrEmail, amount) {
             );
           } else {
             common.showSpinnerData(
-              "Warning",
+              TRANSLATIONS.wrn,
               response.msg,
               "black",
               "red",
@@ -201,8 +208,8 @@ function transfer(cur_type, hint, nameOrEmail, amount) {
       error: function (xhr, status, error) {
         console.log(xhr.responseText);
         common.showSpinnerData(
-          "Something Went Wrong",
-          "oops sorry!",
+          TRANSLATIONS.sn_wr,
+          TRANSLATIONS.op_sr,
           "black",
           "red",
           true,
@@ -229,7 +236,7 @@ function showSweetAlert(title) {
     title: title,
     // text: '',
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: TRANSLATIONS.ok,
     width: "250px",
     background: "#800000",
     color: "#ffffff",
@@ -238,4 +245,15 @@ function showSweetAlert(title) {
     allowEscapeKey: true,
     confirmButtonColor: "#000000",
   });
+}
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
 }

@@ -2,6 +2,19 @@
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false ,stylesheets:['/css/home.css']}) %>
 
+<div class="lang">
+  <img src="/lang.png" alt="lang">
+  <form action="/change-language" method="get">
+    <select name="lng" id="lng" onchange="this.form.submit()">
+      <option value="en">EN</option>
+      <option value="ar">العربية</option>
+      <option value="ru">RU</option>
+      <option value="es">ES</option>
+      <option value="fr">FR</option>
+    </select>
+  </form>
+</div>
+
 <div class="main-buttons">
   <div>
     <a href="/myaccount"><img src="/account.png" />My Account</a>

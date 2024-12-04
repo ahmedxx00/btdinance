@@ -1,6 +1,15 @@
 import * as common from "../js/common.js";
+let TRANSLATIONS = {};
 
-$(document).ready(function () {
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
+
   // ==== Get the styles (properties and values) for the root ====
 
   const RS = getComputedStyle(document.querySelector(":root"));
@@ -78,8 +87,8 @@ $(document).ready(function () {
   // }, "Only digits and '.' are allowed");
   /*===========================================*/
 
-  $('.back-btn').click(function (e) { 
-    history.back()
+  $(".back-btn").click(function (e) {
+    history.back();
   });
   /*===================== #withdraw_btn ======================*/
 
@@ -110,7 +119,7 @@ $(document).ready(function () {
     if (recipient_address.length) {
       if (amount.length) {
         if (amount.startsWith(".") || amount.split(".").length - 1 > 1) {
-          showSweetAlert("Wrong Amount");
+          showSweetAlert(TRANSLATIONS.wrng_amnt);
         } else {
           if (parseFloat(amount) <= parseFloat(cur_amount)) {
             if ($network_dropdown_btn.hasClass("one_selected")) {
@@ -120,19 +129,29 @@ $(document).ready(function () {
                 if ((amount - fee).toFixed(10) * 1 > 0) {
                   let $to_show = $(`
                   <div id="confirm_withdraw" style="display: none;">
-                    <h4>Confirm Withdraw</h4>
+                    <h4>${TRANSLATIONS.spc_with.cnf_with}</h4>
                     <span class="cur_type" style="display:none">${cur_type}</span>
                     <span class="recipient_address" style="display:none">${recipient_address}</span>
                     <span class="key" style="display:none">${key}</span>
-                    <span class="total"><span class="pre_span">Total Amount : </span>${(
-                      parseFloat(amount).toFixed(10) * 1
-                    ).toString()}<span class="post_span"> ${cur_type}</span></span>
-                    <span class="network_name"><span class="pre_span">Network Name : </span>${network_name}</span>
-                    <span class="network_fee"><span class="pre_span">Fee : </span>${fee}<span class="post_span"> ${cur_type}</span></span>
-                    <span class="received"><span class="pre_span">Amount Received : </span>${(
-                      parseFloat(amount - fee).toFixed(10) * 1
-                    ).toString()}<span class="post_span"> ${cur_type}</span></span>
-                    <button id="confirm_withdraw_btn">Confirm</button>
+                    <span class="total"><span class="pre_span">${
+                      TRANSLATIONS.spc_with.tot_am
+                    }</span>${(
+                    parseFloat(amount).toFixed(10) * 1
+                  ).toString()}<span class="post_span"> ${cur_type}</span></span>
+                    <span class="network_name"><span class="pre_span">${
+                      TRANSLATIONS.spc_with.net_nm
+                    }</span>${network_name}</span>
+                    <span class="network_fee"><span class="pre_span">${
+                      TRANSLATIONS.spc_with.fee
+                    }</span>${fee}<span class="post_span"> ${cur_type}</span></span>
+                    <span class="received"><span class="pre_span">${
+                      TRANSLATIONS.spc_with.am_rec
+                    }</span>${(
+                    parseFloat(amount - fee).toFixed(10) * 1
+                  ).toString()}<span class="post_span"> ${cur_type}</span></span>
+                    <button id="confirm_withdraw_btn">${
+                      TRANSLATIONS.spc_with.cnf
+                    }</button>
                   </div>
                   `);
 
@@ -140,25 +159,23 @@ $(document).ready(function () {
                     fadeDuration: 500,
                   });
                 } else {
-                  showSweetAlert(
-                    "This Network Fees exceeds <br> <span style='color:black; font-weight:bold;'>Try another network</span>"
-                  );
+                  showSweetAlert(TRANSLATIONS.spc_with.net_f_exc);
                 }
               } else {
-                showSweetAlert("Enter secret key");
+                showSweetAlert(TRANSLATIONS.spc_with.ent_sec_k);
               }
             } else {
-              showSweetAlert("No network selected");
+              showSweetAlert(TRANSLATIONS.spc_with.no_net_sel);
             }
           } else {
-            showSweetAlert("Amount is not available");
+            showSweetAlert(TRANSLATIONS.spc_with.am_nt_av);
           }
         }
       } else {
-        showSweetAlert("Please enter amount");
+        showSweetAlert(TRANSLATIONS.spc_with.pls_ent_am);
       }
     } else {
-      showSweetAlert("Enter recipient address");
+      showSweetAlert(TRANSLATIONS.spc_with.ent_recep_adr);
     }
   });
 
@@ -196,7 +213,7 @@ $(document).ready(function () {
 
           if (response.success) {
             common.showSpinnerData(
-              "Done",
+              TRANSLATIONS.dn,
               response.msg,
               "black",
               "green",
@@ -209,8 +226,8 @@ $(document).ready(function () {
           } else {
             if (response.msg == "error") {
               common.showSpinnerData(
-                "Something Went Wrong",
-                "oops sorry!",
+                TRANSLATIONS.sn_wr,
+                TRANSLATIONS.op_sr,
                 "black",
                 "red",
                 true,
@@ -222,10 +239,11 @@ $(document).ready(function () {
             } else {
               if (response.hint && response.hint == "vip") {
                 common.showSpinnerDataUpgradeVip(
-                  "Warning",
+                  TRANSLATIONS.wrn,
                   response.msg,
                   "black",
                   "red",
+                  TRANSLATIONS.spc_with.btn_upg,
                   true,
                   false,
                   false,
@@ -234,7 +252,7 @@ $(document).ready(function () {
                 );
               } else {
                 common.showSpinnerData(
-                  "Warning",
+                  TRANSLATIONS.wrn,
                   response.msg,
                   "black",
                   "red",
@@ -254,8 +272,8 @@ $(document).ready(function () {
           //------------------------------------------------------
           console.log(xhr.responseText);
           common.showSpinnerData(
-            "Something Went Wrong",
-            "oops sorry!",
+            TRANSLATIONS.sn_wr,
+            TRANSLATIONS.op_sr,
             "black",
             "red",
             true,
@@ -334,7 +352,7 @@ function showSweetAlert(title) {
     title: title,
     // text: '',
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: TRANSLATIONS.ok,
     width: "250px",
     background: "#800000",
     color: "#ffffff",
@@ -343,4 +361,15 @@ function showSweetAlert(title) {
     allowEscapeKey: true,
     confirmButtonColor: "#000000",
   });
+}
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
 }

@@ -1,6 +1,15 @@
 import * as common from "./common.js";
-$(document).ready(function () {
-  
+let TRANSLATIONS = {};
+
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
+
   $(".sn").click(function (e) {
     e.stopPropagation();
     $(".nav-items").toggleClass("show");
@@ -20,13 +29,23 @@ $(document).ready(function () {
     e.preventDefault();
 
     let $to_show = $(`
-      <h3 class='cnf_logout_h'>are you sure you want to leave ?</h3>
+      <h3 class='cnf_logout_h'>${TRANSLATIONS.nv_br.lgt_tit}</h3>
       <div class='lgt_btns'>
-        <button class='cnf_logout_btn'>leave</button>
-        <button class='cancel_logout_btn'>no</button>
+        <button class='cnf_logout_btn'>${TRANSLATIONS.nv_br.lgt_lv}</button>
+        <button class='cancel_logout_btn'>${TRANSLATIONS.no}</button>
       </div>
     `);
     common.showCustomLogoutDialog($to_show);
   });
-
 });
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
+}

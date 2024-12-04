@@ -1,6 +1,15 @@
 import * as common from "./common.js";
+let TRANSLATIONS = {};
 
-$(document).ready(function () {
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
+
   /*====================== password toggle show/hide ========================*/
 
   $(".password-toggle-icon").on("click", function () {
@@ -109,8 +118,8 @@ $(document).ready(function () {
               localStorage.removeItem(common.LOCAL_STORAGE_CONSTANTS.otp_email);
 
               common.showSpinnerData(
-                "Password Changed",
-                "Login with new password",
+                TRANSLATIONS.rst_pass.pas_chngd,
+                TRANSLATIONS.rst_pass.lng_n_pas,
                 "black",
                 "green",
                 false,
@@ -122,8 +131,8 @@ $(document).ready(function () {
             } else {
               if (response.msg == "error") {
                 common.showSpinnerData(
-                  "Something Went Wrong",
-                  "oops sorry!",
+                  TRANSLATIONS.sn_wr,
+                  TRANSLATIONS.op_sr,
                   "black",
                   "red",
                   true,
@@ -134,7 +143,7 @@ $(document).ready(function () {
                 );
               } else {
                 common.showSpinnerData(
-                  "Warning",
+                  TRANSLATIONS.wrn,
                   response.msg,
                   "black",
                   "red",
@@ -150,8 +159,8 @@ $(document).ready(function () {
           error: function (xhr, status, error) {
             console.log(xhr.responseText);
             common.showSpinnerData(
-              "Something Went Wrong",
-              "oops sorry!",
+              TRANSLATIONS.sn_wr,
+              TRANSLATIONS.op_sr,
               "black",
               "red",
               true,
@@ -173,3 +182,14 @@ $(document).ready(function () {
   //         .join("")
   //         .toString();
 });
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
+}

@@ -1,5 +1,14 @@
 import * as common from "../js/common.js";
-$(document).ready(function () {
+let TRANSLATIONS = {};
+
+$(document).ready(async function () {
+  /*====================== fetch translations ========================*/
+
+  let cookieLocale = await getCookie("i18next");
+  let locale = cookieLocale ? cookieLocale : "en";
+  TRANSLATIONS = await fetchTranslationsFor(locale); //{}
+
+  /*==============================================*/
   // =========== Add a jQuery extension for only dealing with text nodes ===========
   jQuery.fn.textNodes = function () {
     return this.contents().filter(function () {
@@ -13,10 +22,10 @@ $(document).ready(function () {
 
     let $to_show = $(`
         <div id="edit_email_modal" style="display: none;">
-          <h4>Edit Email</h4>
-            <input type="text" name="email" placeholder="email">
-            <input type="text" name="key" placeholder="your key">
-          <button id="cnf_edit_email_btn">Confirm</button>
+          <h4>${TRANSLATIONS.my_acc.edt_em}</h4>
+            <input type="text" name="email" placeholder="${TRANSLATIONS.my_acc.em}">
+            <input type="text" name="key" placeholder="${TRANSLATIONS.my_acc.yr_k}">
+          <button id="cnf_edit_email_btn">${TRANSLATIONS.my_acc.cnf}</button>
         </div>
         `);
 
@@ -32,11 +41,9 @@ $(document).ready(function () {
       .on("keyup paste input", function () {
         $(this).val($(this).val().replace(/\s+/g, ""));
       });
-    $to_show
-      .children("input[name='key']")
-      .on("keyup paste input", function () {
-        $(this).val($(this).val().replace(/\s+/g, ""));
-      });
+    $to_show.children("input[name='key']").on("keyup paste input", function () {
+      $(this).val($(this).val().replace(/\s+/g, ""));
+    });
     // =====================================================================
   });
 
@@ -85,7 +92,7 @@ $(document).ready(function () {
 
                 if (response.success) {
                   common.showSpinnerData(
-                    "Done",
+                    TRANSLATIONS.dn,
                     response.msg,
                     "black",
                     "green",
@@ -98,8 +105,8 @@ $(document).ready(function () {
                 } else {
                   if (response.msg == "error") {
                     common.showSpinnerData(
-                      "Something Went Wrong",
-                      "oops sorry!",
+                      TRANSLATIONS.sn_wr,
+                      TRANSLATIONS.op_sr,
                       "black",
                       "red",
                       true,
@@ -110,7 +117,7 @@ $(document).ready(function () {
                     );
                   } else {
                     common.showSpinnerData(
-                      "Warning",
+                      TRANSLATIONS.wrn,
                       response.msg,
                       "black",
                       "red",
@@ -129,8 +136,8 @@ $(document).ready(function () {
                 //------------------------------------------------------
                 console.log(xhr.responseText);
                 common.showSpinnerData(
-                  "Something Went Wrong",
-                  "oops sorry!",
+                  TRANSLATIONS.sn_wr,
+                  TRANSLATIONS.op_sr,
                   "black",
                   "red",
                   true,
@@ -145,10 +152,10 @@ $(document).ready(function () {
 
           common.manipulateAjax(editemail);
         } else {
-          showSweetAlert("Enter Key");
+          showSweetAlert(TRANSLATIONS.my_acc.ent_k);
         }
       } else {
-        showSweetAlert("Invalid Email");
+        showSweetAlert(TRANSLATIONS.my_acc.inv_em);
       }
     }
   });
@@ -165,7 +172,7 @@ function showSweetAlert(title) {
     title: title,
     // text: '',
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: TRANSLATIONS.ok,
     width: "250px",
     background: "#800000",
     color: "#ffffff",
@@ -174,4 +181,15 @@ function showSweetAlert(title) {
     allowEscapeKey: true,
     confirmButtonColor: "#000000",
   });
+}
+
+async function getCookie(name) {
+  return (document.cookie.match(
+    "(?:^|;)\\s*" + name.trim() + "\\s*=\\s*([^;]*?)\\s*(?:;|$)"
+  ) || [])[1];
+}
+
+async function fetchTranslationsFor(locale) {
+  const response = await fetch(`/static-files-lang/${locale}.json`);
+  return await response.json();
 }

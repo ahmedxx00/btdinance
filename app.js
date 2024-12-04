@@ -1,6 +1,6 @@
 import http from "http";
 import express from "express";
-import { WebSocketServer ,WebSocket} from "ws";
+import { WebSocketServer, WebSocket } from "ws";
 // import {client} from "websocket";
 // const client = require('websocket').client
 import cors from "cors";
@@ -15,8 +15,8 @@ import {
 } from "./Constants/API_DB_Constants.js";
 import { connectBinance, connectLocalWSS } from "./crypto-prices-client.js";
 
-import helmet from 'helmet';
-import nocache from 'nocache';
+import helmet from "helmet";
+import nocache from "nocache";
 
 //-------------------------------------
 
@@ -24,14 +24,14 @@ const app = express();
 app.use(cors());
 
 // helmet is very important
-// we disable CSP but it is very helpful 
-app.use(helmet({ contentSecurityPolicy : false }));
-app.use(nocache());// prevent cache is very important
+// we disable CSP but it is very helpful
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(nocache()); // prevent cache is very important
 // Use cookie-parser middleware
 app.use(cookieParser(COOKIE_SIGNING_SECRET));
 
 //----------- data type options ------------
-app.use(express.json({ type: "application/json"}));
+app.use(express.json({ type: "application/json" }));
 app.use(express.urlencoded({ extended: true }));
 //----------- serve statics --------
 //-------------------
@@ -41,19 +41,46 @@ const __dirname = path.dirname(__filename);
 //-------------------
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "images")));
+app.use(express.static(path.join(__dirname, "locales")));
 //---------------- set view engine ------------------
 app.set("view engine", "ejs");
 app.set("views", "views"); // default folder name is 'views'
 //---------------------------------------------------
 
+/*########################[ i18next ]############################*/
+import i18next from "i18next";
+import Backend from "i18next-fs-backend";
+import middleware from "i18next-http-middleware";
+import { setLanguage } from "./middlewares/set-language-middleware.js";
+
+
+i18next
+  .use(Backend) // Connects the file system backend
+  .use(middleware.LanguageDetector) // Enables automatic language detection
+  .init({
+    backend: {
+      // loadPath: path.join(process.cwd(), "locales", "{{lng}}", "{{ns}}.json"), // Path to translation files
+      loadPath: path.join(__dirname, "locales", "{{lng}}", "{{ns}}.json"), // Path to translation files
+    },
+    detection: {
+      order: ["querystring", "cookie"], // Priority: URL query string first, then cookies
+      caches: ["cookie"], // Cache detected language in cookies
+    },
+    fallbackLng: "en", // Default language when no language is detected
+    preload: ["en", "ar"], // Preload these languages at startup
+  });
+
+app.use(middleware.handle(i18next));
+// set lang all over the app instance
+app.use(setLanguage);
 /*############################[ ws server ]#################################*/
 
 app.server = http.createServer(app); // to be listen on
 app.wss = new WebSocketServer({ server: app.server }); // [ server: http|https OR port: Number OR noServer:Bool ]
 
 app.wss.on("connection", (ws, req) => {
-    let conn_id = req.url.replace("/?id=", "");
-    
+  let conn_id = req.url.replace("/?id=", "");
+
   if (conn_id && conn_id == CRYPTO_ID) {
     ws.on("message", async (msg) => {
       let cur = JSON.parse(msg);
@@ -61,7 +88,7 @@ app.wss.on("connection", (ws, req) => {
       let symbol = cur.data.k.s,
         c_price = cur.data.k.c;
 
-      let f_p = await format_prc(c_price,symbol);
+      let f_p = await format_prc(c_price, symbol);
 
       let data_to_send = {
         s: symbol,
@@ -73,9 +100,8 @@ app.wss.on("connection", (ws, req) => {
         if (client !== ws) {
           client.send(JSON.stringify(data_to_send));
         }
-      })
+      });
       //-----------------------
-
     });
 
     ws.on("close", () => {
@@ -119,15 +145,12 @@ app.use("/transaction_ids", transactionIdsRouter);
 app.use("/conversion_rates", conversionRatesRouter);
 app.use("/our_users", ourUsersRouter);
 
-
-
 /*#############################################################*/
 
 //====================== 404 not found =======================
 app.use((req, res) => {
   // res.send("404 not found"); // if req for not found router
-  res.render('404_not_found.ejs'); // if req for not found router
-
+  res.render("404_not_found.ejs"); // if req for not found router
 });
 //============================ start server ===================
 
@@ -142,7 +165,6 @@ app.server.listen(PORT, (err) => {
   connectLocalWSS();
   //--------------------------------------------
 });
-
 
 // let net = {
 //   name : 'good',
@@ -161,7 +183,6 @@ app.server.listen(PORT, (err) => {
 //   console.log(eee)
 //   console.log(typeof(eee))
 // })
-
 
 // let xx = {
 //   ahmed : {
@@ -215,7 +236,6 @@ app.server.listen(PORT, (err) => {
 
 // }
 // console.log(Object.entries(xxx))
-
 
 // let pp = Object.values(xx).filter(v=> v.u).map(v=> v.i)
 
