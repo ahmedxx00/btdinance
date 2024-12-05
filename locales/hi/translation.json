@@ -1,0 +1,241 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "हमारे बारे में",
+      "nav_ex": "विनिमय",
+      "nav_tr": "स्थानांतरण",
+      "nav_with": "निकासी",
+      "nav_dep": "जमा",
+      "nav_hm": "होम"
+    },
+    "logout_tit": "लॉग आउट"
+  },
+
+  "auth": {
+    "login": {
+      "tit": "लॉगिन",
+      "name_email": "नाम या ईमेल",
+      "pass": "पासवर्ड",
+      "pass_note": "अधिकतम लंबाई 8 ~ 50",
+      "rem": " मुझे याद रखें",
+      "btn": "लॉगिन",
+      "pass_frgt": "पासवर्ड भूल गए?",
+      "no_acc_nt": "क्या आपके पास खाता नहीं है? ",
+      "snp": "साइन अप करें"
+    },
+    "signup": {
+      "tit": "साइन अप करें",
+      "nm": "अपना नाम दर्ज करें",
+      "pass": "अपना पासवर्ड दर्ज करें",
+      "pass_note": "अधिकतम लंबाई 8 ~ 50",
+      "sc": "सुरक्षा कुंजी",
+      "sc_nt1": "महत्वपूर्ण: यह कुंजी भविष्य में बदल नहीं सकती है",
+      "sc_nt2": "अधिकतम लंबाई 50",
+      "trm1": "स्वीकार करें",
+      "trm2": "नियम और शर्तें।",
+      "btn": "साइन अप करें",
+      "hv": "क्या आपके पास खाता है? ",
+      "lng": "लॉगिन"
+    }
+  },
+
+  "exchange": {
+    "tit": "विनिमय"
+  },
+
+  "forgot_password": {
+    "tit": "पासवर्ड भूल गए",
+    "send_email_plc": "ईमेल",
+    "send_email": "मुझे ईमेल भेजें"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "मेरा खाता",
+      "ex": "विनिमय",
+      "trns": "स्थानांतरण",
+      "with": "निकासी",
+      "dep": "जमा",
+      "up": "अपग्रेड करें"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "नाम : ",
+      "em": "ईमेल : "
+    },
+    "wlts": {
+      "tit": "मेरे वॉलेट्स",
+      "av": "उपलब्ध : ",
+      "with": "निकासी",
+      "dep": "जमा",
+      "trns": "स्थानांतरण"
+    }
+  },
+
+  "reset_password": {
+    "cd": "कोड : ",
+    "np": "नया पासवर्ड दर्ज करें",
+    "np_note": "अधिकतम लंबाई 8 ~ 50",
+    "rp": "पासवर्ड रीसेट करें"
+  },
+
+  "cnf_upgrade": {
+    "pta": "पते पर भुगतान करें",
+    "am": "राशि : ",
+    "nt": "नेटवर्क : ",
+    "cnf_nt1": "* भुगतान पूरा होने और पुष्टि होने के बाद, ",
+    "cnf_nt3": " या ",
+    "cnf_nt5": " को नीचे दिए गए सेक्शन में पेस्ट करके अपने लेन-देन की पुष्टि करें।",
+    "cnf_btn": "लेन-देन की पुष्टि करें"
+  },
+
+  "specific_deposit": {
+    "tit": "जमा",
+    "nt_tp": "नेटवर्क प्रकार",
+    "nt_slct": "नेटवर्क चुनें",
+    "scrt": "गुप्त कुंजी",
+    "scrt_plc": "अपनी गुप्त कुंजी दर्ज करें",
+    "btn": "जमा करें",
+    "cpd": "कॉपी किया गया"
+  },
+
+  "specific_transfer": {
+    "tit": "स्थानांतरण",
+    "av": "उपलब्ध : ",
+    "nm": "नाम",
+    "em": "ईमेल",
+    "nm_nt": "~ BTDinance ~ उपयोगकर्ता का नाम",
+    "nm_plc": "नाम दर्ज करें",
+    "am_tit": "राशि",
+    "btn": "स्थानांतरण करें",
+    "em_nt": "~ BTDinance ~ उपयोगकर्ता का ईमेल ( @ चिह्न होना चाहिए )",
+    "em_plc": "ईमेल दर्ज करें"
+  },
+
+  "specific_upgrade": {
+    "only_pay_wrd": "भुगतान करें"
+  },
+
+  "specific_with_fiat": {
+    "tit": "निकासी",
+    "av1": "उपलब्ध",
+    "iban": "IBAN",
+    "iban_plc": "बैंक खाता IBAN",
+    "swft": "स्विफ्ट कोड",
+    "swft_plc": "बैंक स्विफ्ट कोड",
+    "am": "राशि",
+    "av2": "उपलब्ध : ",
+    "sec": "गुप्त कुंजी",
+    "sec_plc": "अपनी गुप्त कुंजी दर्ज करें",
+    "btn": "निकासी करें"
+  },
+
+  "specific_with": {
+    "tit": "निकासी",
+    "av1": "उपलब्ध",
+    "recp_add": "प्राप्तकर्ता का पता",
+    "recp_add_plc": "प्राप्तकर्ता का पता दर्ज करें",
+    "am": "राशि",
+    "av2": "उपलब्ध : ",
+    "nt_tp": "नेटवर्क प्रकार",
+    "nt_slct": "नेटवर्क चुनें",
+    "sec": "गुप्त कुंजी",
+    "sec_plc": "अपनी गुप्त कुंजी दर्ज करें",
+    "btn": "निकासी करें"
+  },
+
+  "transfer": {
+    "tit": "स्थानांतरित करने के लिए उपलब्ध संपत्तियाँ",
+    "av1": "उपलब्ध",
+    "no_assts": "आपके पास कोई संपत्ति नहीं है",
+    "can_dep_now": "आप अभी जमा कर सकते हैं",
+    "dep": "जमा"
+  },
+
+  "upgrade": {
+    "tit": "आपकी सदस्यता है ",
+    "lmts": " ~ सीमाएँ ~ ",
+    "with": "* निकासी : ",
+    "dep": "* जमा : ",
+    "trans": "* स्थानांतरण : ",
+    "rec": "* प्राप्त : ",
+    "per_wlt": "/वॉलेट",
+    "daily": "/दैनिक",
+    "grntd": "स्वीकृत",
+    "btn": "अपग्रेड करें",
+    "btm_note": "नोट : सीमाएँ सभी मुद्राओं पर लागू होती हैं जिनके साथ उपयुक्त रूपांतरण दर है।"
+  },
+
+  "withdraw": {
+    "cur_tp": "मुद्राओं का प्रकार : ",
+    "av": "उपलब्ध : ",
+    "btn": "निकासी",
+    "no_wlts": "आपके पास कोई वॉलेट नहीं है",
+    "can_dep_now": "आप अभी जमा कर सकते हैं",
+    "dep": "जमा"
+  },
+
+  "USER_EXISTS": "आपका खाता पहले से है",
+  "THIS_USER_EXISTS": "यह उपयोगकर्ता मौजूद है",
+  "THIS_EMAIL_EXISTS": "ईमेल पहले से किसी अन्य उपयोगकर्ता को सौंपा गया है",
+  "OUR_USER_ADDED": "हमारा उपयोगकर्ता जोड़ा गया",
+  "ALREADY_HAS_WALLET": "पहले से एक <span style='color : blue'>{{cur_type}}</span> वॉलेट है",
+  "WRONG_EMAIL": "गलत प्रमाण पत्र",
+  "WRONG_PASSWORD": "गलत प्रमाण पत्र",
+  "AVAILABLE": "उपलब्ध",
+  "NOT_AVAILABLE": "नाम पहले उपयोग किया गया है",
+  "TOKEN_ERROR": "साइन इन या टोकन सत्यापित नहीं कर सकते",
+  "PASSWORD_ERROR": "पासवर्ड त्रुटि",
+  "USER_NOT_FOUND_ERROR": "उपयोगकर्ता नहीं मिला",
+  "ADMIN_NOT_FOUND_ERROR": "व्यवस्थापक नहीं मिला",
+  "Empty_Credentials_ERROR": "खाली प्रमाण पत्र",
+  "WRONG_MEMBERSHIP_NUMBER": "गलत सदस्यता संख्या",
+  "Email_ERROR": "ईमेल नहीं मिला",
+  "EXPIRED_OTP": "OTP समाप्त हो चुका है <br> कृपया नया अनुरोध करें",
+  "WRONG_OTP": "गलत OTP",
+  "NO_OTP_FOR_THIS_EMAIL": "इस ईमेल के लिए कोई OTP भेजा नहीं गया है <br> कृपया नया अनुरोध करें",
+  "NOT_SUCH_WALLET": "कोई ऐसा वॉलेट नहीं है",
+  "NOT_SUFFICIENT_AMOUNT": "पर्याप्त राशि नहीं है",
+  "WITHDRAW_SUCCESSFUL": "निकासी सफल",
+  "WRONG_KEY": "गलत कुंजी",
+  "WRONG_AMOUNT": "गलत राशि",
+  "NO_NETWORK_WITH_THAT_NAME": "नेटवर्क नाम नहीं मिला",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "कोई जमा पता नहीं है",
+  "NO_USER_WITH_THAT_NAME": "ऐसा उपयोगकर्ता उपलब्ध नहीं है",
+  "NO_USER_WITH_THAT_Email": "ऐसा उपयोगकर्ता उपलब्ध नहीं है",
+  "THIS_EMAIL_IS_USED": "यह ईमेल किसी अन्य उपयोगकर्ता द्वारा उपयोग किया गया है।",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "आप स्वयं को स्थानांतरित नहीं कर सकते।",
+  "YOU_MUST_BE_VIP1": "आपको धन स्थानांतरित करने के लिए कम से कम <span style='color:blue'>VIP1</span> होना चाहिए।",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "आपको धन निकासी करने के लिए कम से कम <span style='color:blue'>VIP1</span> होना चाहिए।",
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "आपको धन जमा करने के लिए कम से कम <span style='color:blue'>VIP1</span> होना चाहिए।",
+  "HE_MUST_BE_VIP1": "प्राप्तकर्ता को कम से कम <span style='color:blue'>VIP1</span> होना चाहिए ताकि वह धन प्राप्त कर सके।",
+  "TRANSFER_SUCCESSFUL": "स्थानांतरण सफल।",
+  "EXCHANGE_SUCCESSFUL": "विनिमय सफल।",
+  "EMAIL_EDIT_SUCCESSFUL": "ईमेल सफलतापूर्वक संपादित किया गया।",
+  "FEE_EDITED": "फी संपादित की गई।",
+  "MAX_RECEIVE_EDITED": "अधिकतम प्राप्त संपादित किया गया।",
+  "MAX_TRANSFER_EDITED": "अधिकतम स्थानांतरण संपादित किया गया।",
+  "MAX_WITHDRAW_EDITED": "अधिकतम निकासी संपादित की गई।",
+  "MAX_DEPOSIT_EDITED": "अधिकतम जमा संपादित किया गया।",
+  "MEM_REMOVED": "सदस्यता हटा दी गई।",
+  "CONV_RATE_ADDED_UPDATED": "रूपांतरण दर जोड़ी/अपडेट की गई।",
+  "CONV_RATE_REMOVED": "रूपांतरण दर हटा दी गई।",
+  "MEM_ADDED": "सदस्यता जोड़ी गई।",
+  "VIP_EDITED": "VIP संपादित किया गया।",
+  "WALLET_UPDATED": "वॉलेट अपडेट किया गया।",
+  "WALLET_ADDED": "वॉलेट जोड़ा गया।",
+  "WALLET_REMOVED": "वॉलेट हटा दिया गया।",
+  "MEMBERSHIP_EXISTS": "सदस्यता पहले से मौजूद है।",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "उस प्रकार की कोई सदस्यता नहीं है।",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "उस संख्या वाली कोई सदस्यता नहीं है।",
+  "NOT_ENOUGH_USDT_BALANCE": "पर्याप्त <span style='color:blue'>USDT</span> बैलेंस नहीं है।",
+  "NO_USDT_WALLET": "आपके पास कोई <span style='color:blue'>USDT</span> वॉलेट नहीं है।",
+  "TRANSACTION_ID_ERROR": "लेन-देन ID में त्रुटि।",
+  "TRANSACTION_DOC_DELETED": "लेन-देन दस्तावेज़ हटा दिया गया।",
+  "UPGRADED_USER": "उपयोगकर्ता सफलतापूर्वक अपग्रेड किया गया।",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> सदस्यता <br> इसे समीक्षा करने में अधिकतम <span style='color:blue'>12 घंटे</span> लग सकते हैं।",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> <span style='color:blue'>Basic</span> है, इसलिए वह इस राशि को प्राप्त नहीं कर सकता क्योंकि उसका वॉलेट <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span> की सीमा से अधिक हो जाएगा।",
+  "Welcome_ADMIN": "स्वागत है ADMIN"
+}

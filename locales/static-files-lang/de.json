@@ -1,0 +1,91 @@
+{
+  "sn_wr": "Etwas ist schief gelaufen",
+  "op_sr": "Ups, Entschuldigung!",
+  "wrn": "Warnung",
+  "wrng_amnt": "Falscher Betrag",
+  "ent_sec": "Geben Sie den geheimen Schlüssel ein",
+  "am_ex": "Betrag überschritten",
+  "ent_amt": "Bitte Betrag eingeben",
+  "dn": "Erfolg",
+  "ok": "OK",
+  "no": "nein",
+  "adm_lg": {
+    "wlcm": "Willkommen ADMIN",
+    "lg_succ": "Erfolgreich eingeloggt"
+  },
+  "auth": {
+    "wlcm_bt": "Willkommen bei BTDinance",
+    "wl_redi": "Sie werden jetzt weitergeleitet ..",
+    "reg_succ": "Registrierung erfolgreich",
+    "y_cn_lng": "Sie können sich jetzt anmelden"
+  },
+  "frg_pass": {
+    "otp_snt": "OTP an die E-Mail gesendet ",
+    "inv_em": "Ungültige E-Mail"
+  },
+  "my_acc": {
+    "edt_em": "E-Mail bearbeiten",
+    "em": "E-Mail",
+    "yr_k": "Ihr Schlüssel",
+    "cnf": "Bestätigen",
+    "ent_k": "Schlüssel eingeben",
+    "inv_em": "Ungültige E-Mail"
+  },
+  "nv_br": {
+    "lgt_tit": "Sind Sie sicher, dass Sie verlassen möchten?",
+    "lgt_lv": "Verlassen"
+  },
+  "rst_pass": {
+    "pas_chngd": "Passwort geändert",
+    "lng_n_pas": "Mit neuem Passwort einloggen"
+  },
+  "spc_cnf_upg": {
+    "snt_fr_rvw": "Zur Überprüfung gesendet",
+    "ent_trns_id": "Transaktions-ID eingeben"
+  },
+  "spc_dep": {
+    "yr_dep_adrs": "Ihre Einzahlungsadresse",
+    "ent_sec_k": "Geben Sie den geheimen Schlüssel ein",
+    "no_nt_sel": "Kein Netzwerk ausgewählt",
+    "btn_upg": "AUFRÜSTEN"
+  },
+  "spc_trans": {
+    "inv_em": "Ungültige E-Mail",
+    "am_nt_av": "Betrag nicht verfügbar",
+    "pls_ent_am": "Bitte Betrag eingeben",
+    "ent_nm": "Namen eingeben",
+    "ent_em": "E-Mail eingeben"
+  },
+  "spc_upg": {
+    "sel_net_for": "Bitte wählen Sie ein Netzwerk für"
+  },
+  "spc_with_fiat": {
+    "btn_upg": "AUFRÜSTEN",
+    "cnf_with": "Abheben bestätigen",
+    "ibn": "IBAN : ",
+    "swft_c": "SWIFT-Code : ",
+    "tot_am": "Gesamtbetrag : ",
+    "bnk_f": "Bankgebühr : ",
+    "cnf": "Bestätigen",
+    "ent_sec_k": "Geben Sie den geheimen Schlüssel ein",
+    "am_nt_av": "Betrag nicht verfügbar",
+    "pls_ent_am": "Bitte Betrag eingeben",
+    "ent_swf_cod": "Geben Sie Ihren SWIFT-Code ein",
+    "ent_ibn_nm": "Geben Sie Ihre IBAN-Nummer ein"
+  },
+  "spc_with": {
+    "btn_upg": "AUFRÜSTEN",
+    "cnf_with": "Abheben bestätigen",
+    "tot_am": "Gesamtbetrag : ",
+    "net_nm": "Netzwerkname : ",
+    "fee": "Gebühr : ",
+    "am_rec": "Empfangener Betrag : ",
+    "cnf": "Bestätigen",
+    "net_f_exc": "Die Gebühren dieses Netzwerks überschreiten <br> <span style='color:black; font-weight:bold;'>Versuchen Sie ein anderes Netzwerk</span>",
+    "ent_sec_k": "Geben Sie den geheimen Schlüssel ein",
+    "am_nt_av": "Betrag nicht verfügbar",
+    "pls_ent_am": "Bitte Betrag eingeben",
+    "no_net_sel": "Kein Netzwerk ausgewählt",
+    "ent_recep_adr": "Empfängeradresse eingeben"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "Über uns",
+      "nav_ex": "Tausch",
+      "nav_tr": "Überweisung",
+      "nav_with": "Abheben",
+      "nav_dep": "Einzahlung",
+      "nav_hm": "Startseite"
+    },
+    "logout_tit": "Abmelden"
+  },
+
+  "auth": {
+    "login": {
+      "tit": "Anmelden",
+      "name_email": "Name oder E-Mail",
+      "pass": "Passwort",
+      "pass_note": "maximale Länge 8 ~ 50",
+      "rem": "Angemeldet bleiben",
+      "btn": "Anmelden",
+      "pass_frgt": "Passwort vergessen?",
+      "no_acc_nt": "Kein Konto? ",
+      "snp": "Registrieren"
+    },
+    "signup": {
+      "tit": "Registrieren",
+      "nm": "Geben Sie Ihren Namen ein",
+      "pass": "Geben Sie Ihr Passwort ein",
+      "pass_note": "maximale Länge 8 ~ 50",
+      "sc": "Sicherheitsschlüssel",
+      "sc_nt1": "Wichtig: Dieser Schlüssel kann in der Zukunft nicht geändert werden",
+      "sc_nt2": "maximale Länge 50",
+      "trm1": "Akzeptieren",
+      "trm2": "Bedingungen und Konditionen.",
+      "btn": "Registrieren",
+      "hv": "Ich habe ein Konto? ",
+      "lng": "Anmelden"
+    }
+  },
+
+  "exchange": {
+    "tit": "Tausch"
+  },
+
+  "forgot_password": {
+    "tit": "Passwort vergessen",
+    "send_email_plc": "E-Mail",
+    "send_email": "Senden Sie mir eine E-Mail"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "Mein Konto",
+      "ex": "Tausch",
+      "trns": "Überweisung",
+      "with": "Abheben",
+      "dep": "Einzahlung",
+      "up": "Upgrade"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "Name : ",
+      "em": "E-Mail : "
+    },
+    "wlts": {
+      "tit": "Meine Wallets",
+      "av": "Verfügbar : ",
+      "with": "abheben",
+      "dep": "einzahlen",
+      "trns": "überweisen"
+    }
+  },
+
+  "reset_password": {
+    "cd": "Code : ",
+    "np": "Neues Passwort eingeben",
+    "np_note": "maximale Länge 8 ~ 50",
+    "rp": "Passwort zurücksetzen"
+  },
+
+  "cnf_upgrade": {
+    "pta": "Zahlung an Adresse",
+    "am": "Betrag : ",
+    "nt": "Netzwerk : ",
+    "cnf_nt1": "* Nachdem die Zahlung abgeschlossen und bestätigt wurde, kopieren Sie die ",
+    "cnf_nt3": " oder ",
+    "cnf_nt5": " in das untenstehende Feld, um Ihre Transaktion zu bestätigen.",
+    "cnf_btn": "Transaktion bestätigen"
+  },
+
+  "specific_deposit": {
+    "tit": "Einzahlung",
+    "nt_tp": "Netzwerktyp",
+    "nt_slct": "Netzwerk auswählen",
+    "scrt": "Geheimer Schlüssel",
+    "scrt_plc": "Geben Sie Ihren geheimen Schlüssel ein",
+    "btn": "EINZAHLEN",
+    "cpd": "kopiert"
+  },
+
+  "specific_transfer": {
+    "tit": "Überweisung",
+    "av": "Verfügbar : ",
+    "nm": "Name",
+    "em": "E-Mail",
+    "nm_nt": "Name des ~ BTDinance ~ Nutzers",
+    "nm_plc": "Name eingeben",
+    "am_tit": "Betrag",
+    "btn": "ÜBERWEISEN",
+    "em_nt": "E-Mail des ~ BTDinance ~ Nutzers (muss @ Zeichen haben)",
+    "em_plc": "E-Mail eingeben"
+  },
+
+  "specific_upgrade": {
+    "only_pay_wrd": "Zahlen"
+  },
+
+  "specific_with_fiat": {
+    "tit": "Abheben",
+    "av1": "Verfügbar",
+    "iban": "IBAN",
+    "iban_plc": "Bankkonto IBAN",
+    "swft": "Swift Code",
+    "swft_plc": "Bank Swift Code",
+    "am": "Betrag",
+    "av2": "Verfügbar : ",
+    "sec": "Geheimer Schlüssel",
+    "sec_plc": "Geben Sie Ihren geheimen Schlüssel ein",
+    "btn": "ABHEBEN"
+  },
+
+  "specific_with": {
+    "tit": "Abheben",
+    "av1": "Verfügbar",
+    "recp_add": "Empfängeradresse",
+    "recp_add_plc": "Empfängeradresse eingeben",
+    "am": "Betrag",
+    "av2": "Verfügbar : ",
+    "nt_tp": "Netzwerktyp",
+    "nt_slct": "Netzwerk auswählen",
+    "sec": "Geheimer Schlüssel",
+    "sec_plc": "Geben Sie Ihren geheimen Schlüssel ein",
+    "btn": "ABHEBEN"
+  },
+
+  "transfer": {
+    "tit": "Verfügbare Vermögenswerte zur Übertragung",
+    "av1": "Verfügbar",
+    "no_assts": "Sie haben keine Vermögenswerte",
+    "can_dep_now": "Sie können jetzt einzahlen",
+    "dep": "Einzahlung"
+  },
+
+  "upgrade": {
+    "tit": "Ihr Mitgliedschaftsstatus ist ",
+    "lmts": " ~ Limits ~ ",
+    "with": "* ABHEBEN : ",
+    "dep": "* EINZAHLEN : ",
+    "trans": "* ÜBERWEISEN : ",
+    "rec": "* EMPFANGEN : ",
+    "per_wlt": "/wallet",
+    "daily": "/daily",
+    "grntd": "GEWÄHRT",
+    "btn": "UPGRADE",
+    "btm_note": "Hinweis : Limits gelten für alle Währungen mit dem entsprechenden Umrechnungskurs."
+  },
+
+  "withdraw": {
+    "cur_tp": "Währungstyp : ",
+    "av": "Verfügbar : ",
+    "btn": "abheben",
+    "no_wlts": "Sie haben keine Wallets",
+    "can_dep_now": "Sie können jetzt einzahlen",
+    "dep": "Einzahlung"
+  },
+
+  "USER_EXISTS": "Sie haben bereits ein Konto",
+  "THIS_USER_EXISTS": "Dieser Benutzer existiert",
+  "THIS_EMAIL_EXISTS": "E-Mail ist einem anderen Benutzer zugewiesen",
+  "OUR_USER_ADDED": "Unser Benutzer hinzugefügt",
+  "ALREADY_HAS_WALLET": "Hat bereits eine <span style='color : blue'>{{cur_type}}</span> Wallet",
+  "WRONG_EMAIL": "Falsche Anmeldeinformationen",
+  "WRONG_PASSWORD": "Falsche Anmeldeinformationen",
+  "AVAILABLE": "Verfügbar",
+  "NOT_AVAILABLE": "Name wird bereits verwendet",
+  "TOKEN_ERROR": "Token kann nicht signiert oder verifiziert werden",
+  "PASSWORD_ERROR": "Passwortfehler",
+  "USER_NOT_FOUND_ERROR": "Benutzer nicht gefunden",
+  "ADMIN_NOT_FOUND_ERROR": "Administrator nicht gefunden",
+  "Empty_Credentials_ERROR": "Leere Anmeldeinformationen",
+  "WRONG_MEMBERSHIP_NUMBER": "Falsche Mitgliedsnummer",
+  "Email_ERROR": "E-Mail nicht gefunden",
+  "EXPIRED_OTP": "Abgelaufener OTP <br> Fordern Sie bitte einen neuen an",
+  "WRONG_OTP": "Falscher OTP",
+  "NO_OTP_FOR_THIS_EMAIL": "Kein OTP für diese E-Mail gesendet <br> Fordern Sie bitte einen neuen an",
+  "NOT_SUCH_WALLET": "Kein solches Wallet",
+  "NOT_SUFFICIENT_AMOUNT": "Unzureichender Betrag",
+  "WITHDRAW_SUCCESSFUL": "Abhebung erfolgreich",
+  "WRONG_KEY": "Falscher Schlüssel",
+  "WRONG_AMOUNT": "Falscher Betrag",
+  "NO_NETWORK_WITH_THAT_NAME": "Netzwerkname nicht gefunden",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "Keine Einzahlung-Adresse verfügbar",
+  "NO_USER_WITH_THAT_NAME": "Kein Benutzer mit diesem Namen vorhanden",
+  "NO_USER_WITH_THAT_Email": "Kein Benutzer mit dieser E-Mail vorhanden",
+  "THIS_EMAIL_IS_USED": "Diese E-Mail wird bereits von einem anderen Benutzer verwendet.",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "Sie können nicht an sich selbst überweisen",
+  "YOU_MUST_BE_VIP1": "Sie müssen mindestens <span style='color:blue'>VIP1</span> sein, um Mittel zu überweisen",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "Sie müssen mindestens <span style='color:blue'>VIP1</span> sein, um Mittel abzuheben",
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "Sie müssen mindestens <span style='color:blue'>VIP1</span> sein, um Mittel einzuzahlen",
+  "HE_MUST_BE_VIP1": "Der Empfänger muss mindestens <span style='color:blue'>VIP1</span> sein, um Mittel zu empfangen",
+  "TRANSFER_SUCCESSFUL": "Überweisung erfolgreich",
+  "EXCHANGE_SUCCESSFUL": "Tausch erfolgreich",
+  "EMAIL_EDIT_SUCCESSFUL": "E-Mail erfolgreich bearbeitet",
+  "FEE_EDITED": "Gebühr bearbeitet",
+  "MAX_RECEIVE_EDITED": "Maximaler Empfang bearbeitet",
+  "MAX_TRANSFER_EDITED": "Maximaler Transfer bearbeitet",
+  "MAX_WITHDRAW_EDITED": "Maximale Abhebung bearbeitet",
+  "MAX_DEPOSIT_EDITED": "Maximale Einzahlung bearbeitet",
+  "MEM_REMOVED": "Mitgliedschaft entfernt",
+  "CONV_RATE_ADDED_UPDATED": "Umrechnungskurs hinzugefügt/aktualisiert",
+  "CONV_RATE_REMOVED": "Umrechnungskurs entfernt",
+  "MEM_ADDED": "Mitgliedschaft hinzugefügt",
+  "VIP_EDITED": "VIP bearbeitet",
+  "WALLET_UPDATED": "Wallet aktualisiert",
+  "WALLET_ADDED": "Wallet hinzugefügt",
+  "WALLET_REMOVED": "Wallet entfernt",
+  "MEMBERSHIP_EXISTS": "Mitgliedschaft existiert bereits",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "Keine Mitgliedschaft mit diesem Typ",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "Keine Mitgliedschaft mit dieser Nummer",
+  "NOT_ENOUGH_USDT_BALANCE": "Nicht genug <span style='color:blue'>USDT</span> Guthaben",
+  "NO_USDT_WALLET": "Sie haben keine <span style='color:blue'>USDT</span> Wallet",
+  "TRANSACTION_ID_ERROR": "Transaktions-ID Fehler",
+  "TRANSACTION_DOC_DELETED": "Transaktions-ID gelöscht",
+  "UPGRADED_USER": "Benutzer erfolgreich upgegradet",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> Mitgliedschaft <br> Es dauert maximal <span style='color:blue'>12 Stunden</span> zur Überprüfung.",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> ist <span style='color:blue'>Basic</span>, daher kann er/sie diesen Betrag nicht empfangen, da seine/ihre Wallet das Limit von <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span> überschreiten würde.",
+  "Welcome_ADMIN": "Willkommen ADMIN"
+}

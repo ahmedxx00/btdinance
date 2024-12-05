@@ -1,0 +1,91 @@
+{
+  "sn_wr": "Algo salió mal",
+  "op_sr": "¡Ups, lo siento!",
+  "wrn": "Advertencia",
+  "wrng_amnt": "Monto incorrecto",
+  "ent_sec": "Ingrese la clave secreta",
+  "am_ex": "Monto excedido",
+  "ent_amt": "Por favor ingrese el monto",
+  "dn": "éxito",
+  "ok": "OK",
+  "no": "no",
+  "adm_lg": {
+    "wlcm": "Bienvenido ADMIN",
+    "lg_succ": "Inicio de sesión exitoso"
+  },
+  "auth": {
+    "wlcm_bt": "Bienvenido a BTDinance",
+    "wl_redi": "Ahora será redirigido..",
+    "reg_succ": "Registro exitoso",
+    "y_cn_lng": "Ahora puede iniciar sesión"
+  },
+  "frg_pass": {
+    "otp_snt": "OTP enviado al correo electrónico ",
+    "inv_em": "Correo electrónico inválido"
+  },
+  "my_acc": {
+    "edt_em": "Editar correo electrónico",
+    "em": "correo electrónico",
+    "yr_k": "su clave",
+    "cnf": "Confirmar",
+    "ent_k": "Ingrese la clave",
+    "inv_em": "Correo electrónico inválido"
+  },
+  "nv_br": {
+    "lgt_tit": "¿Está seguro de que desea salir?",
+    "lgt_lv": "salir"
+  },
+  "rst_pass": {
+    "pas_chngd": "Contraseña cambiada",
+    "lng_n_pas": "Inicie sesión con la nueva contraseña"
+  },
+  "spc_cnf_upg": {
+    "snt_fr_rvw": "Enviado para revisión",
+    "ent_trns_id": "Ingrese el ID de la transacción"
+  },
+  "spc_dep": {
+    "yr_dep_adrs": "Su dirección de depósito",
+    "ent_sec_k": "Ingrese la clave secreta",
+    "no_nt_sel": "Ninguna red seleccionada",
+    "btn_upg": "ACTUALIZAR"
+  },
+  "spc_trans": {
+    "inv_em": "Correo electrónico inválido",
+    "am_nt_av": "Monto no disponible",
+    "pls_ent_am": "Por favor ingrese el monto",
+    "ent_nm": "Ingrese el nombre",
+    "ent_em": "Ingrese el correo electrónico"
+  },
+  "spc_upg": {
+    "sel_net_for": "Por favor seleccione la red para"
+  },
+  "spc_with_fiat": {
+    "btn_upg": "ACTUALIZAR",
+    "cnf_with": "Confirmar retiro",
+    "ibn": "IBAN : ",
+    "swft_c": "Código Swift : ",
+    "tot_am": "Monto total : ",
+    "bnk_f": "Comisión bancaria : ",
+    "cnf": "Confirmar",
+    "ent_sec_k": "Ingrese la clave secreta",
+    "am_nt_av": "Monto no disponible",
+    "pls_ent_am": "Por favor ingrese el monto",
+    "ent_swf_cod": "Ingrese su código Swift",
+    "ent_ibn_nm": "Ingrese su número IBAN"
+  },
+  "spc_with": {
+    "btn_upg": "ACTUALIZAR",
+    "cnf_with": "Confirmar retiro",
+    "tot_am": "Monto total : ",
+    "net_nm": "Nombre de la red : ",
+    "fee": "Comisión : ",
+    "am_rec": "Monto recibido : ",
+    "cnf": "Confirmar",
+    "net_f_exc": "Las comisiones de esta red superan <br> <span style='color:black; font-weight:bold;'>Pruebe otra red</span>",
+    "ent_sec_k": "Ingrese la clave secreta",
+    "am_nt_av": "Monto no disponible",
+    "pls_ent_am": "Por favor ingrese el monto",
+    "no_net_sel": "Ninguna red seleccionada",
+    "ent_recep_adr": "Ingrese la dirección del destinatario"
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "О нас",
+      "nav_ex": "Обмен",
+      "nav_tr": "Перевод",
+      "nav_with": "Вывод",
+      "nav_dep": "Депозит",
+      "nav_hm": "Главная"
+    },
+    "logout_tit": "Выход"
+  },
+
+  "auth": {
+    "login": {
+      "tit": "Войти",
+      "name_email": "Имя или Email",
+      "pass": "Пароль",
+      "pass_note": "макс. длина 8 ~ 50",
+      "rem": "Запомнить меня",
+      "btn": "Войти",
+      "pass_frgt": "Забыли пароль?",
+      "no_acc_nt": "Нет аккаунта? ",
+      "snp": "Зарегистрироваться"
+    },
+    "signup": {
+      "tit": "Зарегистрироваться",
+      "nm": "Введите ваше имя",
+      "pass": "Введите ваш пароль",
+      "pass_note": "макс. длина 8 ~ 50",
+      "sc": "Ключ безопасности",
+      "sc_nt1": "важно: этот ключ нельзя будет изменить в будущем",
+      "sc_nt2": "макс. длина 50",
+      "trm1": "Принять",
+      "trm2": "условия.",
+      "btn": "Зарегистрироваться",
+      "hv": "Уже есть аккаунт? ",
+      "lng": "Войти"
+    }
+  },
+
+  "exchange": {
+    "tit": "Обмен"
+  },
+
+  "forgot_password": {
+    "tit": "Забыли пароль",
+    "send_email_plc": "email",
+    "send_email": "отправить мне письмо"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "Мой аккаунт",
+      "ex": "Обмен",
+      "trns": "Перевод",
+      "with": "Вывод",
+      "dep": "Депозит",
+      "up": "Обновить"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "Имя: ",
+      "em": "Email: "
+    },
+    "wlts": {
+      "tit": "Мои кошельки",
+      "av": "Доступно: ",
+      "with": "вывести",
+      "dep": "депозит",
+      "trns": "перевод"
+    }
+  },
+
+  "reset_password": {
+    "cd": "Код: ",
+    "np": "Введите новый пароль",
+    "np_note": "макс. длина 8 ~ 50",
+    "rp": "сбросить пароль"
+  },
+
+  "cnf_upgrade": {
+    "pta": "Заплатить по адресу",
+    "am": "Сумма: ",
+    "nt": "Сеть: ",
+    "cnf_nt1": "* После завершения и подтверждения оплаты скопируйте ",
+    "cnf_nt3": " или ",
+    "cnf_nt5": " в нижнее поле для подтверждения транзакции.",
+    "cnf_btn": "Подтвердить транзакцию"
+  },
+
+  "specific_deposit": {
+    "tit": "Депозит",
+    "nt_tp": "тип сети",
+    "nt_slct": "Выберите сеть",
+    "scrt": "секретный ключ",
+    "scrt_plc": "Введите ваш секретный ключ",
+    "btn": "ДЕПОЗИТ",
+    "cpd": "скопировано"
+  },
+
+  "specific_transfer": {
+    "tit": "Перевод",
+    "av": "Доступно: ",
+    "nm": "Имя",
+    "em": "Email",
+    "nm_nt": "Имя пользователя ~ BTDinance ~",
+    "nm_plc": "Введите имя",
+    "am_tit": "Сумма",
+    "btn": "ПЕРЕВОД",
+    "em_nt": "Email пользователя ~ BTDinance ~ (должен содержать символ @)",
+    "em_plc": "Введите Email"
+  },
+
+  "specific_upgrade": {
+    "only_pay_wrd": "Заплатить"
+  },
+
+  "specific_with_fiat": {
+    "tit": "Вывод",
+    "av1": "Доступно",
+    "iban": "IBAN",
+    "iban_plc": "IBAN банковского счета",
+    "swft": "Код SWIFT",
+    "swft_plc": "Код SWIFT банка",
+    "am": "Сумма",
+    "av2": "Доступно: ",
+    "sec": "секретный ключ",
+    "sec_plc": "Введите ваш секретный ключ",
+    "btn": "ВЫВОД"
+  },
+
+  "specific_with": {
+    "tit": "Вывод",
+    "av1": "Доступно",
+    "recp_add": "адрес получателя",
+    "recp_add_plc": "Введите адрес получателя",
+    "am": "Сумма",
+    "av2": "Доступно: ",
+    "nt_tp": "тип сети",
+    "nt_slct": "Выберите сеть",
+    "sec": "секретный ключ",
+    "sec_plc": "Введите ваш секретный ключ",
+    "btn": "ВЫВОД"
+  },
+
+  "transfer": {
+    "tit": "Доступные активы для перевода",
+    "av1": "Доступно",
+    "no_assts": "У вас нет активов",
+    "can_dep_now": "Вы можете внести депозит СЕЙЧАС",
+    "dep": "Депозит"
+  },
+
+  "upgrade": {
+    "tit": "Ваша подписка: ",
+    "lmts": " ~ Ограничения ~ ",
+    "with": "* ВЫВОД : ",
+    "dep": "* ДЕПОЗИТ : ",
+    "trans": "* ПЕРЕВОД : ",
+    "rec": "* ПОЛУЧИТЬ : ",
+    "per_wlt": "/кошелек",
+    "daily": "/ежедневно",
+    "grntd": "ПРЕДОСТАВЛЕНО",
+    "btn": "ОБНОВИТЬ",
+    "btm_note": "Примечание: ограничения применяются ко всем валютам с соответствующей конвертацией."
+  },
+
+  "withdraw": {
+    "cur_tp": "Тип валюты: ",
+    "av": "Доступно: ",
+    "btn": "вывести",
+    "no_wlts": "У вас нет кошельков",
+    "can_dep_now": "Вы можете внести депозит СЕЙЧАС",
+    "dep": "Депозит"
+  },
+
+  "USER_EXISTS": "У вас уже есть аккаунт",
+  "THIS_USER_EXISTS": "Этот пользователь существует",
+  "THIS_EMAIL_EXISTS": "Email уже привязан к другому пользователю",
+  "OUR_USER_ADDED": "Наш пользователь добавлен",
+  "ALREADY_HAS_WALLET": "Уже есть кошелек для <span style='color : blue'>{{cur_type}}</span>",
+  "WRONG_EMAIL": "Неверные данные",
+  "WRONG_PASSWORD": "Неверные данные",
+  "AVAILABLE": "Доступно",
+  "NOT_AVAILABLE": "Имя уже используется",
+  "TOKEN_ERROR": "Невозможно подписать или проверить токен",
+  "PASSWORD_ERROR": "Ошибка пароля",
+  "USER_NOT_FOUND_ERROR": "Пользователь не найден",
+  "ADMIN_NOT_FOUND_ERROR": "Администратор не найден",
+  "Empty_Credentials_ERROR": "Пустые учетные данные",
+  "WRONG_MEMBERSHIP_NUMBER": "Неверный номер подписки",
+  "Email_ERROR": "Email не найден",
+  "EXPIRED_OTP": "Срок действия OTP истек <br> Пожалуйста, запросите новый",
+  "WRONG_OTP": "Неверный OTP",
+  "NO_OTP_FOR_THIS_EMAIL": "OTP не отправлен на этот email <br> Пожалуйста, запросите новый",
+  "NOT_SUCH_WALLET": "Такого кошелька нет",
+  "NOT_SUFFICIENT_AMOUNT": "Недостаточная сумма",
+  "WITHDRAW_SUCCESSFUL": "Вывод успешен",
+  "WRONG_KEY": "Неверный ключ",
+  "WRONG_AMOUNT": "Неверная сумма",
+  "NO_NETWORK_WITH_THAT_NAME": "Сеть с таким именем не найдена",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "Нет адреса для депозита",
+  "NO_USER_WITH_THAT_NAME": "Пользователь с таким именем не найден",
+  "NO_USER_WITH_THAT_Email": "Пользователь с таким email не найден",
+  "THIS_EMAIL_IS_USED": "Этот email уже используется другим пользователем.",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "Вы не можете перевести деньги себе",
+  "YOU_MUST_BE_VIP1": "Вы должны быть хотя бы <span style='color:blue'>VIP1</span>, чтобы перевести средства",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "Вы должны быть хотя бы <span style='color:blue'>VIP1</span>, чтобы вывести средства",
+
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "Вы должны быть хотя бы <span style='color:blue'>VIP1</span>, чтобы внести средства",
+  "HE_MUST_BE_VIP1": "Получатель должен быть хотя бы <span style='color:blue'>VIP1</span>, чтобы получить средства",
+  "TRANSFER_SUCCESSFUL": "Перевод успешен",
+  "EXCHANGE_SUCCESSFUL": "Обмен успешен",
+  "EMAIL_EDIT_SUCCESSFUL": "Email успешно отредактирован",
+  "FEE_EDITED": "Комиссия отредактирована",
+  "MAX_RECEIVE_EDITED": "Макс. получение отредактировано",
+  "MAX_TRANSFER_EDITED": "Макс. перевод отредактирован",
+  "MAX_WITHDRAW_EDITED": "Макс. вывод отредактирован",
+  "MAX_DEPOSIT_EDITED": "Макс. депозит отредактирован",
+  "MEM_REMOVED": "Подписка удалена",
+  "CONV_RATE_ADDED_UPDATED": "Конвертационный курс добавлен/обновлен",
+  "CONV_RATE_REMOVED": "Конвертационный курс удален",
+  "MEM_ADDED": "Подписка добавлена",
+  "VIP_EDITED": "VIP отредактирован",
+  "WALLET_UPDATED": "Кошелек обновлен",
+  "WALLET_ADDED": "Кошелек добавлен",
+  "WALLET_REMOVED": "Кошелек удален",
+  "MEMBERSHIP_EXISTS": "Подписка уже существует",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "Нет подписки с таким типом",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "Нет подписки с таким номером",
+  "NOT_ENOUGH_USDT_BALANCE": "Недостаточно баланса <span style='color:blue'>USDT</span>",
+  "NO_USDT_WALLET": "У вас нет кошелька <span style='color:blue'>USDT</span>",
+  "TRANSACTION_ID_ERROR": "Ошибка ID транзакции",
+  "TRANSACTION_DOC_DELETED": "Документ транзакции удален",
+  "UPGRADED_USER": "Пользователь успешно обновлен",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> Подписка <br> Для проверки требуется до <span style='color:blue'>12 часов</span>.",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> имеет статус <span style='color:blue'>Basic</span>, поэтому он/она не может получить эту сумму, так как его/ее кошелек превысит лимит в <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span>",
+  "Welcome_ADMIN": "Добро пожаловать, ADMIN"
+}

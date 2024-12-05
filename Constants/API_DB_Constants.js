@@ -1,7 +1,7 @@
-// const DB_URI = "mongodb://localhost:27017/BTCDINANCE_DB";
+// const DB_URI = "mongodb://localhost:27017/BTDINANCE_DB";
 
 //------------------------------------------------
-export const DB_URI = "mongodb://127.0.0.1:27017/BTCDINANCE_DB";
+export const DB_URI = "mongodb://127.0.0.1:27017/BTDINANCE_DB";
 //------------------------------------------------
 export const BASIC_AUTH_NAME = "vegasnerva";
 export const BASIC_AUTH_PASS = "@l#i$f%e";
@@ -23,8 +23,8 @@ export const CRYPTO_CUR = [
 ];
 
 //------ site name & email -----------
-export const SITE_NAME = 'BTC Dinance'
-export const SITE_EMAIL = 'customer-service@btcdinance.com'
+export const SITE_NAME = 'BTDinance'
+export const SITE_EMAIL = 'customer-service@btdinance.com'
 //--------------------------------
 // ---- can't be changed -----
 export const WALLETS_CURRENCIES = {
@@ -196,16 +196,16 @@ export const GMAIL_USER = "madoreal951@gmail.com";
 export const GMAIL_PASS = "hpzm fuwa rqtg tjsn";
 
 export const GMAIL_COMPANY_FROM_ADDRESS_pwd =
-  "BTC Dinance [ Password Reset ] <madoreal951@gmail.com>";
+  "BTDinance [ Password Reset ] <madoreal951@gmail.com>";
 //---------------------------- using outlook ---------------------
 // export const OUTLOOK_SMTP_SERVER_ADDRESS = "smtp-mail.outlook.com";
-// export const OUTLOOK_USER = "btcdinance@hotmail.com";
+// export const OUTLOOK_USER = "btdinance@hotmail.com";
 // export const OUTLOOK_PASS = "Lifeisastormmyyoungfriend2455";
 // export const OUTLOOK_COMPANY_FROM_ADDRESS_pwd =
-//   "BTC Dinance [ Password Reset ] <btcdinance@hotmail.com>";
+//   "BTDinance [ Password Reset ] <btdinance@hotmail.com>";
 //-------------------------------------------------
 
-export const SUBJECT_pwd = "BTC Dinance Password Reset";
+export const SUBJECT_pwd = "BTDinance Password Reset";
 export const HTML_MSG = async (name, otp, duration) => {
   return /*html*/ `<p>Dear <b>${name}</b> we appreciate your worry about your forgotten password. <br>
           you can use this <b>code</b> to reset your password.</p>
@@ -217,7 +217,7 @@ export const HTML_MSG = async (name, otp, duration) => {
           <br>
           <br>
           <p>Best Regards</p>
-          <p>BTC Dinance</p>
+          <p>BTDinance</p>
           `;
 };
 

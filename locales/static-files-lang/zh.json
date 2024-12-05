@@ -1,0 +1,93 @@
+{
+  "sn_wr": "出了些问题",
+  "op_sr": "哎呀，抱歉!",
+  "wrn": "警告",
+  "wrng_amnt": "金额错误",
+  "ent_sec": "输入密钥",
+  "am_ex": "金额超出限制",
+  "ent_amt": "金额已超过",
+  "dn": "成功",
+  "ok": "好的",
+  "no": "不",
+
+  "adm_lg": {
+    "wlcm": "欢迎管理员",
+    "lg_succ": "登录成功"
+  },
+
+  "auth": {
+    "wlcm_bt": "欢迎来到 BTDinance",
+    "wl_redi": "您将被重定向...",
+    "reg_succ": "注册成功",
+    "y_cn_lng": "您现在可以登录"
+  },
+  "frg_pass": {
+    "otp_snt": "验证码已发送至邮箱 ",
+    "inv_em": "无效的邮箱"
+  },
+  "my_acc": {
+    "edt_em": "编辑邮箱",
+    "em": "邮箱",
+    "yr_k": "您的密钥",
+    "cnf": "确认",
+    "ent_k": "输入密钥",
+    "inv_em": "无效的邮箱"
+  },
+  "nv_br": {
+    "lgt_tit": "您确定要离开吗？",
+    "lgt_lv": "离开"
+  },
+  "rst_pass": {
+    "pas_chngd": "密码已更改",
+    "lng_n_pas": "用新密码登录"
+  },
+  "spc_cnf_upg": {
+    "snt_fr_rvw": "已发送审核",
+    "ent_trns_id": "输入交易ID"
+  },
+  "spc_dep": {
+    "yr_dep_adrs": "您的存款地址",
+    "ent_sec_k": "输入密钥",
+    "no_nt_sel": "未选择网络",
+    "btn_upg": "升级"
+  },
+  "spc_trans": {
+    "inv_em": "无效的邮箱",
+    "am_nt_av": "金额不可用",
+    "pls_ent_am": "请输入金额",
+    "ent_nm": "输入姓名",
+    "ent_em": "输入邮箱"
+  },
+  "spc_upg": {
+    "sel_net_for": "请选择网络"
+  },
+  "spc_with_fiat": {
+    "btn_upg": "升级",
+    "cnf_with": "确认提现",
+    "ibn": "IBAN ：",
+    "swft_c": "Swift 代码 ：",
+    "tot_am": "总金额 ：",
+    "bnk_f": "银行费用 ：",
+    "cnf": "确认",
+    "ent_sec_k": "输入密钥",
+    "am_nt_av": "金额不可用",
+    "pls_ent_am": "请输入金额",
+    "ent_swf_cod": "输入您的 Swift 代码",
+    "ent_ibn_nm": "输入您的 IBAN 号码"
+  },
+  "spc_with": {
+    "btn_upg": "升级",
+    "cnf_with": "确认提现",
+    "tot_am": "总金额 ：",
+    "net_nm": "网络名称 ：",
+    "fee": "费用 ：",
+    "am_rec": "接收金额 ：",
+    "cnf": "确认",
+    "net_f_exc": "此网络费用超出 <br> <span style='color:black; font-weight:bold;'>请尝试其他网络</span>",
+    "ent_sec_k": "输入密钥",
+    "am_nt_av": "金额不可用",
+    "pls_ent_am": "请输入金额",
+    "no_net_sel": "未选择网络",
+    "ent_recep_adr": "输入收款地址"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "À propos de nous",
+      "nav_ex": "Échanger",
+      "nav_tr": "Transférer",
+      "nav_with": "Retirer",
+      "nav_dep": "Déposer",
+      "nav_hm": "Accueil"
+    },
+    "logout_tit": "déconnexion"
+  },
+
+  "auth": {
+    "login": {
+      "tit": "Connexion",
+      "name_email": "Nom ou Email",
+      "pass": "Mot de passe",
+      "pass_note": "longueur maximale 8 ~ 50",
+      "rem": " Se souvenir de moi",
+      "btn": "Connexion",
+      "pass_frgt": "mot de passe oublié ?",
+      "no_acc_nt": "Vous n'avez pas de compte ? ",
+      "snp": "S'inscrire"
+    },
+    "signup": {
+      "tit": "S'inscrire",
+      "nm": "Entrez votre nom",
+      "pass": "Entrez votre mot de passe",
+      "pass_note": "longueur maximale 8 ~ 50",
+      "sc": "Clé de sécurité",
+      "sc_nt1": "important : cette clé ne pourra pas être modifiée à l'avenir",
+      "sc_nt2": "longueur maximale 50",
+      "trm1": "Accepter",
+      "trm2": "les termes et conditions.",
+      "btn": "S'inscrire",
+      "hv": "J'ai un compte ? ",
+      "lng": "Connexion"
+    }
+  },
+
+  "exchange": {
+    "tit": "Échanger"
+  },
+
+  "forgot_password": {
+    "tit": "mot de passe oublié",
+    "send_email_plc": "email",
+    "send_email": "envoyez-moi un email"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "Mon Compte",
+      "ex": "Échanger",
+      "trns": "Transférer",
+      "with": "Retirer",
+      "dep": "Déposer",
+      "up": "Améliorer"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "Nom : ",
+      "em": "Email : "
+    },
+    "wlts": {
+      "tit": "Mes Portefeuilles",
+      "av": "Disponible : ",
+      "with": "retirer",
+      "dep": "déposer",
+      "trns": "transférer"
+    }
+  },
+
+  "reset_password": {
+    "cd": "Code : ",
+    "np": "Entrez un nouveau mot de passe",
+    "np_note": "longueur maximale 8 ~ 50",
+    "rp": "réinitialiser le mot de passe"
+  },
+
+  "cnf_upgrade": {
+    "pta": "Payer à l'adresse",
+    "am": "Montant : ",
+    "nt": "Réseau : ",
+    "cnf_nt1": "* Après le paiement terminé et confirmé, copiez le ",
+    "cnf_nt3": " ou ",
+    "cnf_nt5": " dans la section ci-dessous pour confirmer votre transaction.",
+    "cnf_btn": "Confirmer la transaction"
+  },
+
+  "specific_deposit": {
+    "tit": "Déposer",
+    "nt_tp": "type de réseau",
+    "nt_slct": "Sélectionnez le réseau",
+    "scrt": "clé secrète",
+    "scrt_plc": "Entrez votre clé secrète",
+    "btn": "DÉPOSER",
+    "cpd": "copié"
+  },
+
+  "specific_transfer": {
+    "tit": "Transférer",
+    "av": "Disponible : ",
+    "nm": "Nom",
+    "em": "Email",
+    "nm_nt": "Nom de l'utilisateur ~ BTDinance ~",
+    "nm_plc": "Entrez le nom",
+    "am_tit": "Montant",
+    "btn": "TRANSFÉRER",
+    "em_nt": "Email de l'utilisateur ~ BTDinance ~ (doit contenir @)",
+    "em_plc": "Entrez l'email"
+  },
+
+  "specific_upgrade": {
+    "only_pay_wrd": "Payer"
+  },
+
+  "specific_with_fiat": {
+    "tit": "Retirer",
+    "av1": "Disponible",
+    "iban": "IBAN",
+    "iban_plc": "IBAN du compte bancaire",
+    "swft": "Code Swift",
+    "swft_plc": "Code Swift bancaire",
+    "am": "Montant",
+    "av2": "Disponible : ",
+    "sec": "clé secrète",
+    "sec_plc": "Entrez votre clé secrète",
+    "btn": "RETIRER"
+  },
+
+  "specific_with": {
+    "tit": "Retirer",
+    "av1": "Disponible",
+    "recp_add": "adresse du destinataire",
+    "recp_add_plc": "Entrez l'adresse du destinataire",
+    "am": "Montant",
+    "av2": "Disponible : ",
+    "nt_tp": "type de réseau",
+    "nt_slct": "Sélectionnez le réseau",
+    "sec": "clé secrète",
+    "sec_plc": "Entrez votre clé secrète",
+    "btn": "RETIRER"
+  },
+
+  "transfer": {
+    "tit": "Actifs disponibles pour transfert",
+    "av1": "Disponible",
+    "no_assts": "vous n'avez pas d'actifs",
+    "can_dep_now": "vous pouvez déposer MAINTENANT",
+    "dep": "Déposer"
+  },
+
+  "upgrade": {
+    "tit": "votre adhésion est ",
+    "lmts": " ~ Limites ~ ",
+    "with": "* RETRAIT : ",
+    "dep": "* DÉPÔT : ",
+    "trans": "* TRANSFERT : ",
+    "rec": "* RECEVOIR : ",
+    "per_wlt": "/portefeuille",
+    "daily": "/quotidien",
+    "grntd": "GARANTI",
+    "btn": "AMÉLIORER",
+    "btm_note": "Remarque : les limites s'appliquent à toutes les devises avec le taux de conversion correspondant."
+  },
+
+  "withdraw": {
+    "cur_tp": "type de devise : ",
+    "av": "Disponible : ",
+    "btn": "retirer",
+    "no_wlts": "vous n'avez pas de portefeuilles",
+    "can_dep_now": "vous pouvez déposer MAINTENANT",
+    "dep": "Déposer"
+  },
+
+  "USER_EXISTS": "vous avez déjà un compte",
+  "THIS_USER_EXISTS": "cet utilisateur existe",
+  "THIS_EMAIL_EXISTS": "l'email est attribué à un autre utilisateur",
+  "OUR_USER_ADDED": "notre utilisateur a été ajouté",
+  "ALREADY_HAS_WALLET": "possède déjà un portefeuille <span style='color : blue'>{{cur_type}}</span>",
+  "WRONG_EMAIL": "identifiants incorrects",
+  "WRONG_PASSWORD": "identifiants incorrects",
+  "AVAILABLE": "Disponible",
+  "NOT_AVAILABLE": "Le nom est déjà utilisé",
+  "TOKEN_ERROR": "Impossible de signer ou de vérifier le jeton",
+  "PASSWORD_ERROR": "Erreur de mot de passe",
+  "USER_NOT_FOUND_ERROR": "utilisateur introuvable",
+  "ADMIN_NOT_FOUND_ERROR": "administrateur introuvable",
+  "Empty_Credentials_ERROR": "identifiants vides",
+  "WRONG_MEMBERSHIP_NUMBER": "numéro d'adhésion incorrect",
+  "Email_ERROR": "Email introuvable",
+  "EXPIRED_OTP": "OTP expiré <br> Veuillez en demander un nouveau",
+  "WRONG_OTP": "OTP incorrect",
+  "NO_OTP_FOR_THIS_EMAIL": "Aucun OTP envoyé pour cet email <br> Veuillez en demander un nouveau",
+  "NOT_SUCH_WALLET": "Aucun portefeuille de ce type",
+  "NOT_SUFFICIENT_AMOUNT": "Montant insuffisant",
+  "WITHDRAW_SUCCESSFUL": "Retrait réussi",
+  "WRONG_KEY": "Clé incorrecte",
+  "WRONG_AMOUNT": "Montant incorrect",
+  "NO_NETWORK_WITH_THAT_NAME": "nom de réseau introuvable",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "aucune adresse de dépôt disponible",
+  "NO_USER_WITH_THAT_NAME": "aucun utilisateur avec ce nom disponible",
+  "NO_USER_WITH_THAT_Email": "aucun utilisateur avec cet email disponible",
+  "THIS_EMAIL_IS_USED": "cet email est utilisé par un autre utilisateur.",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "vous ne pouvez pas vous transférer à vous-même",
+  "YOU_MUST_BE_VIP1": "vous devez être au moins <span style='color:blue'>VIP1</span> pour transférer des fonds",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "vous devez être au moins <span style='color:blue'>VIP1</span> pour retirer des fonds",
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "vous devez être au moins <span style='color:blue'>VIP1</span> pour déposer des fonds",
+  "HE_MUST_BE_VIP1": "le destinataire doit être au moins <span style='color:blue'>VIP1</span> pour recevoir des fonds",
+  "TRANSFER_SUCCESSFUL": "Transfert réussi",
+  "EXCHANGE_SUCCESSFUL": "Échange réussi",
+  "EMAIL_EDIT_SUCCESSFUL": "Email modifié avec succès",
+  "FEE_EDITED": "Frais modifiés",
+  "MAX_RECEIVE_EDITED": "Limite maximale de réception modifiée",
+  "MAX_TRANSFER_EDITED": "Limite maximale de transfert modifiée",
+  "MAX_WITHDRAW_EDITED": "Limite maximale de retrait modifiée",
+  "MAX_DEPOSIT_EDITED": "Limite maximale de dépôt modifiée",
+  "MEM_REMOVED": "adhésion supprimée",
+  "CONV_RATE_ADDED_UPDATED": "taux de conversion ajouté/mis à jour",
+  "CONV_RATE_REMOVED": "taux de conversion supprimé",
+  "MEM_ADDED": "adhésion ajoutée",
+  "VIP_EDITED": "VIP modifié",
+  "WALLET_UPDATED": "Portefeuille mis à jour",
+  "WALLET_ADDED": "Portefeuille ajouté",
+  "WALLET_REMOVED": "Portefeuille supprimé",
+  "MEMBERSHIP_EXISTS": "l'adhésion existe déjà",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "aucune adhésion avec ce type",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "aucune adhésion avec ce numéro",
+  "NOT_ENOUGH_USDT_BALANCE": "Solde <span style='color:blue'>USDT</span> insuffisant",
+  "NO_USDT_WALLET": "Vous n'avez pas de portefeuille <span style='color:blue'>USDT</span>",
+  "TRANSACTION_ID_ERROR": "erreur d'identifiant de transaction",
+  "TRANSACTION_DOC_DELETED": "identifiant de transaction supprimé",
+  "UPGRADED_USER": "utilisateur amélioré avec succès",
+  "TRANSACTION_ID_SAVED": "Adhésion <span style='color:green'>{{vip_type.toUpperCase()}}</span> <br> Cela prend <span style='color:blue'>12 h</span> maximum pour examen.",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> est <span style='color:blue'>Basique</span>, il/elle ne peut pas recevoir ce montant car son portefeuille dépasserait la limite de <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span>",
+  "Welcome_ADMIN": "Bienvenue ADMIN"
+}

@@ -67,7 +67,7 @@ i18next
       caches: ["cookie"], // Cache detected language in cookies
     },
     fallbackLng: "en", // Default language when no language is detected
-    preload: ["en", "ar"], // Preload these languages at startup
+    preload: ["en"], // Preload these languages at startup
   });
 
 app.use(middleware.handle(i18next));

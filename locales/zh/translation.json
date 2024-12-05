@@ -1,0 +1,241 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "关于我们",
+      "nav_ex": "兑换",
+      "nav_tr": "转账",
+      "nav_with": "提现",
+      "nav_dep": "存款",
+      "nav_hm": "主页"
+    },
+    "logout_tit": "注销"
+  },
+
+  "auth": {
+    "login": {
+      "tit": "登录",
+      "name_email": "姓名或电子邮件",
+      "pass": "密码",
+      "pass_note": "最大长度 8 ~ 50",
+      "rem": " 记住我",
+      "btn": "登录",
+      "pass_frgt": "忘记密码?",
+      "no_acc_nt": "没有账户?",
+      "snp": "注册"
+    },
+    "signup": {
+      "tit": "注册",
+      "nm": "请输入您的姓名",
+      "pass": "请输入您的密码",
+      "pass_note": "最大长度 8 ~ 50",
+      "sc": "安全密钥",
+      "sc_nt1": "重要提示：此密钥将来无法更改",
+      "sc_nt2": "最大长度 50",
+      "trm1": "接受",
+      "trm2": "条款和条件。",
+      "btn": "注册",
+      "hv": "我有账户?",
+      "lng": "登录"
+    }
+  },
+
+  "exchange": {
+    "tit": "兑换"
+  },
+
+  "forgot_password": {
+    "tit": "忘记密码",
+    "send_email_plc": "电子邮件",
+    "send_email": "发送给我电子邮件"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "我的账户",
+      "ex": "兑换",
+      "trns": "转账",
+      "with": "提现",
+      "dep": "存款",
+      "up": "升级"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "姓名 ：",
+      "em": "电子邮件 ："
+    },
+    "wlts": {
+      "tit": "我的钱包",
+      "av": "可用 ：",
+      "with": "提现",
+      "dep": "存款",
+      "trns": "转账"
+    }
+  },
+
+  "reset_password": {
+    "cd": "验证码 ：",
+    "np": "请输入新密码",
+    "np_note": "最大长度 8 ~ 50",
+    "rp": "重置密码"
+  },
+
+  "cnf_upgrade": {
+    "pta": "支付地址",
+    "am": "金额 ：",
+    "nt": "网络 ：",
+    "cnf_nt1": "* 完成并确认支付后，复制",
+    "cnf_nt3": "或",
+    "cnf_nt5": "到下面的区域以确认您的交易。",
+    "cnf_btn": "确认交易"
+  },
+
+  "specific_deposit": {
+    "tit": "存款",
+    "nt_tp": "网络类型",
+    "nt_slct": "选择网络",
+    "scrt": "密钥",
+    "scrt_plc": "请输入您的密钥",
+    "btn": "存款",
+    "cpd": "已复制"
+  },
+
+  "specific_transfer": {
+    "tit": "转账",
+    "av": "可用 ：",
+    "nm": "姓名",
+    "em": "电子邮件",
+    "nm_nt": "用户姓名 ~ BTDinance ~",
+    "nm_plc": "请输入姓名",
+    "am_tit": "金额",
+    "btn": "转账",
+    "em_nt": "用户电子邮件 ~ BTDinance ~ (必须包含 @ 符号)",
+    "em_plc": "请输入电子邮件"
+  },
+
+  "specific_upgrade": {
+    "only_pay_wrd": "支付"
+  },
+
+  "specific_with_fiat": {
+    "tit": "提现",
+    "av1": "可用",
+    "iban": "国际银行账户号码 (IBAN)",
+    "iban_plc": "银行账户 IBAN",
+    "swft": "SWIFT 代码",
+    "swft_plc": "银行 SWIFT 代码",
+    "am": "金额",
+    "av2": "可用 ：",
+    "sec": "密钥",
+    "sec_plc": "请输入您的密钥",
+    "btn": "提现"
+  },
+
+  "specific_with": {
+    "tit": "提现",
+    "av1": "可用",
+    "recp_add": "收款地址",
+    "recp_add_plc": "请输入收款地址",
+    "am": "金额",
+    "av2": "可用 ：",
+    "nt_tp": "网络类型",
+    "nt_slct": "选择网络",
+    "sec": "密钥",
+    "sec_plc": "请输入您的密钥",
+    "btn": "提现"
+  },
+
+  "transfer": {
+    "tit": "可转账资产",
+    "av1": "可用",
+    "no_assts": "您没有资产",
+    "can_dep_now": "您现在可以存款",
+    "dep": "存款"
+  },
+
+  "upgrade": {
+    "tit": "您的会员等级是",
+    "lmts": " ~ 限制 ~ ",
+    "with": "* 提现 ：",
+    "dep": "* 存款 ：",
+    "trans": "* 转账 ：",
+    "rec": "* 接收 ：",
+    "per_wlt": "/钱包",
+    "daily": "/每日",
+    "grntd": "已授权",
+    "btn": "升级",
+    "btm_note": "注：限制适用于所有货币，并按相应的转换率计算。"
+  },
+
+  "withdraw": {
+    "cur_tp": "货币类型：",
+    "av": "可用：",
+    "btn": "提现",
+    "no_wlts": "您没有钱包",
+    "can_dep_now": "您现在可以存款",
+    "dep": "存款"
+  },
+
+  "USER_EXISTS": "您已拥有账户",
+  "THIS_USER_EXISTS": "该用户已存在",
+  "THIS_EMAIL_EXISTS": "此电子邮件已分配给另一个用户",
+  "OUR_USER_ADDED": "我们的用户已添加",
+  "ALREADY_HAS_WALLET": "已经有 <span style='color : blue'>{{cur_type}}</span> 钱包",
+  "WRONG_EMAIL": "凭据错误",
+  "WRONG_PASSWORD": "凭据错误",
+  "AVAILABLE": "可用",
+  "NOT_AVAILABLE": "名称已使用",
+  "TOKEN_ERROR": "无法签名或验证令牌",
+  "PASSWORD_ERROR": "密码错误",
+  "USER_NOT_FOUND_ERROR": "未找到用户",
+  "ADMIN_NOT_FOUND_ERROR": "未找到管理员",
+  "Empty_Credentials_ERROR": "凭据为空",
+  "WRONG_MEMBERSHIP_NUMBER": "会员号码错误",
+  "Email_ERROR": "未找到电子邮件",
+  "EXPIRED_OTP": "OTP已过期 <br> 请重新请求",
+  "WRONG_OTP": "OTP错误",
+  "NO_OTP_FOR_THIS_EMAIL": "此电子邮件未发送OTP <br> 请重新请求",
+  "NOT_SUCH_WALLET": "没有该钱包",
+  "NOT_SUFFICIENT_AMOUNT": "金额不足",
+  "WITHDRAW_SUCCESSFUL": "提现成功",
+  "WRONG_KEY": "密钥错误",
+  "WRONG_AMOUNT": "金额错误",
+  "NO_NETWORK_WITH_THAT_NAME": "未找到该网络名称",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "没有存款地址",
+  "NO_USER_WITH_THAT_NAME": "没有该名称的用户",
+  "NO_USER_WITH_THAT_Email": "没有该电子邮件的用户",
+  "THIS_EMAIL_IS_USED": "此电子邮件已被其他用户使用。",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "您不能转账给自己",
+  "YOU_MUST_BE_VIP1": "您必须至少是 <span style='color:blue'>VIP1</span> 才能转账资金",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "您必须至少是 <span style='color:blue'>VIP1</span> 才能提现资金",
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "您必须至少是 <span style='color:blue'>VIP1</span> 才能存款",
+  "HE_MUST_BE_VIP1": "接收方必须至少是 <span style='color:blue'>VIP1</span> 才能接收资金",
+  "TRANSFER_SUCCESSFUL": "转账成功",
+  "EXCHANGE_SUCCESSFUL": "兑换成功",
+  "EMAIL_EDIT_SUCCESSFUL": "电子邮件已成功编辑",
+  "FEE_EDITED": "费用已编辑",
+  "MAX_RECEIVE_EDITED": "最大接收已编辑",
+  "MAX_TRANSFER_EDITED": "最大转账已编辑",
+  "MAX_WITHDRAW_EDITED": "最大提现已编辑",
+  "MAX_DEPOSIT_EDITED": "最大存款已编辑",
+  "MEM_REMOVED": "会员已移除",
+  "CONV_RATE_ADDED_UPDATED": "转换率已添加/更新",
+  "CONV_RATE_REMOVED": "转换率已删除",
+  "MEM_ADDED": "会员已添加",
+  "VIP_EDITED": "VIP已编辑",
+  "WALLET_UPDATED": "钱包已更新",
+  "WALLET_ADDED": "钱包已添加",
+  "WALLET_REMOVED": "钱包已移除",
+  "MEMBERSHIP_EXISTS": "会员已存在",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "没有该类型的会员",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "没有该会员号码",
+  "NOT_ENOUGH_USDT_BALANCE": "<span style='color:blue'>USDT</span> 余额不足",
+  "NO_USDT_WALLET": "您没有<span style='color:blue'>USDT</span>钱包",
+  "TRANSACTION_ID_ERROR": "交易ID错误",
+  "TRANSACTION_DOC_DELETED": "交易ID已删除",
+  "UPGRADED_USER": "用户升级成功",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> 会员 <br> 审核最多需要 <span style='color:blue'>12小时</span>。",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> 是 <span style='color:blue'>基础</span> 会员，因此他/她不能接收此金额，因为其钱包将超出 <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span> 的限制。",
+  "Welcome_ADMIN": "欢迎管理员"
+}

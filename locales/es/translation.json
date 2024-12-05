@@ -1,0 +1,241 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "Sobre Nosotros",
+      "nav_ex": "Intercambiar",
+      "nav_tr": "Transferir",
+      "nav_with": "Retirar",
+      "nav_dep": "Depositar",
+      "nav_hm": "Inicio"
+    },
+    "logout_tit": "cerrar sesión"
+  },
+
+  "auth": {
+    "login": {
+      "tit": "Iniciar Sesión",
+      "name_email": "Nombre o Correo Electrónico",
+      "pass": "Contraseña",
+      "pass_note": "longitud máxima 8 ~ 50",
+      "rem": " Recuérdame",
+      "btn": "Iniciar Sesión",
+      "pass_frgt": "¿Olvidaste tu contraseña?",
+      "no_acc_nt": "¿No tienes una cuenta? ",
+      "snp": "Regístrate"
+    },
+    "signup": {
+      "tit": "Regístrate",
+      "nm": "Ingresa tu Nombre",
+      "pass": "Ingresa tu Contraseña",
+      "pass_note": "longitud máxima 8 ~ 50",
+      "sc": "Clave de Seguridad",
+      "sc_nt1": "importante: esta clave no se podrá cambiar en el futuro",
+      "sc_nt2": "longitud máxima 50",
+      "trm1": "Aceptar",
+      "trm2": "términos y condiciones.",
+      "btn": "Regístrate",
+      "hv": "¿Ya tienes una cuenta? ",
+      "lng": "Iniciar Sesión"
+    }
+  },
+
+  "exchange": {
+    "tit": "Intercambiar"
+  },
+
+  "forgot_password": {
+    "tit": "olvidaste tu contraseña",
+    "send_email_plc": "correo electrónico",
+    "send_email": "enviarme correo electrónico"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "Mi Cuenta",
+      "ex": "Intercambiar",
+      "trns": "Transferir",
+      "with": "Retirar",
+      "dep": "Depositar",
+      "up": "Actualizar"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "Nombre : ",
+      "em": "Correo Electrónico : "
+    },
+    "wlts": {
+      "tit": "Mis Carteras",
+      "av": "Disponible : ",
+      "with": "retirar",
+      "dep": "depositar",
+      "trns": "transferir"
+    }
+  },
+
+  "reset_password": {
+    "cd": "Código : ",
+    "np": "Ingresa Nueva Contraseña",
+    "np_note": "longitud máxima 8 ~ 50",
+    "rp": "restablecer contraseña"
+  },
+
+  "cnf_upgrade": {
+    "pta": "Pagar a Dirección",
+    "am": "Cantidad : ",
+    "nt": "Red : ",
+    "cnf_nt1": "* Después de que el pago se complete y confirme, copia el ",
+    "cnf_nt3": " o ",
+    "cnf_nt5": " en la sección de abajo para confirmar tu transacción.",
+    "cnf_btn": "Confirmar Transacción"
+  },
+
+  "specific_deposit": {
+    "tit": "Depositar",
+    "nt_tp": "tipo de red",
+    "nt_slct": "Seleccionar Red",
+    "scrt": "clave secreta",
+    "scrt_plc": "Ingresa tu clave secreta",
+    "btn": "DEPOSITAR",
+    "cpd": "copiado"
+  },
+
+  "specific_transfer": {
+    "tit": "Transferir",
+    "av": "Disponible : ",
+    "nm": "Nombre",
+    "em": "Correo Electrónico",
+    "nm_nt": "Nombre de un usuario de ~ BTDinance ~",
+    "nm_plc": "Ingresa Nombre",
+    "am_tit": "Cantidad",
+    "btn": "TRANSFERIR",
+    "em_nt": "Correo electrónico de un usuario de ~ BTDinance ~ (debe incluir @)",
+    "em_plc": "Ingresa Correo Electrónico"
+  },
+
+  "specific_upgrade": {
+    "only_pay_wrd": "Pagar"
+  },
+
+  "specific_with_fiat": {
+    "tit": "Retirar",
+    "av1": "Disponible",
+    "iban": "IBAN",
+    "iban_plc": "IBAN de Cuenta Bancaria",
+    "swft": "Código Swift",
+    "swft_plc": "Código Swift del Banco",
+    "am": "Cantidad",
+    "av2": "Disponible : ",
+    "sec": "clave secreta",
+    "sec_plc": "Ingresa tu clave secreta",
+    "btn": "RETIRAR"
+  },
+
+  "specific_with": {
+    "tit": "Retirar",
+    "av1": "Disponible",
+    "recp_add": "dirección del destinatario",
+    "recp_add_plc": "Ingresa dirección del destinatario",
+    "am": "Cantidad",
+    "av2": "Disponible : ",
+    "nt_tp": "tipo de red",
+    "nt_slct": "Seleccionar Red",
+    "sec": "clave secreta",
+    "sec_plc": "Ingresa tu clave secreta",
+    "btn": "RETIRAR"
+  },
+
+  "transfer": {
+    "tit": "Activos disponibles para transferir",
+    "av1": "Disponible",
+    "no_assts": "no tienes activos",
+    "can_dep_now": "puedes depositar AHORA",
+    "dep": "Depositar"
+  },
+
+  "upgrade": {
+    "tit": "tu membresía es ",
+    "lmts": " ~ Límites ~ ",
+    "with": "* RETIRAR : ",
+    "dep": "* DEPOSITAR : ",
+    "trans": "* TRANSFERIR : ",
+    "rec": "* RECIBIR : ",
+    "per_wlt": "/cartera",
+    "daily": "/diario",
+    "grntd": "GARANTIZADO",
+    "btn": "ACTUALIZAR",
+    "btm_note": "Nota: los límites se aplican a todas las monedas con la tasa de conversión correspondiente."
+  },
+
+  "withdraw": {
+    "cur_tp": "tipo de moneda : ",
+    "av": "Disponible : ",
+    "btn": "retirar",
+    "no_wlts": "no tienes carteras",
+    "can_dep_now": "puedes depositar AHORA",
+    "dep": "Depositar"
+  },
+
+  "USER_EXISTS": "ya tienes una cuenta",
+  "THIS_USER_EXISTS": "este usuario existe",
+  "THIS_EMAIL_EXISTS": "el correo electrónico está asignado a otro usuario",
+  "OUR_USER_ADDED": "nuestro usuario añadido",
+  "ALREADY_HAS_WALLET": "ya tiene una cartera de <span style='color : blue'>{{cur_type}}</span>",
+  "WRONG_EMAIL": "credenciales incorrectas",
+  "WRONG_PASSWORD": "credenciales incorrectas",
+  "AVAILABLE": "Disponible",
+  "NOT_AVAILABLE": "El nombre ya se ha utilizado",
+  "TOKEN_ERROR": "No se puede firmar o verificar el token",
+  "PASSWORD_ERROR": "Error de contraseña",
+  "USER_NOT_FOUND_ERROR": "usuario no encontrado",
+  "ADMIN_NOT_FOUND_ERROR": "administrador no encontrado",
+  "Empty_Credentials_ERROR": "credenciales vacías",
+  "WRONG_MEMBERSHIP_NUMBER": "número de membresía incorrecto",
+  "Email_ERROR": "Correo electrónico no encontrado",
+  "EXPIRED_OTP": "OTP caducado <br> Solicita uno nuevo, por favor",
+  "WRONG_OTP": "OTP incorrecto",
+  "NO_OTP_FOR_THIS_EMAIL": "No se ha enviado OTP para este correo electrónico <br> Solicita uno nuevo, por favor",
+  "NOT_SUCH_WALLET": "No existe tal cartera",
+  "NOT_SUFFICIENT_AMOUNT": "Cantidad insuficiente",
+  "WITHDRAW_SUCCESSFUL": "Retiro exitoso",
+  "WRONG_KEY": "Clave incorrecta",
+  "WRONG_AMOUNT": "Cantidad incorrecta",
+  "NO_NETWORK_WITH_THAT_NAME": "nombre de red no encontrado",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "no hay dirección de depósito",
+  "NO_USER_WITH_THAT_NAME": "no hay usuario con ese nombre disponible",
+  "NO_USER_WITH_THAT_Email": "no hay usuario con ese correo electrónico disponible",
+  "THIS_EMAIL_IS_USED": "este correo electrónico es usado por otro usuario.",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "no puedes transferirte a ti mismo",
+  "YOU_MUST_BE_VIP1": "debes ser al menos <span style='color:blue'>VIP1</span> para transferir fondos",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "debes ser al menos <span style='color:blue'>VIP1</span> para retirar fondos",
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "debes ser al menos <span style='color:blue'>VIP1</span> para depositar fondos",
+  "HE_MUST_BE_VIP1": "el receptor debe ser al menos <span style='color:blue'>VIP1</span> para recibir fondos",
+  "TRANSFER_SUCCESSFUL": "Transferencia exitosa",
+  "EXCHANGE_SUCCESSFUL": "Intercambio exitoso",
+  "EMAIL_EDIT_SUCCESSFUL": "Correo electrónico editado con éxito",
+  "FEE_EDITED": "Tarifa editada",
+  "MAX_RECEIVE_EDITED": "máximo recibir editado",
+  "MAX_TRANSFER_EDITED": "máximo transferir editado",
+  "MAX_WITHDRAW_EDITED": "máximo retirar editado",
+  "MAX_DEPOSIT_EDITED": "máximo depositar editado",
+  "MEM_REMOVED": "membresía eliminada",
+  "CONV_RATE_ADDED_UPDATED": "tasa de conversión añadida/actualizada",
+  "CONV_RATE_REMOVED": "tasa de conversión eliminada",
+  "MEM_ADDED": "membresía añadida",
+  "VIP_EDITED": "VIP editado",
+  "WALLET_UPDATED": "Cartera actualizada",
+  "WALLET_ADDED": "Cartera añadida",
+  "WALLET_REMOVED": "Cartera eliminada",
+  "MEMBERSHIP_EXISTS": "la membresía ya existe",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "no hay membresía con ese tipo",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "no hay membresía con ese número",
+  "NOT_ENOUGH_USDT_BALANCE": "Saldo insuficiente de <span style='color:blue'>USDT</span>",
+  "NO_USDT_WALLET": "No tienes una cartera de <span style='color:blue'>USDT</span>",
+  "TRANSACTION_ID_ERROR": "error en el ID de transacción",
+  "TRANSACTION_DOC_DELETED": "ID de transacción eliminado",
+  "UPGRADED_USER": "usuario actualizado con éxito",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> Membresía <br> Toma un máximo de <span style='color:blue'>12 hrs</span> para revisar.",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> es <span style='color:blue'>Básico</span>, por lo que no puede recibir esta cantidad ya que su cartera excederá el límite de <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span>",
+  "Welcome_ADMIN": "Bienvenido ADMIN"
+}
