@@ -12,6 +12,7 @@
   },
 
   "auth": {
+    "tit" : "授权",
     "login": {
       "tit": "登录",
       "name_email": "姓名或电子邮件",
@@ -41,7 +42,9 @@
 
   "exchange": {
     "tit": "兑换",
-    "av1": "可用"
+    "av1": "可用",
+    "scrt": "密钥",
+    "am_tit": "金额"
   },
 
   "forgot_password": {
@@ -116,6 +119,7 @@
   },
 
   "specific_upgrade": {
+    "pay_with" : "付款方式",
     "only_pay_wrd": "支付"
   },
 
@@ -170,6 +174,7 @@
   },
 
   "withdraw": {
+    "tit" : "提现",
     "cur_tp": "货币类型：",
     "av": "可用：",
     "btn": "提现",

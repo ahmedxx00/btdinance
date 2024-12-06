@@ -12,6 +12,7 @@
   },
 
   "auth": {
+    "tit" : "Auth",
     "login": {
       "tit": "Anmelden",
       "name_email": "Name oder E-Mail",
@@ -41,7 +42,9 @@
 
   "exchange": {
     "tit": "Tausch",
-    "av1": "Verfügbar"
+    "av1": "Verfügbar",
+    "scrt": "Geheimer Schlüssel",
+    "am_tit": "Betrag"
   },
 
   "forgot_password": {
@@ -116,6 +119,7 @@
   },
 
   "specific_upgrade": {
+    "pay_with" : "Bezahlen Sie mit",
     "only_pay_wrd": "Zahlen"
   },
 
@@ -170,6 +174,7 @@
   },
 
   "withdraw": {
+    "tit" : "Abheben",
     "cur_tp": "Währungstyp : ",
     "av": "Verfügbar : ",
     "btn": "abheben",

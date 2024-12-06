@@ -78,6 +78,9 @@ export const getSpecificUpgradePage = (req, res, next) => {
                       lgt: req.t("nav_bar.logout_tit"),
 
                       only_pay_wrd: req.t("specific_upgrade.only_pay_wrd"),
+                      pay_with: req.t("specific_upgrade.pay_with"),
+                      p_tit: req.t("home.main_buttons.up"),
+
                     });
                   }
                 )
@@ -131,6 +134,8 @@ export const getSpecificConfirmUpgradePage = (req, res, next) => {
       cnf_nt3: req.t("cnf_upgrade.cnf_nt3"),
       cnf_nt5: req.t("cnf_upgrade.cnf_nt5"),
       cnf_btn: req.t("cnf_upgrade.cnf_btn"),
+      p_tit: req.t("home.main_buttons.up"),
+
     });
   } else {
     res.redirect("/upgrade");

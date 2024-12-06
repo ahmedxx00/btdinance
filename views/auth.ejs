@@ -1,4 +1,4 @@
-<%- include("./parts/navbar.ejs" , {title : 'Auth',showScroller:false, isLoggedIn :
+<%- include("./parts/navbar.ejs" , {title : `${tit}`,showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt, stylesheets:['/css/auth.css']})%>
 

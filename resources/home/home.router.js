@@ -28,6 +28,8 @@ router.get("/", homeProtect, (req, res, next) => {
       hwith: req.t("home.main_buttons.hwith"),
       dep: req.t("home.main_buttons.dep"),
       up: req.t("home.main_buttons.up"),
+      p_tit: req.t("nav_bar.nav_btns.nav_hm"),
+
     });
   } else {
     // not logged in
@@ -46,6 +48,8 @@ router.get("/", homeProtect, (req, res, next) => {
       hwith: req.t("home.main_buttons.hwith"),
       dep: req.t("home.main_buttons.dep"),
       up: req.t("home.main_buttons.up"),
+      p_tit: req.t("nav_bar.nav_btns.nav_hm"),
+
     });
   }
 });

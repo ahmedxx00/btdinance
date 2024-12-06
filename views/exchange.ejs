@@ -1,4 +1,4 @@
-<%- include("./parts/navbar.ejs" , {title : 'Exchange',showScroller:false, isLoggedIn :
+<%- include("./parts/navbar.ejs" , {title : `${p_tit}`,showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
 false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/exchange.css']}) %>
 
@@ -39,7 +39,7 @@ false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:[
       <div class="fiat_row">
 
         <div class="am_wr">
-          <input type="text" name="amount" placeholder="<%= wlt.currency %> Amount" spellcheck="false" maxlength="20">
+          <input type="text" name="amount" placeholder="<%= wlt.currency %> <%= am_tit %>" spellcheck="false" maxlength="20">
           <span class="max">MAX</span>
           <span class="cur_amount" style="display: none;"><%= wlt.available %></span>
         </div>
@@ -50,7 +50,7 @@ false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:[
             <span><%= obj.name %></span>
           </div>
           <input type="text" name="output" placeholder="0" spellcheck="false" readonly>
-          <input type="text" name="key" placeholder="your key" spellcheck="false" maxlength="200">
+          <input type="text" name="key" placeholder="<%= scrt %>" spellcheck="false" maxlength="200">
           <button class="exchange_btn">EX</button>
         </div>
         <span class="rate" style="display: none;"><%= obj.rate %></span>

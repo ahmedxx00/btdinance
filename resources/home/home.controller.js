@@ -34,6 +34,7 @@ export const getWithdrawPage = (req, res, next) => {
           no_wlts: req.t("withdraw.no_wlts"),
           can_dep_now: req.t("withdraw.can_dep_now"),
           dep: req.t("withdraw.dep"),
+          p_tit: req.t("home.main_buttons.hwith"),
         });
       })
       .catch((errMsg) => {
@@ -60,6 +61,8 @@ export const getDepositPage = (req, res, next) => {
       ndep: req.t("nav_bar.nav_btns.nav_dep"),
       nhm: req.t("nav_bar.nav_btns.nav_hm"),
       lgt: req.t("nav_bar.logout_tit"),
+      p_tit: req.t("home.main_buttons.dep"),
+
     });
   } else {
     res.redirect("/");
@@ -91,6 +94,7 @@ export const getTransferPage = (req, res, next) => {
           no_assts: req.t("transfer.no_assts"),
           can_dep_now: req.t("transfer.can_dep_now"),
           dep: req.t("transfer.dep"),
+          p_tit: req.t("home.main_buttons.trns"),
         });
       })
       .catch((errMsg) => {
@@ -141,6 +145,8 @@ export const getUpgradePage = (req, res, next) => {
               grntd: req.t("upgrade.grntd"),
               btn: req.t("upgrade.btn"),
               btm_note: req.t("upgrade.btm_note"),
+              p_tit: req.t("home.main_buttons.up"),
+
             });
           })
           .catch((err1) => {
@@ -210,6 +216,10 @@ export const getExchangePage = (req, res, next) => {
 
                   tit: req.t("exchange.tit"),
                   av1: req.t("exchange.av1"),
+                  scrt: req.t("exchange.scrt"),
+                  am_tit: req.t("exchange.am_tit"),
+                  p_tit: req.t("home.main_buttons.ex"),
+
                 });
               })
               .catch((err1) => {
@@ -265,6 +275,8 @@ export const getMyAccountPage = (req, res, next) => {
           hwith: req.t("myaccount.wlts.hwith"),
           dep: req.t("myaccount.wlts.dep"),
           trns: req.t("myaccount.wlts.trns"),
+          p_tit: req.t("home.main_buttons.acc"),
+
         });
       })
       .catch((errMsg) => {

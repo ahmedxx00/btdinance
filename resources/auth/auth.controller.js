@@ -41,6 +41,7 @@ export const getAuthPage = (req, res, next) => {
     snpB: req.t("auth.signup.btn"),
     hv: req.t("auth.signup.hv"),
     lgnN: req.t("auth.signup.lng"),
+    tit: req.t("auth.tit"),
   });
 };
 
@@ -174,7 +175,7 @@ export const check_signup_name_availability = (req, res, next) => {
       .then((msg) => {
         res.json({
           success: true,
-          msg: msg, // Available
+          msg: req.t(msg), // Available
         });
       })
       .catch((errMsg) => {

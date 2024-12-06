@@ -1,4 +1,4 @@
-<%- include("./parts/navbar.ejs" , {title : `Upgrade ${locals.membership.type}`,showScroller:false,
+<%- include("./parts/navbar.ejs" , {title : `${p_tit} ${locals.membership.type}`,showScroller:false,
 isLoggedIn : locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin?
 isAdmin : false
 ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/simplebar.css','/css/specific_upgrade.css']})
@@ -18,7 +18,7 @@ isAdmin : false
   <div class="payment_wrap">
 
     <div class="usdt_pay">
-      <span class="hd_title">Pay With USDT</span>
+      <span class="hd_title"><%= pay_with %> USDT</span>
       <div class="wallet_container">
         <div>
           <img src="<%= usdt_img %>" />
@@ -36,7 +36,7 @@ isAdmin : false
 
 
     <div class="eth_pay">
-      <span class="hd_title">Pay With ETH</span>
+      <span class="hd_title"><%= pay_with %> ETH</span>
       <div class="wallet_container">
         <div>
           <img src="<%= eth_img %>" />
@@ -54,7 +54,7 @@ isAdmin : false
 
 
     <div class="btc_pay">
-      <span class="hd_title">Pay With BTC</span>
+      <span class="hd_title"><%= pay_with %> BTC</span>
       <div class="wallet_container">
         <div>
           <img src="<%= btc_img %>" />

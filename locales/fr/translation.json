@@ -12,6 +12,7 @@
   },
 
   "auth": {
+    "tit" : "Authentification",
     "login": {
       "tit": "Connexion",
       "name_email": "Nom ou Email",
@@ -41,7 +42,9 @@
 
   "exchange": {
     "tit": "Échanger",
-    "av1": "Disponible"
+    "av1": "Disponible",
+    "scrt": "clé secrète",
+    "am_tit": "Montant"
   },
 
   "forgot_password": {
@@ -116,6 +119,7 @@
   },
 
   "specific_upgrade": {
+    "pay_with" : "Payer avec",
     "only_pay_wrd": "Payer"
   },
 
@@ -170,6 +174,7 @@
   },
 
   "withdraw": {
+    "tit" : "Retirer",
     "cur_tp": "type de devise : ",
     "av": "Disponible : ",
     "btn": "retirer",
