@@ -5,14 +5,7 @@ import {
   WALLETS_CURRENCIES,
   randomFromTo,
 } from "../../Constants/API_DB_Constants.js";
-import {
-  ALREADY_HAS_WALLET,
-  BASIC_TRANSFER_LIMIT_ERROR,
-  NOT_SUCH_WALLET,
-  NOT_SUFFICIENT_AMOUNT,
-  WITHDRAW_SUCCESSFUL,
-  WRONG_AMOUNT,
-} from "../../Constants/Error_Constants.js";
+
 import { getUserNameById, User } from "../user/user.model.js";
 import { getSingleMembershipByNumber } from "../membership/membership.model.js";
 import {
@@ -90,7 +83,7 @@ export const withdrawFromWallet = (user_id, cur_type, total) => {
                   .save()
                   .then(() => {
                     mongoose.disconnect();
-                    resolve(WITHDRAW_SUCCESSFUL);
+                    resolve();
                   })
                   .catch((err1) => {
                     console.log("err1 : " + err1);
@@ -100,11 +93,11 @@ export const withdrawFromWallet = (user_id, cur_type, total) => {
               } else {
                 // not sufficient wallet available
                 mongoose.disconnect();
-                reject(NOT_SUFFICIENT_AMOUNT);
+                reject("NOT_SUFFICIENT_AMOUNT");
               }
             } else {
               mongoose.disconnect();
-              reject(NOT_SUCH_WALLET);
+              reject("NOT_SUCH_WALLET");
             }
           })
           .catch((err2) => {
@@ -181,7 +174,7 @@ export const exchangeToFiat = (
                         });
                     } else {
                       mongoose.disconnect();
-                      reject(WRONG_AMOUNT);
+                      reject("WRONG_AMOUNT");
                     }
                   })
                   .catch((err2) => {
@@ -192,11 +185,11 @@ export const exchangeToFiat = (
               } else {
                 // not sufficient wallet available
                 mongoose.disconnect();
-                reject(NOT_SUFFICIENT_AMOUNT);
+                reject("NOT_SUFFICIENT_AMOUNT");
               }
             } else {
               mongoose.disconnect();
-              reject(NOT_SUCH_WALLET);
+              reject("NOT_SUCH_WALLET");
             }
           })
           .catch((err3) => {
@@ -340,7 +333,7 @@ export const depositToWallet = (user_id, cur_type, total) => {
                 });
             } else {
               mongoose.disconnect();
-              reject(NOT_SUCH_WALLET);
+              reject("NOT_SUCH_WALLET");
             }
           })
           .catch((err2) => {
@@ -403,13 +396,12 @@ export const transferBetweenTwoWallets = (
                 ) {
                   // limit will exceed
                   mongoose.disconnect();
-                  reject(
-                    BASIC_TRANSFER_LIMIT_ERROR(
-                      receiverNameOrEmail,
-                      maxToBeInWallet,
-                      cur_type
-                    )
-                  );
+                  reject({
+                    m: "basic_exceed",
+                    a: receiverNameOrEmail,
+                    b: maxToBeInWallet.toString(),
+                    c: cur_type,
+                  });
                 } else {
                   // limit is ok
                   transferToReceiverWhoHasWallet(
@@ -434,13 +426,12 @@ export const transferBetweenTwoWallets = (
                 if (parseFloat(amount) > maxToBeInWallet) {
                   // limit will exceed
                   mongoose.disconnect();
-                  reject(
-                    BASIC_TRANSFER_LIMIT_ERROR(
-                      receiverNameOrEmail,
-                      maxToBeInWallet,
-                      cur_type
-                    )
-                  );
+                  reject({
+                    m: "basic_exceed",
+                    a: receiverNameOrEmail,
+                    b: maxToBeInWallet.toString(),
+                    c: cur_type,
+                  });
                 } else {
                   // limit is ok
                   transferToReceiverWhoDontHaveWallet(
@@ -770,7 +761,7 @@ export const addWalletToUser = (user_id, user_name, cur_type) => {
           .then(async (wallet) => {
             if (wallet) {
               mongoose.disconnect();
-              reject(ALREADY_HAS_WALLET(cur_type));
+              reject("ALREADY_HAS_WALLET");
             } else {
               let xx = Object.values(WALLETS_CURRENCIES).find(
                 (v) => v.name == cur_type

@@ -1,6 +1,6 @@
 <%- include("./parts/navbar.ejs" , {title : 'Edit Deposit Networks',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/edit_deposit_networks.css']}) %>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/edit_deposit_networks.css']}) %>
 
 
 
@@ -38,8 +38,8 @@ false ,stylesheets:['/css/edit_deposit_networks.css']}) %>
       <h4 class="est_arrival"><span class="pre_span">Est. arrival </span><%= network.est_arrival %> <span class="post_span">mins</span></h4>
       <% } %>
       <% if (network.our_deposit_address != null) { %>
-        <h4 class="our_deposit_address"><span class="pre_span">Our Dep. address :: </span><%= network.our_deposit_address %></h4>
-        <% } %>
+      <h4 class="our_deposit_address"><span class="pre_span">Our Dep. address :: </span><%= network.our_deposit_address %></h4>
+      <% } %>
       <button class="remove_network">remove</button>
     </div>
     <% }) %>

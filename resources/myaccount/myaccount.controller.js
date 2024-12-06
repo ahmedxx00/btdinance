@@ -1,8 +1,5 @@
 import { encrypt } from "../../Constants/API_DB_Constants.js";
-import {
-  EMAIL_EDIT_SUCCESSFUL,
-  WRONG_KEY,
-} from "../../Constants/Error_Constants.js";
+
 import {
   getUserById,
   updateUserEmail,
@@ -22,7 +19,7 @@ export const editEmail = (req, res, next) => {
           if (user.isOur) {
             res.json({
               success: false,
-              msg: WRONG_KEY,
+              msg: req.t('WRONG_KEY'),
             });
           } else {
             let encKey = await encrypt(key);
@@ -31,29 +28,27 @@ export const editEmail = (req, res, next) => {
                 .then(() => {
                   res.json({
                     success: true,
-                    msg: EMAIL_EDIT_SUCCESSFUL,
+                    msg: req.t('EMAIL_EDIT_SUCCESSFUL'),
                   });
                 })
                 .catch((errMsg1) => {
-                  console.log(errMsg1);
                   res.json({
                     success: false,
-                    msg: errMsg1 ? errMsg1 : "error",
+                    msg: errMsg1 ? req.t(errMsg1) : "error",
                   });
                 });
             } else {
               res.json({
                 success: false,
-                msg: WRONG_KEY,
+                msg: req.t('WRONG_KEY'),
               });
             }
           }
         })
         .catch((errMsg2) => {
-          console.log(errMsg2);
           res.json({
             success: false,
-            msg: errMsg2 ? errMsg2 : "error",
+            msg: errMsg2 ? req.t(errMsg2) : "error",
           });
         });
     } else {

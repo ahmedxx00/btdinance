@@ -2,11 +2,6 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 
 import {
-  PASSWORD_ERROR,
-  ADMIN_NOT_FOUND_ERROR,
-} from "../../Constants/Error_Constants.js";
-
-import {
   DB_URI,
   encrypt,
 } from "../../Constants/API_DB_Constants.js";
@@ -54,10 +49,10 @@ export const LoginAdmin = (name, password) => {
                   reject();
                 }
               } else {
-                reject(PASSWORD_ERROR);
+                reject('PASSWORD_ERROR');
               }
             } else {
-              reject(ADMIN_NOT_FOUND_ERROR);
+              reject('ADMIN_NOT_FOUND_ERROR');
             }
           })
           .catch((err2) => {

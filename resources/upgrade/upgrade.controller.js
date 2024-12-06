@@ -8,11 +8,6 @@ import {
   getDepositNetworksNamesOf_USDT_BTC_ETH,
   getSingleDepositNetworkAddress,
 } from "../crypto-networks/crypto-networks.model.js";
-import {
-  Empty_Credentials_ERROR,
-  TRANSACTION_ID_SAVED,
-  WRONG_AMOUNT,
-} from "../../Constants/Error_Constants.js";
 
 import url from "url";
 import { getUserNameById, User } from "../user/user.model.js";
@@ -73,6 +68,16 @@ export const getSpecificUpgradePage = (req, res, next) => {
                       eth_img: eth_img,
                       eth_networks_names: eth_networks_names,
                       membership: membership,
+
+                      na: req.t("nav_bar.nav_btns.nav_about"),
+                      nex: req.t("nav_bar.nav_btns.nav_ex"),
+                      ntr: req.t("nav_bar.nav_btns.nav_tr"),
+                      nwith: req.t("nav_bar.nav_btns.nav_with"),
+                      ndep: req.t("nav_bar.nav_btns.nav_dep"),
+                      nhm: req.t("nav_bar.nav_btns.nav_hm"),
+                      lgt: req.t("nav_bar.logout_tit"),
+
+                      only_pay_wrd: req.t("specific_upgrade.only_pay_wrd"),
                     });
                   }
                 )
@@ -110,6 +115,22 @@ export const getSpecificConfirmUpgradePage = (req, res, next) => {
       network_name: network_name,
       price: price,
       dep_address: dep_address,
+
+      na: req.t("nav_bar.nav_btns.nav_about"),
+      nex: req.t("nav_bar.nav_btns.nav_ex"),
+      ntr: req.t("nav_bar.nav_btns.nav_tr"),
+      nwith: req.t("nav_bar.nav_btns.nav_with"),
+      ndep: req.t("nav_bar.nav_btns.nav_dep"),
+      nhm: req.t("nav_bar.nav_btns.nav_hm"),
+      lgt: req.t("nav_bar.logout_tit"),
+
+      pta: req.t("cnf_upgrade.pta"),
+      am: req.t("cnf_upgrade.am"),
+      nt: req.t("cnf_upgrade.nt"),
+      cnf_nt1: req.t("cnf_upgrade.cnf_nt1"),
+      cnf_nt3: req.t("cnf_upgrade.cnf_nt3"),
+      cnf_nt5: req.t("cnf_upgrade.cnf_nt5"),
+      cnf_btn: req.t("cnf_upgrade.cnf_btn"),
     });
   } else {
     res.redirect("/upgrade");
@@ -164,27 +185,27 @@ export const payVip = (req, res, next) => {
                       .catch((errMsg1) => {
                         res.json({
                           success: false,
-                          msg: errMsg1 ? errMsg1 : "error",
+                          msg: errMsg1 ? req.t(errMsg1) : "error",
                         });
                       });
                   } else {
                     res.json({
                       success: false,
-                      msg: WRONG_AMOUNT,
+                      msg: req.t("WRONG_AMOUNT"),
                     });
                   }
                 })
                 .catch((errMsg2) => {
                   res.json({
                     success: false,
-                    msg: errMsg2 ? errMsg2 : "error",
+                    msg: errMsg2 ? req.t(errMsg2) : "error",
                   });
                 });
             })
             .catch((errMsg3) => {
               res.json({
                 success: false,
-                msg: errMsg3 ? errMsg3 : "error",
+                msg: errMsg3 ? req.t(errMsg3) : "error",
               });
             });
         } else {
@@ -202,7 +223,7 @@ export const payVip = (req, res, next) => {
     } else {
       res.json({
         success: false,
-        msg: Empty_Credentials_ERROR,
+        msg: req.t("Empty_Credentials_ERROR"),
       });
     }
   } else {
@@ -255,43 +276,46 @@ export const confirmTransaction = (req, res, next) => {
                           transaction_id
                         )
                           .then(() => {
+                            let vip_type = vip_needed.toUpperCase();
                             res.json({
                               success: true,
-                              msg: TRANSACTION_ID_SAVED(vip_needed),
+                              msg: req.t("TRANSACTION_ID_SAVED", {
+                                vip_type: vip_type,
+                              }),
                               redirectUrl: "/upgrade",
                             });
                           })
                           .catch((errMsg1) => {
                             res.json({
                               success: false,
-                              msg: errMsg1 ? errMsg1 : "error",
+                              msg: errMsg1 ? req.t(errMsg1) : "error",
                             });
                           });
                       })
                       .catch((errMsg2) => {
                         res.json({
                           success: false,
-                          msg: errMsg2 ? errMsg2 : "error",
+                          msg: errMsg2 ? req.t(errMsg2) : "error",
                         });
                       });
                   } else {
                     res.json({
                       success: false,
-                      msg: WRONG_AMOUNT,
+                      msg: req.t("WRONG_AMOUNT"),
                     });
                   }
                 })
                 .catch((errMsg3) => {
                   res.json({
                     success: false,
-                    msg: errMsg3 ? errMsg3 : "error",
+                    msg: errMsg3 ? req.t(errMsg3) : "error",
                   });
                 });
             })
             .catch((errMsg4) => {
               res.json({
                 success: false,
-                msg: errMsg4 ? errMsg4 : "error",
+                msg: errMsg4 ? req.t(errMsg4) : "error",
               });
             });
         } else {
@@ -309,7 +333,7 @@ export const confirmTransaction = (req, res, next) => {
     } else {
       res.json({
         success: false,
-        msg: Empty_Credentials_ERROR,
+        msg: req.t("Empty_Credentials_ERROR"),
       });
     }
   } else {

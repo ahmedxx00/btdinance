@@ -1,5 +1,5 @@
 <%- include("./parts/navbar.ejs" , {title : `Transfer ${locals.cur_type}`,showScroller:false, isLoggedIn : locals.isLoggedIn ?isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin : false
-,stylesheets:['/css/simplebar.css','/css/specific_transfer.css']})%>
+,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/simplebar.css','/css/specific_transfer.css']})%>
 
 <% if (locals.cur_type && locals.curImg && locals.wallet) { %>
 
@@ -8,7 +8,7 @@
     <button class="back-btn">
       <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </button>
-    <h2 id="page-title" class="page-title">Transfer</h2>
+    <h2 id="page-title" class="page-title"><%= tit %></h2>
     <button class="history-btn" title="withdraw history">
       <i class="fas fa-history"></i>
     </button>
@@ -20,56 +20,56 @@
       <span class="cur_type"><%= wallet.currency %></span>
     </div>
     <div class="amount_div">
-      <span>Available : </span><span class="cur_amount"> <%= wallet.available %> </span>
+      <span><%= av %></span><span class="cur_amount"> <%= wallet.available %> </span>
     </div>
   </div>
 
   <div class="tabs_box">
-    <button class="tab_btn active">Name</button>
-    <button class="tab_btn">Email</button>
+    <button class="tab_btn active"><%= nm %></button>
+    <button class="tab_btn"><%= em %></button>
   </div>
 
   <div class="content_box">
     <div class="content Name active">
       <!--  BEGIN name -->
       <div class="name">
-        <label>Name of ~ BTC Dinance ~ user</label>
-        <input type="text" name="name" placeholder="Enter Name" required spellcheck="false" maxlength="600" />
+        <label><%= nm_nt %></label>
+        <input type="text" name="name" placeholder="<%= nm_plc %>" required spellcheck="false" maxlength="600" />
       </div>
       <!--  END name -->
       <!--  BEGIN amount -->
       <div class="amount_wrap">
-        <label>Amount</label>
+        <label><%= am_tit %></label>
         <div class="am_wr">
           <input type="text" name="amount" placeholder="0.00" required spellcheck="false" maxlength="50" />
           <span class="symbol"><%= cur_type %></span>
           <span class="max">MAX</span>
         </div>
-        <span>Available : <span><%= wallet.available %></span></span>
+        <span><%= av %><span><%= wallet.available %></span></span>
       </div>
       <!--  END amount -->
-      <button class="transfer_btn">TRANSFER</button>
+      <button class="transfer_btn"><%= btn %></button>
     </div>
     <div class="content Email">
 
       <!--  BEGIN email -->
       <div class="email">
-        <label>Email of ~ BTC Dinance ~ user ( must has @ sign )</label>
-        <input type="text" name="email" placeholder="Enter Email" required spellcheck="false" maxlength="600" />
+        <label><%= em_nt %></label>
+        <input type="text" name="email" placeholder="<%= em_plc %>" required spellcheck="false" maxlength="600" />
       </div>
       <!--  END email -->
       <!--  BEGIN amount -->
       <div class="amount_wrap">
-        <label>Amount</label>
+        <label><%= am_tit %></label>
         <div class="am_wr">
           <input type="text" name="amount" placeholder="0.00" required spellcheck="false" maxlength="50" />
           <span class="symbol"><%= cur_type %></span>
           <span class="max">MAX</span>
         </div>
-        <span>Available : <span><%= wallet.available %></span></span>
+        <span><%= av %><span><%= wallet.available %></span></span>
       </div>
       <!--  END amount -->
-      <button class="transfer_btn">TRANSFER</button>
+      <button class="transfer_btn"><%= btn %></button>
     </div>
   </div>
 </div>

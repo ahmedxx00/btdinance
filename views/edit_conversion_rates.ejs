@@ -1,6 +1,6 @@
 <%- include("./parts/navbar.ejs" , {title : 'Edit Conversion Rates',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/simplebar.css','/css/edit_conversion_rates.css']}) %>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/simplebar.css','/css/edit_conversion_rates.css']}) %>
 
 <div class="main_wrapper">
 
@@ -9,11 +9,11 @@ false ,stylesheets:['/css/simplebar.css','/css/edit_conversion_rates.css']}) %>
   <% Object.entries(ratesObject).forEach(entry => { %>
 
   <span class="rate_wrap">
-      <span class="cur_type"><%= entry[0] %></span>
-      <span class="rate"><%= entry[1] %></span>
-      <input type="text" name="edit_rate" placeholder="edit rate">
-      <button class="edit_rate_btn">Edit</button>
-      <button class="remove_btn">rem</button>
+    <span class="cur_type"><%= entry[0] %></span>
+    <span class="rate"><%= entry[1] %></span>
+    <input type="text" name="edit_rate" placeholder="edit rate">
+    <button class="edit_rate_btn">Edit</button>
+    <button class="remove_btn">rem</button>
   </span>
 
   <% }) %>

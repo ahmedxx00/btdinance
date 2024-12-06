@@ -1,11 +1,11 @@
 <%- include("./parts/navbar.ejs" , {title : 'Upgrade',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/simplebar.css','/css/upgrade.css']}) %>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/simplebar.css','/css/upgrade.css']}) %>
 
 
 <% if (locals.vip > -1 && locals.vipType){ %>
 
-<h3 class="head_note">your membership is <span><%= vipType %></span> </h3>
+<h3 class="head_note"><%= tit %><span><%= vipType %></span> </h3>
 
 <% } %>
 
@@ -17,22 +17,22 @@ false ,stylesheets:['/css/simplebar.css','/css/upgrade.css']}) %>
   <div class="mem_data">
     <img class="logo" src="<%= membership.img %>" />
     <div class="limits">
-      <span> ~ Limits ~ </span>
+      <span><%= lmts %></span>
       <div>
-      <% if (membership.number == 0) { %>
-       
-        <p>* WITHDRAW : <%= membership.max_withdraw %> . </p>
-        <p>* DEPOSIT : <%= membership.max_deposit %> . </p>
-        <p>* TRANSFER : <%= membership.max_transfer %> . </p>
-        <p>* RECEIVE : USDT ( <%= membership.max_receive %> ) /wallet . </p>
-      <% } else {%>
+        <% if (membership.number == 0) { %>
 
-        <p>* WITHDRAW : USDT ( <%= membership.max_withdraw %> ) /daily . </p>
-        <p>* DEPOSIT : USDT ( <%= membership.max_deposit %> ) /daily . </p>
-        <p>* TRANSFER : <%= membership.max_transfer %> . </p>
-        <p>* RECEIVE : <%= membership.max_receive %> . </p> 
-        
-      <% } %> 
+        <p><%= hwith %><%= membership.max_withdraw %> . </p>
+        <p><%= dep %><%= membership.max_deposit %> . </p>
+        <p><%= trans %><%= membership.max_transfer %> . </p>
+        <p><%= rec %>USDT ( <%= membership.max_receive %> ) <%= per_wlt %> . </p>
+        <% } else {%>
+
+        <p><%= hwith %>USDT ( <%= membership.max_withdraw %> ) <%= daily %> . </p>
+        <p><%= dep %>USDT ( <%= membership.max_deposit %> ) <%= daily %> . </p>
+        <p><%= trans %><%= membership.max_transfer %> . </p>
+        <p><%= rec %><%= membership.max_receive %> . </p>
+
+        <% } %>
 
       </div>
     </div>
@@ -40,14 +40,14 @@ false ,stylesheets:['/css/simplebar.css','/css/upgrade.css']}) %>
     <% if (vip >= membership.number) { %>
     <div class="granted">
       <img src="/tick.png" />
-      <span>GRANTED</span>
+      <span><%= grntd %></span>
     </div>
     <% } else { %>
     <div>
-      <a href="/upgrade/membership/<%= membership.type %>" class="upgrade_btn">UPGRADE</a>
+      <a href="/upgrade/membership/<%= membership.type %>" class="upgrade_btn"><%= btn %></a>
     </div>
     <% } %>
-    <span class="btm_note">Note : limits applies to all currencies with the corresponding conversion rate .</span>
+    <span class="btm_note"><%= btm_note %></span>
 
   </div>
 </div>

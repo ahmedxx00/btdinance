@@ -9,13 +9,9 @@
   <link rel="stylesheet" href="/css/spinner.css" />
   <link rel="stylesheet" href="/css/navbar.css" />
 
-
   <% if ( locals.isLoggedIn && locals.isAdmin) { %>
   <link rel="stylesheet" href="/css/admin_btns.css" />
-  <% }%>
-
-
-  <% if (locals.showScroller) { %>
+  <% }%> <% if (locals.showScroller) { %>
   <link rel="stylesheet" href="/css/tiker.css" />
   <% } %>
 
@@ -29,11 +25,9 @@
   <script src="/js/jquery-3.7.1.min.js"></script>
   <script src="/js/jquery.modal.min.js"></script>
 
-
   <% if (locals.scripts) { %> <% scripts.forEach((script)=>{ %>
   <script src="<%= script %>"></script>
   <% }) %> <% } %>
-
 
   <noscript>
     <style>
@@ -53,7 +47,6 @@
       }
     </style>
   </noscript>
-
 </head>
 
 <body>
@@ -62,12 +55,12 @@
       <img src="/btc-logo.png" style="pointer-events: none" />
     </a>
     <ul class="nav-items">
-      <li><a id="nav-item-about" href="/about">About Us</a></li>
-      <li><a id="nav-item-exchange" href="/exchange">Exchange</a></li>
-      <li><a id="nav-item-transfer" href="/transfer">Transfer</a></li>
-      <li><a id="nav-item-withdraw" href="/withdraw">Withdraw</a></li>
-      <li><a id="nav-item-deposit" href="/deposit">Deposit</a></li>
-      <li><a id="nav-item-home" href="/">Home</a></li>
+      <li><a id="nav-item-about" href="/about"><%= na %></a></li>
+      <li><a id="nav-item-exchange" href="/exchange"><%= nex %></a></li>
+      <li><a id="nav-item-transfer" href="/transfer"><%= ntr %></a></li>
+      <li><a id="nav-item-withdraw" href="/withdraw"><%= nwith %></a></li>
+      <li><a id="nav-item-deposit" href="/deposit"><%= ndep %></a></li>
+      <li><a id="nav-item-home" href="/"><%= nhm %></a></li>
     </ul>
     <div class="sandwitch">
       <div class="sn">
@@ -78,18 +71,28 @@
     </div>
   </div>
 
-
   <% if ( locals.isLoggedIn&& locals.isAdmin) { %>
   <ul class="nav-items admin">
-    <li><a id="nav-item-edit_withdraw_networks" href="/admin/edit_withdraw_networks">Edit Withdraw Networks</a></li>
-    <li><a id="nav-item-edit_deposit_networks" href="/admin/edit_deposit_networks">Edit Deposit Networks</a></li>
-    <li><a id="nav-item-edit_conversion_rates" href="/admin/edit_conversion_rates">Edit Conversion Rates</a></li>
-    <li><a id="nav-item-edit_memberships" href="/admin/edit_memberships">Edit Memberships</a></li>
-    <li><a id="nav-item-edit_our_users" href="/admin/edit_our_users">Edit Our Users</a></li>
-    <li><a id="nav-item-vip_requests" href="/admin/vip_requests">VIP Requests</a></li>
+    <li>
+      <a id="nav-item-edit_withdraw_networks" href="/admin/edit_withdraw_networks">Edit Withdraw Networks</a>
+    </li>
+    <li>
+      <a id="nav-item-edit_deposit_networks" href="/admin/edit_deposit_networks">Edit Deposit Networks</a>
+    </li>
+    <li>
+      <a id="nav-item-edit_conversion_rates" href="/admin/edit_conversion_rates">Edit Conversion Rates</a>
+    </li>
+    <li>
+      <a id="nav-item-edit_memberships" href="/admin/edit_memberships">Edit Memberships</a>
+    </li>
+    <li>
+      <a id="nav-item-edit_our_users" href="/admin/edit_our_users">Edit Our Users</a>
+    </li>
+    <li>
+      <a id="nav-item-vip_requests" href="/admin/vip_requests">VIP Requests</a>
+    </li>
   </ul>
-  <% }%>
-  <%# =========================================================== %>
+  <% }%> <%# =========================================================== %>
 
   <hr class="b-header-hr" />
 
@@ -190,10 +193,11 @@
       </li>
     </ul>
   </div>
-  <% }%>
-
-  <% if (locals.isLoggedIn) { %>
-  <a href="/logout" class="logout" title="logout">
-    <img src="/logout.png" alt="logout">
+  <% }%> <% if (locals.isLoggedIn) { %>
+  <a href="/logout" class="logout" title="<%= lgt %>">
+    <img src="/logout.png" alt="<%= lgt %>" />
   </a>
   <% } %>
+</body>
+
+</html>

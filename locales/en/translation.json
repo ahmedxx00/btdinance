@@ -40,7 +40,8 @@
   },
 
   "exchange": {
-    "tit": "Exchange"
+    "tit": "Exchange",
+    "av1": "Available"
   },
 
   "forgot_password": {
@@ -54,7 +55,7 @@
       "acc": "My Account",
       "ex": "Exchange",
       "trns": "Transfer",
-      "with": "Withdraw",
+      "hwith": "Withdraw",
       "dep": "Deposit",
       "up": "Upgrade"
     }
@@ -68,7 +69,7 @@
     "wlts": {
       "tit": "My Wallets",
       "av": "Available : ",
-      "with": "withdraw",
+      "hwith": "withdraw",
       "dep": "deposit",
       "trns": "transfer"
     }
@@ -157,7 +158,7 @@
   "upgrade": {
     "tit": "your membership is ",
     "lmts": " ~ Limits ~ ",
-    "with": "* WITHDRAW : ",
+    "hwith": "* WITHDRAW : ",
     "dep": "* DEPOSIT : ",
     "trans": "* TRANSFER : ",
     "rec": "* RECEIVE : ",
@@ -181,7 +182,7 @@
   "THIS_USER_EXISTS": "this user exists",
   "THIS_EMAIL_EXISTS": "email assigned to another user",
   "OUR_USER_ADDED": "our user added",
-  "ALREADY_HAS_WALLET": "already has a <span style='color : blue'>{{cur_type}}</span> wallet",
+  "ALREADY_HAS_WALLET": "already has wallet",
   "WRONG_EMAIL": "wrong credentials",
   "WRONG_PASSWORD": "wrong credentials",
   "AVAILABLE": "Available",
@@ -235,7 +236,7 @@
   "TRANSACTION_ID_ERROR": "transaction id ERROR",
   "TRANSACTION_DOC_DELETED": "transaction id deleted",
   "UPGRADED_USER": "user upgraded successful",
-  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> Membership <br> It takes <span style='color:blue'>12 hrs</span> Max to review .",
-  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> is <span style='color:blue'>Basic</span> so he/she can't receive this amount as his wallet will exceed the limit of <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span>",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type}}</span> Membership <br> It takes <span style='color:blue'>12 hrs</span> Max to review .",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> is <span style='color:blue'>Basic</span> so he/she can't receive this amount as his wallet will exceed the limit of <span style='color:black;font-style:italic'>{{maxToBeInWallet}}</span> <span style='color:blue'>{{cur_type}}</span>",
   "Welcome_ADMIN": "Welcome ADMIN"
 }

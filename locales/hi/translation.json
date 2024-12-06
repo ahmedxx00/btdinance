@@ -40,7 +40,8 @@
   },
 
   "exchange": {
-    "tit": "विनिमय"
+    "tit": "विनिमय",
+    "av1": "उपलब्ध"
   },
 
   "forgot_password": {
@@ -54,7 +55,7 @@
       "acc": "मेरा खाता",
       "ex": "विनिमय",
       "trns": "स्थानांतरण",
-      "with": "निकासी",
+      "hwith": "निकासी",
       "dep": "जमा",
       "up": "अपग्रेड करें"
     }
@@ -68,7 +69,7 @@
     "wlts": {
       "tit": "मेरे वॉलेट्स",
       "av": "उपलब्ध : ",
-      "with": "निकासी",
+      "hwith": "निकासी",
       "dep": "जमा",
       "trns": "स्थानांतरण"
     }
@@ -157,7 +158,7 @@
   "upgrade": {
     "tit": "आपकी सदस्यता है ",
     "lmts": " ~ सीमाएँ ~ ",
-    "with": "* निकासी : ",
+    "hwith": "* निकासी : ",
     "dep": "* जमा : ",
     "trans": "* स्थानांतरण : ",
     "rec": "* प्राप्त : ",
@@ -181,7 +182,7 @@
   "THIS_USER_EXISTS": "यह उपयोगकर्ता मौजूद है",
   "THIS_EMAIL_EXISTS": "ईमेल पहले से किसी अन्य उपयोगकर्ता को सौंपा गया है",
   "OUR_USER_ADDED": "हमारा उपयोगकर्ता जोड़ा गया",
-  "ALREADY_HAS_WALLET": "पहले से एक <span style='color : blue'>{{cur_type}}</span> वॉलेट है",
+  "ALREADY_HAS_WALLET": "पहले से एक वॉलेट है",
   "WRONG_EMAIL": "गलत प्रमाण पत्र",
   "WRONG_PASSWORD": "गलत प्रमाण पत्र",
   "AVAILABLE": "उपलब्ध",
@@ -235,7 +236,7 @@
   "TRANSACTION_ID_ERROR": "लेन-देन ID में त्रुटि।",
   "TRANSACTION_DOC_DELETED": "लेन-देन दस्तावेज़ हटा दिया गया।",
   "UPGRADED_USER": "उपयोगकर्ता सफलतापूर्वक अपग्रेड किया गया।",
-  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> सदस्यता <br> इसे समीक्षा करने में अधिकतम <span style='color:blue'>12 घंटे</span> लग सकते हैं।",
-  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> <span style='color:blue'>Basic</span> है, इसलिए वह इस राशि को प्राप्त नहीं कर सकता क्योंकि उसका वॉलेट <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span> की सीमा से अधिक हो जाएगा।",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type}}</span> सदस्यता <br> इसे समीक्षा करने में अधिकतम <span style='color:blue'>12 घंटे</span> लग सकते हैं।",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> <span style='color:blue'>Basic</span> है, इसलिए वह इस राशि को प्राप्त नहीं कर सकता क्योंकि उसका वॉलेट <span style='color:black;font-style:italic'>{{maxToBeInWallet}}</span> <span style='color:blue'>{{cur_type}}</span> की सीमा से अधिक हो जाएगा।",
   "Welcome_ADMIN": "स्वागत है ADMIN"
 }

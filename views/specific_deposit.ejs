@@ -1,6 +1,6 @@
-<%- include("./parts/navbar.ejs" , {title : `Deposit ${locals.cur_type}`,showScroller:false,
+<%- include("./parts/navbar.ejs" , {title : `${tit} ${locals.cur_type}`,showScroller:false,
 isLoggedIn : locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin?
-isAdmin : false
+isAdmin : false,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt
 ,stylesheets:['/css/simplebar.css','/css/specific_deposit.css']})
 %>
 
@@ -12,7 +12,7 @@ isAdmin : false
     <button class="back-btn">
       <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </button>
-    <h2 id="page-title" class="page-title">Deposit</h2>
+    <h2 id="page-title" class="page-title"><%= tit %></h2>
     <button class="history-btn" title="deposit history">
       <i class="fas fa-history"></i>
     </button>
@@ -27,13 +27,13 @@ isAdmin : false
 
     <!--  BEGIN network_type -->
     <div class="network_type_wrap">
-      <label>network type</label>
+      <label><%= nt_tp %></label>
       <div class="network_dropdown">
 
         <div class="network_dropdown_btn">
 
           <div class="upper">
-            <span class="network_name">Select Network</span>
+            <span class="network_name"><%= nt_slct %></span>
             <i class="fas fa-chevron-down"></i>
           </div>
 
@@ -65,12 +65,12 @@ isAdmin : false
 
     <!--  BEGIN key -->
     <div class="key_wrap">
-      <label>secret key</label>
-      <input type="text" name="key" placeholder="Enter your secret key" required spellcheck="false" maxlength="100" />
+      <label><%= scrt %></label>
+      <input type="text" name="key" placeholder="<%= scrt_plc %>" required spellcheck="false" maxlength="100" />
     </div>
     <!--  END key -->
-      
-    <button id="deposit_btn">DEPOSIT</button>
+
+    <button id="deposit_btn"><%= btn %></button>
 
   </div>
 </div>
@@ -79,7 +79,7 @@ isAdmin : false
 <div class="no_wallets"><%= locals.cur_type %></div>
 <% } %>
 
-<div id="snackbar">copied</div>
+<div id="snackbar"><%= cpd %></div>
 
 <%- include("./parts/footer.ejs" ,
 {showScroller:false, scripts: ['/js/simplebar.min.js'] , moduleScripts: ['/js/specific_deposit.js'] })%>

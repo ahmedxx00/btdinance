@@ -1,46 +1,46 @@
 <%- include("./parts/navbar.ejs" , {title : 'Home Page',showScroller:true, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/home.css']}) %>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/home.css']}) %>
 
 <div class="lang">
   <img src="/lang.png" alt="lang">
   <form action="/change-language" method="get">
     <select name="lng" id="lng" onchange="this.form.submit()">
-      <option value="en">English</option>
-      <option value="fr">French</option>
-      <option value="es">Espanol</option>
-      <option value="de">Deutch</option>
-      <option value="ru">Russian</option>
-      <option value="zh">Chinese</option>
-      <option value="hi">Hindi</option>
+      <option value="en" <%= lng == 'en' ? 'selected' : ''%>>English</option>
+      <option value="fr" <%= lng == 'fr' ? 'selected' : ''%>>French</option>
+      <option value="es" <%= lng == 'es' ? 'selected' : ''%>>Spanish</option>
+      <option value="de" <%= lng == 'de' ? 'selected' : ''%>>Deutch</option>
+      <option value="ru" <%= lng == 'ru' ? 'selected' : ''%>>Russian</option>
+      <option value="zh" <%= lng == 'zh' ? 'selected' : ''%>>Chinese</option>
+      <option value="hi" <%= lng == 'hi' ? 'selected' : ''%>>Hindi</option>
     </select>
   </form>
 </div>
 
 <div class="main-buttons">
   <div>
-    <a href="/myaccount"><img src="/account.png" />My Account</a>
+    <a href="/myaccount"><img src="/account.png" /><%= acc %></a>
   </div>
   <div>
-    <a href="/exchange"><img src="/invest-money.png" />Exchange</a>
+    <a href="/exchange"><img src="/invest-money.png" /><%= ex %></a>
   </div>
   <div>
-    <a href="/transfer"><img src="/transfer-money.png" />Transfer</a>
+    <a href="/transfer"><img src="/transfer-money.png" /><%= trns %></a>
   </div>
   <div>
-    <a href="/withdraw"><img src="/withdraw-money.png" />Withdraw</a>
+    <a href="/withdraw"><img src="/withdraw-money.png" /><%= hwith %></a>
   </div>
   <div>
-    <a href="/deposit"><img src="/deposit-money.png" />Deposit</a>
+    <a href="/deposit"><img src="/deposit-money.png" /><%= dep %></a>
   </div>
   <div>
-    <a href="/upgrade"><img src="/upgrade.png" />Upgrade</a>
+    <a href="/upgrade"><img src="/upgrade.png" /><%= up %></a>
   </div>
 </div>
 
 <div class="btm_clients">
   <span class="clients"><span class='pre_span'>+</span><span class='g'>58</span> <span class='post_span'>M</span></span>
-  <span>BTC Dinance Clients</span>
+  <span>BTDinance Clients</span>
 </div>
 
 <%- include("./parts/footer.ejs" ,

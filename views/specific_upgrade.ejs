@@ -1,7 +1,7 @@
 <%- include("./parts/navbar.ejs" , {title : `Upgrade ${locals.membership.type}`,showScroller:false,
 isLoggedIn : locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin?
 isAdmin : false
-,stylesheets:['/css/simplebar.css','/css/specific_upgrade.css']})
+,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/simplebar.css','/css/specific_upgrade.css']})
 %>
 
 <div class="main_wrapper">
@@ -25,11 +25,11 @@ isAdmin : false
         </div>
         <div class="networks">
           <% usdt_networks_names.forEach(nameObj => { %>
-            <span class="network"><%= nameObj.name %></span>
+          <span class="network"><%= nameObj.name %></span>
           <% }) %>
         </div>
       </div>
-      <button class="pay">Pay ( <%= usdt_price %> USDT )</button>
+      <button class="pay"><%= only_pay_wrd %> ( <%= usdt_price %> USDT )</button>
       <span class="cur_type" style="display: none;"><%= usdt_cur_type %></span>
       <span class="price" style="display: none;"><%= usdt_price %></span>
     </div>
@@ -43,11 +43,11 @@ isAdmin : false
         </div>
         <div class="networks">
           <% eth_networks_names.forEach(nameObj => { %>
-            <span class="network"><%= nameObj.name %></span>
+          <span class="network"><%= nameObj.name %></span>
           <% }) %>
         </div>
       </div>
-      <button class="pay">Pay ( <%= eth_price %> ETH )</button>
+      <button class="pay"><%= only_pay_wrd %> ( <%= eth_price %> ETH )</button>
       <span class="cur_type" style="display: none;"><%= eth_cur_type %></span>
       <span class="price" style="display: none;"><%= eth_price %></span>
     </div>
@@ -61,11 +61,11 @@ isAdmin : false
         </div>
         <div class="networks">
           <% btc_networks_names.forEach(nameObj => { %>
-            <span class="network"><%= nameObj.name %></span>
+          <span class="network"><%= nameObj.name %></span>
           <% }) %>
         </div>
       </div>
-      <button class="pay">Pay ( <%= btc_price %> BTC )</button>
+      <button class="pay"><%= only_pay_wrd %> ( <%= btc_price %> BTC )</button>
       <span class="cur_type" style="display: none;"><%= btc_cur_type %></span>
       <span class="price" style="display: none;"><%= btc_price %></span>
     </div>

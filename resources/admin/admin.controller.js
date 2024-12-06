@@ -24,6 +24,13 @@ export const getEditWithdrawNetworksPage = (req, res, next) => {
           isLoggedIn: true,
           isAdmin: isAdmin,
           networks_object: networks_object,
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
         });
       })
       .catch((errMsg) => {
@@ -47,6 +54,13 @@ export const getEditDepositNetworksPage = (req, res, next) => {
           isLoggedIn: true,
           isAdmin: isAdmin,
           networks_object: networks_object,
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
         });
       })
       .catch((errMsg) => {
@@ -82,8 +96,15 @@ export const getEditConversionRatesPage = (req, res, next) => {
         res.render("edit_conversion_rates.ejs", {
           isLoggedIn: true,
           isAdmin: isAdmin,
-          ratesObject: ratesDocument? ratesDocument.rates : null,
+          ratesObject: ratesDocument ? ratesDocument.rates : null,
           cur_types_array: cur_types_array,
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
         });
       })
       .catch((errMsg) => {
@@ -124,6 +145,13 @@ export const getEditMembershipsPage = (req, res, next) => {
           isLoggedIn: true,
           isAdmin: isAdmin,
           membershipsArray: membershipsArray,
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
         });
       })
       .catch((errMsg) => {
@@ -157,6 +185,13 @@ export const getEditOurUsersPage = (req, res, next) => {
           hasNext: results.hasNextPage,
           pageCount: results.totalPages,
           page: results.page,
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
         });
       })
       .catch((errMsg) => {
@@ -186,6 +221,13 @@ export const getVipRequestsPage = (req, res, next) => {
           hasNext: results.hasNextPage,
           pageCount: results.totalPages,
           page: results.page,
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
         });
       })
       .catch((errMsg) => {

@@ -1,23 +1,23 @@
 <%- include("./parts/navbar.ejs" , {title : `Confirm Upgrade`,showScroller:false,
 isLoggedIn : locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin?
 isAdmin : false
-,stylesheets:['/css/simplebar.css','/css/specific_confirm_upgrade.css']})
+,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/simplebar.css','/css/specific_confirm_upgrade.css']})
 %>
 
 <div class="main_wrapper">
 
   <div class="payment_wrap">
-    <span class="hd_title">Pay To Address</span>
+    <span class="hd_title"><%= pta %></span>
     <span class="deposit_address"><%= dep_address %></span>
-    <span class="amount"><span class="pre_span">Amount : </span><%= price %> <span class="post_span"><%= cur_type %></span></span>
-    <span class="network_name"><span class="pre_span">Network : </span><%= network_name %></span>
+    <span class="amount"><span class="pre_span"><%= am %></span><%= price %> <span class="post_span"><%= cur_type %></span></span>
+    <span class="network_name"><span class="pre_span"><%= nt %></span><%= network_name %></span>
     <span class="vip_type" style="display: none;"><%= vip_type %></span>
   </div>
 
   <div class="confirm_wrap">
-    <span class="conf_note">* After payment is completed and confirmed , copy the <span class="t_id">Transaction ID/Hash</span> or <span class="t_id">TXID</span> into the below section to confirm your transaction .</span>
+    <span class="conf_note"><%= cnf_nt1 %><span class="t_id">Transaction ID/Hash</span><%= cnf_nt3 %><span class="t_id">TXID</span><%= cnf_nt5 %></span>
     <input type="text" name="transaction_id" placeholder="Enter Transaction ID/Hash ( TXID )" class="transaction_id" spellcheck="false" maxlength="1000">
-    <button id="transaction_id_btn">Confirm Transaction</button>
+    <button id="transaction_id_btn"><%= cnf_btn %></button>
   </div>
 
 </div>

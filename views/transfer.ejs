@@ -1,11 +1,11 @@
 <%- include("./parts/navbar.ejs" , {title : 'Transfer',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/transfer.css']}) %>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/transfer.css']}) %>
 
 
 <% if (locals.wallets && locals.wallets.length > 0) { %>
 
-<p class="head_note">Available assets to transfer</p>
+<p class="head_note"><%= tit %></p>
 <div class="transfer-buttons">
 
   <% locals.wallets.forEach(wallet => { %>
@@ -16,7 +16,7 @@ false ,stylesheets:['/css/transfer.css']}) %>
       <span class="cur_type"><%= wallet.currency %></span>
     </div>
     <div class="amount_div">
-      <span>Available</span><span class="cur_amount"> <%= wallet.available %> </span>
+      <span><%= av1 %></span><span class="cur_amount"> <%= wallet.available %> </span>
     </div>
   </a>
 
@@ -27,9 +27,9 @@ false ,stylesheets:['/css/transfer.css']}) %>
 <% } else {%>
 
 <div class="no_wallets">
-  <h4>you have no assets</h4>
-  <p>you can deposit NOW</p>
-  <a href="/deposit">Deposit</a>
+  <h4><%= no_assts %></h4>
+  <p><%= can_dep_now %></p>
+  <a href="/deposit"><%= dep %></a>
 </div>
 
 <% } %>

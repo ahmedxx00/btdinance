@@ -1,7 +1,7 @@
 <%- include("./parts/navbar.ejs" , {title : `Withdraw ${locals.cur_type}`,showScroller:false,
 isLoggedIn : locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin?
 isAdmin : false
-,stylesheets:['/css/simplebar.css','/css/specific_withdraw_fiat.css']})
+,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/simplebar.css','/css/specific_withdraw_fiat.css']})
 %>
 
 <% if (locals.cur_type && locals.curImg && locals.wallet) { %>
@@ -12,58 +12,58 @@ isAdmin : false
     <button class="back-btn">
       <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </button>
-    <h2 id="page-title" class="page-title">Withdraw</h2>
+    <h2 id="page-title" class="page-title"><%= tit %></h2>
     <button class="history-btn" title="withdraw history">
       <i class="fas fa-history"></i>
     </button>
   </div>
 
-    
+
   <div class="wallet_container">
     <div class="cur_data">
       <img src="<%= curImg %>" />
       <span class="cur_type"><%= wallet.currency %></span>
     </div>
     <div class="amount_div">
-      <span>Available</span><span class="cur_amount"> <%= wallet.available %> </span>
+      <span><%= av1 %></span><span class="cur_amount"> <%= wallet.available %> </span>
     </div>
   </div>
 
   <div class="withdraw_form">
     <!--  BEGIN iban -->
     <div class="iban_wrap">
-      <label>IBAN</label>
-      <input type="text" name="iban" placeholder="Bank Account IBAN" required spellcheck="false" maxlength="600" />
+      <label><%= iban %></label>
+      <input type="text" name="iban" placeholder="<%= iban_plc %>" required spellcheck="false" maxlength="600" />
     </div>
     <!--  END iban -->
 
     <!--  BEGIN swift -->
     <div class="swift_wrap">
-      <label>Swift Code</label>
-      <input type="text" name="swift" placeholder="Bank Swift Code" required spellcheck="false" maxlength="600" />
+      <label><%= swft %></label>
+      <input type="text" name="swift" placeholder="<%= swft_plc %>" required spellcheck="false" maxlength="600" />
     </div>
     <!--  END swift -->
 
     <!--  BEGIN amount -->
     <div class="amount_wrap">
-      <label>Amount</label>
+      <label><%= am %></label>
       <div class="am_wr">
         <input type="text" name="amount" placeholder="0.00" required spellcheck="false" maxlength="50" />
         <span class="symbol"><%= cur_type %></span>
         <span class="max">MAX</span>
       </div>
-      <span>Available : <span><%= wallet.available %></span></span>
+      <span><%= av2 %><span><%= wallet.available %></span></span>
     </div>
     <!--  END amount -->
 
     <!--  BEGIN key -->
     <div class="key_wrap">
-      <label>secret key</label>
-      <input type="text" name="key" placeholder="Enter your secret key" required spellcheck="false" maxlength="100" />
+      <label><%= sec %></label>
+      <input type="text" name="key" placeholder="<%= sec_plc %>" required spellcheck="false" maxlength="100" />
     </div>
     <!--  END key -->
 
-    <button id="withdraw_btn">WITHDRAW</button>
+    <button id="withdraw_btn"><%= btn %></button>
 
   </div>
 </div>

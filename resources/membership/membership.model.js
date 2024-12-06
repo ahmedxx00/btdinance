@@ -4,13 +4,7 @@ import {
   MEMBERSHIPS,
   WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
-import {
-  MEMBERSHIP_EXISTS,
-  NO_MEMBERSHIP_WITH_THAT_NUMBER,
-  NO_MEMBERSHIP_WITH_THAT_TYPE,
-  NO_USDT_WALLET,
-  NOT_ENOUGH_USDT_BALANCE,
-} from "../../Constants/Error_Constants.js";
+
 
 import { Wallet } from "../wallet/wallet.model.js";
 import { User } from "../user/user.model.js";
@@ -72,7 +66,7 @@ export const CreateMembership = (
           .then((membership) => {
             if (membership) {
               mongoose.disconnect();
-              reject(MEMBERSHIP_EXISTS);
+              reject('MEMBERSHIP_EXISTS');
             } else {
               
               let newMembership = new Membership({
@@ -148,7 +142,7 @@ export const getSingleMembership = (type) => {
             if (membership) {
               resolve(membership);
             } else {
-              reject(NO_MEMBERSHIP_WITH_THAT_TYPE);
+              reject('NO_MEMBERSHIP_WITH_THAT_TYPE');
             }
           })
           .catch((err1) => {
@@ -176,7 +170,7 @@ export const getSingleMembershipByNumber = (number) => {
             if (membership) {
               resolve(membership);
             } else {
-              reject(NO_MEMBERSHIP_WITH_THAT_NUMBER);
+              reject('NO_MEMBERSHIP_WITH_THAT_NUMBER');
             }
           })
           .catch((err1) => {

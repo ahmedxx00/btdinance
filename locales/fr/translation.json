@@ -40,7 +40,8 @@
   },
 
   "exchange": {
-    "tit": "Échanger"
+    "tit": "Échanger",
+    "av1": "Disponible"
   },
 
   "forgot_password": {
@@ -54,7 +55,7 @@
       "acc": "Mon Compte",
       "ex": "Échanger",
       "trns": "Transférer",
-      "with": "Retirer",
+      "hwith": "Retirer",
       "dep": "Déposer",
       "up": "Améliorer"
     }
@@ -68,7 +69,7 @@
     "wlts": {
       "tit": "Mes Portefeuilles",
       "av": "Disponible : ",
-      "with": "retirer",
+      "hwith": "retirer",
       "dep": "déposer",
       "trns": "transférer"
     }
@@ -157,7 +158,7 @@
   "upgrade": {
     "tit": "votre adhésion est ",
     "lmts": " ~ Limites ~ ",
-    "with": "* RETRAIT : ",
+    "hwith": "* RETRAIT : ",
     "dep": "* DÉPÔT : ",
     "trans": "* TRANSFERT : ",
     "rec": "* RECEVOIR : ",
@@ -181,7 +182,7 @@
   "THIS_USER_EXISTS": "cet utilisateur existe",
   "THIS_EMAIL_EXISTS": "l'email est attribué à un autre utilisateur",
   "OUR_USER_ADDED": "notre utilisateur a été ajouté",
-  "ALREADY_HAS_WALLET": "possède déjà un portefeuille <span style='color : blue'>{{cur_type}}</span>",
+  "ALREADY_HAS_WALLET": "possède déjà un portefeuille",
   "WRONG_EMAIL": "identifiants incorrects",
   "WRONG_PASSWORD": "identifiants incorrects",
   "AVAILABLE": "Disponible",
@@ -235,7 +236,7 @@
   "TRANSACTION_ID_ERROR": "erreur d'identifiant de transaction",
   "TRANSACTION_DOC_DELETED": "identifiant de transaction supprimé",
   "UPGRADED_USER": "utilisateur amélioré avec succès",
-  "TRANSACTION_ID_SAVED": "Adhésion <span style='color:green'>{{vip_type.toUpperCase()}}</span> <br> Cela prend <span style='color:blue'>12 h</span> maximum pour examen.",
-  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> est <span style='color:blue'>Basique</span>, il/elle ne peut pas recevoir ce montant car son portefeuille dépasserait la limite de <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span>",
+  "TRANSACTION_ID_SAVED": "Adhésion <span style='color:green'>{{vip_type}}</span> <br> Cela prend <span style='color:blue'>12 h</span> maximum pour examen.",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> est <span style='color:blue'>Basique</span>, il/elle ne peut pas recevoir ce montant car son portefeuille dépasserait la limite de <span style='color:black;font-style:italic'>{{maxToBeInWallet}}</span> <span style='color:blue'>{{cur_type}}</span>",
   "Welcome_ADMIN": "Bienvenue ADMIN"
 }

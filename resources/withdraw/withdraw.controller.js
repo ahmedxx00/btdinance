@@ -3,12 +3,7 @@ import {
   validAmount,
   WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
-import {
-  Empty_Credentials_ERROR,
-  WRONG_AMOUNT,
-  WRONG_KEY,
-  YOU_MUST_BE_VIP1_TO_WITHDRAW,
-} from "../../Constants/Error_Constants.js";
+
 import { getWithdrawNetworksOfSpecificCurrency } from "../crypto-networks/crypto-networks.model.js";
 import { getUserById } from "../user/user.model.js";
 import {
@@ -52,6 +47,26 @@ export const getSpecificWithdrawPage = (req, res, next) => {
                   cur_type: cur_type,
                   wallet: wallet,
                   networks: networks,
+
+                  na: req.t("nav_bar.nav_btns.nav_about"),
+                  nex: req.t("nav_bar.nav_btns.nav_ex"),
+                  ntr: req.t("nav_bar.nav_btns.nav_tr"),
+                  nwith: req.t("nav_bar.nav_btns.nav_with"),
+                  ndep: req.t("nav_bar.nav_btns.nav_dep"),
+                  nhm: req.t("nav_bar.nav_btns.nav_hm"),
+                  lgt: req.t("nav_bar.logout_tit"),
+
+                  tit: req.t("specific_with.tit"),
+                  av1: req.t("specific_with.av1"),
+                  recp_add: req.t("specific_with.recp_add"),
+                  recp_add_plc: req.t("specific_with.recp_add_plc"),
+                  am: req.t("specific_with.am"),
+                  av2: req.t("specific_with.av2"),
+                  nt_tp: req.t("specific_with.nt_tp"),
+                  nt_slct: req.t("specific_with.nt_slct"),
+                  sec: req.t("specific_with.sec"),
+                  sec_plc: req.t("specific_with.sec_plc"),
+                  btn: req.t("specific_with.btn"),
                 });
               })
               .catch(() => {
@@ -70,6 +85,26 @@ export const getSpecificWithdrawPage = (req, res, next) => {
               curImg: curImg ? curImg : "/usd.svg",
               cur_type: cur_type,
               wallet: wallet,
+
+              na: req.t("nav_bar.nav_btns.nav_about"),
+              nex: req.t("nav_bar.nav_btns.nav_ex"),
+              ntr: req.t("nav_bar.nav_btns.nav_tr"),
+              nwith: req.t("nav_bar.nav_btns.nav_with"),
+              ndep: req.t("nav_bar.nav_btns.nav_dep"),
+              nhm: req.t("nav_bar.nav_btns.nav_hm"),
+              lgt: req.t("nav_bar.logout_tit"),
+
+              tit: req.t("specific_with_fiat.tit"),
+              av1: req.t("specific_with_fiat.av1"),
+              iban: req.t("specific_with_fiat.iban"),
+              iban_plc: req.t("specific_with_fiat.iban_plc"),
+              swft: req.t("specific_with_fiat.swft"),
+              swft_plc: req.t("specific_with_fiat.swft_plc"),
+              am: req.t("specific_with_fiat.am"),
+              av2: req.t("specific_with_fiat.av2"),
+              sec: req.t("specific_with_fiat.sec"),
+              sec_plc: req.t("specific_with_fiat.sec_plc"),
+              btn: req.t("specific_with_fiat.btn"),
             });
           }
         })
@@ -120,7 +155,7 @@ export const withdrawCurrency = (req, res, next) => {
               if (user.isOur) {
                 res.json({
                   success: false,
-                  msg: WRONG_KEY,
+                  msg: req.t("WRONG_KEY"),
                 });
               } else {
                 let plain_key = await decrypt(user.key);
@@ -130,27 +165,27 @@ export const withdrawCurrency = (req, res, next) => {
                       .then((msg) => {
                         res.json({
                           success: true,
-                          msg: msg,
+                          msg: req.t("WITHDRAW_SUCCESSFUL"),
                           redirectUrl: "/withdraw",
                         });
                       })
                       .catch((errMsg1) => {
                         res.json({
                           success: false,
-                          msg: errMsg1 ? errMsg1 : "error",
+                          msg: errMsg1 ? req.t(errMsg1) : "error",
                         });
                       });
                   } else {
                     res.json({
                       success: false,
-                      msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
+                      msg: req.t("YOU_MUST_BE_VIP1_TO_WITHDRAW"),
                       hint: "vip",
                     });
                   }
                 } else {
                   res.json({
                     success: false,
-                    msg: WRONG_KEY,
+                    msg: req.t("WRONG_KEY"),
                   });
                 }
               }
@@ -158,13 +193,13 @@ export const withdrawCurrency = (req, res, next) => {
             .catch((errMsg2) => {
               res.json({
                 success: false,
-                msg: errMsg2 ? errMsg2 : "error",
+                msg: errMsg2 ? req.t(errMsg2) : "error",
               });
             });
         } else {
           res.json({
             success: false,
-            msg: WRONG_AMOUNT,
+            msg: req.t("WRONG_AMOUNT"),
           });
         }
       } else {
@@ -176,7 +211,7 @@ export const withdrawCurrency = (req, res, next) => {
     } else {
       res.json({
         success: false,
-        msg: Empty_Credentials_ERROR,
+        msg: req.t("Empty_Credentials_ERROR"),
       });
     }
   } else {
@@ -207,7 +242,7 @@ export const withdrawFiatCurrency = (req, res, next) => {
               if (user.isOur) {
                 res.json({
                   success: false,
-                  msg: WRONG_KEY,
+                  msg: req.t("WRONG_KEY"),
                 });
               } else {
                 let plain_key = await decrypt(user.key);
@@ -224,20 +259,20 @@ export const withdrawFiatCurrency = (req, res, next) => {
                       .catch((errMsg1) => {
                         res.json({
                           success: false,
-                          msg: errMsg1 ? errMsg1 : "error",
+                          msg: errMsg1 ? req.t(errMsg1) : "error",
                         });
                       });
                   } else {
                     res.json({
                       success: false,
-                      msg: YOU_MUST_BE_VIP1_TO_WITHDRAW,
+                      msg: req.t("YOU_MUST_BE_VIP1_TO_WITHDRAW"),
                       hint: "vip",
                     });
                   }
                 } else {
                   res.json({
                     success: false,
-                    msg: WRONG_KEY,
+                    msg: req.t("WRONG_KEY"),
                   });
                 }
               }
@@ -245,13 +280,13 @@ export const withdrawFiatCurrency = (req, res, next) => {
             .catch((errMsg2) => {
               res.json({
                 success: false,
-                msg: errMsg2 ? errMsg2 : "error",
+                msg: errMsg2 ? req.t(errMsg2) : "error",
               });
             });
         } else {
           res.json({
             success: false,
-            msg: WRONG_AMOUNT,
+            msg: req.t("WRONG_AMOUNT"),
           });
         }
       } else {
@@ -263,7 +298,7 @@ export const withdrawFiatCurrency = (req, res, next) => {
     } else {
       res.json({
         success: false,
-        msg: Empty_Credentials_ERROR,
+        msg: req.t("Empty_Credentials_ERROR"),
       });
     }
   } else {

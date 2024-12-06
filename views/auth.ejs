@@ -1,65 +1,62 @@
 <%- include("./parts/navbar.ejs" , {title : 'Auth',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/auth.css']})%>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt, stylesheets:['/css/auth.css']})%>
 
 <div class="forms-section">
   <div class="forms-wrapper">
     <div class="form login">
       <form id="login-form">
-        <h2>Login</h2>
+        <h2><%= lgn %></h2>
         <div class="input-group">
           <input type="text" name="name_email" />
-          <label>Name or Email</label>
+          <label><%= nmEm %></label>
         </div>
         <div class="input-group">
           <input type="password" name="password" class="password" />
           <i class="password-toggle-icon fas fa-eye"></i>
-          <label>Password</label>
-          <span class="l-n">max length 8 ~ 50</span>
+          <label><%= ps %></label>
+          <span class="l-n"><%= psN %></span>
         </div>
         <p class="check">
-          <input type="checkbox" name="remember" /> Remember me
+          <input type="checkbox" name="remember" /><%= rm %>
         </p>
-        <button type="submit" class="btn" id="login-btn">Login</button>
-        <a class="login-forgot-password-a" href="/auth/forgot-password"
-          >forgot password?</a
-        >
+        <button type="submit" class="btn" id="login-btn"><%= lgBtn %></button>
+        <a class="login-forgot-password-a" href="/auth/forgot-password"><%= frg %></a>
         <p class="login-btm-link">
-          Don't have account ? <a class="login-btm-link-a">Sign Up</a>
+          <%= dnt %><a class="login-btm-link-a"><%= snp %></a>
         </p>
       </form>
     </div>
 
     <div class="form sign-up">
       <form id="signup-form">
-        <h2>Sign Up</h2>
+        <h2><%= snpT %></h2>
         <div class="input-group">
           <input type="text" name="name" />
-          <label>Enter Your Name</label>
+          <label><%= nm %></label>
           <span class="l-n"></span>
         </div>
         <div class="input-group">
           <input type="password" name="password" class="password" />
           <i class="password-toggle-icon fas fa-eye"></i>
-          <label>Enter Your Password</label>
-          <span class="l-n">max length 8 ~ 50</span>
+          <label><%= psw %></label>
+          <span class="l-n"><%= pswN %></span>
         </div>
         <div class="input-group">
           <input type="password" name="key" class="password" />
           <i class="password-toggle-icon fas fa-eye"></i>
-          <label>Security Key</label>
-          <span class="l-n"
-            >important: this key can't be changed in the future<br />
-            <span>max length 50</span>
+          <label><%= sc %></label>
+          <span class="l-n"><%= sc_nt1 %><br />
+            <span><%= sc_nt2 %></span>
           </span>
         </div>
         <p class="check">
-          <input type="checkbox" name="accept_terms" />Accept
-          <a href="/auth/terms-conditions">terms and conditions.</a>
+          <input type="checkbox" name="accept_terms" /><%= trm1 %>
+          <a href="/auth/terms-conditions"><%= trm2 %></a>
         </p>
-        <button type="submit" class="btn" id="signup-btn">Sign Up</button>
+        <button type="submit" class="btn" id="signup-btn"><%= snpB %></button>
         <p class="signup-btm-link">
-          I have account ? <a class="signup-btm-link-a">Login</a>
+          <%= hv %><a class="signup-btm-link-a"><%= lgnN %></a>
         </p>
       </form>
     </div>

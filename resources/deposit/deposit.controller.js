@@ -3,11 +3,7 @@ import {
   encrypt,
   WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
-import {
-  Empty_Credentials_ERROR,
-  WRONG_KEY,
-  YOU_MUST_BE_VIP1_TO_DEPOSIT,
-} from "../../Constants/Error_Constants.js";
+
 import {
   getDepositNetworksOfSpecificCurrency,
   getSingleDepositNetworkAddress,
@@ -36,6 +32,20 @@ export const getSpecificDepositPage = (req, res, next) => {
             cur_type: cur_type,
             curImg: curImg ? curImg : "/usdt.svg",
             networks: networks,
+            na: req.t("nav_bar.nav_btns.nav_about"),
+            nex: req.t("nav_bar.nav_btns.nav_ex"),
+            ntr: req.t("nav_bar.nav_btns.nav_tr"),
+            nwith: req.t("nav_bar.nav_btns.nav_with"),
+            ndep: req.t("nav_bar.nav_btns.nav_dep"),
+            nhm: req.t("nav_bar.nav_btns.nav_hm"),
+            lgt: req.t("nav_bar.logout_tit"),
+            tit: req.t("specific_deposit.tit"),
+            nt_tp: req.t("specific_deposit.nt_tp"),
+            nt_slct: req.t("specific_deposit.nt_slct"),
+            scrt: req.t("specific_deposit.scrt"),
+            scrt_plc: req.t("specific_deposit.scrt_plc"),
+            btn: req.t("specific_deposit.btn"),
+            cpd: req.t("specific_deposit.cpd"),
           });
         })
         .catch(() => {
@@ -68,7 +78,7 @@ export const depositCurrency = (req, res, next) => {
             if (user.isOur) {
               res.json({
                 success: false,
-                msg: WRONG_KEY,
+                msg: req.t("WRONG_KEY"),
               });
             } else {
               let plain_key = await decrypt(user.key);
@@ -85,20 +95,20 @@ export const depositCurrency = (req, res, next) => {
                     .catch((errMsg1) => {
                       res.json({
                         success: false,
-                        msg: errMsg1 ? errMsg1 : "error",
+                        msg: errMsg1 ? req.t(errMsg1) : "error",
                       });
                     });
                 } else {
                   res.json({
                     success: false,
-                    msg: YOU_MUST_BE_VIP1_TO_DEPOSIT,
+                    msg: req.t("YOU_MUST_BE_VIP1_TO_DEPOSIT"),
                     hint: "vip",
                   });
                 }
               } else {
                 res.json({
                   success: false,
-                  msg: WRONG_KEY,
+                  msg: req.t("WRONG_KEY"),
                 });
               }
             }
@@ -106,7 +116,7 @@ export const depositCurrency = (req, res, next) => {
           .catch((errMsg2) => {
             res.json({
               success: false,
-              msg: errMsg2 ? errMsg2 : "error",
+              msg: errMsg2 ? req.t(errMsg2) : "error",
             });
           });
       } else {
@@ -118,7 +128,7 @@ export const depositCurrency = (req, res, next) => {
     } else {
       res.json({
         success: false,
-        msg: Empty_Credentials_ERROR,
+        msg: req.t("Empty_Credentials_ERROR"),
       });
     }
   } else {

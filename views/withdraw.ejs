@@ -1,6 +1,6 @@
 <%- include("./parts/navbar.ejs" , {title : 'Withdraw',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false
+false,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt
 ,stylesheets:['/css/withdraw.css']})
 %>
 
@@ -8,24 +8,24 @@ false
 <% locals.wallets.forEach(wallet => { %>
 
 <div class="wallet_container">
-  <span>currency type : </span>
+  <span><%= cur_tp %></span>
   <div class="cur_data">
     <img src="<%= wallet.img %>" />
     <span class="cur_type"><%= wallet.currency %></span>
   </div>
   <div class="amount_div">
-    <span>Available : </span><span class="cur_amount"> <%= wallet.available %> </span>
+    <span><%= av %></span><span class="cur_amount"> <%= wallet.available %> </span>
   </div>
-  <a href="/withdraw/cur_type/<%= wallet.currency %>" class="withdraw_btn">withdraw</a>
+  <a href="/withdraw/cur_type/<%= wallet.currency %>" class="withdraw_btn"><%= btn %></a>
 </div>
 
 <% }) %>
 <% } else {%>
 
 <div class="no_wallets">
-  <h4>you have no wallets</h4>
-  <p>you can deposit NOW</p>
-  <a href="/deposit">Deposit</a>
+  <h4><%= no_wlts %></h4>
+  <p><%= can_dep_now %></p>
+  <a href="/deposit"><%= dep %></a>
 </div>
 
 <% } %>

@@ -2,11 +2,7 @@ import {
   decrypt,
   WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
-import {
-  Empty_Credentials_ERROR,
-  EXCHANGE_SUCCESSFUL,
-  WRONG_KEY,
-} from "../../Constants/Error_Constants.js";
+
 import { getUserById } from "../user/user.model.js";
 import { exchangeToFiat } from "../wallet/wallet.model.js";
 
@@ -36,7 +32,7 @@ export const exchangeCurrency = (req, res, next) => {
               if (user && user.isOur) {
                 res.json({
                   success: false,
-                  msg: WRONG_KEY,
+                  msg: req.t('WRONG_KEY'),
                 });
               } else {
                 if (plainKey == key) {
@@ -51,19 +47,19 @@ export const exchangeCurrency = (req, res, next) => {
                     .then(() => {
                       res.json({
                         success: true,
-                        msg: EXCHANGE_SUCCESSFUL,
+                        msg: req.t('EXCHANGE_SUCCESSFUL'),
                       });
                     })
                     .catch((errMsg1) => {
                       res.json({
                         success: false,
-                        msg: errMsg1 ? errMsg1 : "error",
+                        msg: errMsg1 ? req.t(errMsg1) : "error",
                       });
                     });
                 } else {
                   res.json({
                     success: false,
-                    msg: WRONG_KEY,
+                    msg: req.t('WRONG_KEY'),
                   });
                 }
               }
@@ -71,7 +67,7 @@ export const exchangeCurrency = (req, res, next) => {
             .catch((errMsg2) => {
               res.json({
                 success: false,
-                msg: errMsg2 ? errMsg2 : "error",
+                msg: errMsg2 ? req.t(errMsg2) : "error",
               });
             });
         } else {
@@ -89,7 +85,7 @@ export const exchangeCurrency = (req, res, next) => {
     } else {
       res.json({
         success: false,
-        msg: Empty_Credentials_ERROR,
+        msg: req.t('Empty_Credentials_ERROR'),
       });
     }
   } else {

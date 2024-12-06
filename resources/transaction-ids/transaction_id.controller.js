@@ -2,10 +2,7 @@ import {
   updateTransactionIDAndUpgradeUser,
   deleteTransactionId,
 } from "./transaction_id.model.js";
-import {
-  UPGRADED_USER,
-  TRANSACTION_DOC_DELETED,
-} from "../../Constants/Error_Constants.js";
+
 
 export const setDoneAndUpgradeUser = (req, res, next) => {
   let id = req.payload.id;
@@ -17,13 +14,13 @@ export const setDoneAndUpgradeUser = (req, res, next) => {
     .then(() => {
       res.json({
         success: true,
-        msg: UPGRADED_USER,
+        msg: req.t('UPGRADED_USER'),
       });
     })
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 };
@@ -38,13 +35,13 @@ export const deleteTransactionDoc = (req, res, next) => {
     .then(() => {
       res.json({
         success: true,
-        msg: TRANSACTION_DOC_DELETED,
+        msg: req.t('TRANSACTION_DOC_DELETED'),
       });
     })
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 };

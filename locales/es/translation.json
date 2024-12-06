@@ -40,7 +40,8 @@
   },
 
   "exchange": {
-    "tit": "Intercambiar"
+    "tit": "Intercambiar",
+    "av1": "Disponible"
   },
 
   "forgot_password": {
@@ -54,7 +55,7 @@
       "acc": "Mi Cuenta",
       "ex": "Intercambiar",
       "trns": "Transferir",
-      "with": "Retirar",
+      "hwith": "Retirar",
       "dep": "Depositar",
       "up": "Actualizar"
     }
@@ -68,7 +69,7 @@
     "wlts": {
       "tit": "Mis Carteras",
       "av": "Disponible : ",
-      "with": "retirar",
+      "hwith": "retirar",
       "dep": "depositar",
       "trns": "transferir"
     }
@@ -157,7 +158,7 @@
   "upgrade": {
     "tit": "tu membresía es ",
     "lmts": " ~ Límites ~ ",
-    "with": "* RETIRAR : ",
+    "hwith": "* RETIRAR : ",
     "dep": "* DEPOSITAR : ",
     "trans": "* TRANSFERIR : ",
     "rec": "* RECIBIR : ",
@@ -181,7 +182,7 @@
   "THIS_USER_EXISTS": "este usuario existe",
   "THIS_EMAIL_EXISTS": "el correo electrónico está asignado a otro usuario",
   "OUR_USER_ADDED": "nuestro usuario añadido",
-  "ALREADY_HAS_WALLET": "ya tiene una cartera de <span style='color : blue'>{{cur_type}}</span>",
+  "ALREADY_HAS_WALLET": "ya tiene una cartera",
   "WRONG_EMAIL": "credenciales incorrectas",
   "WRONG_PASSWORD": "credenciales incorrectas",
   "AVAILABLE": "Disponible",
@@ -235,7 +236,7 @@
   "TRANSACTION_ID_ERROR": "error en el ID de transacción",
   "TRANSACTION_DOC_DELETED": "ID de transacción eliminado",
   "UPGRADED_USER": "usuario actualizado con éxito",
-  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> Membresía <br> Toma un máximo de <span style='color:blue'>12 hrs</span> para revisar.",
-  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> es <span style='color:blue'>Básico</span>, por lo que no puede recibir esta cantidad ya que su cartera excederá el límite de <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span>",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type}}</span> Membresía <br> Toma un máximo de <span style='color:blue'>12 hrs</span> para revisar.",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> es <span style='color:blue'>Básico</span>, por lo que no puede recibir esta cantidad ya que su cartera excederá el límite de <span style='color:black;font-style:italic'>{{maxToBeInWallet}}</span> <span style='color:blue'>{{cur_type}}</span>",
   "Welcome_ADMIN": "Bienvenido ADMIN"
 }

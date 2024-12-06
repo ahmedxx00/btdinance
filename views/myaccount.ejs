@@ -1,6 +1,6 @@
 <%- include("./parts/navbar.ejs" , {title : 'My Account',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/myaccount.css']}) %>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/myaccount.css']}) %>
 
 <% if (locals.user && locals.memImg) { %>
 
@@ -12,15 +12,15 @@ false ,stylesheets:['/css/myaccount.css']}) %>
       <img class="vip" src="<%= memImg %>">
     </div>
     <div class="personal_data">
-      <span class="name"><span class="pre_span">Name : </span><%= user.name %></span>
+      <span class="name"><span class="pre_span"><%= nm %></span><%= user.name %></span>
       <div class="em">
-        <span class="email"><span class="pre_span">Email : </span><%= user.email %></span>
+        <span class="email"><span class="pre_span"><%= em %></span><%= user.email %></span>
         <button id="edit_email_btn"><img src="/edit.svg" alt="Edit Email"></button>
       </div>
     </div>
   </div>
 
-  <h2 class="wallets_head">My Wallets</h2>
+  <h2 class="wallets_head"><%= tit %></h2>
   <div class="wallets_wrapper">
 
     <% user.wallets.forEach(wallet => { %>
@@ -31,12 +31,12 @@ false ,stylesheets:['/css/myaccount.css']}) %>
         <span class="cur_type"><%= wallet.currency %></span>
       </div>
       <div class="amount_div">
-        <span>Available : </span><span class="cur_amount"> <%= wallet.available %> </span>
+        <span><%= av %></span><span class="cur_amount"> <%= wallet.available %> </span>
       </div>
       <div class="btns">
-        <a href="/withdraw/cur_type/<%= wallet.currency %>" class="withdraw">withdraw</a>
-        <a href="/deposit/cur_type/<%= wallet.currency %>" class="deposit">deposit</a>
-        <a href="/transfer/cur_type/<%= wallet.currency %>" class="transfer">transfer</a>
+        <a href="/withdraw/cur_type/<%= wallet.currency %>" class="withdraw"><%= hwith %></a>
+        <a href="/deposit/cur_type/<%= wallet.currency %>" class="deposit"><%= dep %></a>
+        <a href="/transfer/cur_type/<%= wallet.currency %>" class="transfer"><%= trns %></a>
       </div>
     </div>
 

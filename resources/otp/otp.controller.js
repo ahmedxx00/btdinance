@@ -8,12 +8,7 @@ import {
   encrypt,
   GMAIL_COMPANY_FROM_ADDRESS_pwd,
 } from "../../Constants/API_DB_Constants.js";
-import {
-  Email_ERROR,
-  EXPIRED_OTP,
-  NO_OTP_FOR_THIS_EMAIL,
-  WRONG_OTP,
-} from "../../Constants/Error_Constants.js";
+
 import { generateOTP } from "../../helpers/generateOTP.js";
 import { sendEmail } from "../../helpers/sendEmail.helper.js";
 
@@ -73,7 +68,7 @@ export const SendOTP = (email, duration = 1) => {
             } else {
               // not found
               mongoose.disconnect();
-              reject(Email_ERROR);
+              reject('Email_ERROR');
             }
           })
           .catch((err4) => {
@@ -128,7 +123,7 @@ export const ResetPassword = (email, otp, newPassword) => {
                   OTP.deleteOne({ email })
                     .then(() => {
                       mongoose.disconnect();
-                      reject(EXPIRED_OTP);
+                      reject('EXPIRED_OTP');
                     })
                     .catch((err3) => {
                       console.log("err3 : " + err3);
@@ -139,12 +134,12 @@ export const ResetPassword = (email, otp, newPassword) => {
               } else {
                 // wrong otp
                 mongoose.disconnect();
-                reject(WRONG_OTP);
+                reject('WRONG_OTP');
               }
             } else {
               // no otp related to this otp_email request a new one
               mongoose.disconnect();
-              reject(NO_OTP_FOR_THIS_EMAIL);
+              reject('NO_OTP_FOR_THIS_EMAIL');
             }
           })
           .catch((err4) => {

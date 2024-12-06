@@ -24,7 +24,7 @@ router.post("/add_withdraw_network", (req, res, next) => {
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 });
@@ -44,7 +44,7 @@ router.put("/edit_withdraw_network", (req, res, next) => {
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 });
@@ -62,15 +62,21 @@ router.delete("/delete_withdraw_network", (req, res, next) => {
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 });
 
 //----------------------------------------------------------------------------
 router.post("/add_deposit_network", (req, res, next) => {
-  const { cur_type, name, block_confirmations, minimum_deposit, est_arrival , our_deposit_address } =
-    req.body;
+  const {
+    cur_type,
+    name,
+    block_confirmations,
+    minimum_deposit,
+    est_arrival,
+    our_deposit_address,
+  } = req.body;
 
   addDepositNetwork(
     cur_type,
@@ -90,7 +96,7 @@ router.post("/add_deposit_network", (req, res, next) => {
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 });
@@ -103,7 +109,7 @@ router.put("/edit_deposit_network", (req, res, next) => {
     block_confirmations,
     minimum_deposit,
     est_arrival,
-    our_deposit_address
+    our_deposit_address,
   } = req.body;
 
   editDepositNetwork(
@@ -125,7 +131,7 @@ router.put("/edit_deposit_network", (req, res, next) => {
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 });
@@ -143,7 +149,7 @@ router.delete("/delete_deposit_network", (req, res, next) => {
     .catch((errMsg) => {
       res.json({
         success: false,
-        msg: errMsg ? errMsg : "error",
+        msg: errMsg ? req.t(errMsg) : "error",
       });
     });
 });

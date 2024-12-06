@@ -3,7 +3,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 import { DB_URI, MEMBERSHIPS } from "../../Constants/API_DB_Constants.js";
-import { TRANSACTION_ID_ERROR } from "../../Constants/Error_Constants.js";
 import { upgradeUserMembership } from "../user/user.model.js";
 
 const Schema = mongoose.Schema;
@@ -68,7 +67,7 @@ export const saveTransactionID = (
             if (TransactionIDDocument) {
               // one found before
               mongoose.disconnect();
-              reject(TRANSACTION_ID_ERROR);
+              reject('TRANSACTION_ID_ERROR');
             } else {
               let newTransactionID = new Transaction_ID({
                 user_name: user_name,

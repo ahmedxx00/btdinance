@@ -40,7 +40,8 @@
   },
 
   "exchange": {
-    "tit": "Tausch"
+    "tit": "Tausch",
+    "av1": "Verfügbar"
   },
 
   "forgot_password": {
@@ -54,7 +55,7 @@
       "acc": "Mein Konto",
       "ex": "Tausch",
       "trns": "Überweisung",
-      "with": "Abheben",
+      "hwith": "Abheben",
       "dep": "Einzahlung",
       "up": "Upgrade"
     }
@@ -68,7 +69,7 @@
     "wlts": {
       "tit": "Meine Wallets",
       "av": "Verfügbar : ",
-      "with": "abheben",
+      "hwith": "abheben",
       "dep": "einzahlen",
       "trns": "überweisen"
     }
@@ -157,7 +158,7 @@
   "upgrade": {
     "tit": "Ihr Mitgliedschaftsstatus ist ",
     "lmts": " ~ Limits ~ ",
-    "with": "* ABHEBEN : ",
+    "hwith": "* ABHEBEN : ",
     "dep": "* EINZAHLEN : ",
     "trans": "* ÜBERWEISEN : ",
     "rec": "* EMPFANGEN : ",
@@ -181,7 +182,7 @@
   "THIS_USER_EXISTS": "Dieser Benutzer existiert",
   "THIS_EMAIL_EXISTS": "E-Mail ist einem anderen Benutzer zugewiesen",
   "OUR_USER_ADDED": "Unser Benutzer hinzugefügt",
-  "ALREADY_HAS_WALLET": "Hat bereits eine <span style='color : blue'>{{cur_type}}</span> Wallet",
+  "ALREADY_HAS_WALLET": "Hat bereits eine Wallet",
   "WRONG_EMAIL": "Falsche Anmeldeinformationen",
   "WRONG_PASSWORD": "Falsche Anmeldeinformationen",
   "AVAILABLE": "Verfügbar",
@@ -235,7 +236,7 @@
   "TRANSACTION_ID_ERROR": "Transaktions-ID Fehler",
   "TRANSACTION_DOC_DELETED": "Transaktions-ID gelöscht",
   "UPGRADED_USER": "Benutzer erfolgreich upgegradet",
-  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type.toUpperCase()}}</span> Mitgliedschaft <br> Es dauert maximal <span style='color:blue'>12 Stunden</span> zur Überprüfung.",
-  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> ist <span style='color:blue'>Basic</span>, daher kann er/sie diesen Betrag nicht empfangen, da seine/ihre Wallet das Limit von <span style='color:black;font-style:italic'>{{maxToBeInWallet.toString()}}</span> <span style='color:blue'>{{cur_type}}</span> überschreiten würde.",
+  "TRANSACTION_ID_SAVED": "<span style='color:green'>{{vip_type}}</span> Mitgliedschaft <br> Es dauert maximal <span style='color:blue'>12 Stunden</span> zur Überprüfung.",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black'>{{receiverNameOrEmail}}</span> ist <span style='color:blue'>Basic</span>, daher kann er/sie diesen Betrag nicht empfangen, da seine/ihre Wallet das Limit von <span style='color:black;font-style:italic'>{{maxToBeInWallet}}</span> <span style='color:blue'>{{cur_type}}</span> überschreiten würde.",
   "Welcome_ADMIN": "Willkommen ADMIN"
 }

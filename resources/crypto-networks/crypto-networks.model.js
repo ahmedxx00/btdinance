@@ -4,10 +4,7 @@ import {
   DB_URI,
   WALLETS_CURRENCIES,
 } from "../../Constants/API_DB_Constants.js";
-import {
-  NO_DEPOSIT_ADDRESS_AVAILABLE,
-  NO_NETWORK_WITH_THAT_NAME,
-} from "../../Constants/Error_Constants.js";
+
 const Schema = mongoose.Schema;
 
 const withdrawNetworkSchema = new Schema({
@@ -240,12 +237,10 @@ export const getSingleDepositNetworkAddress = async (cur_type, name) => {
                 if (network.our_deposit_address != null) {
                   resolve(network.our_deposit_address);
                 } else {
-                  console.log(NO_DEPOSIT_ADDRESS_AVAILABLE);
-                  reject(NO_DEPOSIT_ADDRESS_AVAILABLE);
+                  reject("NO_DEPOSIT_ADDRESS_AVAILABLE");
                 }
               } else {
-                console.log(NO_NETWORK_WITH_THAT_NAME);
-                reject(NO_NETWORK_WITH_THAT_NAME);
+                reject("NO_NETWORK_WITH_THAT_NAME");
               }
             })
             .catch((err1) => {

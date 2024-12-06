@@ -1,15 +1,4 @@
 import { MEMBERSHIPS } from "../../Constants/API_DB_Constants.js";
-import {
-  Empty_Credentials_ERROR,
-  FEE_EDITED,
-  MAX_DEPOSIT_EDITED,
-  MAX_RECEIVE_EDITED,
-  MAX_TRANSFER_EDITED,
-  MAX_WITHDRAW_EDITED,
-  MEM_ADDED,
-  MEM_REMOVED,
-  WRONG_MEMBERSHIP_NUMBER,
-} from "../../Constants/Error_Constants.js";
 
 import {
   CreateMembership,
@@ -32,13 +21,13 @@ export const editFee = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: FEE_EDITED,
+          msg: req.t('FEE_EDITED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -59,13 +48,13 @@ export const editMaxWithdraw = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: MAX_WITHDRAW_EDITED,
+          msg: req.t('MAX_WITHDRAW_EDITED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -86,13 +75,13 @@ export const editMaxDeposit = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: MAX_DEPOSIT_EDITED,
+          msg: req.t('MAX_DEPOSIT_EDITED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -113,13 +102,13 @@ export const editMaxTransfer = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: MAX_TRANSFER_EDITED,
+          msg: req.t('MAX_TRANSFER_EDITED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -140,13 +129,13 @@ export const editMaxReceive = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: MAX_RECEIVE_EDITED,
+          msg: req.t('MAX_RECEIVE_EDITED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -168,13 +157,13 @@ export const removeMembership = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: MEM_REMOVED,
+          msg: req.t('MEM_REMOVED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -216,25 +205,25 @@ export const addMembership = (req, res, next) => {
           .then(() => {
             res.json({
               success: true,
-              msg: MEM_ADDED,
+              msg: req.t('MEM_ADDED'),
             });
           })
           .catch((errMsg1) => {
             res.json({
               success: false,
-              msg: errMsg1 ? errMsg1 : "error",
+              msg: errMsg1 ? req.t(errMsg1) : "error",
             });
           });
       } else {
         res.json({
           success: false,
-          msg: Empty_Credentials_ERROR,
+          msg: req.t('Empty_Credentials_ERROR'),
         });
       }
     } else {
       res.json({
         success: false,
-        msg: WRONG_MEMBERSHIP_NUMBER,
+        msg: req.t('WRONG_MEMBERSHIP_NUMBER'),
       });
     }
   } else {

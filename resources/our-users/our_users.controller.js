@@ -1,12 +1,5 @@
 import { decrypt } from "../../Constants/API_DB_Constants.js";
-import {
-  EMAIL_EDIT_SUCCESSFUL,
-  OUR_USER_ADDED,
-  VIP_EDITED,
-  WALLET_ADDED,
-  WALLET_REMOVED,
-  WALLET_UPDATED,
-} from "../../Constants/Error_Constants.js";
+
 import {
   CreateOurUser,
   getUserById,
@@ -31,13 +24,13 @@ export const editEmail = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: EMAIL_EDIT_SUCCESSFUL,
+          msg: req.t('EMAIL_EDIT_SUCCESSFUL'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -61,13 +54,13 @@ export const editVip = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: VIP_EDITED,
+          msg: req.t('VIP_EDITED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -88,13 +81,13 @@ export const editWalletAv = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: WALLET_UPDATED,
+          msg: req.t('WALLET_UPDATED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -115,13 +108,13 @@ export const removeWallet = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: WALLET_REMOVED,
+          msg: req.t('WALLET_REMOVED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -150,7 +143,7 @@ export const getPlainPass = (req, res, next) => {
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -178,7 +171,7 @@ export const getPlainKey = (req, res, next) => {
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -200,13 +193,13 @@ export const addWallet = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: WALLET_ADDED,
+          msg: req.t('WALLET_ADDED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -229,13 +222,13 @@ export const addNewOurUser = (req, res, next) => {
         .then(() => {
           res.json({
             success: true,
-            msg: OUR_USER_ADDED,
+            msg: req.t('OUR_USER_ADDED'),
           });
         })
         .catch((errMsg1) => {
           res.json({
             success: false,
-            msg: errMsg1 ? errMsg1 : "error",
+            msg: errMsg1 ? req.t(errMsg1) : "error",
           });
         });
     } else {

@@ -21,6 +21,19 @@ export const getWithdrawPage = (req, res, next) => {
           isLoggedIn: true,
           isAdmin: isAdmin,
           wallets: user.wallets,
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
+          cur_tp: req.t("withdraw.cur_tp"),
+          av: req.t("withdraw.av"),
+          btn: req.t("withdraw.btn"),
+          no_wlts: req.t("withdraw.no_wlts"),
+          can_dep_now: req.t("withdraw.can_dep_now"),
+          dep: req.t("withdraw.dep"),
         });
       })
       .catch((errMsg) => {
@@ -40,6 +53,13 @@ export const getDepositPage = (req, res, next) => {
       isLoggedIn: true,
       isAdmin: isAdmin,
       wallets_currencies: WALLETS_CURRENCIES,
+      na: req.t("nav_bar.nav_btns.nav_about"),
+      nex: req.t("nav_bar.nav_btns.nav_ex"),
+      ntr: req.t("nav_bar.nav_btns.nav_tr"),
+      nwith: req.t("nav_bar.nav_btns.nav_with"),
+      ndep: req.t("nav_bar.nav_btns.nav_dep"),
+      nhm: req.t("nav_bar.nav_btns.nav_hm"),
+      lgt: req.t("nav_bar.logout_tit"),
     });
   } else {
     res.redirect("/");
@@ -57,6 +77,20 @@ export const getTransferPage = (req, res, next) => {
           isLoggedIn: true,
           isAdmin: isAdmin,
           wallets: user.wallets,
+
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
+
+          tit: req.t("transfer.tit"),
+          av1: req.t("transfer.av1"),
+          no_assts: req.t("transfer.no_assts"),
+          can_dep_now: req.t("transfer.can_dep_now"),
+          dep: req.t("transfer.dep"),
         });
       })
       .catch((errMsg) => {
@@ -86,6 +120,27 @@ export const getUpgradePage = (req, res, next) => {
               vipType: vipType ? vipType : "Basic",
               vip: user.vip,
               membershipsArray: membershipsArray,
+
+              na: req.t("nav_bar.nav_btns.nav_about"),
+              nex: req.t("nav_bar.nav_btns.nav_ex"),
+              ntr: req.t("nav_bar.nav_btns.nav_tr"),
+              nwith: req.t("nav_bar.nav_btns.nav_with"),
+              ndep: req.t("nav_bar.nav_btns.nav_dep"),
+              nhm: req.t("nav_bar.nav_btns.nav_hm"),
+              lgt: req.t("nav_bar.logout_tit"),
+
+              tit: req.t("upgrade.tit"),
+              lmts: req.t("upgrade.lmts"),
+              hwith: req.t("upgrade.hwith"),
+              dep: req.t("upgrade.dep"),
+              trans: req.t("upgrade.trans"),
+              rec: req.t("upgrade.rec"),
+
+              per_wlt: req.t("upgrade.per_wlt"),
+              daily: req.t("upgrade.daily"),
+              grntd: req.t("upgrade.grntd"),
+              btn: req.t("upgrade.btn"),
+              btm_note: req.t("upgrade.btm_note"),
             });
           })
           .catch((err1) => {
@@ -144,6 +199,17 @@ export const getExchangePage = (req, res, next) => {
                   isLoggedIn: true,
                   isAdmin: isAdmin,
                   wallets_array: wallets_array,
+
+                  na: req.t("nav_bar.nav_btns.nav_about"),
+                  nex: req.t("nav_bar.nav_btns.nav_ex"),
+                  ntr: req.t("nav_bar.nav_btns.nav_tr"),
+                  nwith: req.t("nav_bar.nav_btns.nav_with"),
+                  ndep: req.t("nav_bar.nav_btns.nav_dep"),
+                  nhm: req.t("nav_bar.nav_btns.nav_hm"),
+                  lgt: req.t("nav_bar.logout_tit"),
+
+                  tit: req.t("exchange.tit"),
+                  av1: req.t("exchange.av1"),
                 });
               })
               .catch((err1) => {
@@ -182,6 +248,23 @@ export const getMyAccountPage = (req, res, next) => {
           isAdmin: isAdmin,
           user: user,
           memImg: memImg ? memImg : "/basic.png",
+
+          na: req.t("nav_bar.nav_btns.nav_about"),
+          nex: req.t("nav_bar.nav_btns.nav_ex"),
+          ntr: req.t("nav_bar.nav_btns.nav_tr"),
+          nwith: req.t("nav_bar.nav_btns.nav_with"),
+          ndep: req.t("nav_bar.nav_btns.nav_dep"),
+          nhm: req.t("nav_bar.nav_btns.nav_hm"),
+          lgt: req.t("nav_bar.logout_tit"),
+
+          nm: req.t("myaccount.pers_data.nm"),
+          em: req.t("myaccount.pers_data.em"),
+
+          tit: req.t("myaccount.wlts.tit"),
+          av: req.t("myaccount.wlts.av"),
+          hwith: req.t("myaccount.wlts.hwith"),
+          dep: req.t("myaccount.wlts.dep"),
+          trns: req.t("myaccount.wlts.trns"),
         });
       })
       .catch((errMsg) => {
@@ -201,10 +284,29 @@ export const getAboutPage = (req, res, next) => {
       isAdmin: isAdmin,
       site_name: SITE_NAME,
       site_email: SITE_EMAIL,
+
+      na: req.t("nav_bar.nav_btns.nav_about"),
+      nex: req.t("nav_bar.nav_btns.nav_ex"),
+      ntr: req.t("nav_bar.nav_btns.nav_tr"),
+      nwith: req.t("nav_bar.nav_btns.nav_with"),
+      ndep: req.t("nav_bar.nav_btns.nav_dep"),
+      nhm: req.t("nav_bar.nav_btns.nav_hm"),
+      lgt: req.t("nav_bar.logout_tit"),
     });
   } else {
     // not logged in
-    res.render("about.ejs", { site_name: SITE_NAME, site_email: SITE_EMAIL });
+    res.render("about.ejs", {
+      site_name: SITE_NAME,
+      site_email: SITE_EMAIL,
+
+      na: req.t("nav_bar.nav_btns.nav_about"),
+      nex: req.t("nav_bar.nav_btns.nav_ex"),
+      ntr: req.t("nav_bar.nav_btns.nav_tr"),
+      nwith: req.t("nav_bar.nav_btns.nav_with"),
+      ndep: req.t("nav_bar.nav_btns.nav_dep"),
+      nhm: req.t("nav_bar.nav_btns.nav_hm"),
+      lgt: req.t("nav_bar.logout_tit"),
+    });
   }
 };
 

@@ -1,8 +1,3 @@
-import {
-  CONV_RATE_ADDED_UPDATED,
-  CONV_RATE_REMOVED,
-  Empty_Credentials_ERROR
-} from "../../Constants/Error_Constants.js";
 import { createOrupdateConversionRateByCurType, removeConversionRateByCurType } from "./conversion_rates.model.js";
 
 export const removeConvRate = (req, res, next) => {
@@ -16,13 +11,13 @@ export const removeConvRate = (req, res, next) => {
       .then(() => {
         res.json({
           success: true,
-          msg: CONV_RATE_REMOVED,
+          msg: req.t('CONV_RATE_REMOVED'),
         });
       })
       .catch((errMsg1) => {
         res.json({
           success: false,
-          msg: errMsg1 ? errMsg1 : "error",
+          msg: errMsg1 ? req.t(errMsg1) : "error",
         });
       });
   } else {
@@ -44,19 +39,19 @@ export const addOrUpdateConvRate = (req, res, next) => {
         .then(() => {
           res.json({
             success: true,
-            msg: CONV_RATE_ADDED_UPDATED,
+            msg: req.t('CONV_RATE_ADDED_UPDATED'),
           });
         })
         .catch((errMsg1) => {
           res.json({
             success: false,
-            msg: errMsg1 ? errMsg1 : "error",
+            msg: errMsg1 ? req.t(errMsg1) : "error",
           });
         });
     } else {
       res.json({
         success: false,
-        msg: Empty_Credentials_ERROR,
+        msg: req.t('Empty_Credentials_ERROR'),
       });
     }
   } else {

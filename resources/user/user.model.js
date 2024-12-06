@@ -2,18 +2,6 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 import { Wallet } from "../wallet/wallet.model.js";
 
-import {
-  USER_EXISTS,
-  AVAILABLE,
-  NOT_AVAILABLE,
-  PASSWORD_ERROR,
-  USER_NOT_FOUND_ERROR,
-  NO_USER_WITH_THAT_NAME,
-  NO_USER_WITH_THAT_Email,
-  THIS_EMAIL_IS_USED,
-  THIS_USER_EXISTS,
-  THIS_EMAIL_EXISTS,
-} from "../../Constants/Error_Constants.js";
 
 import { DB_URI, encrypt } from "../../Constants/API_DB_Constants.js";
 import { getTk } from "../../helpers/jwt-helper.js";
@@ -75,7 +63,7 @@ export const CreateUser = (name, password, key) => {
           .then(async (user) => {
             if (user) {
               mongoose.disconnect();
-              reject(USER_EXISTS);
+              reject('USER_EXISTS');
             } else {
               let enc = await encrypt(password);
               let encKey = await encrypt(key);
@@ -145,10 +133,10 @@ export const LoginUser = (name_email, password, remember) => {
                   reject();
                 }
               } else {
-                reject(PASSWORD_ERROR);
+                reject('PASSWORD_ERROR');
               }
             } else {
-              reject(USER_NOT_FOUND_ERROR);
+              reject('USER_NOT_FOUND_ERROR');
             }
           })
           .catch((err2) => {
@@ -178,7 +166,7 @@ export const getUserById = (id) => {
             if (user) {
               resolve(user);
             } else {
-              reject(USER_NOT_FOUND_ERROR);
+              reject('USER_NOT_FOUND_ERROR');
             }
           })
           .catch((err2) => {
@@ -206,7 +194,7 @@ export const getUserNameById = (id) => {
             if (user) {
               resolve(user.name);
             } else {
-              reject(USER_NOT_FOUND_ERROR);
+              reject('USER_NOT_FOUND_ERROR');
             }
           })
           .catch((err2) => {
@@ -297,7 +285,7 @@ export const getUserByIdAndTheOneToTransferToByName = (id, hisName) => {
                   if (userToTransferTo) {
                     resolve({ user, userToTransferTo });
                   } else {
-                    reject(NO_USER_WITH_THAT_NAME);
+                    reject('NO_USER_WITH_THAT_NAME');
                   }
                 })
                 .catch((err1) => {
@@ -306,7 +294,7 @@ export const getUserByIdAndTheOneToTransferToByName = (id, hisName) => {
                   reject();
                 });
             } else {
-              reject(USER_NOT_FOUND_ERROR);
+              reject('USER_NOT_FOUND_ERROR');
             }
           })
           .catch((err2) => {
@@ -341,7 +329,7 @@ export const getUserByIdAndTheOneToTransferToByEmail = (id, hisEmail) => {
                   if (userToTransferTo) {
                     resolve({ user, userToTransferTo });
                   } else {
-                    reject(NO_USER_WITH_THAT_Email);
+                    reject('NO_USER_WITH_THAT_Email');
                   }
                 })
                 .catch((err1) => {
@@ -350,7 +338,7 @@ export const getUserByIdAndTheOneToTransferToByEmail = (id, hisEmail) => {
                   reject();
                 });
             } else {
-              reject(USER_NOT_FOUND_ERROR);
+              reject('USER_NOT_FOUND_ERROR');
             }
           })
           .catch((err2) => {
@@ -379,7 +367,7 @@ export const updateUserEmail = (id, email) => {
             .then((user) => {
               if (user) {
                 mongoose.disconnect();
-                reject(THIS_EMAIL_IS_USED);
+                reject('THIS_EMAIL_IS_USED');
               } else {
                 User.findByIdAndUpdate(id, { email: email })
                   .then(() => {
@@ -478,9 +466,9 @@ export const CheckUserNameAvailable = (name) => {
           .then((user) => {
             mongoose.disconnect();
             if (user) {
-              reject(NOT_AVAILABLE);
+              reject('NOT_AVAILABLE');
             } else {
-              resolve(AVAILABLE);
+              resolve('AVAILABLE');
             }
           })
           .catch((err1) => {
@@ -510,14 +498,14 @@ export const CreateOurUser = (name, email, vip, password, key) => {
 
             if (user1) {
               mongoose.disconnect();
-              reject(THIS_USER_EXISTS);
+              reject('THIS_USER_EXISTS');
             } else {
               if (email.toString().trim().length > 0) {
                 User.findOne({ email: email })
                   .then((user2) => {
                     if (user2) {
                       mongoose.disconnect();
-                      reject(THIS_EMAIL_EXISTS);
+                      reject('THIS_EMAIL_EXISTS');
                     } else {
                       let new_our_user = new User({
                         name: name,

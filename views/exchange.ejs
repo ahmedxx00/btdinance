@@ -1,6 +1,6 @@
 <%- include("./parts/navbar.ejs" , {title : 'Exchange',showScroller:false, isLoggedIn :
 locals.isLoggedIn ? isLoggedIn : false , isAdmin: locals.isAdmin? isAdmin :
-false ,stylesheets:['/css/exchange.css']}) %>
+false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:['/css/exchange.css']}) %>
 
 
 <div class="main_wrapper">
@@ -9,7 +9,7 @@ false ,stylesheets:['/css/exchange.css']}) %>
     <button class="back-btn">
       <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </button>
-    <h2 id="page-title" class="page-title">Exchange</h2>
+    <h2 id="page-title" class="page-title"><%= tit %></h2>
     <button class="history-btn" title="exchange history">
       <i class="fas fa-history"></i>
     </button>
@@ -28,7 +28,7 @@ false ,stylesheets:['/css/exchange.css']}) %>
         <span class="cur_type"><%= wlt.currency %></span>
       </div>
       <div class="amount_div">
-        <span>Available</span><span class="cur_amount"> <%= wlt.available %> </span>
+        <span><%= av1 %></span><span class="cur_amount"> <%= wlt.available %> </span>
       </div>
     </div>
 

@@ -1,4 +1,5 @@
 
+/*
 export const USER_EXISTS = "you already have account";
 export const THIS_USER_EXISTS = "this user exists";
 export const THIS_EMAIL_EXISTS = "email assigned to another user";
@@ -60,9 +61,7 @@ export const UPGRADED_USER = "user upgraded successful";
 export const TRANSACTION_ID_SAVED = (vip_type) => `<span style='color:green'>${vip_type.toUpperCase()}</span> Membership <br> It takes <span style='color:blue'>12 hrs</span> Max to review .`;
 export const BASIC_TRANSFER_LIMIT_ERROR = (receiverNameOrEmail,maxToBeInWallet,cur_type) => `<span style='color:black'>${receiverNameOrEmail}</span> is <span style='color:blue'>Basic</span> so he/she can't receive this amount as his wallet will exceed the limit of <span style='color:black;font-style:italic'>${maxToBeInWallet.toString()}</span> <span style='color:blue'>${cur_type}</span>`;
 
-
-
-/*
+//===================================== ar ==============================================
 export const USER_EXISTS = "لديك حساب بالفعل";
 export const THIS_USER_EXISTS = "هذا المستخدم موجود";
 export const THIS_EMAIL_EXISTS = "البريد الإلكتروني مستخدم من قبل مستخدم آخر";
