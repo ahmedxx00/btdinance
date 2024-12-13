@@ -37,7 +37,7 @@ export const TikerStuff = () => {
   var trx = $(".trx");
   var trx_perc = $(".trx_perc");
 
-  const host = location.origin.replace(/^https?/, "ws");
+  const host = location.origin.replace(/^https?/, "wss");
   const ws = new ReconnectingWebSocket(host);
   ws.onmessage = (message) => {
     let msg = JSON.parse(message.data);

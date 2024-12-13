@@ -85,8 +85,9 @@ body {
   min-height: 100vh;
   width: 100%;
 
-  background-image: url(/44.png);
-  background-size: cover;
+  background-color: #111111;
+  /* background-image: url(/44.png); */
+  /* background-size: cover; */
 
   font-family: q_bold;
 }
