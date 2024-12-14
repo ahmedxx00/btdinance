@@ -178,44 +178,62 @@ export const getDepositNetworksOfSpecificCurrency = async (cur_type) => {
   });
 };
 
-export const getDepositNetworksNamesOf_USDT_BTC_ETH = async () => {
+export const getDepositNetworksNamesOf_USDT_USDC_BNB_BTC_ETH = async () => {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(DB_URI)
       .then(() => {
         USDT_Deposit_Network.find({}, { name: 1, _id: 0 })
           .then((usdt_networks_names) => {
-            Bitcoin_Deposit_Network.find({}, { name: 1, _id: 0 })
-              .then((btc_networks_names) => {
-                Ethereum_Deposit_Network.find({}, { name: 1, _id: 0 })
-                  .then((eth_networks_names) => {
-                    mongoose.disconnect();
-                    resolve({
-                      usdt_networks_names: usdt_networks_names,
-                      btc_networks_names: btc_networks_names,
-                      eth_networks_names: eth_networks_names,
-                    });
+            USDC_Deposit_Network.find({}, { name: 1, _id: 0 })
+              .then((usdc_networks_names) => {
+                BNB_Deposit_Network.find({}, { name: 1, _id: 0 })
+                  .then((bnb_networks_names) => {
+                    Bitcoin_Deposit_Network.find({}, { name: 1, _id: 0 })
+                      .then((btc_networks_names) => {
+                        Ethereum_Deposit_Network.find({}, { name: 1, _id: 0 })
+                          .then((eth_networks_names) => {
+                            mongoose.disconnect();
+                            resolve({
+                              usdt_networks_names: usdt_networks_names,
+                              usdc_networks_names: usdc_networks_names,
+                              bnb_networks_names: bnb_networks_names,
+                              btc_networks_names: btc_networks_names,
+                              eth_networks_names: eth_networks_names,
+                            });
+                          })
+                          .catch((err1) => {
+                            console.log("err1 : " + err1);
+                            mongoose.disconnect();
+                            reject();
+                          });
+                      })
+                      .catch((err2) => {
+                        console.log("err2 : " + err2);
+                        mongoose.disconnect();
+                        reject();
+                      });
                   })
-                  .catch((err1) => {
-                    console.log("err1 : " + err1);
+                  .catch((err3) => {
+                    console.log("err3 : " + err3);
                     mongoose.disconnect();
                     reject();
                   });
               })
-              .catch((err2) => {
-                console.log("err2 : " + err2);
+              .catch((err4) => {
+                console.log("err4 : " + err4);
                 mongoose.disconnect();
                 reject();
               });
           })
-          .catch((err3) => {
-            console.log("err3 : " + err3);
+          .catch((err5) => {
+            console.log("err5 : " + err5);
             mongoose.disconnect();
             reject();
           });
       })
-      .catch((err4) => {
-        console.log("err4 : " + err4);
+      .catch((err6) => {
+        console.log("err6 : " + err6);
         mongoose.disconnect();
         reject();
       });

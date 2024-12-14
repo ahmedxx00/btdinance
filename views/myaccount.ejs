@@ -35,7 +35,9 @@ false ,na:na,nex:nex,ntr:ntr,nwith:nwith,ndep:ndep,nhm:nhm,lgt:lgt,stylesheets:[
       </div>
       <div class="btns">
         <a href="/withdraw/cur_type/<%= wallet.currency %>" class="withdraw"><%= hwith %></a>
-        <a href="/deposit/cur_type/<%= wallet.currency %>" class="deposit"><%= dep %></a>
+        <% if (wallet.isCrypto) { %>
+          <a href="/deposit/cur_type/<%= wallet.currency %>" class="deposit"><%= dep %></a>
+        <% } %>
         <a href="/transfer/cur_type/<%= wallet.currency %>" class="transfer"><%= trns %></a>
       </div>
     </div>

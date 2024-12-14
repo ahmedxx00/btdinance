@@ -10,7 +10,7 @@ isAdmin : false
 
   <div class="head_wrap">
     <img class="head_img" src="<%= membership.img %>" alt="<%= membership.type %>">
-    <span class="head_fee"><%= usdt_price %><span class="post_fee"> USDT | </span><%= btc_price %><span class="post_fee"> BTC | </span><%= eth_price %><span class="post_fee"> ETH</span></span>
+    <span class="head_fee"><%= usdt_price %><span class="post_fee"> USDT | </span><%= usdc_price %><span class="post_fee"> USDC | </span><%= bnb_price %><span class="post_fee"> BNB | </span><%= btc_price %><span class="post_fee"> BTC | </span><%= eth_price %><span class="post_fee"> ETH</span></span>
     <span class="vip_type" style="display: none;"><%= membership.type %></span>
   </div>
 
@@ -34,6 +34,39 @@ isAdmin : false
       <span class="price" style="display: none;"><%= usdt_price %></span>
     </div>
 
+    <div class="usdc_pay">
+      <span class="hd_title"><%= pay_with %> USDC</span>
+      <div class="wallet_container">
+        <div>
+          <img src="<%= usdc_img %>" />
+        </div>
+        <div class="networks">
+          <% usdc_networks_names.forEach(nameObj => { %>
+          <span class="network"><%= nameObj.name %></span>
+          <% }) %>
+        </div>
+      </div>
+      <button class="pay"><%= only_pay_wrd %> ( <%= usdc_price %> USDC )</button>
+      <span class="cur_type" style="display: none;"><%= usdc_cur_type %></span>
+      <span class="price" style="display: none;"><%= usdc_price %></span>
+    </div>
+
+    <div class="bnb_pay">
+      <span class="hd_title"><%= pay_with %> BNB</span>
+      <div class="wallet_container">
+        <div>
+          <img src="<%= bnb_img %>" />
+        </div>
+        <div class="networks">
+          <% bnb_networks_names.forEach(nameObj => { %>
+          <span class="network"><%= nameObj.name %></span>
+          <% }) %>
+        </div>
+      </div>
+      <button class="pay"><%= only_pay_wrd %> ( <%= bnb_price %> BNB )</button>
+      <span class="cur_type" style="display: none;"><%= bnb_cur_type %></span>
+      <span class="price" style="display: none;"><%= bnb_price %></span>
+    </div>
 
     <div class="eth_pay">
       <span class="hd_title"><%= pay_with %> ETH</span>

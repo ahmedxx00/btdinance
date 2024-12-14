@@ -5,7 +5,7 @@ import {
 } from "../../Constants/API_DB_Constants.js";
 import { getConversionRates } from "../conversion-rates/conversion_rates.model.js";
 import {
-  getDepositNetworksNamesOf_USDT_BTC_ETH,
+  getDepositNetworksNamesOf_USDT_USDC_BNB_BTC_ETH,
   getSingleDepositNetworkAddress,
 } from "../crypto-networks/crypto-networks.model.js";
 
@@ -30,25 +30,35 @@ export const getSpecificUpgradePage = (req, res, next) => {
           getConversionRates()
             .then((ratesDocument) => {
               let usdt_rate = ratesDocument.rates[WALLETS_CURRENCIES.USDT.name],
+                usdc_rate = ratesDocument.rates[WALLETS_CURRENCIES.USDC.name],
+                bnb_rate = ratesDocument.rates[WALLETS_CURRENCIES.BNB.name],
                 btc_rate = ratesDocument.rates[WALLETS_CURRENCIES.Bitcoin.name],
                 eth_rate =
                   ratesDocument.rates[WALLETS_CURRENCIES.Ethereum.name];
 
               let usdt_price =
                   parseFloat(membership.fee * usdt_rate).toFixed(10) * 1,
+                usdc_price =
+                  parseFloat(membership.fee * usdc_rate).toFixed(10) * 1,
+                bnb_price =
+                  parseFloat(membership.fee * bnb_rate).toFixed(10) * 1,
                 btc_price =
                   parseFloat(membership.fee * btc_rate).toFixed(10) * 1,
                 eth_price =
                   parseFloat(membership.fee * eth_rate).toFixed(10) * 1;
 
               let usdt_img = WALLETS_CURRENCIES.USDT.img,
+                usdc_img = WALLETS_CURRENCIES.USDC.img,
+                bnb_img = WALLETS_CURRENCIES.BNB.img,
                 btc_img = WALLETS_CURRENCIES.Bitcoin.img,
                 eth_img = WALLETS_CURRENCIES.Ethereum.img;
 
-              getDepositNetworksNamesOf_USDT_BTC_ETH()
+              getDepositNetworksNamesOf_USDT_USDC_BNB_BTC_ETH()
                 .then(
                   ({
                     usdt_networks_names,
+                    usdc_networks_names,
+                    bnb_networks_names,
                     btc_networks_names,
                     eth_networks_names,
                   }) => {
@@ -59,6 +69,14 @@ export const getSpecificUpgradePage = (req, res, next) => {
                       usdt_price: usdt_price,
                       usdt_img: usdt_img,
                       usdt_networks_names: usdt_networks_names,
+                      usdc_cur_type: WALLETS_CURRENCIES.USDC.name,
+                      usdc_price: usdc_price,
+                      usdc_img: usdc_img,
+                      usdc_networks_names: usdc_networks_names,
+                      bnb_cur_type: WALLETS_CURRENCIES.BNB.name,
+                      bnb_price: bnb_price,
+                      bnb_img: bnb_img,
+                      bnb_networks_names: bnb_networks_names,
                       btc_cur_type: WALLETS_CURRENCIES.Bitcoin.name,
                       btc_price: btc_price,
                       btc_img: btc_img,
@@ -80,7 +98,6 @@ export const getSpecificUpgradePage = (req, res, next) => {
                       only_pay_wrd: req.t("specific_upgrade.only_pay_wrd"),
                       pay_with: req.t("specific_upgrade.pay_with"),
                       p_tit: req.t("home.main_buttons.up"),
-
                     });
                   }
                 )
@@ -135,7 +152,6 @@ export const getSpecificConfirmUpgradePage = (req, res, next) => {
       cnf_nt5: req.t("cnf_upgrade.cnf_nt5"),
       cnf_btn: req.t("cnf_upgrade.cnf_btn"),
       p_tit: req.t("home.main_buttons.up"),
-
     });
   } else {
     res.redirect("/upgrade");
