@@ -1,0 +1,247 @@
+{
+  "nav_bar": {
+    "nav_btns": {
+      "nav_about": "من نحن",
+      "nav_ex": "تبادل",
+      "nav_tr": "تحويل",
+      "nav_with": "سحب",
+      "nav_dep": "إيداع",
+      "nav_hm": "الرئيسية"
+    },
+    "logout_tit": "تسجيل الخروج"
+  },
+
+  "auth": {
+    "tit": "تسجيل الدخول",
+    "login": {
+      "tit": "تسجيل الدخول",
+      "name_email": "الاسم أو البريد الإلكتروني",
+      "pass": "كلمة المرور",
+      "pass_note": "الحد الأقصى للطول 8 ~ 50",
+      "rem": " تذكرني",
+      "btn": "تسجيل الدخول",
+      "pass_frgt": "نسيت كلمة المرور؟",
+      "no_acc_nt": "ليس لديك حساب؟ ",
+      "snp": "انشاء حساب"
+    },
+    "signup": {
+      "tit": "انشاء حساب",
+      "nm": "أدخل اسمك",
+      "pass": "أدخل كلمة المرور",
+      "pass_note": "الحد الأقصى للطول 8 ~ 50",
+      "sc": "مفتاح الأمان",
+      "sc_nt1": "مهم: لا يمكن تغيير هذا المفتاح في المستقبل",
+      "sc_nt2": "الحد الأقصى للطول 50",
+      "trm1": "موافقة",
+      "trm2": "الشروط والأحكام.",
+      "btn": "انشاء حساب",
+      "hv": "هل لديك حساب؟ ",
+      "lng": "تسجيل الدخول"
+    }
+  },
+
+  "exchange": {
+    "tit": "تبادل",
+    "av1": "متاح",
+    "scrt": "مفتاح سري",
+    "am_tit": "المبلغ"
+  },
+
+  "forgot_password": {
+    "tit": "نسيت كلمة المرور",
+    "send_email_plc": "البريد الإلكتروني",
+    "send_email": "أرسل رمز"
+  },
+
+  "home": {
+    "main_buttons": {
+      "acc": "حسابي",
+      "ex": "تبادل",
+      "trns": "تحويل",
+      "hwith": "سحب",
+      "dep": "إيداع",
+      "up": "ترقية"
+    }
+  },
+
+  "myaccount": {
+    "pers_data": {
+      "nm": "الاسم : ",
+      "em": "البريد الإلكتروني : "
+    },
+    "wlts": {
+      "tit": "محفظتي",
+      "av": "متاح : ",
+      "hwith": "سحب",
+      "dep": "إيداع",
+      "trns": "تحويل"
+    }
+  },
+
+  "reset_password": {
+    "cd": "الرمز : ",
+    "np": "أدخل كلمة مرور جديدة",
+    "np_note": "الحد الأقصى للطول 8 ~ 50",
+    "rp": "إعادة تعيين كلمة المرور"
+  },
+
+  "cnf_upgrade": {
+    "pta": "الدفع إلى العنوان",
+    "am": "المبلغ : ",
+    "nt": "الشبكة : ",
+    "cnf_nt1": "* بعد إتمام الدفع وتأكيده، انسخ ",
+    "cnf_nt3": " أو ",
+    "cnf_nt5": " إلى القسم أدناه لتأكيد معاملتك.",
+    "cnf_btn": "تأكيد المعاملة"
+  },
+
+  "specific_deposit": {
+    "tit": "إيداع",
+    "nt_tp": "نوع الشبكة",
+    "nt_slct": "اختر الشبكة",
+    "scrt": "مفتاح سري",
+    "scrt_plc": "أدخل مفتاحك السري",
+    "btn": "إيداع",
+    "cpd": "تم النسخ"
+  },
+
+  "specific_transfer": {
+    "tit": "تحويل",
+    "av": "متاح : ",
+    "nm": "الاسم",
+    "em": "البريد الإلكتروني",
+    "nm_nt": "~ BTDinance ~ اسم مستخدم",
+    "nm_plc": "أدخل الاسم",
+    "am_tit": "المبلغ",
+    "btn": "تحويل",
+    "em_nt": "(@ يجب أن يحتوي على علامة) ~ BTDinance ~ بريد إلكتروني لمستخدم ",
+    "em_plc": "أدخل البريد الإلكتروني"
+  },
+
+  "specific_upgrade": {
+    "pay_with": "الدفع باستخدام",
+    "only_pay_wrd": "الدفع"
+  },
+
+  "specific_with_fiat": {
+    "tit": "سحب",
+    "av1": "متاح",
+    "iban": "IBAN",
+    "iban_plc": "(IBAN) رقم حساب البنك",
+    "swft": "رمز السويفت",
+    "swft_plc": "رمز السويفت للبنك",
+    "am": "المبلغ",
+    "av2": "متاح : ",
+    "sec": "مفتاح سري",
+    "sec_plc": "أدخل مفتاحك السري",
+    "btn": "سحب"
+  },
+
+  "specific_with": {
+    "tit": "سحب",
+    "av1": "متاح",
+    "recp_add": "عنوان المستلم",
+    "recp_add_plc": "أدخل عنوان المستلم",
+    "am": "المبلغ",
+    "av2": "متاح : ",
+    "nt_tp": "نوع الشبكة",
+    "nt_slct": "اختر الشبكة",
+    "sec": "مفتاح سري",
+    "sec_plc": "أدخل مفتاحك السري",
+    "btn": "سحب"
+  },
+
+  "transfer": {
+    "tit": "الأصول المتاحة للتحويل",
+    "av1": "متاح",
+    "no_assts": "ليس لديك أصول",
+    "can_dep_now": "يمكنك الإيداع الآن",
+    "dep": "إيداع"
+  },
+
+  "upgrade": {
+    "tit": "عضويتك هي ",
+    "lmts": " ~ الحدود ~ ",
+    "hwith": "* سحب : ",
+    "dep": "* إيداع : ",
+    "trans": "* تحويل : ",
+    "rec": "* استلام : ",
+    "per_wlt": "/محفظة",
+    "daily": "/يومي",
+    "grntd": "تمت الترقية",
+    "btn": "ترقية",
+    "btm_note": "ملاحظة : تنطبق الحدود على جميع العملات مع معدل التحويل المقابل."
+  },
+
+  "withdraw": {
+    "tit": "سحب",
+    "cur_tp": "نوع العملة : ",
+    "av": "متاح : ",
+    "btn": "سحب",
+    "no_wlts": "ليس لديك محافظ",
+    "can_dep_now": "يمكنك الإيداع الآن",
+    "dep": "إيداع"
+  },
+
+  "USER_EXISTS": "لديك حساب بالفعل",
+  "THIS_USER_EXISTS": "هذا المستخدم موجود",
+  "THIS_EMAIL_EXISTS": "البريد الإلكتروني مخصص لمستخدم آخر",
+  "OUR_USER_ADDED": "تم إضافة مستخدمنا",
+  "ALREADY_HAS_WALLET": "لديه محفظة بالفعل",
+  "WRONG_EMAIL": "بيانات غير صحيحة",
+  "WRONG_PASSWORD": "بيانات غير صحيحة",
+  "AVAILABLE": "متاح",
+  "NOT_AVAILABLE": "الاسم غير متاح",
+  "TOKEN_ERROR": "لا يمكن التوقيع أو التحقق من الرمز",
+  "PASSWORD_ERROR": "خطأ في كلمة المرور",
+  "USER_NOT_FOUND_ERROR": "المستخدم غير موجود",
+  "ADMIN_NOT_FOUND_ERROR": "الأدمن غير موجود",
+  "Empty_Credentials_ERROR": "بيانات فارغة",
+  "WRONG_MEMBERSHIP_NUMBER": "رقم العضوية غير صحيح",
+  "Email_ERROR": "البريد الإلكتروني غير موجود",
+  "EXPIRED_OTP": "OTP منتهي الصلاحية <br> يرجى طلب رمز جديد",
+  "WRONG_OTP": "OTP غير صحيح",
+  "NO_OTP_FOR_THIS_EMAIL": "لهذا البريد الالكترونى OTP لم يتم إرسال  <br> يرجى طلب رمز جديد",
+  "NOT_SUCH_WALLET": "لا توجد محفظة بهذا النوع",
+  "NOT_SUFFICIENT_AMOUNT": "المبلغ غير متاح",
+  "WITHDRAW_SUCCESSFUL": "تم السحب بنجاح",
+  "WRONG_KEY": "<span style='color:blue'>التحويل</span> مفتاح غير صحيح، عذرًا ، العملية الوحيدة التي لا تتطلب مفتاح سري هي",
+  "WRONG_AMOUNT": "مبلغ غير صحيح",
+  "NO_NETWORK_WITH_THAT_NAME": "اسم الشبكة غير موجود",
+  "NO_DEPOSIT_ADDRESS_AVAILABLE": "لا يوجد عنوان للإيداع",
+  "NO_USER_WITH_THAT_NAME": "لا يوجد مستخدم بهذا الاسم",
+  "NO_USER_WITH_THAT_Email": "لا يوجد مستخدم بهذا البريد الإلكتروني",
+  "THIS_EMAIL_IS_USED": ".هذا البريد الإلكتروني مستخدم من قبل مستخدم آخر",
+  "YOU_CANT_TRANSFER_TO_YOURSELF": "لا يمكنك تحويل الأموال إلى حسابك",
+  "YOU_MUST_BE_VIP1": "لتحويل الأموال <span style='color:blue'>VIP1</span> يجب أن تكون على الأقل",
+  "YOU_MUST_BE_VIP1_TO_WITHDRAW": "لسحب الأموال <span style='color:blue'>VIP1</span> يجب أن تكون على الأقل ",
+  "YOU_MUST_BE_VIP1_TO_DEPOSIT": "لإيداع الأموال <span style='color:blue'>VIP1</span> يجب أن تكون على الأقل ",
+  "HE_MUST_BE_VIP1": "لاستلام الأموال <span style='color:blue'>VIP1</span> يجب أن يكون المستلم على الأقل ",
+  "TRANSFER_SUCCESSFUL": "تم التحويل بنجاح",
+  "EXCHANGE_SUCCESSFUL": "تم التبادل بنجاح",
+  "EMAIL_EDIT_SUCCESSFUL": "تم تعديل البريد الإلكتروني بنجاح",
+  "FEE_EDITED": "تم تعديل الرسوم",
+  "MAX_RECEIVE_EDITED": "تم تعديل الحد الأقصى للاستلام",
+  "MAX_TRANSFER_EDITED": "تم تعديل الحد الأقصى للتحويل",
+  "MAX_WITHDRAW_EDITED": "تم تعديل الحد الأقصى للسحب",
+  "MAX_DEPOSIT_EDITED": "تم تعديل الحد الأقصى للإيداع",
+  "MEM_REMOVED": "تم إزالة العضوية",
+  "CONV_RATE_ADDED_UPDATED": "تم إضافة/تحديث معدل التحويل",
+  "CONV_RATE_REMOVED": "تم إزالة معدل التحويل",
+  "MEM_ADDED": "تم إضافة العضوية",
+  "VIP_EDITED": "VIP تم تعديل العضوية ",
+  "WALLET_UPDATED": "تم تحديث المحفظة",
+  "WALLET_ADDED": "تم إضافة المحفظة",
+  "WALLET_REMOVED": "تم إزالة المحفظة",
+  "MEMBERSHIP_EXISTS": "العضوية موجودة بالفعل",
+  "NO_MEMBERSHIP_WITH_THAT_TYPE": "لا توجد عضوية بهذا النوع",
+  "NO_MEMBERSHIP_WITH_THAT_NUMBER": "لا توجد عضوية بهذا الرقم",
+  "NOT_ENOUGH_USDT_BALANCE": "<span style='color:blue'>USDT</span> لا يوجد رصيد كافى من",
+  "NO_USDT_WALLET": "<span style='color:blue'>USDT</span> ليس لديك محفظة",
+  "TRANSACTION_ID_ERROR": "خطأ في رقم المعاملة",
+  "TRANSACTION_DOC_DELETED": "تم حذف مستند المعاملة",
+  "UPGRADED_USER": "تم ترقية المستخدم بنجاح",
+  "TRANSACTION_ID_SAVED": ". يستغرق الأمر 12 ساعة كحد أقصى للمراجعة <span style='color:green'>{{vip_type}}</span> العضوية",
+  "BASIC_TRANSFER_LIMIT_ERROR": "<span style='color:black;font-style:italic'>{{maxToBeInWallet}}</span> <span style='color:blue'>{{cur_type}}</span> لذا لا يمكنه/ها استلام هذا المبلغ حيث سيتجاوز رصيده الحد الأقصى لـ  <span style='color:blue'>Basic</span> هى <span style='color:black'>{{receiverNameOrEmail}}</span> العضوية الخاصة بـ",
+  "Welcome_ADMIN": "مرحباً أدمن"
+}
