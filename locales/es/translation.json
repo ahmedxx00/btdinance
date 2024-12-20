@@ -205,7 +205,7 @@
   "NOT_SUCH_WALLET": "No existe tal cartera",
   "NOT_SUFFICIENT_AMOUNT": "Cantidad insuficiente",
   "WITHDRAW_SUCCESSFUL": "Retiro exitoso",
-  "WRONG_KEY": "Clave incorrecta",
+  "WRONG_KEY": "Clave incorrecta, disculpa, el único proceso que no requiere una clave secreta es <span style='color:blue'>Transferencia</span>.",
   "WRONG_AMOUNT": "Cantidad incorrecta",
   "NO_NETWORK_WITH_THAT_NAME": "nombre de red no encontrado",
   "NO_DEPOSIT_ADDRESS_AVAILABLE": "no hay dirección de depósito",

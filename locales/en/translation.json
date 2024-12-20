@@ -205,7 +205,7 @@
   "NOT_SUCH_WALLET": "No such wallet",
   "NOT_SUFFICIENT_AMOUNT": "Not sufficient amount",
   "WITHDRAW_SUCCESSFUL": "Withdraw Successful",
-  "WRONG_KEY": "Wrong Key",
+  "WRONG_KEY": "Wrong Key , sorry the only Process that doesn't require a secret key is <span style='color:blue'>Transfer</span>.",
   "WRONG_AMOUNT": "Wrong amount",
   "NO_NETWORK_WITH_THAT_NAME": "network name not found",
   "NO_DEPOSIT_ADDRESS_AVAILABLE": "no deposit address",

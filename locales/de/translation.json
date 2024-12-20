@@ -205,7 +205,7 @@
   "NOT_SUCH_WALLET": "Kein solches Wallet",
   "NOT_SUFFICIENT_AMOUNT": "Unzureichender Betrag",
   "WITHDRAW_SUCCESSFUL": "Abhebung erfolgreich",
-  "WRONG_KEY": "Falscher Schlüssel",
+  "WRONG_KEY": "Falscher Schlüssel, Entschuldigung, der einzige Prozess, der keinen geheimen Schlüssel erfordert, ist <span style='color:blue'>Übertragung</span>.",
   "WRONG_AMOUNT": "Falscher Betrag",
   "NO_NETWORK_WITH_THAT_NAME": "Netzwerkname nicht gefunden",
   "NO_DEPOSIT_ADDRESS_AVAILABLE": "Keine Einzahlung-Adresse verfügbar",

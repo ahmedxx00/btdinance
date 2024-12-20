@@ -205,7 +205,7 @@
   "NOT_SUCH_WALLET": "कोई ऐसा वॉलेट नहीं है",
   "NOT_SUFFICIENT_AMOUNT": "पर्याप्त राशि नहीं है",
   "WITHDRAW_SUCCESSFUL": "निकासी सफल",
-  "WRONG_KEY": "गलत कुंजी",
+  "WRONG_KEY": "गलत कुंजी, माफ़ करें, केवल एक प्रक्रिया जिसे गुप्त कुंजी की आवश्यकता नहीं है, वह है <span style='color:blue'>स्थानांतरण</span>.",
   "WRONG_AMOUNT": "गलत राशि",
   "NO_NETWORK_WITH_THAT_NAME": "नेटवर्क नाम नहीं मिला",
   "NO_DEPOSIT_ADDRESS_AVAILABLE": "कोई जमा पता नहीं है",

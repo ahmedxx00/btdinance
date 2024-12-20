@@ -205,7 +205,7 @@
   "NOT_SUCH_WALLET": "没有该钱包",
   "NOT_SUFFICIENT_AMOUNT": "金额不足",
   "WITHDRAW_SUCCESSFUL": "提现成功",
-  "WRONG_KEY": "密钥错误",
+  "WRONG_KEY": "密钥错误，对不起，唯一不需要密钥的过程是 <span style='color:blue'>转账</span>.",
   "WRONG_AMOUNT": "金额错误",
   "NO_NETWORK_WITH_THAT_NAME": "未找到该网络名称",
   "NO_DEPOSIT_ADDRESS_AVAILABLE": "没有存款地址",

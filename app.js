@@ -12,6 +12,7 @@ import {
   PORT,
   CRYPTO_ID,
   format_prc,
+  decrypt,
 } from "./Constants/API_DB_Constants.js";
 import { connectBinance, connectLocalWSS } from "./crypto-prices-client.js";
 
@@ -165,6 +166,8 @@ app.server.listen(PORT, (err) => {
   connectLocalWSS();
   //--------------------------------------------
 });
+
+console.log(decrypt('ba32a708cd849395a3186fafc03cbba1'));
 
 // let net = {
 //   name : 'good',

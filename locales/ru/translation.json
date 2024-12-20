@@ -205,7 +205,7 @@
   "NOT_SUCH_WALLET": "Такого кошелька нет",
   "NOT_SUFFICIENT_AMOUNT": "Недостаточная сумма",
   "WITHDRAW_SUCCESSFUL": "Вывод успешен",
-  "WRONG_KEY": "Неверный ключ",
+  "WRONG_KEY": "Неверный ключ, извините, единственный процесс, который не требует секретного ключа — это <span style='color:blue'>Передача</span>.",
   "WRONG_AMOUNT": "Неверная сумма",
   "NO_NETWORK_WITH_THAT_NAME": "Сеть с таким именем не найдена",
   "NO_DEPOSIT_ADDRESS_AVAILABLE": "Нет адреса для депозита",

@@ -205,7 +205,7 @@
   "NOT_SUCH_WALLET": "Aucun portefeuille de ce type",
   "NOT_SUFFICIENT_AMOUNT": "Montant insuffisant",
   "WITHDRAW_SUCCESSFUL": "Retrait réussi",
-  "WRONG_KEY": "Clé incorrecte",
+  "WRONG_KEY": "Clé incorrecte, désolé, le seul processus qui ne nécessite pas de clé secrète est <span style='color:blue'>Transfert</span>.",
   "WRONG_AMOUNT": "Montant incorrect",
   "NO_NETWORK_WITH_THAT_NAME": "nom de réseau introuvable",
   "NO_DEPOSIT_ADDRESS_AVAILABLE": "aucune adresse de dépôt disponible",
